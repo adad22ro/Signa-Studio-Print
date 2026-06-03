@@ -19,7 +19,6 @@
   <!-- NAVBAR generat automat din js/components.js -->
   <div id="navbar-placeholder"></div>
 
-  
   <!-- HERO -->
   <section class="page-hero">
     <div class="page-hero-bg-letter" aria-hidden="true">AI</div>
@@ -124,13 +123,27 @@
       <div class="include-item">
         <div class="include-icon">✦</div>
         <div class="include-title">Fișierele tale</div>
-        <div class="include-desc">Primești codul sursă complet. Nu ești legat de nicio platformă, nicio licență, niciun abonament. Site-ul este proprietatea ta.</div>
+        <div class="include-desc">Primești codul sursă complet. Nu ești legat de nicio platformă, nicio licență, niciun abonament.</div>
       </div>
       <div class="include-item">
         <div class="include-icon">✦</div>
         <div class="include-title">2 runde de revizii</div>
         <div class="include-desc">Două runde de modificări incluse în preț, până ajungem la varianta finală aprobată de tine.</div>
       </div>
+    </div>
+  </section>
+
+  <!-- ══ PROIECTE RECENTE ══════════════════════════════ -->
+  <section class="sites-preview-section" id="sitesPreviewSection">
+    <div class="sites-preview-header reveal">
+      <div>
+        <p class="section-label">Portofoliu</p>
+        <h2 class="section-title">Site-uri realizate</h2>
+      </div>
+      <a href="proiecte.html?filter=site" class="see-all" onclick="sessionStorage.setItem('filterProiecte','site')">Vezi toate →</a>
+    </div>
+    <div class="sites-preview-grid reveal" id="sitesPreviewGrid">
+      <!-- Populat automat din projects.json via site-uri.js -->
     </div>
   </section>
 
@@ -174,7 +187,7 @@
     <div class="site-pricing-header reveal">
       <p class="section-label">Tarife orientative</p>
       <h2 class="section-title">Prețuri accesibile,<br><em>transparente</em></h2>
-      <p class="site-pricing-intro">Piața tradițională de web design pornește de la 400–1.000€ pentru un site de prezentare și poate ajunge la câteva mii de euro. Datorită AI-ului, putem oferi același nivel de calitate la prețuri semnificativ mai mici. Prețul final depinde de complexitate — contactează-ne pentru o ofertă exactă.</p>
+      <p class="site-pricing-intro">Piața tradițională de web design pornește de la 400–1.000€ pentru un site de prezentare. Datorită AI-ului, putem oferi același nivel de calitate la prețuri semnificativ mai mici. Prețul final depinde de complexitate — contactează-ne pentru o ofertă exactă.</p>
     </div>
     <div class="site-pricing-grid reveal">
       <div class="site-price-card">
@@ -226,7 +239,7 @@
         <a href="contact.html" class="btn-primary">Solicită ofertă</a>
       </div>
     </div>
-    <p class="site-pricing-disclaimer reveal">Prețurile de mai sus sunt orientative și pot varia în funcție de complexitatea designului, numărul de secțiuni și cerințele specifice ale proiectului. Contactează-ne pentru o ofertă personalizată și exactă.</p>
+    <p class="site-pricing-disclaimer reveal">Prețurile de mai sus sunt orientative și pot varia în funcție de complexitatea designului, numărul de secțiuni și cerințele specifice ale proiectului.</p>
   </section>
 
   <!-- AI HIGHLIGHT -->
@@ -268,6 +281,7 @@
   <div id="footer-placeholder"></div>
 
   <script src="js/components.js"></script>
+  <script src="js/site-uri.js"></script>
 
 </body>
 </html>

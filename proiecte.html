@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portofoliu proiecte — producție publicitară și tipografie. Signa Studio Print, Iași.">
+  <meta name="description" content="Portofoliu proiecte — producție publicitară, tipografie și site-uri. Signa Studio Print, Iași.">
   <title>Proiecte — Signa Studio Print</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,6 @@
   <!-- NAVBAR generat automat din js/components.js -->
   <div id="navbar-placeholder"></div>
 
-  
   <!-- HERO -->
   <section class="page-hero">
     <div class="page-hero-bg-letter" aria-hidden="true">PR</div>
@@ -30,9 +29,10 @@
 
   <!-- FILTER -->
   <div class="filter-bar">
-    <button class="filter-btn active" onclick="filterProjects('toate')">Toate</button>
-    <button class="filter-btn" onclick="filterProjects('publicitate')">Producție Publicitară</button>
-    <button class="filter-btn" onclick="filterProjects('tipografie')">Tipografie</button>
+    <button class="filter-btn active" data-filter="toate" onclick="filterProjects('toate')">Toate</button>
+    <button class="filter-btn" data-filter="publicitate" onclick="filterProjects('publicitate')">Producție Publicitară</button>
+    <button class="filter-btn" data-filter="tipografie" onclick="filterProjects('tipografie')">Tipografie</button>
+    <button class="filter-btn" data-filter="site" onclick="filterProjects('site')">Site-uri</button>
   </div>
 
   <!-- GALLERY -->
@@ -44,13 +44,14 @@
         1. Copiază poza proiectului în folderul <code>poze/</code> din site.<br>
         2. Deschide fișierul <code>projects.json</code> cu Notepad.<br>
         3. Adaugă un rând nou după modelul de mai jos și salvează:<br><br>
-        <code>{ "titlu": "Numele proiectului", "categorie": "publicitate", "poza": "denumire-poza.jpg", "descriere": "Scurtă descriere." }</code><br><br>
-        Categoria poate fi: <code>publicitate</code> sau <code>tipografie</code>. Gata — proiectul apare automat pe site.
+        — Pentru grafică: <code>{ "titlu": "Numele proiectului", "categorie": "publicitate", "poza": "poza.jpg", "descriere": "Scurtă descriere." }</code><br><br>
+        — Pentru site-uri: <code>{ "titlu": "Numele site-ului", "categorie": "site", "poza": "screenshot.jpg", "descriere": "Scurtă descriere.", "url": "https://adresa-site.ro" }</code><br><br>
+        Categoria poate fi: <code>publicitate</code>, <code>tipografie</code> sau <code>site</code>.
       </div>
     </div>
   </section>
 
-  <!-- LIGHTBOX -->
+  <!-- LIGHTBOX (pentru publicitate & tipografie) -->
   <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
     <button class="lightbox-close" onclick="closeLightbox()">✕</button>
     <div class="lightbox-inner">

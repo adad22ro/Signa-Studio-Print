@@ -319,3 +319,46 @@
     padding: 24px 20px;
   }
 }
+
+/* ═══════════════════════════════════════════════════════
+   CARDURI SITE-URI — aspect diferit față de grafică
+   ═══════════════════════════════════════════════════════ */
+
+.proj-card--site {
+  cursor: pointer;
+}
+
+.proj-card--site .proj-img-wrap {
+  aspect-ratio: 16/10;
+  border-bottom: 2px solid var(--gold-bg);
+  transition: border-color 0.3s ease;
+}
+
+.proj-card--site:hover .proj-img-wrap {
+  border-bottom-color: var(--gold);
+}
+
+/* Screenshot placeholder pentru site-uri */
+.proj-card--site .proj-img-placeholder {
+  font-size: 48px;
+  background: linear-gradient(135deg, var(--gray-bg) 0%, var(--white) 100%);
+  color: var(--gray-border);
+}
+
+/* Link vizibil sub titlu */
+.proj-link {
+  margin-top: 8px;
+}
+
+.proj-link a {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.proj-link a:hover {
+  color: var(--gold-dark);
+  text-decoration: underline;
+}
