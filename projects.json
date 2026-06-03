@@ -10,5 +10,12 @@
     "categorie": "tipografie",
     "poza": "exemplu-carte-vizita.jpg",
     "descriere": "Design față + verso pentru birou de avocatură."
+  },
+  {
+    "titlu": "Signa Studio Print",
+    "categorie": "site",
+    "poza": "site-signa.jpg",
+    "descriere": "Site de prezentare pentru studio de grafică și publicitate. Design minimalist alb-negru cu accente aurii, animații la scroll și fundal geometric animat.",
+    "url": "https://adad22ro.github.io"
   }
 ]
