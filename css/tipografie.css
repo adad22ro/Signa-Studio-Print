@@ -1,0 +1,104 @@
+/* ═══════════════════════════════════════════════════════
+   SIGNA STUDIO PRINT — tipografie.css
+   Stiluri specifice paginii Tipografie
+   (tabel servicii extins)
+   ═══════════════════════════════════════════════════════ */
+
+.svc-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 40px;
+}
+
+.svc-table tr {
+  border-bottom: 1px solid var(--gray-border);
+  transition: background 0.25s ease;
+}
+
+.svc-table tr:hover {
+  background: var(--gray-bg);
+}
+
+.svc-table td {
+  padding: 28px 16px 28px 0;
+  vertical-align: top;
+  font-size: 13px;
+  color: var(--gray-mid);
+  line-height: 1.9;
+}
+
+.svc-table td:first-child {
+  width: 5%;
+  padding-right: 20px;
+}
+
+.svc-table td:nth-child(2) {
+  width: 28%;
+  padding-right: 24px;
+}
+
+.svc-table td:nth-child(3) {
+  width: 42%;
+  padding-right: 24px;
+}
+
+.svc-table td:last-child {
+  width: 25%;
+}
+
+.svc-name {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--black);
+  margin-bottom: 4px;
+}
+
+.svc-formats {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--gray-mid);
+}
+
+.svc-detail {
+  font-size: 13px;
+  color: var(--gray-mid);
+  line-height: 1.95;
+}
+
+/* CTA buttons in tipografie */
+.cta-bar-btns {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Responsive table */
+@media (max-width: 960px) {
+  .svc-table td:nth-child(3) {
+    display: none;
+  }
+
+  .svc-table td {
+    padding: 20px 12px 20px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .svc-table td:first-child {
+    display: none;
+  }
+
+  .svc-table td {
+    display: block;
+    padding: 8px 0;
+    width: 100% !important;
+  }
+
+  .svc-table tr {
+    display: block;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--gray-border);
+  }
+}
