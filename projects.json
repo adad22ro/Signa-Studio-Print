@@ -1,0 +1,14 @@
+[
+  {
+    "titlu": "Exemplu colantare auto",
+    "categorie": "publicitate",
+    "poza": "exemplu-colantare.jpg",
+    "descriere": "Grafică personalizată pentru colantare totală autoturism."
+  },
+  {
+    "titlu": "Exemplu carte de vizită",
+    "categorie": "tipografie",
+    "poza": "exemplu-carte-vizita.jpg",
+    "descriere": "Design față + verso pentru birou de avocatură."
+  }
+]
