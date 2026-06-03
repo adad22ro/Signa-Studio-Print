@@ -17,6 +17,9 @@
 </head>
 <body>
 
+  <!-- NAVBAR — generat automat din js/components.js -->
+  <div id="navbar-placeholder"></div>
+
   <!-- ══ FUNDAL GEOMETRIC ANIMAT ══════════════════════ -->
   <div class="geo-bg" aria-hidden="true">
     <svg viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
@@ -27,7 +30,6 @@
           .geo-grid     { stroke: rgba(13,13,13,0.07);   stroke-width: 0.6; fill: none; }
           .geo-shape    { stroke: rgba(184,146,42,0.22); stroke-width: 1; fill: none; }
           .geo-dot      { fill: rgba(184,146,42,0.4); }
-
           .ga1 { animation: gaDraw 1.8s ease 0.5s both; stroke-dasharray: 40; stroke-dashoffset: 40; }
           .ga2 { animation: gaDraw 1.8s ease 0.7s both; stroke-dasharray: 40; stroke-dashoffset: 40; }
           .ga3 { animation: gaDraw 1.8s ease 0.9s both; stroke-dasharray: 40; stroke-dashoffset: 40; }
@@ -43,17 +45,11 @@
           .ga-rect { animation: gaFadeScale 1.6s ease 1.2s both; opacity: 0; transform-origin: center; }
           .ga-circ  { animation: gaFadeScale 1.4s ease 1.4s both; opacity: 0; transform-origin: center; }
           .ga-dot   { animation: gaFadeDot 0.6s ease both; opacity: 0; }
-
           @keyframes gaDraw { to { stroke-dashoffset: 0; } }
-          @keyframes gaFadeScale {
-            from { opacity: 0; transform: scale(0.94); }
-            to   { opacity: 1; transform: scale(1); }
-          }
+          @keyframes gaFadeScale { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: scale(1); } }
           @keyframes gaFadeDot { to { opacity: 1; } }
         </style>
       </defs>
-
-      <!-- Grid -->
       <line class="geo-grid ga9"  x1="0" y1="112" x2="1440" y2="112"/>
       <line class="geo-grid ga10" x1="0" y1="337" x2="1440" y2="337"/>
       <line class="geo-grid ga11" x1="0" y1="562" x2="1440" y2="562"/>
@@ -62,14 +58,10 @@
       <line class="geo-grid ga10" x1="576" y1="0" x2="576" y2="900"/>
       <line class="geo-grid ga11" x1="864" y1="0" x2="864" y2="900"/>
       <line class="geo-grid ga12" x1="1152" y1="0" x2="1152" y2="900"/>
-
-      <!-- Guide lines -->
       <line class="geo-guide ga5" x1="0"    y1="200" x2="1440" y2="200"/>
       <line class="geo-guide ga6" x1="0"    y1="700" x2="1440" y2="700"/>
       <line class="geo-guide ga7" x1="480"  y1="0" x2="480"  y2="900"/>
       <line class="geo-guide ga8" x1="960"  y1="0" x2="960"  y2="900"/>
-
-      <!-- Crop marks -->
       <line class="geo-cropmark ga1" x1="28" y1="8"  x2="68" y2="8"/>
       <line class="geo-cropmark ga2" x1="8"  y1="28" x2="8"  y2="68"/>
       <line class="geo-cropmark ga1" x1="1372" y1="8"  x2="1412" y2="8"/>
@@ -82,8 +74,6 @@
       <line class="geo-cropmark ga3" x1="700" y1="896" x2="740" y2="896"/>
       <line class="geo-cropmark ga2" x1="4"    y1="440" x2="4"    y2="460"/>
       <line class="geo-cropmark ga4" x1="1436" y1="440" x2="1436" y2="460"/>
-
-      <!-- Forme geometrice -->
       <rect class="geo-shape ga-rect" x="980" y="80" width="360" height="220" rx="0"/>
       <rect class="geo-shape ga-rect" x="60" y="560" width="180" height="120" rx="0"/>
       <circle class="geo-shape ga-circ" cx="1280" cy="640" r="80"/>
@@ -93,8 +83,6 @@
       <line class="geo-shape ga1" x1="1300" y1="40"  x2="1420" y2="40"/>
       <line class="geo-shape ga2" x1="1420" y1="40"  x2="1420" y2="140"/>
       <line class="geo-shape ga3" x1="1300" y1="40"  x2="1420" y2="140"/>
-
-      <!-- Puncte decorative -->
       <circle class="geo-dot ga-dot" cx="480" cy="200" r="3" style="animation-delay:1.3s"/>
       <circle class="geo-dot ga-dot" cx="960" cy="200" r="3" style="animation-delay:1.4s"/>
       <circle class="geo-dot ga-dot" cx="480" cy="700" r="3" style="animation-delay:1.5s"/>
@@ -110,62 +98,19 @@
     </svg>
   </div>
 
-  <!-- ══ NAVBAR ════════════════════════════════════════ -->
-  <nav id="navbar">
-    <a href="index.html" class="nav-logo">
-      <img id="logoImg" src="img/LOGO_SIGNA_mic.PNG" alt="Signa Studio Print logo">
-      <div class="nav-logo-text">
-        Signa Studio Print
-        <span>Design · Print · Publicitate</span>
-      </div>
-    </a>
-
-    <ul class="nav-links">
-      <li><a href="#servicii">Servicii</a></li>
-      <li><a href="productie-publicitara.html">Producție Pub.</a></li>
-      <li><a href="tipografie.html">Tipografie</a></li>
-      <li><a href="site-uri.html">Site-uri</a></li>
-      <li><a href="site-uri.html">Site-uri cu AI</a>
-    <a href="proiecte.html">Proiecte</a></li>
-      <li><a href="preturi.html">Prețuri</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-
-    <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Meniu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </div>
-  </nav>
-
-  <div class="mobile-menu" id="mobileMenu" role="navigation">
-    <a href="#servicii">Servicii</a>
-    <a href="productie-publicitara.html">Producție Publicitară</a>
-    <a href="tipografie.html">Tipografie</a>
-    <a href="site-uri.html">Site-uri cu AI</a>
-    <a href="proiecte.html">Proiecte</a>
-    <a href="preturi.html">Prețuri</a>
-    <a href="contact.html">Contact</a>
-  </div>
-
   <!-- ══ HERO ══════════════════════════════════════════ -->
   <section class="hero">
     <div class="hero-line"></div>
     <div class="hero-bg-text" aria-hidden="true">SSP</div>
-
     <div class="hero-content">
       <p class="hero-eyebrow">Signa Studio Print — Iași, România</p>
-      <h1 class="hero-title">
-        Grafică <em>serioasă</em><br>pentru lume reală.
-      </h1>
-      <p class="hero-subtitle">
-        Design grafic profesional pentru publicitate, print și identitate vizuală.
-        De la carte de vizită la colantare auto — fișiere gata de producție.
-      </p>
+      <h1 class="hero-title">Grafică <em>serioasă</em><br>pentru lume reală.</h1>
+      <p class="hero-subtitle">Design grafic profesional pentru publicitate, print și identitate vizuală. De la carte de vizită la colantare auto — fișiere gata de producție.</p>
       <div class="hero-ctas">
         <a href="proiecte.html" class="btn-primary">Vezi proiectele</a>
         <a href="contact.html" class="btn-ghost">Solicită ofertă →</a>
       </div>
     </div>
-
     <div class="hero-scroll" aria-hidden="true">
       <span>Scroll</span>
       <div class="hero-scroll-line"></div>
@@ -201,56 +146,30 @@
     <div class="service-card reveal">
       <div class="service-num">01</div>
       <h2 class="service-title">Producție Publicitară</h2>
-      <p class="service-desc">
-        Colantări auto, frontoane, vitrine de magazine, bannere outdoor.
-        Grafică pentru orice suport publicitar de mari dimensiuni.
-      </p>
-      <a href="productie-publicitara.html" class="service-link">
-        Descoperă serviciul <span class="service-link-arrow">→</span>
-      </a>
+      <p class="service-desc">Colantări auto, frontoane, vitrine de magazine, bannere outdoor. Grafică pentru orice suport publicitar de mari dimensiuni.</p>
+      <a href="productie-publicitara.html" class="service-link">Descoperă serviciul <span class="service-link-arrow">→</span></a>
     </div>
-
     <div class="service-card reveal">
       <div class="service-num">02</div>
       <h2 class="service-title">Tipografie & Print</h2>
-      <p class="service-desc">
-        Cărți de vizită, flyere, pliante, coperți de carte, tehnoredactare.
-        Fișiere CMYK print-ready, compatibile cu orice tipografie.
-      </p>
-      <a href="tipografie.html" class="service-link">
-        Descoperă serviciul <span class="service-link-arrow">→</span>
-      </a>
+      <p class="service-desc">Cărți de vizită, flyere, pliante, coperți de carte, tehnoredactare. Fișiere CMYK print-ready, compatibile cu orice tipografie.</p>
+      <a href="tipografie.html" class="service-link">Descoperă serviciul <span class="service-link-arrow">→</span></a>
     </div>
-
     <div class="service-card reveal">
       <div class="service-num">03</div>
       <h2 class="service-title">Site-uri cu AI</h2>
-      <p class="service-desc">
-        Site-uri de prezentare moderne, create rapid cu ajutorul inteligenței artificiale.
-        Design curat, funcțional și optimizat pentru orice dispozitiv.
-      </p>
-      <a href="contact.html" class="service-link">
-        Solicită un site <span class="service-link-arrow">→</span>
-      </a>
+      <p class="service-desc">Site-uri de prezentare și landing pages moderne, create rapid cu ajutorul inteligenței artificiale. Cod curat, design personalizat, fără abonamente.</p>
+      <a href="site-uri.html" class="service-link">Descoperă serviciul <span class="service-link-arrow">→</span></a>
     </div>
   </section>
 
   <!-- ══ DESPRE ══════════════════════════════════════════ -->
   <section class="about">
-
     <div class="about-left reveal">
       <p class="section-label">Despre Signa Studio Print</p>
       <h2 class="about-title">Grafică serioasă,<br>pentru oameni serioși</h2>
-      <p class="about-body">
-        Cu peste 5 ani de experiență în producția publicitară și 2 ani în tipografie,
-        am lucrat în mai multe firme de profil și am acumulat o expertiză solidă în
-        realizarea graficii pentru orice tip de suport.
-      </p>
-      <p class="about-body">
-        Softul principal este CorelDraw — un instrument pe care îl stăpânesc la nivel
-        profesional și cu care pot realiza grafică de la carte de vizită până la colantări
-        pentru vehicule de mari dimensiuni.
-      </p>
+      <p class="about-body">Cu peste 5 ani de experiență în producția publicitară și 2 ani în tipografie, am lucrat în mai multe firme de profil și am acumulat o expertiză solidă în realizarea graficii pentru orice tip de suport.</p>
+      <p class="about-body">Softul principal este CorelDraw — un instrument pe care îl stăpânesc la nivel profesional și cu care pot realiza grafică de la carte de vizită până la colantări pentru vehicule de mari dimensiuni.</p>
       <div class="skills-list">
         <div class="skill-item"><span class="skill-dot"></span>Colantări auto &amp; vitrine de magazine</div>
         <div class="skill-item"><span class="skill-dot"></span>Frontoane &amp; bannere publicitare</div>
@@ -259,36 +178,21 @@
         <div class="skill-item"><span class="skill-dot"></span>Site-uri de prezentare cu AI</div>
       </div>
     </div>
-
     <div class="about-right reveal">
       <div>
         <p class="section-label">Experiență în cifre</p>
         <div class="stats-grid">
-          <div class="stat">
-            <div class="stat-num">5+</div>
-            <div class="stat-label">Ani producție<br>publicitară</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">2+</div>
-            <div class="stat-label">Ani<br>tipografie</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">100%</div>
-            <div class="stat-label">Dedicare<br>per proiect</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">∞</div>
-            <div class="stat-label">Tipuri de<br>proiecte</div>
-          </div>
+          <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Ani producție<br>publicitară</div></div>
+          <div class="stat"><div class="stat-num">2+</div><div class="stat-label">Ani<br>tipografie</div></div>
+          <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Dedicare<br>per proiect</div></div>
+          <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Tipuri de<br>proiecte</div></div>
         </div>
       </div>
     </div>
-
   </section>
 
   <!-- ══ PROIECTE PREVIEW ═══════════════════════════════ -->
   <section class="projects-preview">
-
     <div class="projects-header reveal">
       <div>
         <p class="section-label">Portofoliu</p>
@@ -296,113 +200,36 @@
       </div>
       <a href="proiecte.html" class="see-all">Vezi toate →</a>
     </div>
-
     <div class="projects-grid reveal">
-      <div class="project-card">
-        <div class="project-placeholder" aria-hidden="true">S</div>
-        <div class="project-info">
-          <div class="project-cat">Publicitate</div>
-          <div class="project-name">Colantare auto</div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-placeholder" aria-hidden="true">P</div>
-        <div class="project-info">
-          <div class="project-cat">Tipografie</div>
-          <div class="project-name">Carte de vizită</div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-placeholder" aria-hidden="true">S</div>
-        <div class="project-info">
-          <div class="project-cat">Publicitate</div>
-          <div class="project-name">Vitrină magazin</div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-placeholder" aria-hidden="true">P</div>
-        <div class="project-info">
-          <div class="project-cat">Tipografie</div>
-          <div class="project-name">Pliant A4 pliabil</div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-placeholder" aria-hidden="true">S</div>
-        <div class="project-info">
-          <div class="project-cat">Publicitate</div>
-          <div class="project-name">Frontal magazin</div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-placeholder" aria-hidden="true">P</div>
-        <div class="project-info">
-          <div class="project-cat">Tipografie</div>
-          <div class="project-name">Copertă carte</div>
-        </div>
-      </div>
+      <div class="project-card"><div class="project-placeholder" aria-hidden="true">S</div><div class="project-info"><div class="project-cat">Publicitate</div><div class="project-name">Colantare auto</div></div></div>
+      <div class="project-card"><div class="project-placeholder" aria-hidden="true">P</div><div class="project-info"><div class="project-cat">Tipografie</div><div class="project-name">Carte de vizită</div></div></div>
+      <div class="project-card"><div class="project-placeholder" aria-hidden="true">S</div><div class="project-info"><div class="project-cat">Publicitate</div><div class="project-name">Vitrină magazin</div></div></div>
+      <div class="project-card"><div class="project-placeholder" aria-hidden="true">P</div><div class="project-info"><div class="project-cat">Tipografie</div><div class="project-name">Pliant A4 pliabil</div></div></div>
+      <div class="project-card"><div class="project-placeholder" aria-hidden="true">S</div><div class="project-info"><div class="project-cat">Publicitate</div><div class="project-name">Frontal magazin</div></div></div>
+      <div class="project-card"><div class="project-placeholder" aria-hidden="true">P</div><div class="project-info"><div class="project-cat">Tipografie</div><div class="project-name">Copertă carte</div></div></div>
     </div>
-
   </section>
 
   <!-- ══ CTA STRIP ════════════════════════════════════════ -->
   <section class="cta-strip">
-
     <div class="cta-half reveal">
       <div class="cta-half-label">Prețuri</div>
       <h2 class="cta-half-title">Tarife clare,<br>fără surprize</h2>
-      <p class="cta-half-body">
-        Consultați lista de prețuri pentru serviciile standard.
-        Pentru proiecte complexe sau personalizate, discutăm direct.
-      </p>
+      <p class="cta-half-body">Consultați lista de prețuri pentru serviciile standard. Pentru proiecte complexe sau personalizate, discutăm direct.</p>
       <a href="preturi.html" class="btn-primary">Vezi prețurile</a>
     </div>
-
-    <div class="cta-half reveal" id="contact">
+    <div class="cta-half reveal">
       <div class="cta-half-label">Contact</div>
       <h2 class="cta-half-title">Ai un proiect<br><em>în minte?</em></h2>
-      <p class="cta-half-body">
-        Scrie-ne sau sună-ne. Răspundem prompt și oferim consultanță gratuită
-        pentru orice tip de proiect grafic sau publicitar.
-      </p>
+      <p class="cta-half-body">Scrie-ne sau sună-ne. Răspundem prompt și oferim consultanță gratuită pentru orice tip de proiect grafic sau publicitar.</p>
       <a href="contact.html" class="btn-primary">Ia legătura</a>
     </div>
-
   </section>
 
-  <!-- ══ FOOTER ════════════════════════════════════════════ -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="footer-logo-text">Signa Studio Print</div>
-        <div class="footer-tagline">Design · Print · Publicitate</div>
-        <p>Grafică profesională pentru orice suport, de la carte de vizită la colantări auto. Iași, România.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Servicii</h4>
-        <ul>
-          <li><a href="productie-publicitara.html">Producție Publicitară</a></li>
-          <li><a href="tipografie.html">Tipografie & Print</a></li>
-          <li><a href="site-uri.html">Site-uri cu AI</a></li>
-          <li><a href="proiecte.html">Portofoliu</a></li>
-          <li><a href="preturi.html">Prețuri</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <address>
-          Iași, România<br>
-          <a href="tel:+40000000000">+40 000 000 000</a><br>
-          <a href="mailto:contact@signastudioprint.ro">contact@signastudioprint.ro</a>
-        </address>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2025 Signa Studio Print — Toate drepturile rezervate</div>
-      <div class="footer-made">Site creat cu <span>AI</span> · Signa Studio Print</div>
-    </div>
-  </footer>
+  <!-- FOOTER — generat automat din js/components.js -->
+  <div id="footer-placeholder"></div>
 
-  <script src="js/global.js"></script>
+  <script src="js/components.js"></script>
   <script src="js/index.js"></script>
 
 </body>
