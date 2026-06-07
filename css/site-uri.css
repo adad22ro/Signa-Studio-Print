@@ -353,6 +353,7 @@
 
 @media (max-width: 600px) {
   .su-hero-inner { padding-top: calc(var(--navbar-h) + 32px); }
+  .su-hero-title-line2 { white-space: normal; }
   .su-hero-ctas { flex-direction: column; align-items: flex-start; gap: 14px; }
   .su-packages { grid-template-columns: 1fr; }
   .su-pkg--featured { order: -1; grid-column: auto; }
