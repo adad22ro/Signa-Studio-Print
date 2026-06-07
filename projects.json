@@ -12,10 +12,24 @@
     "descriere": "Design față + verso pentru birou de avocatură."
   },
   {
+    "titlu": "Two4Delivery",
+    "categorie": "site",
+    "poza": "two4delivery.jpg",
+    "descriere": "Site de prezentare pentru cea mai mare flotă de curieri din Moldova. Partener Bolt Food și Glovo în 6 orașe.",
+    "url": "https://two4delivery.ro/"
+  },
+  {
+    "titlu": "AutoArt Motorsport",
+    "categorie": "site",
+    "poza": "autoart.jpg",
+    "descriere": "Site pentru club sportiv de automobilism din Iași. Competiții Electric Race, Super Rally și Viteză în Coastă.",
+    "url": "https://autoartmotorsport.ro/"
+  },
+  {
     "titlu": "Signa Studio Print",
     "categorie": "site",
     "poza": "site-signa.jpg",
     "descriere": "Site de prezentare pentru studio de grafică și publicitate. Design minimalist alb-negru cu accente aurii, animații la scroll și fundal geometric animat.",
-    "url": "https://adad22ro.github.io"
+    "url": "https://adad22ro.github.io/Signa-Studio-Print/"
   }
 ]

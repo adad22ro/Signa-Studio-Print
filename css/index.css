@@ -212,23 +212,196 @@
   50%       { transform: scaleY(0.6); opacity: 1; }
 }
 
-/* ══ MARQUEE ═════════════════════════════════════════════ */
-.marquee-strip {
-  position: relative; z-index: 1;
+/* ══ WORK STRIP — ticker + proiecte web ══════════════════ */
+.work-strip {
+  position: relative;
+  z-index: 1;
   border-top: 1px solid var(--gray-border);
+  background: var(--white);
+}
+
+/* Ticker servicii */
+.ticker-row {
   border-bottom: 1px solid var(--gray-border);
-  background: var(--white); overflow: hidden; padding: 14px 0;
+  overflow: hidden;
+  padding: 12px 0;
 }
-.marquee-track {
-  display: flex; gap: 24px; white-space: nowrap;
-  animation: marqueeScroll 28s linear infinite;
+.ticker-track {
+  display: flex;
+  gap: 24px;
+  white-space: nowrap;
+  animation: tickerScroll 30s linear infinite;
 }
-.marquee-track span { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-mid); }
-.marquee-track .mdot { color: var(--gold); letter-spacing: 0; }
-@keyframes marqueeScroll {
+.ticker-track span {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray-light);
+}
+.ticker-track .tdot {
+  color: var(--gray-border);
+  letter-spacing: 0;
+}
+@keyframes tickerScroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
+
+/* Rând proiecte web */
+.web-projects-row {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--gray-border);
+}
+
+.wp-label {
+  flex-shrink: 0;
+  width: clamp(120px, 14vw, 200px);
+  padding: clamp(28px, 4vw, 48px) clamp(20px, 3vw, 40px);
+  border-right: 1px solid var(--gray-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+.wp-label .section-label { margin-bottom: 0; font-size: 9px; }
+.wp-sublabel {
+  font-size: 11px;
+  color: var(--gray-mid);
+  letter-spacing: 0.05em;
+}
+
+/* Carduri site */
+.wp-card {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  border-right: 1px solid var(--gray-border);
+  text-decoration: none;
+  overflow: hidden;
+  transition: background 0.35s ease;
+  background: var(--white);
+  cursor: pointer;
+}
+
+.wp-card:hover {
+  background: var(--gray-bg);
+}
+
+.wp-card-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(24px, 3.5vw, 44px) clamp(20px, 3vw, 40px);
+  width: 100%;
+  gap: 16px;
+}
+
+/* Glow animat pe hover */
+.wp-card-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(184,146,42,0.06) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.wp-card:hover .wp-card-glow { opacity: 1; }
+
+/* Indicator activ — linie de jos */
+.wp-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--gold);
+  transition: width 0.45s ease;
+}
+.wp-card:hover::after { width: 100%; }
+
+.wp-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.wp-logo-text {
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 2.5vw, 30px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.wp-logo-img {
+  height: clamp(28px, 4vw, 44px);
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(0);
+  transition: filter 0.3s ease;
+}
+.wp-card:hover .wp-logo-img { filter: grayscale(0.2); }
+
+.wp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.wp-tag {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray-mid);
+  border: 1px solid var(--gray-border);
+  padding: 3px 9px;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+.wp-card:hover .wp-tag {
+  border-color: rgba(184,146,42,0.3);
+  color: var(--gold-dark);
+}
+
+.wp-url {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-light);
+  transition: color 0.3s ease;
+}
+.wp-card:hover .wp-url { color: var(--gold); }
+
+/* CTA — ultimul element */
+.wp-cta {
+  flex-shrink: 0;
+  width: clamp(120px, 14vw, 200px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+  padding: clamp(24px, 3.5vw, 44px) clamp(20px, 3vw, 40px);
+  text-decoration: none;
+  background: var(--black);
+  transition: background 0.35s ease;
+  cursor: pointer;
+}
+.wp-cta:hover { background: var(--dark); }
+
+.wp-cta-text {
+  font-family: var(--font-serif);
+  font-size: clamp(14px, 1.6vw, 18px);
+  font-weight: 400;
+  color: var(--white-pure);
+  line-height: 1.4;
+}
+.wp-cta-arrow {
+  font-size: 22px;
+  color: var(--gold);
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+.wp-cta:hover .wp-cta-arrow { transform: translateX(6px); }
 
 /* ══ SERVICII TRIO ═══════════════════════════════════════ */
 .services-trio {
@@ -326,6 +499,11 @@
 /* ══ RESPONSIVE ══════════════════════════════════════════ */
 
 @media (max-width: 1100px) {
+  .web-projects-row { flex-wrap: wrap; }
+  .wp-label { width: 100%; border-right: none; border-bottom: 1px solid var(--gray-border); flex-direction: row; align-items: center; gap: 16px; padding: 16px clamp(20px, 3vw, 40px); }
+  .wp-card { flex: 1; min-width: 200px; }
+  .wp-cta { width: 100%; flex-direction: row; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.08); }
+
   .services-trio { grid-template-columns: 1fr 1fr; }
   .svc-featured { grid-column: 1 / -1; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
   .svc-card:nth-child(3) { border-right: none; }
@@ -346,6 +524,9 @@
 
 /* Mobile */
 @media (max-width: 600px) {
+  .web-projects-row { flex-direction: column; }
+  .wp-card { border-right: none; border-bottom: 1px solid var(--gray-border); }
+  .wp-cta { width: 100%; }
   .hero {
     height: auto;
     min-height: 100svh;
