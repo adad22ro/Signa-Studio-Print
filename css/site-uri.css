@@ -92,15 +92,21 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.85em;
   color: var(--gold);
-  border-right: 2px solid var(--gold);
-  padding-right: 4px;
-  animation: cursorBlink 0.8s step-end infinite;
-  display: inline-block;
-  min-width: 8ch;
+  display: inline;
+  white-space: nowrap;
 }
+
+/* Cursor clipitor ca pseudo-element — sta lipit de text */
+.su-typewriter::after {
+  content: '|';
+  color: var(--gold);
+  margin-left: 2px;
+  animation: cursorBlink 0.8s step-end infinite;
+}
+
 @keyframes cursorBlink {
-  0%,100% { border-color: var(--gold); }
-  50%      { border-color: transparent; }
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0; }
 }
 
 .su-hero-sub {
