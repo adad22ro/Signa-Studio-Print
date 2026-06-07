@@ -101,8 +101,8 @@
 
 /* Path-urile logo-ului — animație draw */
 .logo-path {
-  fill: none;
-  stroke: var(--black);
+  fill: transparent;
+  stroke: #0D0D0D;
   stroke-width: 0.018;
   stroke-linejoin: round;
   stroke-linecap: round;
@@ -113,7 +113,7 @@
   stroke-dashoffset: 8;
   animation:
     drawLogo 1.6s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards,
-    fillLogo 0.5s ease 2.1s forwards;
+    fillLogo 1.2s cubic-bezier(0.4, 0, 0.2, 1) 2.0s forwards;
 }
 
 .lp2 {
@@ -121,7 +121,7 @@
   stroke-dashoffset: 8;
   animation:
     drawLogo 1.6s cubic-bezier(0.4, 0, 0.2, 1) 1.0s forwards,
-    fillLogo 0.5s ease 2.1s forwards;
+    fillLogo 1.2s cubic-bezier(0.4, 0, 0.2, 1) 2.0s forwards;
 }
 
 @keyframes drawLogo {
@@ -129,10 +129,10 @@
 }
 
 @keyframes fillLogo {
-  to {
-    fill: var(--black);
-    stroke: none;
-  }
+  0%   { fill: transparent;      stroke-width: 0.018; stroke-opacity: 1; }
+  40%  { fill: rgba(13,13,13,0.3); stroke-width: 0.012; stroke-opacity: 0.7; }
+  80%  { fill: rgba(13,13,13,0.8); stroke-width: 0.005; stroke-opacity: 0.2; }
+  100% { fill: #0D0D0D;           stroke-width: 0;     stroke-opacity: 0; }
 }
 
 /* Linie verticală separator */
