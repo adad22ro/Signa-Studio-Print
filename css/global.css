@@ -1,6 +1,5 @@
 /* ═══════════════════════════════════════════════════════
    SIGNA STUDIO PRINT — global.css
-   Variabile, reset, navbar, footer, fundal geometric, utilitare
    ═══════════════════════════════════════════════════════ */
 
 /* ── RESET ──────────────────────────────────────────── */
@@ -12,40 +11,28 @@
 
 /* ── VARIABILE ──────────────────────────────────────── */
 :root {
-  /* Culori principale */
   --white:        #F8F7F4;
   --white-pure:   #FFFFFF;
   --black:        #0D0D0D;
   --dark:         #1A1A1A;
-
-  /* Gri-uri */
   --gray-dark:    #3A3A3A;
   --gray-mid:     #6B6B6B;
   --gray-light:   #A8A8A8;
   --gray-border:  #E2E0D8;
   --gray-bg:      #F0EEE9;
-
-  /* Auriu adaptat pentru fundal alb */
   --gold:         #B8922A;
   --gold-light:   #D4A843;
   --gold-dark:    #8A6B1A;
   --gold-bg:      rgba(184, 146, 42, 0.06);
-
-  /* Tipografie */
   --font-serif:   'Playfair Display', Georgia, serif;
   --font-sans:    'Jost', system-ui, sans-serif;
-
-  /* Dimensiuni */
-  --navbar-h:     72px;
+  --navbar-h:     68px;
   --max-w:        1440px;
   --side-pad:     48px;
 }
 
 /* ── TIPOGRAFIE GLOBALĂ ─────────────────────────────── */
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
+html { scroll-behavior: smooth; font-size: 16px; }
 
 body {
   background-color: var(--white);
@@ -54,27 +41,6 @@ body {
   font-weight: 400;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-}
-
-/* ── FUNDAL GEOMETRIC SVG ───────────────────────────── */
-.geo-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.geo-bg svg {
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  animation: geoBgReveal 2s ease 0.2s forwards;
-}
-
-@keyframes geoBgReveal {
-  from { opacity: 0; transform: scale(1.02); }
-  to   { opacity: 1; transform: scale(1); }
 }
 
 /* ── NAVBAR ─────────────────────────────────────────── */
@@ -87,111 +53,197 @@ nav {
   justify-content: space-between;
   padding: 0 var(--side-pad);
   height: var(--navbar-h);
-  background: rgba(248, 247, 244, 0);
+  background: transparent;
+  transition: background 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
   border-bottom: 1px solid transparent;
-  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 nav.scrolled {
-  background: rgba(248, 247, 244, 0.96);
+  background: rgba(248, 247, 244, 0.94);
   border-color: var(--gray-border);
-  box-shadow: 0 1px 20px rgba(13, 13, 13, 0.06);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 32px rgba(13, 13, 13, 0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
-/* Logo */
+/* ── LOGO ───────────────────────────────────────────── */
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   text-decoration: none;
-  position: relative;
-  z-index: 2;
+  flex-shrink: 0;
 }
 
 .nav-logo img {
-  height: 38px;
-  transition: transform 0.3s ease;
+  height: 34px;
+  width: auto;
+  transition: transform 0.4s ease, opacity 0.3s ease;
 }
 
 .nav-logo:hover img {
-  transform: scale(1.05);
+  transform: scale(1.06);
+  opacity: 0.85;
 }
 
 .nav-logo-text {
   font-family: var(--font-serif);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--black);
   line-height: 1.2;
 }
 
 .nav-logo-text span {
   display: block;
-  font-size: 9px;
+  font-size: 8px;
   font-family: var(--font-sans);
   font-weight: 400;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.32em;
   color: var(--gold);
   text-transform: uppercase;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
-/* Link-uri nav */
+/* ── NAV LINKS ──────────────────────────────────────── */
 .nav-links {
   display: flex;
-  gap: 32px;
+  align-items: center;
+  gap: 4px;
   list-style: none;
 }
 
-.nav-links a {
-  font-size: 11px;
-  letter-spacing: 0.2em;
+/* Item de bază */
+.nl-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--gray-mid);
   text-decoration: none;
+  border-radius: 2px;
   position: relative;
-  transition: color 0.3s ease;
-  padding-bottom: 2px;
+  transition: color 0.25s ease, background 0.25s ease;
+  white-space: nowrap;
 }
 
-.nav-links a::after {
+/* Linie de subliniere animată */
+.nl-item::after {
   content: '';
   position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
+  bottom: 2px;
+  left: 12px;
+  right: 12px;
   height: 1px;
   background: var(--gold);
-  transition: width 0.35s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.nav-links a:hover {
+.nl-item:hover {
+  color: var(--black);
+  background: rgba(184, 146, 42, 0.05);
+}
+
+.nl-item:hover::after {
+  transform: scaleX(1);
+}
+
+/* Stare activă */
+.nl-item.active {
   color: var(--black);
 }
 
-.nav-links a:hover::after {
-  width: 100%;
+.nl-item.active::after {
+  transform: scaleX(1);
+  background: var(--black);
 }
 
-.nav-links a.active {
+/* ── WEB DEVELOPMENT — link featured ───────────────── */
+.nl-featured {
+  color: var(--gold-dark);
+  border: 1px solid rgba(184, 146, 42, 0.25);
+  background: rgba(184, 146, 42, 0.04);
+  padding: 5px 12px 5px 8px;
+}
+
+.nl-featured::after {
+  display: none;
+}
+
+.nl-featured:hover {
   color: var(--gold);
+  background: rgba(184, 146, 42, 0.1);
+  border-color: rgba(184, 146, 42, 0.5);
 }
 
-.nav-links a.active::after {
-  width: 100%;
+.nl-featured.active {
+  color: var(--white-pure);
+  background: var(--gold);
+  border-color: var(--gold);
 }
 
-/* Hamburger mobile */
+.nl-featured.active:hover {
+  background: var(--gold-dark);
+  border-color: var(--gold-dark);
+}
+
+/* Badge AI */
+.nl-badge {
+  font-size: 7.5px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--white-pure);
+  background: var(--gold);
+  padding: 2px 5px;
+  border-radius: 2px;
+  line-height: 1.2;
+  transition: background 0.25s ease;
+}
+
+.nl-featured:hover .nl-badge {
+  background: var(--gold-dark);
+}
+
+.nl-featured.active .nl-badge {
+  background: rgba(255,255,255,0.3);
+}
+
+/* ── CONTACT — buton distinct ───────────────────────── */
+.nl-contact {
+  color: var(--black);
+  border: 1px solid var(--gray-border);
+  margin-left: 8px;
+}
+
+.nl-contact::after {
+  display: none;
+}
+
+.nl-contact:hover {
+  color: var(--white-pure);
+  background: var(--black);
+  border-color: var(--black);
+}
+
+.nl-contact.active {
+  color: var(--white-pure);
+  background: var(--black);
+  border-color: var(--black);
+}
+
+/* ── HAMBURGER MOBILE ───────────────────────────────── */
 .nav-hamburger {
   display: none;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  padding: 4px;
-  position: relative;
+  padding: 6px;
   z-index: 2;
 }
 
@@ -204,33 +256,23 @@ nav.scrolled {
   transform-origin: center;
 }
 
-.nav-hamburger.open span:nth-child(1) {
-  transform: translateY(6.5px) rotate(45deg);
-}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-.nav-hamburger.open span:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
-}
-
-.nav-hamburger.open span:nth-child(3) {
-  transform: translateY(-6.5px) rotate(-45deg);
-}
-
-/* Meniu mobil */
+/* ── MENIU MOBIL ────────────────────────────────────── */
 .mobile-menu {
   display: none;
   position: fixed;
   top: var(--navbar-h);
-  left: 0;
-  right: 0;
+  left: 0; right: 0;
   background: rgba(248, 247, 244, 0.98);
   border-bottom: 1px solid var(--gray-border);
-  padding: 8px 0 16px;
+  padding: 8px 0 20px;
   z-index: 190;
-  box-shadow: 0 8px 32px rgba(13, 13, 13, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 12px 40px rgba(13, 13, 13, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   transform: translateY(-8px);
   opacity: 0;
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -243,20 +285,46 @@ nav.scrolled {
 }
 
 .mobile-menu a {
-  display: block;
-  padding: 14px var(--side-pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px var(--side-pad);
   font-size: 11px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gray-mid);
   text-decoration: none;
   border-bottom: 1px solid var(--gray-border);
-  transition: color 0.25s ease, background 0.25s ease;
+  transition: color 0.25s ease, background 0.25s ease, padding-left 0.25s ease;
 }
 
 .mobile-menu a:hover {
-  color: var(--gold);
+  color: var(--black);
   background: var(--gold-bg);
+  padding-left: calc(var(--side-pad) + 6px);
+}
+
+.mobile-menu a.active {
+  color: var(--black);
+}
+
+/* Web Development în mobile menu */
+.mobile-menu .mm-featured {
+  color: var(--gold-dark);
+  font-weight: 500;
+}
+
+.mobile-menu .mm-featured:hover {
+  color: var(--gold);
+}
+
+.mm-badge {
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: var(--white-pure);
+  background: var(--gold);
+  padding: 2px 6px;
+  border-radius: 2px;
 }
 
 /* ── BUTOANE GLOBALE ────────────────────────────────── */
@@ -272,7 +340,7 @@ nav.scrolled {
   text-decoration: none;
   background: transparent;
   cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: color 0.3s ease;
   position: relative;
   overflow: hidden;
 }
@@ -288,19 +356,8 @@ nav.scrolled {
   z-index: 0;
 }
 
-.btn-primary span,
-.btn-primary:not(:has(span)) {
-  position: relative;
-  z-index: 1;
-}
-
-.btn-primary:hover {
-  color: var(--white);
-}
-
-.btn-primary:hover::before {
-  transform: scaleX(1);
-}
+.btn-primary:hover { color: var(--white); }
+.btn-primary:hover::before { transform: scaleX(1); }
 
 .btn-ghost {
   font-family: var(--font-sans);
@@ -315,9 +372,7 @@ nav.scrolled {
   gap: 6px;
 }
 
-.btn-ghost:hover {
-  color: var(--gold);
-}
+.btn-ghost:hover { color: var(--gold); }
 
 /* ── ETICHETE SECȚIUNI ──────────────────────────────── */
 .section-label {
@@ -340,8 +395,8 @@ nav.scrolled {
 /* ── REVEAL ANIMATION ───────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(28px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
 }
 
 .reveal.visible {
@@ -349,10 +404,9 @@ nav.scrolled {
   transform: translateY(0);
 }
 
-/* Delay-uri staggered pentru copiii dintr-un container */
 .reveal-group .reveal:nth-child(1) { transition-delay: 0s; }
-.reveal-group .reveal:nth-child(2) { transition-delay: 0.12s; }
-.reveal-group .reveal:nth-child(3) { transition-delay: 0.24s; }
+.reveal-group .reveal:nth-child(2) { transition-delay: 0.1s; }
+.reveal-group .reveal:nth-child(3) { transition-delay: 0.2s; }
 
 /* ── FOOTER ─────────────────────────────────────────── */
 footer {
@@ -403,13 +457,8 @@ footer {
   margin-bottom: 18px;
 }
 
-.footer-col ul {
-  list-style: none;
-}
-
-.footer-col ul li {
-  margin-bottom: 10px;
-}
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
 
 .footer-col ul a {
   font-size: 13px;
@@ -418,9 +467,7 @@ footer {
   transition: color 0.25s ease;
 }
 
-.footer-col ul a:hover {
-  color: var(--white-pure);
-}
+.footer-col ul a:hover { color: var(--white-pure); }
 
 .footer-col address {
   font-style: normal;
@@ -435,9 +482,7 @@ footer {
   transition: color 0.25s ease;
 }
 
-.footer-col address a:hover {
-  color: var(--white-pure);
-}
+.footer-col address a:hover { color: var(--white-pure); }
 
 .footer-bottom {
   display: flex;
@@ -447,57 +492,30 @@ footer {
   gap: 12px;
 }
 
-.footer-copy {
+.footer-copy, .footer-made {
   font-size: 11px;
   letter-spacing: 0.08em;
   color: var(--gray-dark);
 }
 
-.footer-made {
-  font-size: 11px;
-  letter-spacing: 0.05em;
-  color: var(--gray-dark);
-}
-
-.footer-made span {
-  color: var(--gold);
-}
+.footer-made span { color: var(--gold); }
 
 /* ── RESPONSIVE GLOBAL ──────────────────────────────── */
+@media (max-width: 1100px) {
+  .nl-item { padding: 6px 9px; font-size: 10px; letter-spacing: 0.1em; }
+  .nl-contact { margin-left: 4px; }
+}
+
 @media (max-width: 960px) {
-  :root {
-    --side-pad: 28px;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .nav-hamburger {
-    display: flex;
-  }
-
-  .footer-inner {
-    grid-template-columns: 1fr 1fr;
-  }
+  :root { --side-pad: 28px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 600px) {
-  :root {
-    --side-pad: 20px;
-    --navbar-h: 64px;
-  }
-
-  .mobile-menu a {
-    padding: 13px var(--side-pad);
-  }
-
-  .footer-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  :root { --side-pad: 20px; --navbar-h: 64px; }
+  .mobile-menu a { padding: 13px var(--side-pad); }
+  .footer-inner { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
 }

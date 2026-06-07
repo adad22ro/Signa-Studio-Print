@@ -1,33 +1,30 @@
 /* ═══════════════════════════════════════════════════════
    SIGNA STUDIO PRINT — components.js
    Injectare automată navbar + footer în toate paginile.
-   Modifici un singur fișier — se actualizează peste tot.
    ═══════════════════════════════════════════════════════ */
 
 (function () {
   'use strict';
 
-  /* ── NAVBAR HTML ───────────────────────────────────────
-     Adaugă sau elimini linkuri DOAR aici.
-     Se actualizează automat pe toate paginile.
-  ─────────────────────────────────────────────────────── */
   var NAVBAR_HTML = [
     '<nav id="navbar">',
     '  <a href="index.html" class="nav-logo">',
     '    <img id="logoImg" src="img/LOGO_SIGNA_mic.PNG" alt="Signa Studio Print logo">',
     '    <div class="nav-logo-text">',
     '      Signa Studio Print',
-    '      <span>Design · Print · Publicitate</span>',
+    '      <span>Design · Web · Publicitate</span>',
     '    </div>',
     '  </a>',
     '  <ul class="nav-links">',
-    '    <li><a href="index.html">Acasă</a></li>',
-    '    <li><a href="productie-publicitara.html">Producție Pub.</a></li>',
-    '    <li><a href="tipografie.html">Tipografie</a></li>',
-    '    <li><a href="site-uri.html">Site-uri</a></li>',
-    '    <li><a href="proiecte.html">Proiecte</a></li>',
-    '    <li><a href="preturi.html">Prețuri</a></li>',
-    '    <li><a href="contact.html">Contact</a></li>',
+    '    <li><a href="index.html" class="nl-item">Acasă</a></li>',
+    '    <li><a href="site-uri.html" class="nl-item nl-featured">',
+    '      <span class="nl-badge">AI</span>Web Development',
+    '    </a></li>',
+    '    <li><a href="productie-publicitara.html" class="nl-item">Producție Publicitară</a></li>',
+    '    <li><a href="tipografie.html" class="nl-item">Tipografie</a></li>',
+    '    <li><a href="proiecte.html" class="nl-item">Proiecte</a></li>',
+    '    <li><a href="preturi.html" class="nl-item">Prețuri</a></li>',
+    '    <li><a href="contact.html" class="nl-item nl-contact">Contact</a></li>',
     '  </ul>',
     '  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Meniu" aria-expanded="false">',
     '    <span></span><span></span><span></span>',
@@ -35,32 +32,29 @@
     '</nav>',
     '<div class="mobile-menu" id="mobileMenu" role="navigation">',
     '  <a href="index.html">Acasă</a>',
+    '  <a href="site-uri.html" class="mm-featured">Web Development <span class="mm-badge">AI</span></a>',
     '  <a href="productie-publicitara.html">Producție Publicitară</a>',
     '  <a href="tipografie.html">Tipografie</a>',
-    '  <a href="site-uri.html">Site-uri cu AI</a>',
     '  <a href="proiecte.html">Proiecte</a>',
     '  <a href="preturi.html">Prețuri</a>',
     '  <a href="contact.html">Contact</a>',
     '</div>'
   ].join('\n');
 
-  /* ── FOOTER HTML ───────────────────────────────────────
-     Modifici adresa, telefonul, email-ul DOAR aici.
-  ─────────────────────────────────────────────────────── */
   var FOOTER_HTML = [
     '<footer>',
     '  <div class="footer-inner">',
     '    <div class="footer-brand">',
     '      <div class="footer-logo-text">Signa Studio Print</div>',
-    '      <div class="footer-tagline">Design · Print · Publicitate</div>',
+    '      <div class="footer-tagline">Design · Web · Publicitate</div>',
     '      <p>Grafică profesională pentru orice suport, de la carte de vizită la colantări auto. Iași, România.</p>',
     '    </div>',
     '    <div class="footer-col">',
     '      <h4>Servicii</h4>',
     '      <ul>',
+    '        <li><a href="site-uri.html">Web Development</a></li>',
     '        <li><a href="productie-publicitara.html">Producție Publicitară</a></li>',
     '        <li><a href="tipografie.html">Tipografie &amp; Print</a></li>',
-    '        <li><a href="site-uri.html">Site-uri cu AI</a></li>',
     '        <li><a href="proiecte.html">Portofoliu</a></li>',
     '        <li><a href="preturi.html">Prețuri</a></li>',
     '      </ul>',
@@ -81,20 +75,12 @@
     '</footer>'
   ].join('\n');
 
-  /* ── INJECTARE ─────────────────────────────────────────
-     Înlocuiește placeholder-ele din HTML cu conținutul
-     real al navbar-ului și footer-ului.
-  ─────────────────────────────────────────────────────── */
+  /* ── INJECTARE ─────────────────────────────────────── */
   var navPlaceholder = document.getElementById('navbar-placeholder');
   var footerPlaceholder = document.getElementById('footer-placeholder');
 
-  if (navPlaceholder) {
-    navPlaceholder.outerHTML = NAVBAR_HTML;
-  }
-
-  if (footerPlaceholder) {
-    footerPlaceholder.outerHTML = FOOTER_HTML;
-  }
+  if (navPlaceholder) navPlaceholder.outerHTML = NAVBAR_HTML;
+  if (footerPlaceholder) footerPlaceholder.outerHTML = FOOTER_HTML;
 
   /* ── ACTIVE NAV LINK ───────────────────────────────── */
   var currentPage = window.location.pathname.split('/').pop() || 'index.html';
