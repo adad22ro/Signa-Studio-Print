@@ -6,9 +6,11 @@
 /* ══ HERO ════════════════════════════════════════════════ */
 .hero {
   position: relative;
-  min-height: 100svh;
+  height: 100svh;
+  min-height: 600px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   overflow: hidden;
   background: var(--white);
@@ -58,32 +60,30 @@
 .hg-d1 { animation-delay: 0.8s; }
 .hg-d2 { animation-delay: 1.0s; }
 
-@keyframes drawLine { to { stroke-dashoffset: 0; } }
+@keyframes drawLine  { to { stroke-dashoffset: 0; } }
 @keyframes fadeInDot { to { opacity: 1; } }
 
-/* ── Hero inner layout ──────────────────────────────── */
+/* ── Hero inner — centrat pe tot ecranul ────────────── */
 .hero-inner {
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: clamp(32px, 6vw, 120px);
-  /* padding top = navbar + spatiu, se scaleza cu viewport height */
-  padding-top: calc(var(--navbar-h) + clamp(24px, 5vh, 80px));
-  padding-bottom: clamp(60px, 8vh, 100px);
-  padding-left: var(--side-pad);
-  padding-right: var(--side-pad);
-  max-width: var(--max-w);
-  margin: 0 auto;
   width: 100%;
+  max-width: var(--max-w);
+  padding: 0 var(--side-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(20px, 3vh, 36px);
+  /* Compensam navbar-ul ca sa fie vizual centrat */
+  margin-top: calc(var(--navbar-h) * 0.5);
 }
 
-/* ══ LOGO ANIMAT ══════════════════════════════════════════ */
+/* ══ LOGO + TEXT FIRMA — orizontal, centrat ═══════════ */
 .hero-logo-wrap {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: clamp(16px, 2vw, 28px);
-  flex-shrink: 0;
   opacity: 0;
   animation: heroLogoReveal 0.6s ease 0.2s forwards;
 }
@@ -91,10 +91,10 @@
 @keyframes heroLogoReveal { to { opacity: 1; } }
 
 .hero-svg-logo {
-  /* Se scaleza dupa viewport height ca sa nu depaseasca pe laptopuri */
-  width: clamp(60px, 8vw, 140px);
+  width: clamp(56px, 7vw, 100px);
   height: auto;
   overflow: visible;
+  flex-shrink: 0;
 }
 
 /* Path-urile logo-ului — animație draw */
@@ -125,7 +125,7 @@
 @keyframes drawLogo { to { stroke-dashoffset: 0; } }
 
 @keyframes fillLogo {
-  0%   { fill: transparent;       stroke-width: 0.018; stroke-opacity: 1; }
+  0%   { fill: transparent;        stroke-width: 0.018; stroke-opacity: 1; }
   40%  { fill: rgba(13,13,13,0.3); stroke-width: 0.012; stroke-opacity: 0.7; }
   80%  { fill: rgba(13,13,13,0.8); stroke-width: 0.005; stroke-opacity: 0.2; }
   100% { fill: #0D0D0D;            stroke-width: 0;     stroke-opacity: 0; }
@@ -136,16 +136,18 @@
   width: 1px;
   height: 0;
   background: var(--gray-border);
+  flex-shrink: 0;
   animation: growLine 0.6s ease 2.0s forwards;
 }
 
-@keyframes growLine { to { height: clamp(40px, 6vh, 64px); } }
+@keyframes growLine { to { height: clamp(44px, 6vh, 68px); } }
 
-/* Text lângă logo */
+/* Text firma langa logo */
 .hero-logo-text {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
+  text-align: left;
   opacity: 0;
   transform: translateX(-8px);
   animation: slideInText 0.6s ease 2.2s forwards;
@@ -155,7 +157,7 @@
 
 .hlt-name {
   font-family: var(--font-serif);
-  font-size: clamp(12px, 1.2vw, 15px);
+  font-size: clamp(13px, 1.3vw, 16px);
   font-weight: 500;
   letter-spacing: 0.06em;
   color: var(--black);
@@ -163,34 +165,37 @@
 }
 
 .hlt-sub {
-  font-size: clamp(7px, 0.7vw, 9px);
+  font-size: clamp(7.5px, 0.75vw, 9.5px);
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--gold);
 }
 
 .hlt-loc {
-  font-size: clamp(7px, 0.7vw, 9px);
+  font-size: clamp(7.5px, 0.75vw, 9.5px);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gray-light);
 }
 
-/* ══ HERO CONTENT ════════════════════════════════════════ */
-.hero-content {
-  flex: 1;
-  min-width: 0;
+/* ══ SEPARATOR ORIZONTAL ══════════════════════════════ */
+.hero-divider {
+  width: clamp(40px, 5vw, 60px);
+  height: 1px;
+  background: var(--gray-border);
+  opacity: 0;
+  animation: fadeUp 0.5s ease 2.35s forwards;
 }
 
+/* ══ TITLU PRINCIPAL ══════════════════════════════════ */
 .hero-eyebrow {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 10px;
   font-size: 10px;
   letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: clamp(14px, 2.5vh, 24px);
   opacity: 0;
   animation: fadeUp 0.6s ease 2.4s forwards;
 }
@@ -211,14 +216,13 @@
 
 .hero-title {
   font-family: var(--font-serif);
-  /* Scalare pe ambele axe: lățime SI înălțime viewport */
-  font-size: clamp(28px, min(5.5vw, 8vh), 76px);
+  font-size: clamp(36px, 5.5vw, 80px);
   font-weight: 400;
-  line-height: 1.12;
+  line-height: 1.1;
   color: var(--black);
-  margin-bottom: clamp(16px, 3vh, 28px);
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .hero-title em {
@@ -240,10 +244,10 @@
 @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
 .hero-sub {
-  font-size: clamp(13px, 1.4vw, 15px);
+  font-size: clamp(13px, 1.4vw, 16px);
   color: var(--gray-mid);
   line-height: 1.8;
-  margin-bottom: clamp(20px, 4vh, 36px);
+  max-width: 520px;
   opacity: 0;
   animation: fadeUp 0.7s ease 3.1s forwards;
 }
@@ -251,6 +255,7 @@
 .hero-ctas {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 28px;
   opacity: 0;
   animation: fadeUp 0.7s ease 3.25s forwards;
@@ -259,7 +264,7 @@
 /* Scroll indicator */
 .hero-scroll {
   position: absolute;
-  bottom: clamp(16px, 3vh, 32px);
+  bottom: clamp(20px, 3vh, 36px);
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -531,7 +536,6 @@
 
 /* ══ RESPONSIVE ══════════════════════════════════════════ */
 
-/* Ecrane medii — laptopuri 1024-1280px lățime */
 @media (max-width: 1100px) {
   .services-trio { grid-template-columns: 1fr 1fr; }
   .svc-featured {
@@ -542,68 +546,47 @@
   .svc-card:nth-child(3) { border-right: none; }
 }
 
-/* Ecrane cu înălțime mică — laptopuri tipice (max 750px height) */
-@media (max-height: 750px) and (min-width: 861px) {
-  .hero-inner {
-    padding-top: calc(var(--navbar-h) + 16px);
-    padding-bottom: 48px;
-    align-items: center;
-  }
-
-  .hero-title {
-    font-size: clamp(24px, min(4vw, 6.5vh), 56px);
-    margin-bottom: 14px;
-  }
-
-  .hero-eyebrow { margin-bottom: 12px; }
-  .hero-sub { margin-bottom: 20px; font-size: 13px; }
-  .hero-logo-wrap { gap: 16px; }
-  .hero-logo-line { max-height: 44px; }
-  .hero-scroll { display: none; }
-}
-
-/* Ecrane cu înălțime foarte mică — max 620px height */
-@media (max-height: 620px) and (min-width: 861px) {
-  .hero {
-    min-height: auto;
-    padding-top: 0;
-  }
-
-  .hero-inner {
-    padding-top: calc(var(--navbar-h) + 12px);
-    padding-bottom: 32px;
-    gap: clamp(24px, 4vw, 60px);
-  }
-
-  .hero-title {
-    font-size: clamp(22px, min(3.5vw, 5.5vh), 44px);
-    margin-bottom: 10px;
-  }
-
-  .hero-eyebrow { margin-bottom: 10px; }
-  .hero-sub { font-size: 12px; margin-bottom: 16px; line-height: 1.6; }
-}
-
-/* Tablete — sub 860px lățime */
 @media (max-width: 860px) {
-  .hero-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: clamp(24px, 4vh, 40px);
-    padding-top: calc(var(--navbar-h) + clamp(20px, 4vh, 48px));
-  }
-
-  .hero-title {
-    font-size: clamp(32px, 6vw, 56px);
-  }
-
-  .hero-logo-wrap { animation-delay: 0.1s; }
-
   .ps-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* Mobile */
 @media (max-width: 600px) {
+  .hero {
+    height: auto;
+    min-height: 100svh;
+    padding-top: calc(var(--navbar-h) + 32px);
+    padding-bottom: 80px;
+    justify-content: flex-start;
+  }
+
+  .hero-inner {
+    margin-top: 0;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .hero-logo-wrap {
+    align-self: flex-start;
+  }
+
+  .hero-title {
+    align-items: flex-start;
+    font-size: clamp(32px, 9vw, 48px);
+  }
+
+  .hero-sub { max-width: 100%; }
+
+  .hero-ctas {
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .hero-divider { align-self: flex-start; }
+  .hero-eyebrow { align-self: flex-start; }
+  .hero-scroll { display: none; }
+
   .services-trio { grid-template-columns: 1fr; }
 
   .svc-card {
@@ -617,12 +600,6 @@
 
   .svc-card:last-child { border-bottom: none; }
 
-  .hero-ctas {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
   .ps-grid { grid-template-columns: 1fr 1fr; }
 
   .ps-header {
@@ -630,8 +607,4 @@
     align-items: flex-start;
     gap: 12px;
   }
-
-  .hero-scroll { display: none; }
-
-  .hero-title { font-size: clamp(28px, 8vw, 42px); }
 }
