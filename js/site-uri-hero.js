@@ -31,13 +31,13 @@
   function resize() {
     canvas.width  = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
-    cols = Math.floor(canvas.width / (fontSize * 6));
+    cols = Math.floor(canvas.width / (fontSize * 4.5));
     columns = [];
     for (var i = 0; i < cols; i++) {
       columns.push({
         y: Math.random() * -canvas.height,
-        speed: 0.4 + Math.random() * 0.8,
-        opacity: 0.3 + Math.random() * 0.5,
+        speed: 0.5 + Math.random() * 1.0,
+        opacity: 0.55 + Math.random() * 0.4,
         charIndex: Math.floor(Math.random() * codeChars.length),
       });
     }
@@ -50,7 +50,7 @@
 
   function draw() {
     /* Fade trail */
-    ctx.fillStyle = 'rgba(13, 13, 13, 0.08)';
+    ctx.fillStyle = 'rgba(13, 13, 13, 0.06)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     colWidth = canvas.width / cols;
@@ -58,11 +58,10 @@
     columns.forEach(function (col, i) {
       var text = codeChars[col.charIndex % codeChars.length];
 
-      /* Culoare: majoritar auriu palid, ocazional alb */
       var isGold = (i % 3 !== 0);
       ctx.fillStyle = isGold
         ? 'rgba(184, 146, 42, ' + col.opacity + ')'
-        : 'rgba(255, 255, 255, ' + (col.opacity * 0.4) + ')';
+        : 'rgba(255, 255, 255, ' + (col.opacity * 0.6) + ')';
 
       ctx.font = fontSize + 'px JetBrains Mono, monospace';
       ctx.fillText(text, i * colWidth, col.y);
@@ -74,7 +73,7 @@
       if (col.y > canvas.height + fontSize * 2) {
         col.y = -fontSize * (2 + Math.random() * 8);
         col.speed = 0.4 + Math.random() * 0.8;
-        col.opacity = 0.25 + Math.random() * 0.5;
+        col.opacity = 0.5 + Math.random() * 0.45;
         col.charIndex = Math.floor(Math.random() * codeChars.length);
       }
     });
@@ -88,7 +87,7 @@
   var el = document.getElementById('typewriter');
   if (!el) return;
 
-  var words = ['AI.', 'inteligență.', 'cod curat.', 'pasiune.'];
+  var words = ['AI.', 'atenție la detalii.', 'pasiune.'];
   var wordIndex = 0;
   var charIndex = 0;
   var deleting = false;
