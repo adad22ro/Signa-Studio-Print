@@ -91,34 +91,36 @@
   var wordIndex = 0;
   var charIndex = 0;
   var deleting = false;
-  var pauseFrames = 0;
 
   function type() {
     var current = words[wordIndex];
 
-    if (pauseFrames > 0) {
-      pauseFrames--;
-      setTimeout(type, 80);
-      return;
-    }
-
     if (!deleting) {
-      el.textContent = current.slice(0, charIndex + 1);
+      /* Scriere */
       charIndex++;
+      el.textContent = current.slice(0, charIndex);
+
       if (charIndex === current.length) {
+        /* Cuvant complet — pauza apoi incepe stergerea */
         deleting = true;
-        pauseFrames = 18; /* pauza dupa scriere completa */
+        setTimeout(type, 1400);
+        return;
       }
-      setTimeout(type, 90);
+      setTimeout(type, 95);
+
     } else {
-      el.textContent = current.slice(0, charIndex - 1);
+      /* Stergere */
       charIndex--;
+      el.textContent = current.slice(0, charIndex);
+
       if (charIndex === 0) {
+        /* Sters complet — trece la urmatorul cuvant */
         deleting = false;
         wordIndex = (wordIndex + 1) % words.length;
-        pauseFrames = 6;
+        setTimeout(type, 400);
+        return;
       }
-      setTimeout(type, 50);
+      setTimeout(type, 45);
     }
   }
 
