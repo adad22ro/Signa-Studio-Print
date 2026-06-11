@@ -26,18 +26,18 @@
 .hero-geo svg { width: 100%; height: 100%; }
 
 .hg-line {
-  stroke: rgba(184, 146, 42, 0.12);
+  stroke: rgba(200, 134, 13, 0.12);
   stroke-width: 0.8; fill: none;
   stroke-dasharray: 3000; stroke-dashoffset: 3000;
   animation: drawLine 2.5s ease 0.3s forwards;
 }
 .hg-diag {
-  stroke: rgba(184, 146, 42, 0.07);
+  stroke: rgba(200, 134, 13, 0.07);
   stroke-width: 0.8; fill: none;
   stroke-dasharray: 2000; stroke-dashoffset: 2000;
   animation: drawLine 3s ease 0.6s forwards;
 }
-.hg-dot { fill: rgba(184,146,42,0.5); opacity: 0; animation: fadeInDot 0.4s ease forwards; }
+.hg-dot { fill: rgba(200,134,13,0.5); opacity: 0; animation: fadeInDot 0.4s ease forwards; }
 .hg-l1 { animation-delay: 0.2s; }
 .hg-l2 { animation-delay: 0.4s; }
 .hg-l3 { animation-delay: 0.3s; }
@@ -121,25 +121,42 @@
 
 .hero-logo-text {
   display: flex; flex-direction: column; gap: 5px;
-  opacity: 0; transform: translateX(-8px);
-  animation: slideInText 0.6s ease 2.2s forwards;
 }
-@keyframes slideInText { to { opacity: 1; transform: translateX(0); } }
 
+/* Numele scris caligrafic — efect handwriting */
 .hlt-name {
-  font-family: var(--font-serif);
-  font-size: clamp(13px, 1.4vw, 16px);
-  font-weight: 500; letter-spacing: 0.06em;
-  color: var(--black); white-space: nowrap;
+  font-family: var(--font-script);
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  color: var(--black);
+  white-space: nowrap;
+  /* Mască ce dezvăluie textul de la stânga la dreapta, ca o semnătură scrisă */
+  background: linear-gradient(90deg, var(--black) 0%, var(--black) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  /* Pornește invizibil, dezvăluit prin clip-path animat */
+  clip-path: inset(0 100% 0 0);
+  animation: handwrite 1.4s cubic-bezier(0.6, 0, 0.3, 1) 2.2s forwards;
 }
+@keyframes handwrite {
+  to { clip-path: inset(0 0 0 0); }
+}
+
 .hlt-sub {
   font-size: clamp(7.5px, 0.75vw, 9.5px);
   letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold);
+  opacity: 0; transform: translateX(-8px);
+  animation: slideInText 0.6s ease 3.4s forwards;
 }
 .hlt-loc {
   font-size: clamp(7.5px, 0.75vw, 9.5px);
   letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-light);
+  opacity: 0; transform: translateX(-8px);
+  animation: slideInText 0.6s ease 3.55s forwards;
 }
+@keyframes slideInText { to { opacity: 1; transform: translateX(0); } }
 
 /* ══ HERO CONTENT ════════════════════════════════════════ */
 .hero-content { flex: 1; min-width: 0; }
@@ -170,7 +187,15 @@
   margin-bottom: clamp(14px, 2.5vh, 28px);
   display: flex; flex-direction: column;
 }
-.hero-title em { font-style: italic; color: var(--gold); }
+.hero-title em {
+  font-family: var(--font-script);
+  font-style: normal;
+  font-weight: 600;
+  color: var(--gold);
+  /* Dancing Script e mai mic vizual la aceeasi dimensiune — compensez */
+  font-size: 1.15em;
+  line-height: 1.05;
+}
 
 .ht-line { display: block; opacity: 0; transform: translateY(20px); }
 .ht-l1 { animation: fadeUp 0.7s ease 2.5s forwards; }
@@ -304,7 +329,7 @@
 .wp-card-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(184,146,42,0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 30% 50%, rgba(200,134,13,0.06) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none;
@@ -334,6 +359,10 @@
   letter-spacing: -0.01em;
   line-height: 1;
 }
+/* Culori brand Two4Delivery (mutate din inline) */
+.wp-logo-text--blue { color: #2563eb; }
+.wp-logo-text--dark { color: var(--black); }
+
 .wp-logo-img {
   height: clamp(28px, 4vw, 44px);
   width: auto;
@@ -358,7 +387,7 @@
   transition: border-color 0.3s ease, color 0.3s ease;
 }
 .wp-card:hover .wp-tag {
-  border-color: rgba(184,146,42,0.3);
+  border-color: rgba(200,134,13,0.3);
   color: var(--gold-dark);
 }
 
@@ -436,7 +465,7 @@
 .svc-badge {
   display: inline-block; font-size: 9px; letter-spacing: 0.3em;
   text-transform: uppercase; color: var(--gold);
-  border: 1px solid rgba(184,146,42,0.4); padding: 4px 12px; margin-bottom: 32px;
+  border: 1px solid rgba(200,134,13,0.4); padding: 4px 12px; margin-bottom: 32px;
 }
 .svc-num { font-size: 11px; letter-spacing: 0.3em; color: var(--gold); margin-bottom: 20px; }
 .svc-title {
@@ -488,7 +517,7 @@
   padding: clamp(72px,10vw,140px) var(--side-pad);
   background: var(--black); text-align: center;
 }
-.cta-final .section-label { color: rgba(184,146,42,0.8); }
+.cta-final .section-label { color: rgba(200,134,13,0.8); }
 .cta-title {
   font-family: var(--font-serif); font-size: clamp(36px,5vw,64px);
   font-weight: 400; color: var(--white-pure); line-height: 1.2; margin-bottom: 20px;
@@ -544,4 +573,13 @@
   .svc-card:last-child { border-bottom: none; }
   .ps-grid { grid-template-columns: 1fr 1fr; }
   .ps-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+/* ── REDUCED MOTION: arată totul fără animații ── */
+@media (prefers-reduced-motion: reduce) {
+  .hlt-name { clip-path: inset(0 0 0 0); animation: none; }
+  .hlt-sub, .hlt-loc { opacity: 1; transform: none; animation: none; }
+  .logo-path { fill: #0D0D0D; stroke-width: 0; animation: none; }
+  .hero-logo-line { height: clamp(48px, 7vh, 72px); animation: none; }
+  .ht-line, .hero-eyebrow, .hero-sub, .hero-ctas, .hero-scroll, .hero-logo-wrap { opacity: 1; transform: none; animation: none; }
 }

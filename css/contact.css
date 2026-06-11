@@ -137,9 +137,22 @@
   border-color: var(--gold);
 }
 
+.form-input:focus-visible,
+.form-select:focus-visible,
+.form-textarea:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
 .form-input::placeholder,
 .form-textarea::placeholder {
   color: var(--gray-light);
+}
+
+/* Stare de eroare la validare */
+.form-input--error {
+  border-color: #C0392B;
+  background: rgba(192, 57, 43, 0.03);
 }
 
 .form-select {
@@ -152,6 +165,15 @@
 .form-textarea {
   resize: vertical;
   min-height: 120px;
+}
+
+/* Honeypot anti-spam — ascuns complet de utilizatori, vizibil doar pentru boți */
+.form-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .form-submit {
@@ -173,6 +195,17 @@
 .form-submit:hover {
   background: var(--gold);
   color: var(--white-pure);
+}
+
+.form-submit:focus-visible {
+  outline: 2px solid var(--gold-dark);
+  outline-offset: 3px;
+}
+
+/* Stare loading */
+.form-submit.is-loading {
+  opacity: 0.6;
+  cursor: wait;
 }
 
 /* Form success */

@@ -7,13 +7,12 @@
   'use strict';
 
   var NAVBAR_HTML = [
-    '<nav id="navbar">',
-    '  <a href="index.html" class="nav-logo">',
-    '    <img id="logoImg" src="img/LOGO_SIGNA_mic.PNG" alt="Signa Studio Print logo">',
-    '    <div class="nav-logo-text">',
-    '      Signa Studio Print',
+    '<nav id="navbar" aria-label="Navigație principală">',
+    '  <a href="index.html" class="nav-logo" aria-label="Signa Studio Print — Acasă">',
+    '    <img id="logoImg" src="img/LOGO_SIGNA.svg" alt="Signa Studio Print" width="38" height="75">',
+    '    <span class="nav-logo-text">Signa Studio Print',
     '      <span>Design · Web · Publicitate</span>',
-    '    </div>',
+    '    </span>',
     '  </a>',
     '  <ul class="nav-links">',
     '    <li><a href="index.html" class="nl-item">Acasă</a></li>',
@@ -26,11 +25,11 @@
     '    <li><a href="preturi.html" class="nl-item">Prețuri</a></li>',
     '    <li><a href="contact.html" class="nl-item nl-contact">Contact</a></li>',
     '  </ul>',
-    '  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Meniu" aria-expanded="false">',
+    '  <button class="nav-hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mobileMenu">',
     '    <span></span><span></span><span></span>',
-    '  </div>',
+    '  </button>',
     '</nav>',
-    '<div class="mobile-menu" id="mobileMenu" role="navigation">',
+    '<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Meniu mobil">',
     '  <a href="index.html">Acasă</a>',
     '  <a href="site-uri.html" class="mm-featured">Web Development <span class="mm-badge">AI</span></a>',
     '  <a href="productie-publicitara.html">Producție Publicitară</a>',
@@ -45,7 +44,10 @@
     '<footer>',
     '  <div class="footer-inner">',
     '    <div class="footer-brand">',
-    '      <div class="footer-logo-text">Signa Studio Print</div>',
+    '      <div class="footer-logo">',
+    '        <img src="img/LOGO_SIGNA_alb.svg" alt="Signa Studio Print" width="40" height="79">',
+    '        <span class="footer-logo-text">Signa Studio Print</span>',
+    '      </div>',
     '      <div class="footer-tagline">Design · Web · Publicitate</div>',
     '      <p>Grafică profesională pentru orice suport, de la carte de vizită la colantări auto. Iași, România.</p>',
     '    </div>',
@@ -69,7 +71,7 @@
     '    </div>',
     '  </div>',
     '  <div class="footer-bottom">',
-    '    <div class="footer-copy">© 2025 Signa Studio Print — Toate drepturile rezervate</div>',
+    '    <div class="footer-copy">© <span id="footerYear">2025</span> Signa Studio Print — Toate drepturile rezervate</div>',
     '    <div class="footer-made">Site creat cu <span>AI</span> · Signa Studio Print</div>',
     '  </div>',
     '</footer>'
@@ -81,6 +83,10 @@
 
   if (navPlaceholder) navPlaceholder.outerHTML = NAVBAR_HTML;
   if (footerPlaceholder) footerPlaceholder.outerHTML = FOOTER_HTML;
+
+  /* ── AN FOOTER AUTOMAT ─────────────────────────────── */
+  var yearEl = document.getElementById('footerYear');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   /* ── ACTIVE NAV LINK ───────────────────────────────── */
   var currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -106,23 +112,33 @@
   var hamburger = document.getElementById('hamburger');
   var mobileMenu = document.getElementById('mobileMenu');
 
-  window.toggleMenu = function () {
+  function closeMenu() {
     if (!hamburger || !mobileMenu) return;
-    hamburger.classList.toggle('open');
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Deschide meniul');
+  }
+
+  function toggleMenu() {
+    if (!hamburger || !mobileMenu) return;
+    var isOpen = hamburger.classList.toggle('open');
     mobileMenu.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', hamburger.classList.contains('open'));
-  };
+    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    hamburger.setAttribute('aria-label', isOpen ? 'Închide meniul' : 'Deschide meniul');
+  }
+
+  if (hamburger) {
+    hamburger.addEventListener('click', toggleMenu);
+  }
 
   if (mobileMenu) {
     mobileMenu.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', closeMenu);
     });
   }
 
+  /* Închidere la click în afara meniului */
   document.addEventListener('click', function (e) {
     if (
       mobileMenu &&
@@ -131,9 +147,14 @@
       hamburger &&
       !hamburger.contains(e.target)
     ) {
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
+      closeMenu();
+    }
+  });
+
+  /* Închidere la tasta Escape */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('open')) {
+      closeMenu();
     }
   });
 
