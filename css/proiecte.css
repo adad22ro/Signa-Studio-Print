@@ -103,7 +103,7 @@
 .proj-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(184, 146, 42, 0.08);
+  background: rgba(200, 134, 13, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;

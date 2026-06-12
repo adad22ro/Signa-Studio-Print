@@ -22,7 +22,7 @@
   font-size: clamp(200px, 30vw, 420px);
   font-weight: 700;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(184, 146, 42, 0.08);
+  -webkit-text-stroke: 1px rgba(200, 134, 13, 0.08);
   pointer-events: none;
   line-height: 1;
   user-select: none;
