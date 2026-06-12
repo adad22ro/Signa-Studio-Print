@@ -137,3 +137,20 @@
     opacity: 0.45;
   }
 }
+
+/* ============================================================
+   Carduri de servicii — versiune compactă (doar pe această pagină)
+   ============================================================ */
+.pp-services .svc-card {
+  padding: 26px 28px;
+}
+.pp-services .svc-desc {
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .pp-services .svc-card {
+    padding: 22px 24px;
+  }
+}
