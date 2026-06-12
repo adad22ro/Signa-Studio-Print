@@ -86,32 +86,55 @@
   <!-- ══ HERO ══════════════════════════════════════════ -->
   <section class="su-hero">
 
-    <!-- Fundal: cod care se scrie (mini-site Signa) -->
-    <div class="code-bg" aria-hidden="true">
-      <div class="code-viewport">
-        <div class="code-window" id="codeWindow"></div>
-      </div>
-    </div>
-    <div class="code-file" id="codeFile">index.html</div>
-
-    <!-- Overlay gradient ca textul sa fie lizibil -->
-    <div class="su-hero-overlay" aria-hidden="true"></div>
-
     <div class="su-hero-inner">
-      <div class="ai-badge">
-        <span class="ai-badge-dot"></span>
-        Powered by AI
+
+      <!-- TEXT -->
+      <div class="su-hero-text">
+        <div class="ai-badge">
+          <span class="ai-badge-dot"></span>
+          Powered by AI
+        </div>
+        <p class="section-label">Web Development</p>
+        <h1 class="su-hero-title">
+          Site-uri moderne,<br>
+          create <span class="su-accent">inteligent.</span>
+        </h1>
+        <p class="su-hero-sub">HTML, CSS și JavaScript pur — fără WordPress, fără template-uri, fără abonamente. Design personalizat, livrat în 3–7 zile.</p>
+        <div class="su-hero-ctas">
+          <a href="contact.html" class="btn-primary">Solicită ofertă</a>
+          <a href="#preturi" class="btn-ghost">Vezi prețurile <span>↓</span></a>
+        </div>
       </div>
-      <p class="section-label">Web Development</p>
-      <h1 class="su-hero-title">
-        Site-uri moderne,<br>
-        create <span class="su-accent">inteligent.</span>
-      </h1>
-      <p class="su-hero-sub">HTML, CSS și JavaScript pur — fără WordPress, fără template-uri, fără abonamente. Design personalizat, livrat în 3–7 zile.</p>
-      <div class="su-hero-ctas">
-        <a href="contact.html" class="btn-primary">Solicită ofertă</a>
-        <a href="#preturi" class="btn-ghost">Vezi prețurile <span>↓</span></a>
+
+      <!-- FEREASTRA EDITOR (mini-site Signa care se construiește) -->
+      <div class="editor-wrap">
+        <div class="editor" aria-hidden="true">
+          <div class="editor-bar">
+            <span class="editor-dot red"></span>
+            <span class="editor-dot yellow"></span>
+            <span class="editor-dot green"></span>
+            <span class="editor-title" id="editorTitle">signa — index.html</span>
+          </div>
+          <div class="editor-tabs">
+            <div class="editor-tab tab-html active" id="tabHtml"><span class="editor-tab-dot"></span>index.html</div>
+            <div class="editor-tab tab-css" id="tabCss"><span class="editor-tab-dot"></span>style.css</div>
+            <div class="editor-tab tab-js" id="tabJs"><span class="editor-tab-dot"></span>script.js</div>
+          </div>
+          <div class="editor-body">
+            <div class="editor-gutter" id="gutter"></div>
+            <div class="editor-code">
+              <div class="code-window" id="codeWindow"></div>
+            </div>
+          </div>
+          <div class="editor-status">
+            <span>● Signa Studio Print</span>
+            <span class="es-spacer"></span>
+            <span id="statusLang">HTML</span>
+            <span>UTF-8</span>
+          </div>
+        </div>
       </div>
+
     </div>
 
     <!-- Stats rapide în hero -->
