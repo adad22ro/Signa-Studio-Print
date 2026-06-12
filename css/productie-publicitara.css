@@ -7,7 +7,18 @@
 
 .pp-hero {
   position: relative;
+  background: var(--black);
+  border-bottom: none;
 }
+
+/* Text adaptat pe fundal întunecat */
+.pp-hero .page-hero-title {
+  color: var(--white);
+}
+.pp-hero .page-hero-sub {
+  color: var(--gray-light);
+}
+/* label-ul rămâne auriu (.section-label din global.css) — arată bine pe negru */
 
 /* Pânza SVG acoperă tot fundalul hero-ului, sub conținut */
 .pp-hero-canvas {
@@ -32,7 +43,7 @@
    creează un contur gros care „taie" liniile exact pe forma
    textului, fără casetă dreptunghiulară în jur. */
 .pp-hero-text {
-  --halo: var(--white);
+  --halo: var(--black);
   text-shadow:
     0 0 6px var(--halo), 0 0 6px var(--halo), 0 0 6px var(--halo),
     0 0 5px var(--halo), 0 0 5px var(--halo), 0 0 5px var(--halo),
@@ -48,11 +59,11 @@
   stroke-linejoin: round;
 }
 
-/* Culorile traseelor */
-.pp-gold      { stroke: var(--gold);  stroke-width: 2;   opacity: 0.42; }
-.pp-gold-soft { stroke: var(--gold);  stroke-width: 1.5; opacity: 0.18; }
-.pp-ink       { stroke: var(--black); stroke-width: 2;   opacity: 0.32; }
-.pp-ink-soft  { stroke: var(--black); stroke-width: 1;   opacity: 0.10; }
+/* Culorile traseelor (pe fundal negru) */
+.pp-gold      { stroke: var(--gold);  stroke-width: 2;   opacity: 0.55; }
+.pp-gold-soft { stroke: var(--gold);  stroke-width: 1.5; opacity: 0.28; }
+.pp-ink       { stroke: var(--white); stroke-width: 2;   opacity: 0.42; }
+.pp-ink-soft  { stroke: var(--white); stroke-width: 1;   opacity: 0.16; }
 
 /* Noduri pline (apar prin fade după ce liniile s-au trasat) */
 .pp-dot {
@@ -107,10 +118,10 @@
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
   /* Pe mobil reducem intensitatea ca textul să rămână lizibil */
-  .pp-gold      { opacity: 0.28; }
-  .pp-ink       { opacity: 0.22; }
-  .pp-gold-soft { opacity: 0.12; }
-  .pp-ink-soft  { opacity: 0.07; }
+  .pp-gold      { opacity: 0.40; }
+  .pp-ink       { opacity: 0.30; }
+  .pp-gold-soft { opacity: 0.18; }
+  .pp-ink-soft  { opacity: 0.10; }
   /* SVG-ul se ancorează spre dreapta-sus ca să nu treacă pe sub titlu */
   .pp-hero-canvas { opacity: 0.9; }
 }

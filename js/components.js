@@ -102,7 +102,7 @@
 
   /* Detectează dacă pagina are un hero întunecat (ex: Web Development).
      Navbarul devine alb (on-dark) cât timp e transparent peste el. */
-  var darkHero = document.querySelector('.su-hero');
+  var darkHero = document.querySelector('.su-hero, .pp-hero');
 
   function updateNavbar() {
     if (!navbar) return;
