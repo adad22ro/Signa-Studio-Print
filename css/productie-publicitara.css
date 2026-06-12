@@ -36,10 +36,10 @@
 }
 
 /* Culorile traseelor */
-.pp-gold      { stroke: var(--gold);  stroke-width: 2;   opacity: 0.85; }
-.pp-gold-soft { stroke: var(--gold);  stroke-width: 1.5; opacity: 0.35; }
-.pp-ink       { stroke: var(--black); stroke-width: 2;   opacity: 0.70; }
-.pp-ink-soft  { stroke: var(--black); stroke-width: 1;   opacity: 0.18; }
+.pp-gold      { stroke: var(--gold);  stroke-width: 2;   opacity: 0.42; }
+.pp-gold-soft { stroke: var(--gold);  stroke-width: 1.5; opacity: 0.18; }
+.pp-ink       { stroke: var(--black); stroke-width: 2;   opacity: 0.32; }
+.pp-ink-soft  { stroke: var(--black); stroke-width: 1;   opacity: 0.10; }
 
 /* Noduri pline (apar prin fade după ce liniile s-au trasat) */
 .pp-dot {
@@ -88,16 +88,16 @@
 @keyframes pp-trace-260  { to { stroke-dashoffset: 0; } }
 @keyframes pp-dot-in {
   from { opacity: 0; transform: scale(0); }
-  to   { opacity: 0.9; transform: scale(1); }
+  to   { opacity: 0.45; transform: scale(1); }
 }
 
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
   /* Pe mobil reducem intensitatea ca textul să rămână lizibil */
-  .pp-gold      { opacity: 0.55; }
-  .pp-ink       { opacity: 0.45; }
-  .pp-gold-soft { opacity: 0.22; }
-  .pp-ink-soft  { opacity: 0.12; }
+  .pp-gold      { opacity: 0.28; }
+  .pp-ink       { opacity: 0.22; }
+  .pp-gold-soft { opacity: 0.12; }
+  .pp-ink-soft  { opacity: 0.07; }
   /* SVG-ul se ancorează spre dreapta-sus ca să nu treacă pe sub titlu */
   .pp-hero-canvas { opacity: 0.9; }
 }
@@ -110,6 +110,6 @@
   }
   .pp-dot {
     animation: none !important;
-    opacity: 0.9;
+    opacity: 0.45;
   }
 }
