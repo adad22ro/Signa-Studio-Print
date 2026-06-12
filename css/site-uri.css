@@ -402,32 +402,39 @@
   .su-packages { grid-template-columns: 1fr 1fr; }
   .su-pkg--featured { order: -1; grid-column: 1 / -1; }
   .sites-preview-grid { grid-template-columns: repeat(2,1fr); }
+
+  /* Codul trece in spate (pe toata latimea) ca sa nu se suprapuna cu textul */
+  .code-bg {
+    justify-content: center;
+    padding-right: 0;
+    align-items: flex-start;
+    padding-top: calc(var(--navbar-h) + 70px);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 28%, #000 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 28%, #000 100%);
+  }
+  .code-viewport {
+    width: 88vw;
+    max-height: 70vh;
+    opacity: 0.22;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  }
+  .su-hero-overlay {
+    background: linear-gradient(180deg, rgba(10,10,12,0.78) 0%, rgba(10,10,12,0.62) 45%, rgba(10,10,12,0.9) 100%);
+  }
+  .code-file { top: calc(var(--navbar-h) + 16px); right: auto; left: var(--side-pad); }
 }
 
 @media (max-width: 860px) {
   .su-hero-stats { flex-wrap: wrap; gap: 0; padding-bottom: 16px; }
   .su-hstat { padding: 16px 24px 16px 0; }
 
-  /* Codul trece in spate, pe toata latimea, mai discret */
-  .code-bg {
-    justify-content: center;
-    padding-right: 0;
-    align-items: flex-start;
-    padding-top: calc(var(--navbar-h) + 60px);
-    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 100%);
-    mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 100%);
-  }
-  .code-viewport {
-    width: 92vw;
-    opacity: 0.28;
-    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 20%, #000 80%, transparent 100%);
-    mask-image: linear-gradient(180deg, transparent 0%, #000 20%, #000 80%, transparent 100%);
-  }
-  .code-line { font-size: 13px; line-height: 1.9; }
+  /* Codul mai vizibil pe mobil (era prea sters) */
+  .code-viewport { opacity: 0.32; width: 90vw; }
+  .code-line { font-size: 13px; line-height: 1.85; }
   .su-hero-overlay {
-    background: linear-gradient(180deg, rgba(10,10,12,0.82) 0%, rgba(10,10,12,0.7) 45%, rgba(10,10,12,0.92) 100%);
+    background: linear-gradient(180deg, rgba(10,10,12,0.72) 0%, rgba(10,10,12,0.55) 48%, rgba(10,10,12,0.88) 100%);
   }
-  .code-file { top: calc(var(--navbar-h) + 16px); right: auto; left: var(--side-pad); }
 }
 
 @media (max-width: 600px) {

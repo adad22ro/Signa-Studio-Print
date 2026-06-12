@@ -100,9 +100,18 @@
   /* ── NAVBAR SCROLL ─────────────────────────────────── */
   var navbar = document.getElementById('navbar');
 
+  /* Detectează dacă pagina are un hero întunecat (ex: Web Development).
+     Navbarul devine alb (on-dark) cât timp e transparent peste el. */
+  var darkHero = document.querySelector('.su-hero');
+
   function updateNavbar() {
     if (!navbar) return;
-    navbar.classList.toggle('scrolled', window.scrollY > 20);
+    var scrolled = window.scrollY > 20;
+    navbar.classList.toggle('scrolled', scrolled);
+    /* on-dark doar pe pagini cu hero întunecat și doar înainte de scroll */
+    if (darkHero) {
+      navbar.classList.toggle('on-dark', !scrolled);
+    }
   }
 
   window.addEventListener('scroll', updateNavbar, { passive: true });

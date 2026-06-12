@@ -85,6 +85,43 @@ nav.scrolled {
   -webkit-backdrop-filter: blur(16px);
 }
 
+/* ── NAVBAR PESTE HERO ÎNTUNECAT (alb, până la scroll) ── */
+/* Se aplică doar cât timp navbarul e transparent (nu scrolled). */
+nav.on-dark:not(.scrolled) .nav-logo-text {
+  color: var(--white-pure);
+}
+nav.on-dark:not(.scrolled) .nav-logo img {
+  /* Logoul SVG negru → alb */
+  filter: brightness(0) invert(1);
+}
+nav.on-dark:not(.scrolled) .nl-item {
+  color: rgba(255, 255, 255, 0.75);
+}
+nav.on-dark:not(.scrolled) .nl-item:hover,
+nav.on-dark:not(.scrolled) .nl-item.active {
+  color: var(--white-pure);
+}
+nav.on-dark:not(.scrolled) .nl-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+nav.on-dark:not(.scrolled) .nl-featured {
+  color: var(--gold-light);
+  border-color: rgba(200, 134, 13, 0.45);
+  background: rgba(200, 134, 13, 0.1);
+}
+nav.on-dark:not(.scrolled) .nl-contact {
+  color: var(--white-pure);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+nav.on-dark:not(.scrolled) .nl-contact:hover {
+  color: var(--black);
+  background: var(--white-pure);
+  border-color: var(--white-pure);
+}
+nav.on-dark:not(.scrolled) .nav-hamburger span {
+  background: var(--white-pure);
+}
+
 /* ── LOGO ───────────────────────────────────────────── */
 .nav-logo {
   display: flex;
