@@ -595,50 +595,49 @@
   .svc-card:nth-child(3) { border-right: none; }
 }
 
-/* Tablete landscape si laptopuri mici */
+/* Tablete landscape si laptopuri mici — layout ROW (logo stanga + text dreapta) */
 @media (max-width: 860px) {
   .hero {
     height: auto;
     min-height: 100svh;
   }
   .hero-inner {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    text-align: center;
-    gap: clamp(20px, 4vh, 36px);
+    text-align: left;
+    gap: clamp(24px, 4vw, 48px);
     padding-top: calc(var(--navbar-h) + clamp(24px, 5vh, 40px));
     padding-bottom: clamp(60px, 10vh, 90px);
   }
-  .hero-logo-wrap { justify-content: center; flex-shrink: 0; }
-  .hero-logo-text { display: flex; }
-  .hero-logo-line { display: flex; }
-  .hero-content { text-align: center; width: 100%; }
-  .hero-eyebrow { justify-content: center; }
+  .hero-logo-wrap { flex-shrink: 0; }
+  /* Ascunde textul logo si linia — ramane doar simbolul */
+  .hero-logo-text { display: none; }
+  .hero-logo-line { display: none; }
+  .hero-svg-logo { width: clamp(60px, 10vw, 100px); }
+  .hero-content { text-align: left; }
+  .hero-eyebrow { justify-content: flex-start; }
   .hero-title {
-    align-items: center;
-    font-size: clamp(34px, 6vw, 64px);
+    align-items: flex-start;
+    font-size: clamp(28px, 5vw, 56px);
   }
   .hero-sub {
-    font-size: clamp(14px, 2vw, 17px);
+    font-size: clamp(13px, 1.8vw, 16px);
     line-height: 1.75;
   }
-  .hero-ctas { justify-content: center; }
+  .hero-ctas { justify-content: flex-start; }
+  .hero-scroll { display: none; }
   .ps-track { --cards: 2; }
 }
 
-/* Mobile */
+/* Mobile — acelasi layout ROW dar mai compact */
 @media (max-width: 600px) {
   .web-projects-row { flex-direction: column; }
   .wp-card { border-right: none; border-bottom: 1px solid var(--gray-border); }
   .wp-cta { width: 100%; }
-  .hero-svg-logo { width: clamp(60px, 16vw, 84px); }
-  .hlt-name { font-size: clamp(22px, 6vw, 30px); }
-  .hlt-sub, .hlt-loc { font-size: clamp(8px, 2.5vw, 10px); letter-spacing: 0.25em; }
-  .hero-eyebrow { font-size: 11px; letter-spacing: 0.35em; }
-  .hero-title { font-size: clamp(34px, 9vw, 52px); }
-  .hero-sub { font-size: clamp(14px, 3.5vw, 16px); }
-  .hero-ctas { flex-direction: column; align-items: center; gap: 14px; }
-  .hero-scroll { display: none; }
+  .hero-svg-logo { width: clamp(54px, 15vw, 80px); }
+  .hero-title { font-size: clamp(26px, 7.5vw, 42px); }
+  .hero-sub { font-size: clamp(13px, 3.5vw, 15px); }
+  .hero-ctas { flex-direction: column; align-items: flex-start; gap: 14px; }
   .services-trio { grid-template-columns: 1fr; }
   .svc-card { border-right: none; border-bottom: 1px solid var(--gray-border); }
   .svc-featured { border-bottom: 1px solid rgba(255,255,255,0.1); }
@@ -657,18 +656,11 @@
   .ps-header { flex-direction: column; align-items: flex-start; gap: 12px; }
 }
 
-/* Telefoane foarte înguste (iPhone SE/mini, Android mici) */
+/* Telefoane foarte inguste (iPhone SE/mini) */
 @media (max-width: 400px) {
-  .hero-inner {
-    flex-direction: column;
-    gap: clamp(16px, 3vh, 24px);
-    padding-top: calc(var(--navbar-h) + 20px);
-  }
-  .hero-logo-wrap { justify-content: center; }
-  .hero-svg-logo { width: clamp(50px, 14vw, 64px); }
-  .hlt-name { font-size: clamp(20px, 5.5vw, 26px); }
-  .hero-title { font-size: clamp(28px, 8.5vw, 42px); }
-  .hero-sub { font-size: clamp(13px, 3.2vw, 15px); }
+  .hero-svg-logo { width: clamp(44px, 13vw, 60px); }
+  .hero-title { font-size: clamp(22px, 7vw, 34px); }
+  .hero-sub { font-size: clamp(12px, 3.2vw, 14px); }
 }
 
 /* ── REDUCED MOTION: arată totul fără animații ── */
