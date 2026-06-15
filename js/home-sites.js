@@ -1,91 +1,183 @@
 /* ═══════════════════════════════════════════════════════
    SIGNA STUDIO PRINT — home-sites.js
-   Încarcă site-urile din projects.json și le afișează
-   în secțiunea preview de pe homepage.
-   Dacă nu există niciun site, ascunde secțiunea complet.
+   Încarcă proiectele din projects.json și le afișează
+   într-un carusel pe homepage (toate categoriile).
+   - Desktop: 3 carduri + săgeți · Tabletă: 2 · Mobil: 1 + swipe + puncte
+   Dacă nu există niciun proiect, ascunde secțiunea complet.
    ═══════════════════════════════════════════════════════ */
 
 (function () {
   'use strict';
 
-  async function loadHomeSites() {
-    var section = document.getElementById('sitesHomeSection');
-    var grid    = document.getElementById('homeSitesGrid');
-    if (!section || !grid) return;
+  /* Etichete prietenoase pentru categorii */
+  var CAT_LABEL = {
+    site: 'Web',
+    publicitate: 'Publicitate',
+    tipografie: 'Tipografie'
+  };
+
+  async function loadHomeProjects() {
+    var grid     = document.getElementById('psGrid');
+    var section  = document.getElementById('psSection');
+    var viewport = document.getElementById('psViewport');
+    var prevBtn  = document.getElementById('psPrev');
+    var nextBtn  = document.getElementById('psNext');
+    var dotsWrap = document.getElementById('psDots');
+    if (!grid || !section) return;
 
     try {
       var r = await fetch('projects.json');
       if (!r.ok) throw new Error('no file');
       var all = await r.json();
 
-      /* Filtrăm doar categoria "site", luăm ultimele 4 */
-      var sites = all
-        .filter(function (p) { return p.categorie === 'site'; })
-        .slice(-4)
-        .reverse();
+      /* Toate proiectele, cele mai recente primele */
+      var items = all.slice().reverse();
 
-      if (!sites.length) {
+      if (!items.length) {
         section.style.display = 'none';
         return;
       }
 
-      grid.innerHTML = sites.map(function (p) {
+      grid.innerHTML = items.map(function (p) {
         var imgHtml = p.poza
-          ? '<img class="home-site-img" src="poze/' + p.poza + '" alt="' + esc(p.titlu) + '" loading="lazy">'
-          : '';
+          ? '<img class="ps-img" src="poze/' + escAttr(p.poza) + '" alt="' + escHtml(p.titlu) + '" loading="lazy">'
+          : '<div class="ps-placeholder">' + p.titlu.charAt(0).toUpperCase() + '</div>';
 
-        return '<div class="home-site-card"'
-          + (p.url ? ' data-url="' + escAttr(p.url) + '" role="link" tabindex="0"' : '')
-          + '>'
-          + '<div class="home-site-img-wrap">'
-          + imgHtml
-          + '<div class="home-site-img-placeholder" aria-hidden="true">' + p.titlu.charAt(0).toUpperCase() + '</div>'
-          + (p.url ? '<div class="home-site-hover"><span>Vizitează →</span></div>' : '')
+        var cat = CAT_LABEL[p.categorie] || '';
+
+        return '<div class="ps-card"' + (p.url ? ' data-url="' + escAttr(p.url) + '"' : '') + '>'
+          + '<div class="ps-img-wrap">' + imgHtml
+          + (p.url ? '<div class="ps-overlay"><span class="ps-overlay-text">Vizitează →</span></div>' : '')
           + '</div>'
-          + '<div class="home-site-info">'
-          + '<div class="home-site-title">' + esc(p.titlu) + '</div>'
-          + (p.url ? '<div class="home-site-url">' + p.url.replace(/^https?:\/\//, '') + '</div>' : '')
+          + '<div class="ps-info">'
+          + (cat ? '<span class="ps-cat">' + escHtml(cat) + '</span>' : '')
+          + '<div class="ps-name">' + escHtml(p.titlu) + '</div>'
+          + (p.descriere ? '<div class="ps-desc">' + escHtml(p.descriere) + '</div>' : '')
+          + (p.url ? '<a class="ps-link" href="' + escAttr(p.url) + '" target="_blank" rel="noopener" data-stop="1">' + escHtml(p.url.replace(/^https?:\/\//, '')) + ' →</a>' : '')
           + '</div>'
           + '</div>';
       }).join('');
 
-      /* Click pe card → deschide site-ul (fără inline) */
-      grid.querySelectorAll('.home-site-card').forEach(function (card) {
-        var url = card.getAttribute('data-url');
-        if (!url) return;
-        card.addEventListener('click', function () { window.open(url, '_blank'); });
-        card.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.open(url, '_blank'); }
+      var cards = Array.prototype.slice.call(grid.querySelectorAll('.ps-card'));
+
+      /* Click pe card → deschide site-ul (doar dacă are url) */
+      cards.forEach(function (card) {
+        card.addEventListener('click', function (e) {
+          if (e.target.closest('[data-stop]')) return;
+          var url = card.getAttribute('data-url');
+          if (url) window.open(url, '_blank');
         });
       });
 
       /* Fallback imagini care nu se încarcă */
-      grid.querySelectorAll('.home-site-img').forEach(function (img) {
+      grid.querySelectorAll('.ps-img').forEach(function (img) {
         img.addEventListener('error', function () {
-          if (img.parentElement) img.parentElement.classList.add('no-img');
-          img.remove();
+          var letter = (img.getAttribute('alt') || '?').charAt(0).toUpperCase();
+          var ph = document.createElement('div');
+          ph.className = 'ps-placeholder';
+          ph.textContent = letter;
+          if (img.parentElement) img.parentElement.replaceChild(ph, img);
         });
       });
 
+      if (viewport) initCarousel(grid, viewport, prevBtn, nextBtn, dotsWrap, cards);
+
     } catch (e) {
-      /* projects.json inexistent sau fără site-uri — ascundem secțiunea */
-      var s = document.getElementById('sitesHomeSection');
-      if (s) s.style.display = 'none';
+      section.style.display = 'none';
     }
   }
 
-  function esc(s) {
+  function visibleCount(track) {
+    var v = getComputedStyle(track).getPropertyValue('--cards');
+    var n = parseInt(v, 10);
+    return (n && n > 0) ? n : 1;
+  }
+
+  function initCarousel(track, viewport, prevBtn, nextBtn, dotsWrap, cards) {
+    var total = cards.length;
+    var index = 0;
+    var perView = visibleCount(track);
+
+    function step() {
+      if (cards.length < 2) return cards.length ? cards[0].offsetWidth : 0;
+      return cards[1].offsetLeft - cards[0].offsetLeft;
+    }
+    function maxIndex() { return Math.max(0, total - perView); }
+    function pageCount() { return Math.ceil(total / perView); }
+
+    function buildDots() {
+      if (!dotsWrap) return;
+      dotsWrap.innerHTML = '';
+      var pages = pageCount();
+      if (pages < 2) { dotsWrap.style.display = 'none'; return; }
+      dotsWrap.style.display = 'flex';
+      for (var i = 0; i < pages; i++) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'ps-dot';
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', 'Pagina ' + (i + 1));
+        (function (page) {
+          dot.addEventListener('click', function () { goTo(page * perView); });
+        })(i);
+        dotsWrap.appendChild(dot);
+      }
+    }
+
+    function goTo(i) {
+      index = Math.max(0, Math.min(i, maxIndex()));
+      viewport.scrollTo({ left: index * step(), behavior: 'smooth' });
+      update();
+    }
+
+    function update() {
+      if (prevBtn) prevBtn.disabled = (index <= 0);
+      if (nextBtn) nextBtn.disabled = (index >= maxIndex());
+      if (dotsWrap) {
+        var activePage = Math.round(index / perView);
+        dotsWrap.querySelectorAll('.ps-dot').forEach(function (d, di) {
+          d.classList.toggle('is-active', di === activePage);
+        });
+      }
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(index - perView); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(index + perView); });
+
+    var scrollTimer;
+    viewport.addEventListener('scroll', function () {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(function () {
+        var s = step();
+        if (s > 0) { index = Math.round(viewport.scrollLeft / s); update(); }
+      }, 120);
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        var np = visibleCount(track);
+        if (np !== perView) { perView = np; buildDots(); }
+        goTo(index);
+      }, 150);
+    });
+
+    buildDots();
+    update();
+  }
+
+  function escHtml(s) {
     if (!s) return '';
     return String(s).replace(/[&<>"']/g, function (c) {
       return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c];
     });
   }
-
   function escAttr(s) {
     if (!s) return '';
     return String(s).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
-  loadHomeSites();
+  loadHomeProjects();
 
 })();

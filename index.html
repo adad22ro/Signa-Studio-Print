@@ -128,7 +128,6 @@
         </p>
         <div class="hero-ctas">
           <a href="site-uri.html" class="btn-primary"><span>Descoperă cum</span></a>
-          <a href="proiecte.html" class="btn-ghost">Vezi proiectele <span>→</span></a>
         </div>
       </div>
 
@@ -234,20 +233,25 @@
   </section>
 
   <!-- ══ PROIECTE PREVIEW ═══════════════════════════════════════ -->
-  <section class="projects-strip">
+  <section class="projects-strip" id="psSection">
     <div class="ps-header reveal">
       <div>
         <p class="section-label">Portofoliu</p>
         <h2 class="section-title">Câteva proiecte</h2>
       </div>
-      <a href="proiecte.html" class="btn-ghost">Vezi toate <span>→</span></a>
     </div>
-    <div class="ps-grid reveal">
-      <div class="ps-card"><div class="ps-placeholder">S</div><div class="ps-info"><span class="ps-cat">Publicitate</span><span class="ps-name">Colantare auto</span></div></div>
-      <div class="ps-card"><div class="ps-placeholder">P</div><div class="ps-info"><span class="ps-cat">Tipografie</span><span class="ps-name">Carte de vizită</span></div></div>
-      <div class="ps-card"><div class="ps-placeholder">W</div><div class="ps-info"><span class="ps-cat">Web</span><span class="ps-name">Site prezentare</span></div></div>
-      <div class="ps-card"><div class="ps-placeholder">F</div><div class="ps-info"><span class="ps-cat">Tipografie</span><span class="ps-name">Flyer A5</span></div></div>
+    <div class="ps-carousel reveal">
+      <button class="ps-arrow ps-arrow-prev" id="psPrev" type="button" aria-label="Proiectul anterior">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <div class="ps-viewport" id="psViewport">
+        <div class="ps-track" id="psGrid"></div>
+      </div>
+      <button class="ps-arrow ps-arrow-next" id="psNext" type="button" aria-label="Proiectul următor">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
     </div>
+    <div class="ps-dots" id="psDots" role="tablist" aria-label="Navigare proiecte"></div>
   </section>
 
   <!-- ══ CTA FINAL ══════════════════════════════════════════════ -->
@@ -265,6 +269,7 @@
 
   <script src="js/components.js" defer></script>
   <script src="js/global.js" defer></script>
+  <script src="js/home-sites.js" defer></script>
   <script src="js/index.js" defer></script>
 
 </body>

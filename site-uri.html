@@ -266,9 +266,19 @@
         <p class="section-label">Portofoliu</p>
         <h2 class="section-title">Site-uri realizate</h2>
       </div>
-      <a href="proiecte.html" class="btn-ghost" data-set-filter="site">Vezi toate →</a>
     </div>
-    <div class="sites-preview-grid reveal" id="sitesPreviewGrid"></div>
+    <div class="sp-carousel reveal">
+      <button class="sp-arrow sp-arrow-prev" id="spPrev" type="button" aria-label="Proiectul anterior">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <div class="sp-viewport" id="spViewport">
+        <div class="sp-track" id="sitesPreviewGrid"></div>
+      </div>
+      <button class="sp-arrow sp-arrow-next" id="spNext" type="button" aria-label="Proiectul următor">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+    <div class="sp-dots" id="spDots" role="tablist" aria-label="Navigare proiecte"></div>
   </section>
 
   <!-- ══ PROCES — comprimat ════════════════════════════ -->

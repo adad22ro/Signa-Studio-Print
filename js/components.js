@@ -21,7 +21,6 @@
     '    </a></li>',
     '    <li><a href="productie-publicitara.html" class="nl-item">Producție Publicitară</a></li>',
     '    <li><a href="tipografie.html" class="nl-item">Tipografie</a></li>',
-    '    <li><a href="proiecte.html" class="nl-item">Proiecte</a></li>',
     '    <li><a href="preturi.html" class="nl-item">Prețuri</a></li>',
     '    <li><a href="contact.html" class="nl-item nl-contact">Contact</a></li>',
     '  </ul>',
@@ -34,7 +33,6 @@
     '  <a href="site-uri.html" class="mm-featured">Web Development</a>',
     '  <a href="productie-publicitara.html">Producție Publicitară</a>',
     '  <a href="tipografie.html">Tipografie</a>',
-    '  <a href="proiecte.html">Proiecte</a>',
     '  <a href="preturi.html">Prețuri</a>',
     '  <a href="contact.html">Contact</a>',
     '</div>'
@@ -57,7 +55,6 @@
     '        <li><a href="site-uri.html">Web Development</a></li>',
     '        <li><a href="productie-publicitara.html">Producție Publicitară</a></li>',
     '        <li><a href="tipografie.html">Tipografie &amp; Print</a></li>',
-    '        <li><a href="proiecte.html">Portofoliu</a></li>',
     '        <li><a href="preturi.html">Prețuri</a></li>',
     '      </ul>',
     '    </div>',
