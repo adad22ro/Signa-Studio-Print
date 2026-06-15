@@ -599,11 +599,17 @@
 @media (max-width: 860px) {
   .hero-inner {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: clamp(24px, 4vh, 36px);
     padding-top: calc(var(--navbar-h) + clamp(20px, 4vh, 40px));
     padding-bottom: clamp(60px, 8vh, 80px);
   }
+  .hero-logo-wrap { justify-content: center; }
+  .hero-content { text-align: center; }
+  .hero-eyebrow { justify-content: center; }
+  .hero-title { align-items: center; }
+  .hero-ctas { justify-content: center; }
   .hero-title { font-size: clamp(32px, 6vw, 52px); }
   .ps-track { --cards: 2; }
 }
@@ -617,12 +623,25 @@
     height: auto;
     min-height: 100svh;
   }
+  /* Pe telefon: logo (doar simbol) stânga + conținut dreapta, centrat */
   .hero-inner {
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    gap: clamp(16px, 5vw, 28px);
     padding-top: calc(var(--navbar-h) + 28px);
     padding-bottom: 72px;
   }
-  .hero-title { font-size: clamp(30px, 8vw, 44px); }
-  .hero-ctas { flex-direction: column; align-items: flex-start; gap: 14px; }
+  /* Ascundem textul logo și linia — rămâne doar simbolul */
+  .hero-logo-text,
+  .hero-logo-line { display: none; }
+  .hero-logo-wrap { flex-shrink: 0; }
+  .hero-svg-logo { width: clamp(54px, 18vw, 84px); }
+  /* Conținutul din dreapta, centrat */
+  .hero-content { text-align: center; }
+  .hero-eyebrow { justify-content: center; }
+  .hero-title { align-items: center; font-size: clamp(26px, 7vw, 40px); }
+  .hero-ctas { flex-direction: column; align-items: center; gap: 14px; }
   .hero-scroll { display: none; }
   .services-trio { grid-template-columns: 1fr; }
   .svc-card { border-right: none; border-bottom: 1px solid var(--gray-border); }
@@ -640,6 +659,16 @@
   .ps-viewport::-webkit-scrollbar { display: none; }
   .ps-track .ps-card { scroll-snap-align: center; }
   .ps-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+/* Telefoane foarte înguste (iPhone SE/mini, Android mici) — stivuit */
+@media (max-width: 400px) {
+  .hero-inner {
+    flex-direction: column;
+    gap: clamp(20px, 4vh, 32px);
+  }
+  .hero-logo-wrap { justify-content: center; }
+  .hero-svg-logo { width: clamp(50px, 16vw, 68px); }
 }
 
 /* ── REDUCED MOTION: arată totul fără animații ── */
