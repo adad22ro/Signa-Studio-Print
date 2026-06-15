@@ -595,30 +595,33 @@
   .svc-card:nth-child(3) { border-right: none; }
 }
 
-/* Tablete landscape si laptopuri mici — layout ROW (logo stanga + text centrat dreapta) */
+/* Tablete landscape si laptopuri mici — layout COLOANA (logo+text sus, continut jos) */
 @media (max-width: 860px) {
   .hero {
     height: auto;
     min-height: 100svh;
   }
   .hero-inner {
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: clamp(16px, 5vw, 28px);
+    gap: clamp(28px, 6vh, 56px);
     padding-top: calc(var(--navbar-h) + clamp(24px, 5vh, 40px));
     padding-bottom: clamp(60px, 10vh, 90px);
   }
-  .hero-logo-wrap { flex-shrink: 0; }
-  /* Ascunde textul logo si linia — ramane doar simbolul */
-  .hero-logo-text { display: none; }
-  .hero-logo-line { display: none; }
-  .hero-svg-logo { width: clamp(60px, 10vw, 100px); }
-  .hero-content { text-align: center; }
+  /* Logo + text "Signa Studio Print" sus, centrat, dimensiune moderata */
+  .hero-logo-wrap { justify-content: center; flex-shrink: 0; }
+  .hero-logo-text { display: flex; }
+  .hero-logo-line { display: flex; }
+  .hero-svg-logo { width: clamp(52px, 8vw, 72px); }
+  .hlt-name { font-size: clamp(20px, 3vw, 26px); }
+  .hlt-sub, .hlt-loc { font-size: clamp(8px, 1.2vw, 9.5px); }
+  /* Continut jos, centrat */
+  .hero-content { text-align: center; width: 100%; }
   .hero-eyebrow { justify-content: center; }
   .hero-title {
     align-items: center;
-    font-size: clamp(28px, 5vw, 56px);
+    font-size: clamp(32px, 6vw, 56px);
   }
   .hero-sub {
     font-size: clamp(13px, 1.8vw, 16px);
@@ -629,13 +632,14 @@
   .ps-track { --cards: 2; }
 }
 
-/* Mobile — acelasi layout ROW dar mai compact */
+/* Mobile — acelasi layout coloana, mai compact */
 @media (max-width: 600px) {
   .web-projects-row { flex-direction: column; }
   .wp-card { border-right: none; border-bottom: 1px solid var(--gray-border); }
   .wp-cta { width: 100%; }
-  .hero-svg-logo { width: clamp(54px, 15vw, 80px); }
-  .hero-title { font-size: clamp(26px, 7.5vw, 42px); }
+  .hero-svg-logo { width: clamp(48px, 12vw, 64px); }
+  .hlt-name { font-size: clamp(18px, 5.5vw, 24px); }
+  .hero-title { font-size: clamp(30px, 8vw, 46px); }
   .hero-sub { font-size: clamp(13px, 3.5vw, 15px); }
   .hero-ctas { flex-direction: column; align-items: center; gap: 14px; }
   .services-trio { grid-template-columns: 1fr; }
@@ -658,8 +662,9 @@
 
 /* Telefoane foarte inguste (iPhone SE/mini) */
 @media (max-width: 400px) {
-  .hero-svg-logo { width: clamp(44px, 13vw, 60px); }
-  .hero-title { font-size: clamp(22px, 7vw, 34px); }
+  .hero-svg-logo { width: clamp(42px, 11vw, 56px); }
+  .hlt-name { font-size: clamp(16px, 5vw, 20px); }
+  .hero-title { font-size: clamp(26px, 7.5vw, 38px); }
   .hero-sub { font-size: clamp(12px, 3.2vw, 14px); }
 }
 
