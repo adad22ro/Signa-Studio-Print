@@ -47,86 +47,110 @@
   padding-top: 4px;
 }
 
-/* ── PRICE TABLE ─────────────────────────────────────── */
-.price-table {
-  width: 100%;
-  border-collapse: collapse;
+/* ── PRICE CARDS ─────────────────────────────────────── */
+.price-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
-.price-table tr {
-  border-bottom: 1px solid var(--gray-border);
-  transition: background 0.25s ease;
+.price-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--gray-border);
+  padding: 28px 28px 24px;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.price-table tr:hover {
-  background: var(--gray-bg);
+.price-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(13, 13, 13, 0.07);
 }
 
-.price-table td {
-  padding: 28px 16px 28px 0;
-  vertical-align: top;
-  font-size: 13px;
-  color: var(--gray-mid);
-  line-height: 1.9;
-}
-
-.price-table td:first-child {
-  width: 30%;
-}
-
-.price-table td:nth-child(2) {
-  width: 45%;
-}
-
-.price-table td:last-child {
-  width: 25%;
-  text-align: right;
-  padding-right: 0;
-}
-
-.service-name {
+.pc-name {
   font-family: var(--font-serif);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
   color: var(--black);
-  margin-bottom: 4px;
+  margin-bottom: 10px;
 }
 
-.service-detail {
+.pc-desc {
+  font-size: 13px;
+  color: var(--gray-mid);
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.pc-specs {
   font-size: 12px;
   color: var(--gray-mid);
   line-height: 1.7;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--gray-border);
+  margin-bottom: 20px;
+  /* împinge piciorul cardului (prețul) jos, aliniat pe toate cardurile */
+  flex: 1;
 }
 
-.price-amount {
+.pc-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: auto;
+}
+
+.pc-price {
   font-family: var(--font-serif);
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 400;
   color: var(--gold);
-  margin-bottom: 2px;
 }
 
-.price-unit {
+.pc-unit {
   font-size: 11px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   color: var(--gray-mid);
+  line-height: 1.5;
 }
 
-.price-contact {
+.pc-contact {
   display: inline-block;
+  align-self: flex-start;
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gold);
   text-decoration: none;
   border: 1px solid var(--gold);
-  padding: 10px 20px;
+  padding: 11px 22px;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-.price-contact:hover {
+.pc-contact:hover {
   background: var(--gold);
   color: var(--white-pure);
+}
+
+/* Card evidențiat (pachetul recomandat la web) */
+.price-card--featured {
+  border-color: var(--gold);
+  border-width: 2px;
+}
+
+.pc-badge {
+  position: absolute;
+  top: -11px;
+  left: 28px;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white-pure);
+  background: var(--gold);
+  padding: 5px 12px;
 }
 
 /* ── NOTE BOX ────────────────────────────────────────── */
@@ -201,6 +225,12 @@
 }
 
 /* ── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .price-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 960px) {
   .note-box {
     grid-template-columns: 1fr;
@@ -216,10 +246,6 @@
     text-align: left;
   }
 
-  .price-table td:nth-child(2) {
-    display: none;
-  }
-
   .cta-contact {
     flex-direction: column;
     align-items: flex-start;
@@ -232,20 +258,9 @@
     padding: 40px var(--side-pad);
   }
 
-  .price-table td {
-    display: block;
-    width: 100% !important;
-    padding: 8px 0;
-  }
-
-  .price-table td:last-child {
-    text-align: left;
-  }
-
-  .price-table tr {
-    display: block;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--gray-border);
+  .price-cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .note-box {
