@@ -86,11 +86,66 @@
 
   
   <!-- HERO -->
-  <section class="page-hero">
-    <div class="page-hero-bg-letter" aria-hidden="true">T</div>
-    <p class="section-label">Servicii — Tipografie & Grafică Print</p>
-    <h1 class="page-hero-title">Design pentru<br><em>pagina tipărită.</em></h1>
-    <p class="page-hero-sub">Cărți de vizită, flyere, pliante, coperți de carte, tehnoredactare și orice material de print — concepute cu atenție la detalii și livrate ca fișiere gata de trimis la tipografie.</p>
+  <section class="page-hero tp-hero">
+    <svg class="tp-hero-canvas" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+
+      <!-- ====== CARTE DE VIZITĂ (sus-dreapta) ====== -->
+      <g transform="translate(1180 90) rotate(-9)">
+        <rect class="tp-draw tp-bc-out tp-ink" x="0" y="0" width="190" height="112" rx="6"/>
+        <line class="tp-draw tp-bc-l1 tp-gold" x1="22" y1="40" x2="120" y2="40"/>
+        <line class="tp-draw tp-bc-l2 tp-ink-soft" x1="22" y1="62" x2="150" y2="62"/>
+        <line class="tp-draw tp-bc-l3 tp-ink-soft" x1="22" y1="78" x2="96" y2="78"/>
+        <circle class="tp-draw tp-bc-dot tp-gold-soft" cx="158" cy="34" r="14"/>
+      </g>
+
+      <!-- ====== PLIANT 3 FALDURI (dreapta-mijloc) ====== -->
+      <g transform="translate(1090 270) rotate(6)">
+        <rect class="tp-draw tp-tri-out tp-gold" x="0" y="0" width="300" height="180" rx="4"/>
+        <!-- liniile de fald apar după trasarea conturului -->
+        <line class="tp-fold tp-fold1 tp-gold-soft" x1="100" y1="0" x2="100" y2="180"/>
+        <line class="tp-fold tp-fold2 tp-gold-soft" x1="200" y1="0" x2="200" y2="180"/>
+        <line class="tp-draw tp-tri-t1 tp-ink-soft" x1="18" y1="30" x2="82" y2="30"/>
+        <line class="tp-draw tp-tri-t2 tp-ink-soft" x1="18" y1="46" x2="82" y2="46"/>
+        <line class="tp-draw tp-tri-t3 tp-ink-soft" x1="118" y1="30" x2="182" y2="30"/>
+        <line class="tp-draw tp-tri-t4 tp-ink-soft" x1="218" y1="30" x2="282" y2="30"/>
+      </g>
+
+      <!-- ====== CARTE DESCHISĂ (jos-dreapta) ====== -->
+      <g transform="translate(1050 470) rotate(-3)">
+        <!-- coperțile / paginile, două dreptunghiuri în oglindă -->
+        <path class="tp-draw tp-book-l tp-ink" d="M150 12 C100 -6 40 -6 6 14 L6 150 C40 130 100 130 150 148 Z"/>
+        <path class="tp-draw tp-book-r tp-ink" d="M150 12 C200 -6 260 -6 294 14 L294 150 C260 130 200 130 150 148 Z"/>
+        <line class="tp-draw tp-book-spine tp-gold" x1="150" y1="12" x2="150" y2="148"/>
+        <line class="tp-book-line tp-bl1 tp-ink-soft" x1="34" y1="48" x2="120" y2="40"/>
+        <line class="tp-book-line tp-bl2 tp-ink-soft" x1="34" y1="70" x2="120" y2="62"/>
+        <line class="tp-book-line tp-bl3 tp-ink-soft" x1="180" y1="40" x2="266" y2="48"/>
+        <line class="tp-book-line tp-bl4 tp-ink-soft" x1="180" y1="62" x2="266" y2="70"/>
+      </g>
+
+      <!-- ====== FLYER (mijloc, mai discret în spate) ====== -->
+      <g transform="translate(900 60) rotate(4)">
+        <rect class="tp-draw tp-fl-out tp-gold-soft" x="0" y="0" width="150" height="210" rx="4"/>
+        <rect class="tp-draw tp-fl-img tp-ink-soft" x="20" y="22" width="110" height="70" rx="2"/>
+        <line class="tp-draw tp-fl-l1 tp-ink-soft" x1="20" y1="118" x2="130" y2="118"/>
+        <line class="tp-draw tp-fl-l2 tp-ink-soft" x1="20" y1="138" x2="130" y2="138"/>
+        <line class="tp-draw tp-fl-l3 tp-ink-soft" x1="20" y1="158" x2="100" y2="158"/>
+      </g>
+
+      <!-- ====== Crop marks discrete (colț) ====== -->
+      <g class="tp-crop" transform="translate(60 60)">
+        <line class="tp-draw tp-cm tp-gold-soft" x1="0" y1="0" x2="34" y2="0"/>
+        <line class="tp-draw tp-cm tp-gold-soft" x1="0" y1="0" x2="0" y2="34"/>
+      </g>
+
+      <!-- noduri / puncte -->
+      <circle class="tp-dot tp-n1" cx="1090" cy="270" r="4"/>
+      <circle class="tp-dot tp-n2" cx="1050" cy="470" r="4"/>
+      <circle class="tp-dot tp-n3" cx="900"  cy="60"  r="4"/>
+    </svg>
+
+    <p class="section-label tp-hero-text">Servicii — Tipografie & Grafică Print</p>
+    <h1 class="page-hero-title tp-hero-text">Design pentru<br><em>pagina tipărită.</em></h1>
+    <p class="page-hero-sub tp-hero-text">Cărți de vizită, flyere, pliante, coperți de carte, tehnoredactare și orice material de print — concepute cu atenție la detalii și livrate ca fișiere gata de trimis la tipografie.</p>
   </section>
 
   <!-- INTRO -->
