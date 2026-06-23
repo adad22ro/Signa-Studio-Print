@@ -1,4 +1,4 @@
-/* ═══════════════════════════════════════════════════════
+﻿/* ═══════════════════════════════════════════════════════
    SIGNA STUDIO PRINT — page.css
    Stiluri comune paginilor interioare (non-home)
    ═══════════════════════════════════════════════════════ */
@@ -22,7 +22,7 @@
   font-size: clamp(200px, 30vw, 420px);
   font-weight: 700;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(200, 134, 13, 0.08);
+  -webkit-text-stroke: 1px rgba(91, 95, 239, 0.08);
   pointer-events: none;
   line-height: 1;
   user-select: none;
@@ -39,7 +39,7 @@
 
 .page-hero-title em {
   font-style: italic;
-  color: var(--gold);
+  color: var(--indigo);
 }
 
 .page-hero-sub {
@@ -102,7 +102,7 @@
   font-size: 9px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--indigo);
 }
 
 .tool-badge-val {
@@ -134,7 +134,7 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: var(--gold);
+  background: var(--indigo);
   flex-shrink: 0;
 }
 
@@ -173,7 +173,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--gold);
+  background: var(--indigo);
   transition: width 0.4s ease;
 }
 
@@ -188,7 +188,7 @@
 .svc-num {
   font-size: 11px;
   letter-spacing: 0.3em;
-  color: var(--gold);
+  color: var(--indigo);
   margin-bottom: 16px;
 }
 
@@ -268,7 +268,7 @@
   margin: 0 auto 20px;
   font-family: var(--font-serif);
   font-size: 20px;
-  color: var(--gold);
+  color: var(--indigo);
   background: var(--white);
   position: relative;
   z-index: 1;
@@ -276,7 +276,7 @@
 }
 
 .step:hover .step-num {
-  border-color: var(--gold);
+  border-color: var(--indigo);
   background: var(--gray-bg);
 }
 
@@ -356,7 +356,7 @@
   font-size: 10px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--indigo);
   margin-bottom: 4px;
 }
 
@@ -395,8 +395,8 @@
 }
 
 .cta-bar .btn-primary {
-  border-color: var(--gold);
-  color: var(--gold);
+  border-color: var(--indigo);
+  color: var(--indigo);
   white-space: nowrap;
 }
 
@@ -422,7 +422,7 @@
 }
 
 .see-all:hover {
-  color: var(--gold);
+  color: var(--indigo);
 }
 
 /* ── RESPONSIVE PAGE ─────────────────────────────────── */

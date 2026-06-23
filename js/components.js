@@ -11,17 +11,17 @@
     '  <a href="index.html" class="nav-logo" aria-label="Signa Studio Print — Acasă">',
     '    <img id="logoImg" src="img/LOGO_SIGNA.svg" alt="Signa Studio Print" width="38" height="75">',
     '    <span class="nav-logo-text">Signa Studio Print',
-    '      <span>Design · Web · Publicitate</span>',
+    '      <span>Web · AI · Development</span>',
     '    </span>',
     '  </a>',
     '  <ul class="nav-links">',
     '    <li><a href="index.html" class="nl-item">Acasă</a></li>',
-    '    <li><a href="site-uri.html" class="nl-item nl-featured">',
-    '      Web Development',
+    '    <li><a href="de-ce-ai-nevoie.html" class="nl-item nl-featured">',
+    '      De ce ai nevoie?',
     '    </a></li>',
-    '    <li><a href="productie-publicitara.html" class="nl-item">Producție Publicitară</a></li>',
-    '    <li><a href="tipografie.html" class="nl-item">Tipografie</a></li>',
-    '    <li><a href="preturi.html" class="nl-item">Prețuri</a></li>',
+    '    <li><a href="site-uri.html" class="nl-item">Site-uri de prezentare</a></li>',
+    '    <li><a href="magazine-online.html" class="nl-item">Magazine online</a></li>',
+    '    <li><a href="proiecte.html" class="nl-item">Proiecte</a></li>',
     '    <li><a href="contact.html" class="nl-item nl-contact">Contact</a></li>',
     '  </ul>',
     '  <button class="nav-hamburger" id="hamburger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mobileMenu">',
@@ -30,10 +30,10 @@
     '</nav>',
     '<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Meniu mobil">',
     '  <a href="index.html">Acasă</a>',
-    '  <a href="site-uri.html" class="mm-featured">Web Development</a>',
-    '  <a href="productie-publicitara.html">Producție Publicitară</a>',
-    '  <a href="tipografie.html">Tipografie</a>',
-    '  <a href="preturi.html">Prețuri</a>',
+    '  <a href="de-ce-ai-nevoie.html" class="mm-featured">De ce ai nevoie?</a>',
+    '  <a href="site-uri.html">Site-uri de prezentare</a>',
+    '  <a href="magazine-online.html">Magazine online</a>',
+    '  <a href="proiecte.html">Proiecte</a>',
     '  <a href="contact.html">Contact</a>',
     '</div>'
   ].join('\n');
@@ -46,16 +46,15 @@
     '        <img src="img/LOGO_SIGNA_alb.svg" alt="Signa Studio Print" width="40" height="79">',
     '        <span class="footer-logo-text">Signa Studio Print</span>',
     '      </div>',
-    '      <div class="footer-tagline">Design · Web · Publicitate</div>',
-    '      <p>Grafică profesională pentru orice suport, de la carte de vizită la colantări auto. Iași, România.</p>',
+    '      <div class="footer-tagline">Web · AI · Development</div>',
+    '      <p>Creăm site-uri de prezentare și magazine online cu ajutorul AI. Iași, România.</p>',
     '    </div>',
     '    <div class="footer-col">',
     '      <h4>Servicii</h4>',
     '      <ul>',
-    '        <li><a href="site-uri.html">Web Development</a></li>',
-    '        <li><a href="productie-publicitara.html">Producție Publicitară</a></li>',
-    '        <li><a href="tipografie.html">Tipografie &amp; Print</a></li>',
-    '        <li><a href="preturi.html">Prețuri</a></li>',
+    '        <li><a href="site-uri.html">Site-uri de prezentare</a></li>',
+    '        <li><a href="magazine-online.html">Magazine online</a></li>',
+    '        <li><a href="proiecte.html">Proiecte</a></li>',
     '      </ul>',
     '    </div>',
     '    <div class="footer-col">',
@@ -97,9 +96,9 @@
   /* ── NAVBAR SCROLL ─────────────────────────────────── */
   var navbar = document.getElementById('navbar');
 
-  /* Detectează dacă pagina are un hero întunecat (ex: Web Development).
+  /* Detectează dacă pagina are un hero întunecat.
      Navbarul devine alb (on-dark) cât timp e transparent peste el. */
-  var darkHero = document.querySelector('.su-hero, .pp-hero, .tp-hero');
+  var darkHero = document.querySelector('.su-hero, .dce-hero, .mo-hero');
 
   function updateNavbar() {
     if (!navbar) return;

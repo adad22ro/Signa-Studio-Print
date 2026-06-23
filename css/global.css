@@ -1,4 +1,4 @@
-/* ═══════════════════════════════════════════════════════
+﻿/* ═══════════════════════════════════════════════════════
    SIGNA STUDIO PRINT — global.css
    ═══════════════════════════════════════════════════════ */
 
@@ -20,10 +20,10 @@
   --gray-light:   #A8A8A8;
   --gray-border:  #E2E0D8;
   --gray-bg:      #F0EEE9;
-  --gold:         #C8860D;
-  --gold-light:   #E0A435;
-  --gold-dark:    #9A6608;
-  --gold-bg:      rgba(200, 134, 13, 0.06);
+  --indigo:         #5B5FEF;
+  --indigo-light:   #7B7FF5;
+  --indigo-dark:    #3D41D4;
+  --indigo-bg:      rgba(91, 95, 239, 0.06);
   --font-serif:   'Playfair Display', Georgia, serif;
   --font-sans:    'Jost', system-ui, sans-serif;
   --font-script:  'Dancing Script', 'Playfair Display', cursive;
@@ -105,9 +105,9 @@ nav.on-dark:not(.scrolled) .nl-item:hover {
   background: rgba(255, 255, 255, 0.08);
 }
 nav.on-dark:not(.scrolled) .nl-featured {
-  color: var(--gold-light);
-  border-color: rgba(200, 134, 13, 0.45);
-  background: rgba(200, 134, 13, 0.1);
+  color: var(--indigo-light);
+  border-color: rgba(91, 95, 239, 0.45);
+  background: rgba(91, 95, 239, 0.1);
 }
 nav.on-dark:not(.scrolled) .nl-contact {
   color: var(--white-pure);
@@ -157,7 +157,7 @@ nav.on-dark:not(.scrolled) .nav-hamburger span {
   font-family: var(--font-sans);
   font-weight: 400;
   letter-spacing: 0.32em;
-  color: var(--gold);
+  color: var(--indigo);
   text-transform: uppercase;
   margin-top: 2px;
 }
@@ -195,7 +195,7 @@ nav.on-dark:not(.scrolled) .nav-hamburger span {
   left: 12px;
   right: 12px;
   height: 1px;
-  background: var(--gold);
+  background: var(--indigo);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -203,7 +203,7 @@ nav.on-dark:not(.scrolled) .nav-hamburger span {
 
 .nl-item:hover {
   color: var(--black);
-  background: rgba(200, 134, 13, 0.05);
+  background: rgba(91, 95, 239, 0.05);
 }
 
 .nl-item:hover::after {
@@ -211,7 +211,7 @@ nav.on-dark:not(.scrolled) .nav-hamburger span {
 }
 
 .nl-item:focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--indigo);
   outline-offset: 2px;
 }
 
@@ -227,9 +227,9 @@ nav.on-dark:not(.scrolled) .nav-hamburger span {
 
 /* ── WEB DEVELOPMENT — link featured ───────────────── */
 .nl-featured {
-  color: var(--gold-dark);
-  border: 1px solid rgba(200, 134, 13, 0.25);
-  background: rgba(200, 134, 13, 0.04);
+  color: var(--indigo-dark);
+  border: 1px solid rgba(91, 95, 239, 0.25);
+  background: rgba(91, 95, 239, 0.04);
   padding: 5px 12px 5px 8px;
 }
 
@@ -238,20 +238,20 @@ nav.on-dark:not(.scrolled) .nav-hamburger span {
 }
 
 .nl-featured:hover {
-  color: var(--gold);
-  background: rgba(200, 134, 13, 0.1);
-  border-color: rgba(200, 134, 13, 0.5);
+  color: var(--indigo);
+  background: rgba(91, 95, 239, 0.1);
+  border-color: rgba(91, 95, 239, 0.5);
 }
 
 .nl-featured.active {
   color: var(--white-pure);
-  background: var(--gold);
-  border-color: var(--gold);
+  background: var(--indigo);
+  border-color: var(--indigo);
 }
 
 .nl-featured.active:hover {
-  background: var(--gold-dark);
-  border-color: var(--gold-dark);
+  background: var(--indigo-dark);
+  border-color: var(--indigo-dark);
 }
 
 /* Badge AI */
@@ -260,7 +260,7 @@ nav.on-dark:not(.scrolled) .nav-hamburger span {
   font-weight: 500;
   letter-spacing: 0.1em;
   color: var(--white-pure);
-  background: var(--gold);
+  background: var(--indigo);
   padding: 2px 5px;
   border-radius: 2px;
   line-height: 1.2;
@@ -268,7 +268,7 @@ nav.on-dark:not(.scrolled) .nav-hamburger span {
 }
 
 .nl-featured:hover .nl-badge {
-  background: var(--gold-dark);
+  background: var(--indigo-dark);
 }
 
 .nl-featured.active .nl-badge {
@@ -324,7 +324,7 @@ nav.on-dark:not(.scrolled) .nav-hamburger span {
 .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 .nav-hamburger:focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--indigo);
   outline-offset: 2px;
 }
 
@@ -368,7 +368,7 @@ nav.on-dark:not(.scrolled) .nav-hamburger span {
 
 .mobile-menu a:hover {
   color: var(--black);
-  background: var(--gold-bg);
+  background: var(--indigo-bg);
   padding-left: calc(var(--side-pad) + 6px);
 }
 
@@ -378,19 +378,19 @@ nav.on-dark:not(.scrolled) .nav-hamburger span {
 
 /* Web Development în mobile menu */
 .mobile-menu .mm-featured {
-  color: var(--gold-dark);
+  color: var(--indigo-dark);
   font-weight: 500;
 }
 
 .mobile-menu .mm-featured:hover {
-  color: var(--gold);
+  color: var(--indigo);
 }
 
 .mm-badge {
   font-size: 8px;
   letter-spacing: 0.1em;
   color: var(--white-pure);
-  background: var(--gold);
+  background: var(--indigo);
   padding: 2px 6px;
   border-radius: 2px;
 }
@@ -399,12 +399,12 @@ nav.on-dark:not(.scrolled) .nav-hamburger span {
 .btn-primary {
   display: inline-block;
   padding: 13px 34px;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--indigo);
   font-family: var(--font-sans);
   font-size: 10px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--indigo);
   text-decoration: none;
   background: transparent;
   cursor: pointer;
@@ -417,7 +417,7 @@ nav.on-dark:not(.scrolled) .nav-hamburger span {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--gold);
+  background: var(--indigo);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.35s ease;
@@ -429,7 +429,7 @@ nav.on-dark:not(.scrolled) .nav-hamburger span {
 .btn-primary span { position: relative; z-index: 1; }
 
 .btn-primary:focus-visible {
-  outline: 2px solid var(--gold-dark);
+  outline: 2px solid var(--indigo-dark);
   outline-offset: 3px;
 }
 
@@ -446,9 +446,9 @@ nav.on-dark:not(.scrolled) .nav-hamburger span {
   gap: 6px;
 }
 
-.btn-ghost:hover { color: var(--gold); }
+.btn-ghost:hover { color: var(--indigo); }
 .btn-ghost:focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--indigo);
   outline-offset: 3px;
 }
 
@@ -458,7 +458,7 @@ nav.on-dark:not(.scrolled) .nav-hamburger span {
   font-size: 11px;
   letter-spacing: 0.4em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--indigo);
   margin-bottom: 18px;
 }
 
@@ -529,7 +529,7 @@ footer {
   font-size: 9px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--indigo);
   margin-bottom: 0;
 }
 
@@ -545,7 +545,7 @@ footer {
   font-size: 10px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--indigo);
   margin-bottom: 18px;
 }
 
@@ -569,7 +569,7 @@ footer {
 }
 
 .footer-col address a {
-  color: var(--gold-light);
+  color: var(--indigo-light);
   text-decoration: none;
   transition: color 0.25s ease;
 }
@@ -590,7 +590,7 @@ footer {
   color: var(--gray-dark);
 }
 
-.footer-made span { color: var(--gold); }
+.footer-made span { color: var(--indigo); }
 
 /* ── RESPONSIVE GLOBAL ──────────────────────────────── */
 @media (max-width: 1100px) {

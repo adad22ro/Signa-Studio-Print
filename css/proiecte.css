@@ -1,4 +1,4 @@
-/* ═══════════════════════════════════════════════════════
+﻿/* ═══════════════════════════════════════════════════════
    SIGNA STUDIO PRINT — proiecte.css
    Stiluri specifice paginii Proiecte / Portofoliu
    ═══════════════════════════════════════════════════════ */
@@ -36,8 +36,8 @@
 }
 
 .filter-btn.active {
-  color: var(--gold);
-  border-bottom-color: var(--gold);
+  color: var(--indigo);
+  border-bottom-color: var(--indigo);
 }
 
 /* ── GALLERY SECTION ─────────────────────────────────── */
@@ -103,7 +103,7 @@
 .proj-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(200, 134, 13, 0.08);
+  background: rgba(91, 95, 239, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,10 +119,10 @@
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--indigo);
   background: var(--white);
   padding: 8px 20px;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--indigo);
 }
 
 .proj-info {
@@ -133,7 +133,7 @@
   font-size: 10px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--indigo);
   margin-bottom: 4px;
 }
 
@@ -188,7 +188,7 @@
   background: var(--white);
   padding: 2px 6px;
   border: 1px solid var(--gray-border);
-  color: var(--gold);
+  color: var(--indigo);
   font-family: monospace;
 }
 
@@ -226,8 +226,8 @@
 }
 
 .lightbox-close:hover {
-  border-color: var(--gold);
-  color: var(--gold);
+  border-color: var(--indigo);
+  color: var(--indigo);
 }
 
 .lightbox-inner {
@@ -255,7 +255,7 @@
   font-size: 10px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--indigo);
   margin-bottom: 12px;
 }
 
@@ -330,12 +330,12 @@
 
 .proj-card--site .proj-img-wrap {
   aspect-ratio: 16/10;
-  border-bottom: 2px solid var(--gold-bg);
+  border-bottom: 2px solid var(--indigo-bg);
   transition: border-color 0.3s ease;
 }
 
 .proj-card--site:hover .proj-img-wrap {
-  border-bottom-color: var(--gold);
+  border-bottom-color: var(--indigo);
 }
 
 /* Screenshot placeholder pentru site-uri */
@@ -353,12 +353,12 @@
 .proj-link a {
   font-size: 11px;
   letter-spacing: 0.08em;
-  color: var(--gold);
+  color: var(--indigo);
   text-decoration: none;
   transition: color 0.25s ease;
 }
 
 .proj-link a:hover {
-  color: var(--gold-dark);
+  color: var(--indigo-dark);
   text-decoration: underline;
 }

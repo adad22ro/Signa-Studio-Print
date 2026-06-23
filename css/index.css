@@ -1,4 +1,4 @@
-/* ═══════════════════════════════════════════════════════
+﻿/* ═══════════════════════════════════════════════════════
    SIGNA STUDIO PRINT — index.css
    ═══════════════════════════════════════════════════════ */
 
@@ -26,18 +26,18 @@
 .hero-geo svg { width: 100%; height: 100%; }
 
 .hg-line {
-  stroke: rgba(200, 134, 13, 0.12);
+  stroke: rgba(91, 95, 239, 0.12);
   stroke-width: 0.8; fill: none;
   stroke-dasharray: 3000; stroke-dashoffset: 3000;
   animation: drawLine 2.5s ease 0.3s forwards;
 }
 .hg-diag {
-  stroke: rgba(200, 134, 13, 0.07);
+  stroke: rgba(91, 95, 239, 0.07);
   stroke-width: 0.8; fill: none;
   stroke-dasharray: 2000; stroke-dashoffset: 2000;
   animation: drawLine 3s ease 0.6s forwards;
 }
-.hg-dot { fill: rgba(200,134,13,0.5); opacity: 0; animation: fadeInDot 0.4s ease forwards; }
+.hg-dot { fill: rgba(91, 95, 239,0.5); opacity: 0; animation: fadeInDot 0.4s ease forwards; }
 .hg-l1 { animation-delay: 0.2s; }
 .hg-l2 { animation-delay: 0.4s; }
 .hg-l3 { animation-delay: 0.3s; }
@@ -146,7 +146,7 @@
 
 .hlt-sub {
   font-size: clamp(7.5px, 0.75vw, 9.5px);
-  letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold);
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--indigo);
   opacity: 0; transform: translateX(-8px);
   animation: slideInText 0.6s ease 3.4s forwards;
 }
@@ -164,13 +164,13 @@
 .hero-eyebrow {
   display: flex; align-items: center; gap: 10px;
   font-size: 10px; letter-spacing: 0.4em;
-  text-transform: uppercase; color: var(--gold);
+  text-transform: uppercase; color: var(--indigo);
   margin-bottom: clamp(12px, 2vh, 20px);
   opacity: 0; animation: fadeUp 0.6s ease 2.4s forwards;
 }
 .eyebrow-dot {
   width: 6px; height: 6px; border-radius: 50%;
-  background: var(--gold); flex-shrink: 0;
+  background: var(--indigo); flex-shrink: 0;
   animation: pulse 2s ease 3s infinite;
 }
 @keyframes pulse {
@@ -191,7 +191,7 @@
   font-family: var(--font-script);
   font-style: normal;
   font-weight: 600;
-  color: var(--gold);
+  color: var(--indigo);
   /* Dancing Script e mai mic vizual la aceeasi dimensiune — compensez */
   font-size: 1.15em;
   line-height: 1.05;
@@ -329,7 +329,7 @@
 .wp-card-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(200,134,13,0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 30% 50%, rgba(91, 95, 239,0.06) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none;
@@ -342,7 +342,7 @@
   position: absolute;
   bottom: 0; left: 0;
   width: 0; height: 2px;
-  background: var(--gold);
+  background: var(--indigo);
   transition: width 0.45s ease;
 }
 .wp-card:hover::after { width: 100%; }
@@ -387,8 +387,8 @@
   transition: border-color 0.3s ease, color 0.3s ease;
 }
 .wp-card:hover .wp-tag {
-  border-color: rgba(200,134,13,0.3);
-  color: var(--gold-dark);
+  border-color: rgba(91, 95, 239,0.3);
+  color: var(--indigo-dark);
 }
 
 .wp-url {
@@ -398,7 +398,7 @@
   color: var(--gray-light);
   transition: color 0.3s ease;
 }
-.wp-card:hover .wp-url { color: var(--gold); }
+.wp-card:hover .wp-url { color: var(--indigo); }
 
 /* CTA — ultimul element */
 .wp-cta {
@@ -426,7 +426,7 @@
 }
 .wp-cta-arrow {
   font-size: 22px;
-  color: var(--gold);
+  color: var(--indigo);
   transition: transform 0.3s ease;
   display: inline-block;
 }
@@ -449,33 +449,33 @@
 .svc-card:last-child { border-right: none; }
 .svc-card::after {
   content: ''; position: absolute; bottom: 0; left: 0;
-  width: 0; height: 2px; background: var(--gold);
+  width: 0; height: 2px; background: var(--indigo);
   transition: width 0.5s ease;
 }
 .svc-card:hover { background: var(--gray-bg); }
 .svc-card:hover::after { width: 100%; }
 .svc-featured { background: var(--black); }
 .svc-featured:hover { background: var(--dark); }
-.svc-featured::after { background: var(--gold); }
+.svc-featured::after { background: var(--indigo); }
 .svc-featured .svc-num,
 .svc-featured .svc-desc,
 .svc-featured .svc-arrow { color: rgba(255,255,255,0.5); }
 .svc-featured .svc-title { color: var(--white-pure); }
-.svc-featured .svc-title em { color: var(--gold-light); }
+.svc-featured .svc-title em { color: var(--indigo-light); }
 .svc-badge {
   display: inline-block; font-size: 9px; letter-spacing: 0.3em;
-  text-transform: uppercase; color: var(--gold);
-  border: 1px solid rgba(200,134,13,0.4); padding: 4px 12px; margin-bottom: 32px;
+  text-transform: uppercase; color: var(--indigo);
+  border: 1px solid rgba(91, 95, 239,0.4); padding: 4px 12px; margin-bottom: 32px;
 }
-.svc-num { font-size: 11px; letter-spacing: 0.3em; color: var(--gold); margin-bottom: 20px; }
+.svc-num { font-size: 11px; letter-spacing: 0.3em; color: var(--indigo); margin-bottom: 20px; }
 .svc-title {
   font-family: var(--font-serif); font-size: clamp(24px,3vw,36px);
   font-weight: 400; color: var(--black); line-height: 1.2; margin-bottom: 18px;
 }
-.svc-title em { font-style: italic; color: var(--gold); }
+.svc-title em { font-style: italic; color: var(--indigo); }
 .svc-desc { font-size: 13px; color: var(--gray-mid); line-height: 1.85; margin-bottom: 32px; }
 .svc-arrow { font-size: 20px; color: var(--gray-light); transition: transform 0.3s ease, color 0.3s ease; display: inline-block; }
-.svc-card:hover .svc-arrow { transform: translateX(8px); color: var(--gold); }
+.svc-card:hover .svc-arrow { transform: translateX(8px); color: var(--indigo); }
 
 /* ══ PROIECTE STRIP ══════════════════════════════════════ */
 .projects-strip {
@@ -508,7 +508,7 @@
 }
 .ps-arrow svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .ps-arrow:hover { background: var(--black); color: var(--white); border-color: var(--black); }
-.ps-arrow:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.ps-arrow:focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; }
 .ps-arrow:disabled { opacity: 0.3; cursor: default; pointer-events: none; }
 
 /* Puncte */
@@ -518,9 +518,9 @@
   border: none; cursor: pointer; background: var(--gray-border);
   transition: background 0.25s ease, transform 0.25s ease;
 }
-.ps-dot:hover { background: var(--gold-light); }
-.ps-dot.is-active { background: var(--gold); transform: scale(1.25); }
-.ps-dot:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.ps-dot:hover { background: var(--indigo-light); }
+.ps-dot.is-active { background: var(--indigo); transform: scale(1.25); }
+.ps-dot:focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; }
 
 /* Card — format poză + titlu + descriere + link */
 .ps-card {
@@ -535,7 +535,7 @@
   background: var(--gray-bg);
   border-bottom: 2px solid transparent; transition: border-color 0.3s ease;
 }
-.ps-card:hover .ps-img-wrap { border-bottom-color: var(--gold); }
+.ps-card:hover .ps-img-wrap { border-bottom-color: var(--indigo); }
 .ps-img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; transition: transform 0.5s ease; }
 .ps-card:hover .ps-img { transform: scale(1.03); }
 .ps-placeholder {
@@ -546,26 +546,26 @@
   background: linear-gradient(135deg, var(--gray-bg) 0%, var(--white) 100%);
 }
 .ps-overlay {
-  position:absolute; inset:0; background: rgba(200,134,13,0.08);
+  position:absolute; inset:0; background: rgba(91, 95, 239,0.08);
   display:flex; align-items:center; justify-content:center;
   opacity:0; transition: opacity 0.3s ease;
 }
 .ps-card:hover .ps-overlay { opacity:1; }
 .ps-overlay-text {
   font-size:10px; letter-spacing:0.2em; text-transform:uppercase;
-  color: var(--gold); background: var(--white);
-  padding: 8px 18px; border: 1px solid var(--gold);
+  color: var(--indigo); background: var(--white);
+  padding: 8px 18px; border: 1px solid var(--indigo);
 }
 .ps-info { padding:20px 24px 24px; flex:1; display:flex; flex-direction:column; gap:6px; }
-.ps-cat { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); }
+.ps-cat { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--indigo); }
 .ps-name { font-family: var(--font-serif); font-size: 17px; font-weight: 400; color: var(--black); }
 .ps-desc { font-size:12px; color: var(--gray-mid); line-height:1.8; flex:1; }
 .ps-link {
   display:inline-block; font-size:11px; letter-spacing:0.06em;
-  color: var(--gold); text-decoration:none; margin-top:4px;
+  color: var(--indigo); text-decoration:none; margin-top:4px;
   transition: color 0.25s ease;
 }
-.ps-link:hover { color: var(--gold-dark); text-decoration:underline; }
+.ps-link:hover { color: var(--indigo-dark); text-decoration:underline; }
 
 /* ══ CTA FINAL ═══════════════════════════════════════════ */
 .cta-final {
@@ -574,12 +574,12 @@
   padding: clamp(72px,10vw,140px) var(--side-pad);
   background: var(--black); text-align: center;
 }
-.cta-final .section-label { color: rgba(200,134,13,0.8); }
+.cta-final .section-label { color: rgba(91, 95, 239,0.8); }
 .cta-title {
   font-family: var(--font-serif); font-size: clamp(36px,5vw,64px);
   font-weight: 400; color: var(--white-pure); line-height: 1.2; margin-bottom: 20px;
 }
-.cta-title em { font-style: italic; color: var(--gold-light); }
+.cta-title em { font-style: italic; color: var(--indigo-light); }
 .cta-sub { font-size: 15px; color: rgba(255,255,255,0.4); margin-bottom: 40px; }
 
 /* ══ RESPONSIVE ══════════════════════════════════════════ */
