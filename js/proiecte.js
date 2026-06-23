@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════════
    SIGNA STUDIO PRINT — proiecte.js
    Galerie proiecte cu filtrare pe categorii.
-   Categorii: publicitate | tipografie | site
+   Categorii: prezentare | landing | magazine
    Fără cod inline — toate evenimentele prin addEventListener.
    ═══════════════════════════════════════════════════════ */
 
@@ -13,9 +13,9 @@
 
   /* ── ETICHETE CATEGORII ────────────────────────────── */
   function catLabel(cat) {
-    if (cat === 'publicitate') return 'Producție Publicitară';
-    if (cat === 'tipografie')  return 'Tipografie';
-    if (cat === 'site')        return 'Site-uri';
+    if (cat === 'prezentare') return 'Pagină de prezentare';
+    if (cat === 'landing')    return 'Landing page';
+    if (cat === 'magazine')   return 'Magazin online';
     return cat;
   }
 
@@ -27,7 +27,7 @@
       allProjects = await r.json();
       renderProjects();
 
-      /* Dacă am venit din site-uri.html, activăm direct filtrul "site" */
+      /* Dacă am venit cu un filtru pre-setat (ex: din site-uri.html) */
       var savedFilter = sessionStorage.getItem('filterProiecte');
       if (savedFilter) {
         sessionStorage.removeItem('filterProiecte');
@@ -59,7 +59,7 @@
     }
 
     grid.innerHTML = filtered.map(function (p) {
-      var isSite = p.categorie === 'site';
+      var isSite = p.categorie === 'prezentare' || p.categorie === 'landing' || p.categorie === 'magazine';
 
       var imgHtml = p.poza
         ? '<img class="proj-img" src="poze/' + escAttr(p.poza) + '" alt="' + escHtml(p.titlu) + '" loading="lazy">'

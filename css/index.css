@@ -668,6 +668,101 @@
   .hero-sub { font-size: clamp(12px, 3.2vw, 14px); }
 }
 
+/* ══ WHY TEASER — 3 argumente vizuale ═══════════════════ */
+.why-teaser {
+  position: relative; z-index: 1;
+  border-top: 1px solid var(--gray-border);
+  padding: clamp(56px, 7vw, 100px) var(--side-pad);
+  background: var(--black);
+}
+.why-header { margin-bottom: 48px; }
+.why-header .section-label { color: rgba(91, 95, 239, 0.8); }
+.why-header .section-title { color: var(--white-pure); }
+.why-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: 40px;
+}
+.why-card {
+  background: var(--black);
+  padding: clamp(32px, 4vw, 48px) clamp(24px, 3vw, 40px);
+  transition: background 0.3s ease;
+}
+.why-card:hover { background: #111; }
+.why-stat {
+  font-family: var(--font-serif);
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 400;
+  color: var(--indigo-light);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.why-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--white-pure);
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
+}
+.why-desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.9;
+}
+.why-cta { text-align: center; }
+.why-cta .btn-ghost { color: rgba(255, 255, 255, 0.5); }
+.why-cta .btn-ghost:hover { color: var(--indigo-light); }
+
+/* ══ INDEX PROCESS — 4 etape ════════════════════════════ */
+.idx-process {
+  position: relative; z-index: 1;
+  border-top: 1px solid var(--gray-border);
+  padding: clamp(56px, 7vw, 100px) var(--side-pad);
+  background: var(--gray-bg);
+}
+.idx-process-header { margin-bottom: 56px; }
+.idx-process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--gray-border);
+}
+.idx-step {
+  background: var(--white);
+  padding: clamp(28px, 3.5vw, 44px) clamp(20px, 2.5vw, 36px);
+  transition: background 0.3s ease;
+}
+.idx-step:hover { background: var(--gray-bg); }
+.idx-step-num {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--indigo);
+  margin-bottom: 20px;
+}
+.idx-step-title {
+  font-family: var(--font-serif);
+  font-size: clamp(16px, 1.8vw, 20px);
+  font-weight: 400;
+  color: var(--black);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.idx-step-desc {
+  font-size: 13px;
+  color: var(--gray-mid);
+  line-height: 1.9;
+}
+
+@media (max-width: 860px) {
+  .why-cards { grid-template-columns: 1fr; }
+  .idx-process-steps { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .idx-process-steps { grid-template-columns: 1fr; }
+}
+
 /* ── REDUCED MOTION: arată totul fără animații ── */
 @media (prefers-reduced-motion: reduce) {
   .hlt-name { clip-path: inset(0 0 0 0); animation: none; }

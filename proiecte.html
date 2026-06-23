@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portofoliu proiecte — producție publicitară, tipografie și site-uri. Signa Studio Print, Iași.">
+  <meta name="description" content="Portofoliu proiecte — site-uri de prezentare, landing page-uri și magazine online. Signa Studio Print, Iași.">
   <title>Proiecte — Signa Studio Print</title>
 
   <!-- Canonical -->
@@ -12,7 +12,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Proiecte — Signa Studio Print">
-  <meta property="og:description" content="Portofoliu proiecte — producție publicitară, tipografie și site-uri. Signa Studio Print, Iași.">
+  <meta property="og:description" content="Portofoliu proiecte — site-uri de prezentare, landing page-uri și magazine online. Signa Studio Print, Iași.">
   <meta property="og:image" content="https://signastudioprint.ro/img/og-default.jpg">
   <meta property="og:url" content="https://signastudioprint.ro/proiecte.html">
   <meta property="og:locale" content="ro_RO">
@@ -21,7 +21,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Proiecte — Signa Studio Print">
-  <meta name="twitter:description" content="Portofoliu proiecte — producție publicitară, tipografie și site-uri. Signa Studio Print, Iași.">
+  <meta name="twitter:description" content="Portofoliu proiecte — site-uri de prezentare, landing page-uri și magazine online. Signa Studio Print, Iași.">
   <meta name="twitter:image" content="https://signastudioprint.ro/img/og-default.jpg">
 
   <!-- Favicon -->
@@ -45,7 +45,7 @@
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Portofoliu",
-    "description": "Portofoliu proiecte — producție publicitară, tipografie și site-uri. Signa Studio Print, Iași.",
+    "description": "Portofoliu proiecte — site-uri de prezentare, landing page-uri și magazine online. Signa Studio Print, Iași.",
     "url": "https://signastudioprint.ro/proiecte.html",
     "provider": {
       "@type": "LocalBusiness",
@@ -95,9 +95,9 @@
   <!-- FILTER -->
   <div class="filter-bar">
     <button class="filter-btn active" data-filter="toate">Toate</button>
-    <button class="filter-btn" data-filter="publicitate">Producție Publicitară</button>
-    <button class="filter-btn" data-filter="tipografie">Tipografie</button>
-    <button class="filter-btn" data-filter="site">Site-uri</button>
+    <button class="filter-btn" data-filter="prezentare">Pagini de prezentare</button>
+    <button class="filter-btn" data-filter="landing">Landing page-uri</button>
+    <button class="filter-btn" data-filter="magazine">Magazine online</button>
   </div>
 
   <!-- GALLERY -->
@@ -106,12 +106,13 @@
     <div class="add-instructions" id="addInstructions">
       <div class="add-title">Cum adaugi proiecte noi</div>
       <div class="add-body">
-        1. Copiază poza proiectului în folderul <code>poze/</code> din site.<br>
+        1. Copiază screenshot-ul proiectului în folderul <code>poze/</code> din site.<br>
         2. Deschide fișierul <code>projects.json</code> cu Notepad.<br>
         3. Adaugă un rând nou după modelul de mai jos și salvează:<br><br>
-        — Pentru grafică: <code>{ "titlu": "Numele proiectului", "categorie": "publicitate", "poza": "poza.jpg", "descriere": "Scurtă descriere." }</code><br><br>
-        — Pentru site-uri: <code>{ "titlu": "Numele site-ului", "categorie": "site", "poza": "screenshot.jpg", "descriere": "Scurtă descriere.", "url": "https://adresa-site.ro" }</code><br><br>
-        Categoria poate fi: <code>publicitate</code>, <code>tipografie</code> sau <code>site</code>.
+        — Pagină de prezentare: <code>{ "titlu": "Numele site-ului", "categorie": "prezentare", "poza": "screenshot.jpg", "descriere": "Scurtă descriere.", "url": "https://adresa-site.ro" }</code><br><br>
+        — Landing page: <code>{ "titlu": "Numele proiectului", "categorie": "landing", "poza": "screenshot.jpg", "descriere": "Scurtă descriere.", "url": "https://adresa-site.ro" }</code><br><br>
+        — Magazin online: <code>{ "titlu": "Numele magazinului", "categorie": "magazine", "poza": "screenshot.jpg", "descriere": "Scurtă descriere.", "url": "https://adresa-site.ro" }</code><br><br>
+        Categoria poate fi: <code>prezentare</code>, <code>landing</code> sau <code>magazine</code>.
       </div>
     </div>
   </section>
