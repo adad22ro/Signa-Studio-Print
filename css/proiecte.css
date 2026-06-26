@@ -330,12 +330,57 @@
 
 .proj-card--site .proj-img-wrap {
   aspect-ratio: 16/10;
+  display: flex;
+  flex-direction: column;
   border-bottom: 2px solid var(--indigo-bg);
   transition: border-color 0.3s ease;
 }
 
 .proj-card--site:hover .proj-img-wrap {
   border-bottom-color: var(--indigo);
+}
+
+/* Crom de browser pe cardurile-site */
+.proj-browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+  height: 30px;
+  padding: 0 12px;
+  background: var(--gray-bg);
+  border-bottom: 1px solid var(--gray-border);
+  z-index: 2;
+}
+.proj-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gray-border);
+  flex-shrink: 0;
+}
+.proj-browser-url {
+  margin-left: 10px;
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  color: var(--gray-mid);
+  background: var(--white-pure);
+  border-radius: 4px;
+  padding: 4px 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.proj-card--site .proj-img {
+  flex: 1;
+  height: auto;
+  min-height: 0;
+  object-position: top center;
+}
+.proj-card--site .proj-overlay {
+  top: 30px;
 }
 
 /* Screenshot placeholder pentru site-uri */

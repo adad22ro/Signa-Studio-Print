@@ -171,6 +171,24 @@
     });
   }
 
+  /* ── CTA FLOTANT (persistent, apare la scroll) ─────── */
+  var pageForCta = window.location.pathname.split('/').pop() || 'index.html';
+  if (pageForCta !== 'contact.html') {
+    var floatCta = document.createElement('a');
+    floatCta.href = 'contact.html';
+    floatCta.className = 'float-cta';
+    floatCta.setAttribute('aria-label', 'Cere o ofertă');
+    floatCta.innerHTML = 'Cere ofertă <span aria-hidden="true">\u2192</span>';
+    document.body.appendChild(floatCta);
+
+    var toggleFloatCta = function () {
+      if (window.scrollY > 700) floatCta.classList.add('visible');
+      else floatCta.classList.remove('visible');
+    };
+    window.addEventListener('scroll', toggleFloatCta, { passive: true });
+    toggleFloatCta();
+  }
+
   /* ── REVEAL ON SCROLL ──────────────────────────────── */
   var revealObserver = new IntersectionObserver(
     function (entries) {

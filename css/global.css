@@ -24,9 +24,10 @@
   --indigo-light:   #7B7FF5;
   --indigo-dark:    #3D41D4;
   --indigo-bg:      rgba(91, 95, 239, 0.06);
-  --font-serif:   'Playfair Display', Georgia, serif;
-  --font-sans:    'Jost', system-ui, sans-serif;
-  --font-script:  'Dancing Script', 'Playfair Display', cursive;
+  --font-serif:   'Space Grotesk', system-ui, sans-serif;
+  --font-sans:    'IBM Plex Sans', system-ui, sans-serif;
+  --font-script:  'Space Grotesk', system-ui, sans-serif;
+  --font-mono:    'IBM Plex Mono', ui-monospace, monospace;
   --navbar-h:     68px;
   --max-w:        1440px;
   --side-pad:     48px;
@@ -591,6 +592,56 @@ footer {
 }
 
 .footer-made span { color: var(--indigo); }
+
+/* ── CTA FLOTANT ────────────────────────────────────── */
+.float-cta {
+  position: fixed;
+  bottom: clamp(16px, 3vh, 28px);
+  right: clamp(16px, 3vw, 28px);
+  z-index: 150;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 26px;
+  background: var(--indigo);
+  color: var(--white-pure);
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 12px 36px rgba(91, 95, 239, 0.32);
+  opacity: 0;
+  transform: translateY(20px) scale(0.96);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.4,0,0.2,1), background 0.3s ease;
+}
+.float-cta.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.float-cta span {
+  transition: transform 0.3s ease;
+}
+.float-cta:hover {
+  background: var(--indigo-dark);
+}
+.float-cta:hover span {
+  transform: translateX(4px);
+}
+.float-cta:focus-visible {
+  outline: 2px solid var(--indigo-dark);
+  outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .float-cta { padding: 12px 20px; font-size: 10px; letter-spacing: 0.14em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .float-cta { transition: opacity 0.2s ease; transform: none; }
+  .float-cta.visible { transform: none; }
+}
 
 /* ── RESPONSIVE GLOBAL ──────────────────────────────── */
 @media (max-width: 1100px) {

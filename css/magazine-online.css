@@ -67,8 +67,8 @@
 .mo-accent {
   color: var(--indigo-light);
   font-family: var(--font-script);
-  font-style: italic;
-  font-size: 1.12em;
+  font-weight: 500;
+  font-size: 1.04em;
   display: inline-block;
 }
 

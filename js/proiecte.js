@@ -75,7 +75,9 @@
         + ' data-url="' + (isSite && p.url ? escAttr(p.url) : '') + '"';
 
       var card = '<div class="proj-card' + (isSite && p.url ? ' proj-card--site' : '') + '"' + dataAttrs + '>'
-        + '<div class="proj-img-wrap">' + imgHtml
+        + '<div class="proj-img-wrap">'
+        + (isSite && p.url ? '<div class="proj-browser-bar" aria-hidden="true"><span class="proj-dot"></span><span class="proj-dot"></span><span class="proj-dot"></span><span class="proj-browser-url">' + escHtml(p.url.replace(/^https?:\/\//, '').replace(/\/$/, '')) + '</span></div>' : '')
+        + imgHtml
         + '<div class="proj-overlay"><span class="proj-overlay-text">' + overlayText + '</span></div>'
         + '</div>'
         + '<div class="proj-info">'

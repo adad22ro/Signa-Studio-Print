@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variante — Lista proiecte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F7F4; --white:#fff; --ink:#0D0D0D; --dark:#1A1A1A;
+    --muted:#6B6B6B; --light:#A8A8A8; --border:#E2E0D8; --bg:#F0EEE9;
+    --indigo:#5B5FEF; --indigo-dark:#3D41D4; --blue:#2563eb;
+    --serif:'Space Grotesk',system-ui,sans-serif;
+    --sans:'IBM Plex Sans',system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+    --pad:48px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+  a{text-decoration:none;color:inherit;}
+  .sec-label{font-family:var(--sans);font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--indigo);}
+  .sec-title{font-family:var(--serif);font-size:clamp(28px,3.4vw,44px);font-weight:400;line-height:1.15;color:var(--ink);}
+
+  /* ── Bară explicativă variantă ── */
+  .variant-head{
+    max-width:1280px;margin:0 auto;padding:64px var(--pad) 24px;
+    display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  }
+  .variant-head .vh-name{font-family:var(--serif);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--indigo);margin-bottom:8px;}
+  .variant-head h2{font-family:var(--serif);font-size:clamp(22px,2.6vw,32px);font-weight:500;color:var(--ink);}
+  .variant-head p{font-size:13.5px;color:var(--muted);line-height:1.7;max-width:440px;margin-top:8px;}
+  .variant-num{font-family:var(--serif);font-size:clamp(40px,5vw,64px);font-weight:600;color:var(--border);line-height:1;}
+  .divider{height:1px;background:var(--border);max-width:1280px;margin:80px auto 0;}
+
+  /* ════════════════ VARIANTA A — Vitrină elegantă ════════════════ */
+  .vA{max-width:1280px;margin:0 auto;padding:24px var(--pad) 0;}
+  .vA-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .vA-card{display:block;}
+  .vA-shot{
+    position:relative;aspect-ratio:16/10;border-radius:10px;overflow:hidden;
+    box-shadow:0 16px 44px rgba(13,13,13,.10);border:1px solid var(--border);
+    transition:transform .45s cubic-bezier(.4,0,.2,1),box-shadow .45s ease;
+  }
+  .vA-card:hover .vA-shot{transform:translateY(-6px);box-shadow:0 28px 64px rgba(13,13,13,.16);}
+  .vA-shot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .6s cubic-bezier(.4,0,.2,1);}
+  .vA-card:hover .vA-shot img{transform:scale(1.04);}
+  .vA-scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,13,.78) 0%,rgba(13,13,13,.05) 46%,transparent 70%);}
+  .vA-over{position:absolute;left:24px;bottom:20px;right:24px;}
+  .vA-over .name{font-family:var(--serif);font-size:24px;font-weight:600;color:#fff;letter-spacing:-.01em;}
+  .vA-over .url{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.7);margin-top:3px;}
+  .vA-foot{display:flex;align-items:center;gap:10px;margin-top:18px;flex-wrap:wrap;}
+  .vA-tag{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:4px 11px;border-radius:999px;}
+  .vA-arrow{margin-left:auto;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo);display:inline-flex;align-items:center;gap:6px;}
+  .vA-card:hover .vA-arrow span{transform:translateX(4px);}
+  .vA-arrow span{transition:transform .3s ease;}
+
+  /* ════════════════ VARIANTA B — Listă editorială ════════════════ */
+  .vB{max-width:1100px;margin:0 auto;padding:24px var(--pad) 0;}
+  .vB-row{
+    position:relative;display:grid;grid-template-columns:64px 1fr auto;align-items:center;gap:28px;
+    padding:34px 0;border-top:1px solid var(--border);overflow:hidden;
+    transition:background .35s ease,padding-left .35s ease;
+  }
+  .vB-row:last-of-type{border-bottom:1px solid var(--border);}
+  .vB-row:hover{background:var(--white);padding-left:20px;}
+  .vB-idx{font-family:var(--mono);font-size:13px;color:var(--indigo);}
+  .vB-main .vb-name{font-family:var(--serif);font-size:clamp(24px,3vw,38px);font-weight:500;line-height:1.05;color:var(--ink);}
+  .vB-main .vb-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px;max-width:520px;}
+  .vB-right{display:flex;align-items:center;gap:22px;}
+  .vB-thumb{
+    width:150px;aspect-ratio:16/10;border-radius:6px;overflow:hidden;border:1px solid var(--border);
+    opacity:0;transform:translateX(16px) scale(.96);transition:opacity .4s ease,transform .4s cubic-bezier(.4,0,.2,1);
+  }
+  .vB-row:hover .vB-thumb{opacity:1;transform:translateX(0) scale(1);}
+  .vB-thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;}
+  .vB-go{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap;transition:color .3s ease;}
+  .vB-row:hover .vB-go{color:var(--indigo);}
+  @media(max-width:780px){.vB-thumb{display:none;}.vB-row{grid-template-columns:40px 1fr;}.vB-right{display:none;}}
+
+  /* ════════════════ VARIANTA C — Split feature ════════════════ */
+  .vC{max-width:1280px;margin:0 auto;padding:24px var(--pad) 0;}
+  .vC-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);}
+  .vC-feature{position:relative;background:var(--white);overflow:hidden;}
+  .vC-feature .vc-shot{aspect-ratio:16/11;overflow:hidden;background:var(--bg);}
+  .vC-feature .vc-shot img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .6s cubic-bezier(.4,0,.2,1);}
+  .vC-feature:hover .vc-shot img{transform:scale(1.04);}
+  .vC-feature .vc-info{padding:26px 30px;}
+  .vC-side{background:var(--white);display:flex;flex-direction:column;}
+  .vC-item{flex:1;padding:26px 30px;display:flex;flex-direction:column;justify-content:center;gap:8px;transition:background .3s ease;border-bottom:1px solid var(--border);}
+  .vC-item:last-child{border-bottom:none;}
+  .vC-item:hover{background:var(--bg);}
+  .vc-cat{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--indigo);}
+  .vc-name{font-family:var(--serif);font-size:22px;font-weight:500;color:var(--ink);}
+  .vc-desc{font-size:12.5px;color:var(--muted);line-height:1.7;}
+  .vc-url{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px;}
+  .vC-logo{height:30px;width:auto;margin-bottom:6px;align-self:flex-start;}
+  .vc-feature-logo{height:34px;margin-bottom:10px;}
+  @media(max-width:860px){.vC-grid{grid-template-columns:1fr;}}
+
+  .foot-note{max-width:1280px;margin:0 auto;padding:48px var(--pad) 90px;font-size:13px;color:var(--muted);line-height:1.8;}
+  .foot-note strong{color:var(--ink);font-weight:600;}
+
+  /* ════════════════ VARIANTA D — Bandă încredere/clienți ════════════════ */
+  .vD-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--white);}
+  .vD{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:0;padding:0 var(--pad);}
+  .vD-intro{display:flex;align-items:center;gap:16px;flex-shrink:0;padding:34px 40px 34px 0;border-right:1px solid var(--border);}
+  .vD-icon{width:38px;height:38px;flex-shrink:0;color:var(--indigo);}
+  .vD-intro p{font-size:14px;line-height:1.5;color:var(--ink);max-width:230px;}
+  .vD-logos{display:flex;align-items:center;justify-content:space-around;gap:clamp(24px,5vw,72px);flex:1;padding:34px 0 34px 48px;flex-wrap:wrap;}
+  .vD-logo{height:34px;width:auto;filter:grayscale(1);opacity:.55;transition:filter .35s ease,opacity .35s ease,transform .35s ease;}
+  .vD-logo:hover{filter:grayscale(0);opacity:1;transform:scale(1.05);}
+  @media(max-width:860px){
+    .vD{flex-direction:column;align-items:stretch;padding:0;}
+    .vD-intro{border-right:none;border-bottom:1px solid var(--border);padding:24px var(--pad);justify-content:center;}
+    .vD-intro p{max-width:none;}
+    .vD-logos{padding:28px var(--pad);justify-content:center;gap:40px;}
+  }
+  @media(max-width:760px){:root{--pad:24px;}.vA-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="variant-head">
+  <div>
+    <div class="vh-name">Varianta A</div>
+    <h2>Vitrină elegantă</h2>
+    <p>Captura cu colțuri rotunjite și umbră fină, numele proiectului peste un gradient discret, etichetele dedesubt. Modern, curat, fără ramă de browser.</p>
+  </div>
+  <div class="variant-num">A</div>
+</div>
+<section class="vA">
+  <div class="vA-grid">
+    <a class="vA-card" href="https://two4delivery.ro/" target="_blank" rel="noopener">
+      <div class="vA-shot">
+        <img src="poze/two4delivery.png" alt="Two4Delivery">
+        <div class="vA-scrim"></div>
+        <div class="vA-over"><div class="name">Two4Delivery</div><div class="url">two4delivery.ro</div></div>
+      </div>
+      <div class="vA-foot">
+        <span class="vA-tag">Flotă curieri</span>
+        <span class="vA-tag">Bolt Food · Glovo</span>
+        <span class="vA-arrow">Vezi site-ul <span>→</span></span>
+      </div>
+    </a>
+    <a class="vA-card" href="https://autoartmotorsport.ro/" target="_blank" rel="noopener">
+      <div class="vA-shot">
+        <img src="poze/autoart.png" alt="AutoArt Motorsport">
+        <div class="vA-scrim"></div>
+        <div class="vA-over"><div class="name">AutoArt Motorsport</div><div class="url">autoartmotorsport.ro</div></div>
+      </div>
+      <div class="vA-foot">
+        <span class="vA-tag">Club sportiv</span>
+        <span class="vA-tag">Automobilism</span>
+        <span class="vA-arrow">Vezi site-ul <span>→</span></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="variant-head">
+  <div>
+    <div class="vh-name">Varianta B</div>
+    <h2>Listă editorială</h2>
+    <p>Rânduri minimaliste cu nume mare și mult spațiu alb. Captura apare discret în dreapta doar la trecerea cu mouse-ul. Cea mai „finută" — text-forward.</p>
+  </div>
+  <div class="variant-num">B</div>
+</div>
+<section class="vB">
+  <a class="vB-row" href="https://two4delivery.ro/" target="_blank" rel="noopener">
+    <div class="vB-idx">01</div>
+    <div class="vB-main">
+      <div class="vb-name">Two4Delivery</div>
+      <div class="vb-desc">Site de prezentare pentru cea mai mare flotă de curieri din Moldova. Partener Bolt Food și Glovo.</div>
+    </div>
+    <div class="vB-right">
+      <div class="vB-thumb"><img src="poze/two4delivery.png" alt=""></div>
+      <div class="vB-go">two4delivery.ro →</div>
+    </div>
+  </a>
+  <a class="vB-row" href="https://autoartmotorsport.ro/" target="_blank" rel="noopener">
+    <div class="vB-idx">02</div>
+    <div class="vB-main">
+      <div class="vb-name">AutoArt Motorsport</div>
+      <div class="vb-desc">Site pentru club sportiv de automobilism din Iași. Competiții Electric Race, Super Rally și Viteză în Coastă.</div>
+    </div>
+    <div class="vB-right">
+      <div class="vB-thumb"><img src="poze/autoart.png" alt=""></div>
+      <div class="vB-go">autoartmotorsport.ro →</div>
+    </div>
+  </a>
+</section>
+
+<div class="divider"></div>
+
+<div class="variant-head">
+  <div>
+    <div class="vh-name">Varianta C</div>
+    <h2>Split — proiect principal</h2>
+    <p>Un proiect evidențiat mare în stânga, restul ca listă compactă în dreapta. Asimetric și dinamic, bun când vrei să scoți în față cel mai reprezentativ site.</p>
+  </div>
+  <div class="variant-num">C</div>
+</div>
+<section class="vC">
+  <div class="vC-grid">
+    <a class="vC-feature" href="https://two4delivery.ro/" target="_blank" rel="noopener">
+      <div class="vc-shot"><img src="poze/two4delivery.png" alt="Two4Delivery"></div>
+      <div class="vc-info">
+        <img class="vc-feature-logo" src="img/two4delivery-logo.svg" alt="Two4Delivery">
+        <div class="vc-cat">Pagină de prezentare</div>
+        <div class="vc-name" style="margin-top:4px;">Two4Delivery</div>
+        <div class="vc-desc">Cea mai mare flotă de curieri din Moldova. Partener Bolt Food și Glovo în 6 orașe.</div>
+        <div class="vc-url">two4delivery.ro →</div>
+      </div>
+    </a>
+    <div class="vC-side">
+      <a class="vC-item" href="https://autoartmotorsport.ro/" target="_blank" rel="noopener">
+        <img class="vC-logo" src="img/LOGO_AUTOART.svg" alt="AutoArt Motorsport">
+        <div class="vc-cat">Pagină de prezentare</div>
+        <div class="vc-name">AutoArt Motorsport</div>
+        <div class="vc-desc">Club sportiv de automobilism din Iași.</div>
+        <div class="vc-url">autoartmotorsport.ro →</div>
+      </a>
+      <a class="vC-item" href="proiecte.html">
+        <div class="vc-cat">Portofoliu</div>
+        <div class="vc-name">Vezi toate proiectele</div>
+        <div class="vc-desc">Toate site-urile livrate, filtrate pe categorii.</div>
+        <div class="vc-url" style="color:var(--indigo);">Deschide galeria →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="variant-head">
+  <div>
+    <div class="vh-name">Varianta D</div>
+    <h2>Bandă „încredere / clienți"</h2>
+    <p>Stilul din imaginea ta: text scurt în stânga, separator, apoi logo-urile clienților estompate (color la hover). Curat și fin — accentul cade pe încredere.</p>
+  </div>
+  <div class="variant-num">D</div>
+</div>
+<div class="vD-wrap">
+  <div class="vD">
+    <div class="vD-intro">
+      <svg class="vD-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+        <circle cx="9" cy="7" r="4"></circle>
+        <path d="M19 4l.7 1.6L21.5 6l-1.4 1.1.4 1.9L19 8.1 17.5 9l.4-1.9L16.5 6l1.8-.4z"></path>
+      </svg>
+      <p>Branduri care lucrează deja cu noi</p>
+    </div>
+    <div class="vD-logos">
+      <a href="https://two4delivery.ro/" target="_blank" rel="noopener"><img class="vD-logo" src="img/two4delivery-logo.svg" alt="Two4Delivery"></a>
+      <a href="https://autoartmotorsport.ro/" target="_blank" rel="noopener"><img class="vD-logo" src="img/LOGO_AUTOART.svg" alt="AutoArt Motorsport"></a>
+    </div>
+  </div>
+</div>
+
+<div class="foot-note">
+  <strong>Cum alegi:</strong> spune-mi ce variantă îți place (A, B sau C) — sau combinație — și o integrez în pagina Acasă, înlocuind lista actuală. Toate folosesc capturile și logo-urile reale.
+</div>
+
+</body>
+</html>
