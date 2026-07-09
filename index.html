@@ -3,321 +3,221 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Signa Studio Print — Creăm site-uri de prezentare și magazine online cu ajutorul AI. Cod curat, design personalizat, livrat în zile. Iași, România.">
-  <title>Signa Studio Print — Site-uri & Magazine online cu AI</title>
+  <meta name="description" content="Dezvoltare web: site-uri de prezentare, magazine online și aplicații web custom. Comunicare directă cu dezvoltatorul, fără intermediari. Iași, România.">
+  <title>Dezvoltare web — Site-uri, magazine online și aplicații custom</title>
 
-  <!-- Canonical -->
   <link rel="canonical" href="https://signastudioprint.ro/">
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Signa Studio Print — Site-uri & Magazine online cu AI">
-  <meta property="og:description" content="Creăm site-uri de prezentare și magazine online cu ajutorul AI. Cod curat, design personalizat, livrat în zile. Iași, România.">
+  <meta property="og:title" content="Dezvoltare web — Site-uri, magazine online și aplicații custom">
+  <meta property="og:description" content="Site-uri de prezentare, magazine online și aplicații web custom. Comunicare directă cu dezvoltatorul, fără intermediari.">
   <meta property="og:image" content="https://signastudioprint.ro/img/og-default.jpg">
   <meta property="og:url" content="https://signastudioprint.ro/">
   <meta property="og:locale" content="ro_RO">
   <meta property="og:site_name" content="Signa Studio Print">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Signa Studio Print — Site-uri & Magazine online cu AI">
-  <meta name="twitter:description" content="Creăm site-uri de prezentare și magazine online cu ajutorul AI. Cod curat, design personalizat, livrat în zile. Iași, România.">
+  <meta name="twitter:title" content="Dezvoltare web — Site-uri, magazine online și aplicații custom">
+  <meta name="twitter:description" content="Site-uri de prezentare, magazine online și aplicații web custom.">
   <meta name="twitter:image" content="https://signastudioprint.ro/img/og-default.jpg">
 
-  <!-- Manifest + theme -->
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#F8F7F4">
 
-  <!-- Schema.org LocalBusiness -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "Organization",
     "name": "Signa Studio Print",
-    "description": "Creăm site-uri de prezentare și magazine online cu ajutorul AI. Cod curat, design personalizat, livrat în zile. Iași, România.",
-    "image": "https://signastudioprint.ro/img/og-default.jpg",
+    "description": "Dezvoltare web: site-uri de prezentare, magazine online și aplicații web custom.",
     "url": "https://signastudioprint.ro/",
     "email": "contact@signastudioprint.ro",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Iași",
-      "addressCountry": "RO"
-    },
-    "areaServed": "RO",
-    "knowsAbout": ["Web development", "Site-uri de prezentare", "Magazine online", "AI", "HTML", "CSS", "JavaScript"]
+    "address": { "@type": "PostalAddress", "addressLocality": "Iași", "addressCountry": "RO" },
+    "areaServed": "RO"
   }
   </script>
 
-  <!-- Favicon -->
   <link rel="icon" href="img/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
-  <!-- Fonturi -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/global.css?v=1.0.0">
-  <link rel="stylesheet" href="css/index.css?v=1.0.0">
+  <link rel="stylesheet" href="css/global.css?v=2.0.0">
 </head>
 <body>
 
-  <!-- Skip to content -->
   <a href="#main-content" class="skip-link">Sari la conținut</a>
 
-  <!-- NAVBAR -->
-  <div id="navbar-placeholder"></div>
+  <div class="page">
 
-  <main id="main-content">
+    <div id="header-placeholder"></div>
 
-  <!-- ══ HERO ══════════════════════════════════════════════════ -->
-  <section class="hero">
+    <main id="main-content">
 
-    <!-- Fundal geometric animat -->
-    <div class="hero-geo" aria-hidden="true">
-      <svg viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-        <line class="hg-line hg-l1" x1="0" y1="1" x2="1440" y2="1"/>
-        <line class="hg-line hg-l2" x1="0" y1="899" x2="1440" y2="899"/>
-        <line class="hg-line hg-l3" x1="1" y1="0" x2="1" y2="900"/>
-        <line class="hg-line hg-l4" x1="1439" y1="0" x2="1439" y2="900"/>
-        <line class="hg-diag hg-d1" x1="0" y1="900" x2="600" y2="0"/>
-        <line class="hg-diag hg-d2" x1="1440" y1="0" x2="900" y2="900"/>
-        <circle class="hg-dot hg-dot--1" cx="720" cy="450" r="2"/>
-        <circle class="hg-dot hg-dot--2" cx="200" cy="150" r="1.5"/>
-        <circle class="hg-dot hg-dot--3" cx="1240" cy="750" r="1.5"/>
-        <circle class="hg-dot hg-dot--4" cx="400" cy="800" r="1.5"/>
-        <circle class="hg-dot hg-dot--5" cx="1100" cy="100" r="1.5"/>
-      </svg>
-    </div>
-
-    <!-- Conținut hero: Logo stânga + Text dreapta -->
-    <div class="hero-inner">
-
-      <!-- LOGO ANIMAT SVG -->
-      <div class="hero-logo-wrap" aria-label="Signa Studio Print">
-        <svg class="hero-svg-logo" viewBox="0 0 0.9172 1.8133" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
-          <path class="logo-path lp1" d="M0.5791 0.8276c0.0183,0.0089 0.0575,0.0514 0.0729,0.0714 0.0076,0.0099 0.0105,0.0207 0.0201,0.0277 0.0015,0.0166 0.0156,0.0359 0.0178,0.0621 0.0115,0.1419 -0.179,0.2244 -0.2908,0.2618 0.0092,-0.021 0.0143,-0.0467 0.0239,-0.0691 0.0143,-0.063 0.0444,-0.116 0.0627,-0.1751 0.0062,-0.0199 0.0292,-0.0873 -0.0058,-0.086 -0.036,0.0013 -0.0514,0.0468 -0.0591,0.0544 -0.0037,0.0132 -0.0095,0.0247 -0.014,0.0386 -0.0039,0.0122 -0.0073,0.025 -0.0104,0.037 -0.0059,0.023 -0.0541,0.2067 -0.0681,0.2222 0.0002,0.0141 -0.0116,0.0173 -0.0245,0.0237 -0.0355,0.0176 -0.0594,0.0286 -0.0941,0.0504 -0.1132,0.0712 -0.063,0.1013 -0.0498,0.1004 0.0112,-0.003 0.0221,-0.0177 0.0322,-0.0262 0.0258,-0.0218 0.0789,-0.0524 0.1119,-0.0641 -0.0113,0.0351 -0.0387,0.1556 -0.0501,0.179 -0.012,0.0514 -0.0696,0.2157 -0.0412,0.2637 0.0122,0.0207 0.0366,0.0152 0.0528,0.0031 0.0214,-0.016 0.0187,-0.0248 0.0152,-0.0565 -0.0028,-0.0246 0.0106,-0.1232 0.0205,-0.1354 0.0031,-0.0226 0.0121,-0.0484 0.0185,-0.0707 0.0065,-0.0229 0.0131,-0.0454 0.0197,-0.0693 0.0066,-0.0239 0.0366,-0.124 0.0359,-0.1404 0.0006,-0.0005 0.0014,-0.0021 0.0017,-0.0015 0.0003,0.0005 0.003,-0.0034 0.0085,-0.0063 0.0024,-0.0013 0.0088,-0.0033 0.0122,-0.0044 0.0096,-0.0031 0.0154,-0.0053 0.0245,-0.0087 0.0163,-0.006 0.037,-0.0146 0.0533,-0.0187 0.0027,-0.0017 0.0987,-0.0426 0.1329,-0.0619 0.0849,-0.048 0.159,-0.1357 0.1512,-0.2403 -0.0037,-0.0503 -0.0451,-0.1291 -0.0607,-0.1305 -0.0099,-0.0172 -0.0456,-0.0506 -0.0641,-0.0608 0.0014,-0.007 0.0042,-0.0078 0.0143,-0.0137 0.0436,-0.0257 0.0855,-0.0579 0.1236,-0.0902 0.04,-0.0338 0.0817,-0.0786 0.1117,-0.1328 0.0545,-0.0985 0.0473,-0.2114 -0.0666,-0.2329 -0.0454,-0.0086 -0.0675,0.0025 -0.108,0.0081 -0.0005,0.0004 -0.0538,0.0228 -0.0618,0.0271 -0.0581,0.0322 -0.1146,0.0904 -0.1427,0.1545 -0.0296,0.0676 -0.025,0.1601 0.0048,0.218l0.0353 0.0587c-0.0157,0.0128 -0.0794,0.043 -0.0553,0.067 0.0166,0.0165 0.0729,-0.0284 0.0891,-0.0336zm0.0222 -0.0692c-0.0268,-0.0231 -0.042,-0.0738 -0.0465,-0.1231 -0.0055,-0.0606 0.0093,-0.0922 0.0353,-0.1298 0.0422,-0.061 0.1403,-0.134 0.2128,-0.121 0.0493,0.0088 0.056,0.065 0.0422,0.115 -0.0141,0.0512 -0.0475,0.0941 -0.0814,0.1295 -0.0078,0.0082 -0.0133,0.0129 -0.0212,0.0206 -0.0353,0.0347 -0.052,0.045 -0.0908,0.0757 -0.0102,0.008 -0.04,0.0289 -0.0504,0.0331z"/>
-          <path class="logo-path lp2" d="M0.4348 0.0959c0.0426,-0.0233 0.1486,-0.0699 0.1499,0.0234 0.0009,0.0687 -0.0478,0.1147 -0.065,0.1695 -0.0031,0.0556 0.0343,0.0228 0.0465,0.0066 0.0142,-0.0187 0.0271,-0.0357 0.04,-0.0573 0.0541,-0.0913 0.0695,-0.2229 -0.0724,-0.2372 -0.058,-0.0058 -0.106,0.0216 -0.1457,0.0428 -0.0132,0.0077 -0.0265,0.0153 -0.0397,0.023 -0.0165,0.0115 -0.024,0.015 -0.0502,0.0341 -0.0384,0.0286 -0.0732,0.0568 -0.1102,0.0912 -0.0594,0.0486 -0.0817,0.1094 -0.0895,0.133 -0.0158,0.0648 -0.0165,0.0921 0.0166,0.1446 0.0233,0.0369 0.056,0.0601 0.09,0.0878 0.0637,0.0518 0.1442,0.0984 0.1741,0.1841 0.0336,0.0965 -0.0357,0.1861 -0.1076,0.2342 -0.0266,0.0178 -0.0857,0.048 -0.1201,0.0574 -0.0955,0.0263 -0.0867,-0.0527 -0.0709,-0.0709 0.0134,-0.0337 0.0628,-0.089 0.0804,-0.1053 0.0415,-0.0385 0.1138,-0.0657 0.0844,-0.0901 -0.0314,-0.026 -0.253,0.1031 -0.2452,0.2469 0.0051,0.0083 0.0073,0.0467 0.0543,0.0692 0.0316,0.0151 0.0737,0.0141 0.1108,0.0058 0.0367,-0.0082 0.0617,-0.0203 0.0921,-0.0356 0.0399,-0.0201 0.0611,-0.0408 0.0801,-0.0503 0.0019,-0.0053 0.0266,-0.0253 0.0353,-0.0345 0.0133,-0.0141 0.0223,-0.0253 0.0342,-0.0408 0.0205,-0.0267 0.0393,-0.0598 0.047,-0.1003 0.0179,-0.0952 -0.0324,-0.1648 -0.0742,-0.2138 -0.0846,-0.0993 -0.2626,-0.165 -0.2,-0.2851 0.0043,-0.0082 0.0145,-0.0283 0.0203,-0.0352l0.0139 -0.0179c0.0291,-0.0375 0.0652,-0.0674 0.103,-0.0984 0.0178,-0.0146 0.0363,-0.0282 0.0569,-0.043 0.0199,-0.0143 0.0398,-0.0248 0.0609,-0.0378z"/>
-        </svg>
-        <div class="hero-logo-line"></div>
-        <div class="hero-logo-text">
-          <span class="hlt-name">Signa Studio Print</span>
-          <span class="hlt-sub">Web · AI · Development</span>
-          <span class="hlt-loc">Iași, România</span>
+      <!-- ══ HERO ══════════════════════════════════════════ -->
+      <section class="mx-hero">
+        <div class="mx-hero-text">
+          <span class="mx-hero-eyebrow">Dezvoltare web</span>
+          <h1>Site-ul tău, fără bătăi de cap. <em>Aplicația ta, construită corect.</em></h1>
+          <p class="mx-hero-sub">Site-uri de prezentare, magazine online și aplicații web custom. Comunicare directă cu persoana care construiește — fără intermediari.</p>
+          <div class="mx-hero-ctas">
+            <a href="contact.html" class="mx-btn">Discută despre proiect</a>
+            <a href="#servicii" class="mx-btn mx-btn--ghost">Vezi serviciile</a>
+          </div>
         </div>
-      </div>
-
-      <!-- TEXT PRINCIPAL -->
-      <div class="hero-content">
-        <p class="hero-eyebrow">
-          <span class="eyebrow-dot"></span>
-          Web · AI · Development
-        </p>
-        <h1 class="hero-title">
-          <span class="ht-line ht-l1">Site-uri</span>
-          <span class="ht-line ht-l2"><em>create cu AI.</em></span>
-          <span class="ht-line ht-l3">Livrate în zile,</span>
-          <span class="ht-line ht-l4">nu săptămâni.</span>
-        </h1>
-        <p class="hero-sub">
-          Cod curat. Design personalizat.<br>
-          Fără șabloane generice. Fără abonamente.
-        </p>
-        <div class="hero-ctas">
-          <a href="de-ce-ai-nevoie.html" class="btn-primary"><span>Descoperă cum</span></a>
+        <div class="mx-hero-visual" aria-hidden="true">
+          <div class="mx-blob mx-blob--1"></div>
+          <div class="mx-blob mx-blob--2"></div>
+          <div class="mx-hero-panel">
+            <span class="mx-chip">Comunicare directă</span>
+            <span class="mx-chip mx-chip--teal">Stack modern</span>
+            <div class="mx-panel-title">Next.js · React · TypeScript · Supabase</div>
+            <p class="mx-panel-text">Cod curat, ușor de întreținut, construit corect de la început.</p>
+          </div>
         </div>
-      </div>
+      </section>
 
-    </div>
+      <!-- ══ SERVICII ══════════════════════════════════════ -->
+      <section class="mx-section" id="servicii">
+        <div class="mx-head reveal">
+          <span class="mx-highlight">Servicii</span>
+          <p>De la un site vitrină la o aplicație web complexă — aleg soluția potrivită pentru nevoia ta.</p>
+        </div>
+        <div class="mx-cards reveal">
+          <article class="mx-card mx-card--white">
+            <div class="mx-num">01</div>
+            <h3>Site-uri de prezentare</h3>
+            <p class="mx-card-desc">Site vitrină pentru afacerea ta — design personalizat, optimizare de bază SEO și o prezență online profesională.</p>
+            <a href="site-uri.html" class="mx-card-link"><span class="mx-arrow" aria-hidden="true">↗</span> Află mai multe</a>
+          </article>
+          <article class="mx-card mx-card--blue">
+            <div class="mx-num">02</div>
+            <h3>Magazine online</h3>
+            <p class="mx-card-desc">Magazine complet funcționale, cu coș, plăți online și livrare. Te învăț să le administrezi singur după predare.</p>
+            <a href="magazine-online.html" class="mx-card-link"><span class="mx-arrow" aria-hidden="true">↗</span> Află mai multe</a>
+          </article>
+          <article class="mx-card mx-card--dark">
+            <div class="mx-num">03</div>
+            <h3>Aplicații web custom</h3>
+            <p class="mx-card-desc">Pentru proiecte cu logică de business specifică — construite cu Next.js, React, TypeScript și Supabase.</p>
+            <a href="contact.html" class="mx-card-link"><span class="mx-arrow" aria-hidden="true">↗</span> Discută proiectul</a>
+          </article>
+          <article class="mx-card mx-card--teal">
+            <div class="mx-num">04</div>
+            <h3>Nu știi ce ai nevoie?</h3>
+            <p class="mx-card-desc">Te ajut să alegi varianta corectă pentru afacerea ta — fără jargon, fără presiune.</p>
+            <a href="contact.html" class="mx-card-link"><span class="mx-arrow" aria-hidden="true">↗</span> Hai să vorbim</a>
+          </article>
+        </div>
+      </section>
 
-    <!-- Scroll indicator -->
-    <div class="hero-scroll" aria-hidden="true">
-      <div class="hero-scroll-line"></div>
-      <span>Scroll</span>
-    </div>
+      <!-- ══ BANDĂ CTA ═════════════════════════════════════ -->
+      <section class="mx-section">
+        <div class="mx-band reveal">
+          <h2>Hai să facem lucrurile să se întâmple</h2>
+          <p>Spune-mi ce ai nevoie și îți propun un plan clar, cu preț și termen — fără costuri ascunse.</p>
+          <a href="contact.html" class="mx-btn mx-btn--dark">Cere o ofertă</a>
+        </div>
+      </section>
 
-  </section>
+      <!-- ══ CUM LUCRĂM ════════════════════════════════════ -->
+      <section class="mx-section">
+        <div class="mx-head reveal">
+          <span class="mx-highlight">Cum lucrăm</span>
+          <p>Un proces simplu și transparent, de la prima discuție până la predare.</p>
+        </div>
+        <div class="mx-accordion reveal">
+          <div class="mx-acc open">
+            <button class="mx-acc-head" aria-expanded="true">
+              <span class="mx-acc-num">01</span>
+              <span class="mx-acc-title">Discuție inițială</span>
+              <span class="mx-acc-icon" aria-hidden="true">–</span>
+            </button>
+            <div class="mx-acc-body"><p>Îmi spui ce ai nevoie și înțeleg obiectivele afacerii tale, fără presupuneri de ambele părți.</p></div>
+          </div>
+          <div class="mx-acc">
+            <button class="mx-acc-head" aria-expanded="false">
+              <span class="mx-acc-num">02</span>
+              <span class="mx-acc-title">Ofertă clară</span>
+              <span class="mx-acc-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="mx-acc-body"><p>Primești preț și termen clar, fără costuri ascunse, ca să știi exact la ce să te aștepți.</p></div>
+          </div>
+          <div class="mx-acc">
+            <button class="mx-acc-head" aria-expanded="false">
+              <span class="mx-acc-num">03</span>
+              <span class="mx-acc-title">Dezvoltare</span>
+              <span class="mx-acc-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="mx-acc-body"><p>Construiesc proiectul lucrând direct cu tine, cu actualizări pe parcurs și feedback la fiecare etapă.</p></div>
+          </div>
+          <div class="mx-acc">
+            <button class="mx-acc-head" aria-expanded="false">
+              <span class="mx-acc-num">04</span>
+              <span class="mx-acc-title">Predare &amp; instruire</span>
+              <span class="mx-acc-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="mx-acc-body"><p>Îți predau proiectul și îți arăt exact cum să-l administrezi singur, fără cunoștințe tehnice.</p></div>
+          </div>
+        </div>
+      </section>
 
-  <!-- ══ PROIECTE WEB — bandă încredere ═══════════════════════ -->
-  <div class="work-strip">
-    <div class="trust-band reveal">
-      <div class="trust-intro">
-        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-          <circle cx="9" cy="7" r="4"></circle>
-          <path d="M19 4l.7 1.6L21.5 6l-1.4 1.1.4 1.9L19 8.1 17.5 9l.4-1.9L16.5 6l1.8-.4z"></path>
-        </svg>
-        <p class="trust-text">Branduri care lucrează deja cu noi</p>
-      </div>
-      <div class="trust-logos">
-        <a href="https://two4delivery.ro/" target="_blank" rel="noopener" class="trust-logo-link" aria-label="Two4Delivery">
-          <img src="img/two4delivery-logo.svg" alt="Two4Delivery" class="trust-logo" loading="lazy">
-        </a>
-        <a href="https://autoartmotorsport.ro/" target="_blank" rel="noopener" class="trust-logo-link" aria-label="AutoArt Motorsport">
-          <img src="img/LOGO_AUTOART.svg" alt="AutoArt Motorsport" class="trust-logo" loading="lazy">
-        </a>
-        <a href="proiecte.html" class="trust-all">Vezi toate proiectele <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
+      <!-- ══ DESPRE ════════════════════════════════════════ -->
+      <section class="mx-section">
+        <div class="mx-about">
+          <div class="mx-about-visual reveal" aria-hidden="true">
+            <div class="mx-about-badge">
+              <span class="b1">Direct cu tine</span>
+              <span class="b2">fără intermediari</span>
+            </div>
+          </div>
+          <div class="mx-about-text reveal">
+            <span class="mx-hero-eyebrow">Despre</span>
+            <h2>Lucrezi direct cu mine</h2>
+            <p>Nu există o agenție impersonală între tine și proiect — vorbești direct cu persoana care îl construiește. Sunt la începutul acestui drum și îmi pun toată atenția în fiecare proiect, cu prețuri corecte pentru clienți care vor o colaborare pe termen lung.</p>
+            <ul class="mx-checklist">
+              <li>Atenție la detalii și implicare în fiecare proiect</li>
+              <li>Tehnologii moderne, cod curat și ușor de întreținut</li>
+              <li>Instruire după predare — administrezi singur site-ul</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ CONTACT ═══════════════════════════════════════ -->
+      <section class="mx-section">
+        <div class="mx-head reveal">
+          <span class="mx-highlight">Contact</span>
+          <p>Ai un proiect în minte? Trimite-mi câteva detalii și revin cu un plan.</p>
+        </div>
+        <div class="mx-contact reveal">
+          <h3>Spune-mi despre proiectul tău</h3>
+          <div class="mx-field">
+            <label for="mxName">Nume</label>
+            <input type="text" id="mxName" name="name" placeholder="Numele tău">
+          </div>
+          <div class="mx-field">
+            <label for="mxEmail">Email</label>
+            <input type="email" id="mxEmail" name="email" placeholder="email@domeniu.ro">
+          </div>
+          <div class="mx-field">
+            <label for="mxMsg">Mesaj</label>
+            <textarea id="mxMsg" name="message" placeholder="Spune-mi pe scurt ce ai nevoie..."></textarea>
+          </div>
+          <a href="contact.html" class="mx-btn">Trimite mesajul</a>
+        </div>
+      </section>
+
+    </main>
+
   </div>
 
-  <!-- ══ DE CE AI NEVOIE — 3 argumente vizuale ════════════════ -->
-  <section class="why-teaser">
-    <div class="why-header reveal">
-      <p class="section-label">De ce contează</p>
-      <h2 class="section-title">Afacerea ta merită să fie găsită online</h2>
-    </div>
-    <div class="why-cards reveal-group">
-      <div class="why-card reveal">
-        <div class="why-stat">Google</div>
-        <div class="why-title">Clienții te caută online</div>
-        <div class="why-desc">Înainte să cumpere, oamenii îți caută afacerea pe internet. Fără un site, te găsesc greu — și ajung la concurență.</div>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-stat">24/7</div>
-        <div class="why-title">Activ non-stop</div>
-        <div class="why-desc">Site-ul tău prezintă afacerea și atrage clienți chiar și când tu dormi. Niciun fluturaș sau reclamă nu poate face asta.</div>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-stat">100%</div>
-        <div class="why-title">Controlul tău</div>
-        <div class="why-desc">Spre deosebire de rețelele sociale, site-ul e singurul canal digital pe care îl controlezi complet, pe termen lung.</div>
-      </div>
-    </div>
-    <div class="why-cta reveal">
-      <a href="de-ce-ai-nevoie.html" class="btn-ghost">Descoperă mai multe argumente <span>→</span></a>
-    </div>
-  </section>
-
-  <!-- ══ CE FACEM — 3 CARDURI ══════════════════════════════════ -->
-  <section class="services-trio reveal-group">
-    <a href="site-uri.html" class="svc-card svc-featured reveal">
-      <div class="svc-badge">Serviciu principal</div>
-      <div class="svc-num">01</div>
-      <h2 class="svc-title">Site-uri de<br><em>prezentare</em></h2>
-      <p class="svc-desc">HTML/CSS/JS pur — fără șabloane generice, fără abonamente. Cod 100% al tău, design personalizat, livrat în 3–7 zile.</p>
-      <div class="svc-arrow">→</div>
-    </a>
-    <a href="magazine-online.html" class="svc-card reveal">
-      <div class="svc-num">02</div>
-      <h2 class="svc-title">Magazine<br>online</h2>
-      <p class="svc-desc">WooCommerce sau OpenCart — magazine complet funcționale, cu coș de cumpărături și plăți online integrate.</p>
-      <div class="svc-arrow">→</div>
-    </a>
-    <a href="de-ce-ai-nevoie.html" class="svc-card reveal">
-      <div class="svc-num">03</div>
-      <h2 class="svc-title">Nu știi ce<br>ai nevoie?</h2>
-      <p class="svc-desc">Te ajutăm să alegi varianta corectă pentru afacerea ta — site de prezentare, landing page sau magazin online.</p>
-      <div class="svc-arrow">→</div>
-    </a>
-  </section>
-
-  <!-- ══ PROCES — 4 etape ═══════════════════════════════════════ -->
-  <section class="idx-process">
-    <div class="idx-process-header reveal">
-      <p class="section-label">Cum lucrăm</p>
-      <h2 class="section-title">De la idee la site live</h2>
-    </div>
-    <div class="idx-process-steps reveal-group">
-      <div class="idx-step reveal">
-        <div class="idx-step-num">01</div>
-        <div class="idx-step-title">Discuție &amp; strategie</div>
-        <div class="idx-step-desc">Înțelegem afacerea ta, publicul țintă și obiectivele. Stabilim structura și direcția vizuală.</div>
-      </div>
-      <div class="idx-step reveal">
-        <div class="idx-step-num">02</div>
-        <div class="idx-step-title">Construim cu AI</div>
-        <div class="idx-step-desc">Folosim AI pentru a accelera construirea — cod curat, design personalizat, animații incluse.</div>
-      </div>
-      <div class="idx-step reveal">
-        <div class="idx-step-num">03</div>
-        <div class="idx-step-title">Perfecționăm împreună</div>
-        <div class="idx-step-desc">Prezentăm, primim feedback și ajustăm. Două runde de revizii incluse în preț.</div>
-      </div>
-      <div class="idx-step reveal">
-        <div class="idx-step-num">04</div>
-        <div class="idx-step-title">Lansare &amp; siguranță</div>
-        <div class="idx-step-desc">Publicăm pe domeniul tău, optimizăm SEO, configurăm Google Search Console și monitorizare continuă.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ PROIECTE PREVIEW ═══════════════════════════════════════ -->
-  <section class="projects-strip" id="psSection">
-    <div class="ps-header reveal">
-      <div>
-        <p class="section-label">Portofoliu</p>
-        <h2 class="section-title">Câteva proiecte</h2>
-      </div>
-      <a href="proiecte.html" class="btn-ghost">Vezi toate <span>→</span></a>
-    </div>
-    <div class="ps-carousel reveal">
-      <button class="ps-arrow ps-arrow-prev" id="psPrev" type="button" aria-label="Proiectul anterior">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="15 18 9 12 15 6"></polyline></svg>
-      </button>
-      <div class="ps-viewport" id="psViewport">
-        <div class="ps-track" id="psGrid"></div>
-      </div>
-      <button class="ps-arrow ps-arrow-next" id="psNext" type="button" aria-label="Proiectul următor">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </button>
-    </div>
-    <div class="ps-dots" id="psDots" role="tablist" aria-label="Navigare proiecte"></div>
-  </section>
-
-  <!-- ══ TESTIMONIALE ═══════════════════════════════════════════ -->
-  <section class="tst-section">
-    <div class="tst-header reveal">
-      <p class="section-label">Ce spun clienții</p>
-      <h2 class="section-title">Rezultate care vorbesc</h2>
-    </div>
-    <div class="tst-grid reveal-group">
-      <figure class="tst-card reveal">
-        <div class="tst-quote-mark" aria-hidden="true">”</div>
-        <blockquote class="tst-text">Aveam nevoie de un site rapid și fără bătăi de cap. În mai puțin de o săptămână eram online — exact cum mi-l imaginam.</blockquote>
-        <figcaption class="tst-author">
-          <span class="tst-name">Nume client</span>
-          <span class="tst-role">Fondator · firmă de curierat</span>
-        </figcaption>
-      </figure>
-      <figure class="tst-card reveal">
-        <div class="tst-quote-mark" aria-hidden="true">”</div>
-        <blockquote class="tst-text">Profesionalism de la prima discuție până la livrare. Site-ul arată impecabil pe telefon și e ușor de administrat.</blockquote>
-        <figcaption class="tst-author">
-          <span class="tst-name">Nume client</span>
-          <span class="tst-role">Manager · club sportiv</span>
-        </figcaption>
-      </figure>
-      <figure class="tst-card reveal">
-        <div class="tst-quote-mark" aria-hidden="true">”</div>
-        <blockquote class="tst-text">Comunicare clară, preț corect și un rezultat care chiar arată ca al unei firme serioase. Recomand cu încredere.</blockquote>
-        <figcaption class="tst-author">
-          <span class="tst-name">Nume client</span>
-          <span class="tst-role">Antreprenor local</span>
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ══ CTA FINAL ══════════════════════════════════════════════ -->
-  <section class="cta-final reveal">
-    <p class="section-label">Hai să lucrăm</p>
-    <h2 class="cta-title">Ai un proiect <em>în minte?</em></h2>
-    <p class="cta-sub">Spune-ne despre el. Consultanță gratuită, răspuns rapid.</p>
-    <a href="contact.html" class="btn-primary"><span>Contactează-ne</span></a>
-  </section>
-
-  </main>
-
-  <!-- FOOTER -->
   <div id="footer-placeholder"></div>
 
-  <script src="js/components.js?v=1.0.0" defer></script>
-  <script src="js/global.js?v=1.0.0" defer></script>
-  <script src="js/home-sites.js?v=1.0.0" defer></script>
-  <script src="js/index.js?v=1.0.0" defer></script>
+  <script src="js/components.js?v=2.0.0" defer></script>
 
 </body>
 </html>

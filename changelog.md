@@ -2,6 +2,16 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.0.0 — 2026-07-09 — Redesign vizual complet (temă nouă)
+- Temă nouă aplicată pe TOT site-ul (multi-page păstrat): paletă caldă albastru+teal (oklch), carduri cu contur + umbră solidă, highlight-uri, acordeon, fonturi Space Grotesk + Inter
+- Design system partajat în css/global.css (tokens, header/footer, butoane, carduri, pachete, comparație, timeline, formular, proiecte) + js/components.js (header/footer multi-page, meniu, acordeon, reveal)
+- Layout full-bleed: container 1600px + spațiere laterală fluidă, footer edge-to-edge
+- Toate paginile reconstruite în temă: index, de-ce-ai-nevoie, site-uri, magazine-online, proiecte, contact, 404
+- proiecte.html trecut pe galerie statică (2 proiecte reale) în locul mecanismului JSON/JS
+- Formularul de contact păstrat funcțional (CSRF + php/contact.php), restilizat
+- Nume „Signa Studio Print" păstrat ca placeholder — se schimbă în BRAND (components.js) + meta/schema + php la rebranding
+- Eliminate fișierele vechi de design (css/js per-pagină) și variantele de comparație
+
 ## v1.0.0 — 2026-07-09
 - Eliminat toate stilurile inline (hero index, secțiune prețuri magazine) → clase CSS
 - Corectat sitemap.xml (elimină pagini inexistente din vechiul brand, adaugă paginile reale)
