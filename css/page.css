@@ -146,6 +146,9 @@
   padding: 80px var(--side-pad);
   background: var(--white);
 }
+.services-grid-section--alt {
+  background: var(--gray-bg);
+}
 
 .services-grid-header {
   margin-bottom: 48px;

@@ -1,8 +1,12 @@
 /* ═══════════════════════════════════════════════════════
    SIGNA STUDIO PRINT — contact.js
    Logica formularului de contact.
-   NOTĂ: Trimiterea reală necesită php/contact.php pe un
-   host cu PHP. Momentan simulează succesul (vezi Pasul B).
+
+   Comportament:
+   • Pe host cu PHP  → obține token CSRF din php/contact.php,
+     trimite real prin fetch() și afișează răspunsul serverului.
+   • Fără PHP (ex. GitHub Pages) → detectează absența backend-ului
+     și simulează succesul, ca site-ul static să rămână funcțional.
    ═══════════════════════════════════════════════════════ */
 
 (function () {
@@ -11,9 +15,23 @@
   var form = document.getElementById('contactForm');
   if (!form) return;
 
+  var ENDPOINT = 'php/contact.php';
   var success = document.getElementById('formSuccess');
   var submitBtn = form.querySelector('.form-submit');
+  var csrfInput = document.getElementById('fcsrf');
   var formDirty = false;
+  var hasBackend = false; // devine true dacă obținem un token CSRF valid
+
+  /* ── Încearcă să obții tokenul CSRF (detectează backend-ul) ── */
+  fetch(ENDPOINT, { method: 'GET', headers: { 'Accept': 'application/json' } })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      if (data && data.csrf) {
+        hasBackend = true;
+        if (csrfInput) csrfInput.value = data.csrf;
+      }
+    })
+    .catch(function () { /* fără backend — rămânem pe simulare */ });
 
   /* ── VALIDARE CÂMP ─────────────────────────────────── */
   function validateField(field) {
@@ -43,11 +61,25 @@
     });
   });
 
+  /* ── Stare buton ───────────────────────────────────── */
+  function setLoading(on) {
+    if (!submitBtn) return;
+    submitBtn.disabled = on;
+    submitBtn.classList.toggle('is-loading', on);
+    submitBtn.textContent = on ? 'Se trimite...' : 'Trimite mesajul →';
+  }
+
+  function showSuccess() {
+    formDirty = false;
+    if (form) form.style.display = 'none';
+    if (success) success.style.display = 'block';
+  }
+
   /* ── SUBMIT ────────────────────────────────────────── */
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    /* Honeypot: dacă e completat, e bot — ne prefacem că a mers, dar nu trimitem */
+    /* Honeypot: dacă e completat, e bot — ne prefacem că a mers */
     var hp = form.querySelector('[name="website"]');
     if (hp && hp.value !== '') {
       return;
@@ -64,21 +96,35 @@
       return;
     }
 
-    /* Stare loading pe buton */
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.classList.add('is-loading');
-      submitBtn.textContent = 'Se trimite...';
+    setLoading(true);
+
+    /* ── Fără backend: simulare (site static) ── */
+    if (!hasBackend) {
+      setTimeout(function () {
+        setLoading(false);
+        showSuccess();
+      }, 600);
+      return;
     }
 
-    /* ── SIMULARE (până la host cu PHP) ──
-       Când vei avea host, aici se va înlocui cu un fetch()
-       către php/contact.php. Vezi Pasul B. */
-    setTimeout(function () {
-      formDirty = false;
-      if (form) form.style.display = 'none';
-      if (success) success.style.display = 'block';
-    }, 600);
+    /* ── Cu backend: trimitere reală ── */
+    fetch(ENDPOINT, {
+      method: 'POST',
+      body: new FormData(form)
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        setLoading(false);
+        if (res && res.success) {
+          showSuccess();
+        } else {
+          alert(res && res.message ? res.message : 'A apărut o eroare. Încearcă din nou.');
+        }
+      })
+      .catch(function () {
+        setLoading(false);
+        alert('Nu am putut trimite mesajul. Verifică conexiunea și încearcă din nou.');
+      });
   });
 
   /* ── AVERTISMENT LA PĂRĂSIREA PAGINII ──────────────── */

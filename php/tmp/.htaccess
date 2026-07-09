@@ -1,0 +1,2 @@
+# Blochează complet accesul web la fișierele de rate limiting
+Require all denied

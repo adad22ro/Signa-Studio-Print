@@ -59,9 +59,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <meta name="theme-color" content="#F8F7F4">
 
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/page.css">
-  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/global.css?v=1.0.0">
+  <link rel="stylesheet" href="css/page.css?v=1.0.0">
+  <link rel="stylesheet" href="css/contact.css?v=1.0.0">
 </head>
 <body>
 
@@ -156,6 +156,8 @@
           <label for="fwebsite">Nu completa acest câmp</label>
           <input type="text" id="fwebsite" name="website" tabindex="-1" autocomplete="off">
         </div>
+        <!-- Token CSRF — completat automat din php/contact.php -->
+        <input type="hidden" id="fcsrf" name="csrf" value="">
         <button type="submit" class="form-submit">Trimite mesajul →</button>
       </form>
       <div class="form-success" id="formSuccess" role="status">
@@ -170,8 +172,8 @@
   <!-- FOOTER generat automat din js/components.js -->
   <div id="footer-placeholder"></div>
 
-  <script src="js/components.js" defer></script>
-  <script src="js/contact.js" defer></script>
+  <script src="js/components.js?v=1.0.0" defer></script>
+  <script src="js/contact.js?v=1.0.0" defer></script>
 
 </body>
 </html>
