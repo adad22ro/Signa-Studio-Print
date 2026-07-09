@@ -66,7 +66,7 @@
     if (!submitBtn) return;
     submitBtn.disabled = on;
     submitBtn.classList.toggle('is-loading', on);
-    submitBtn.textContent = on ? 'Se trimite...' : 'Trimite mesajul →';
+    submitBtn.textContent = on ? 'Se trimite...' : 'Trimite un mesaj';
   }
 
   function showSuccess() {
