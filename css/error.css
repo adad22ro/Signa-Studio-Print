@@ -1,37 +1,119 @@
-/* ═══════════════════════════════════════════════════════
-   DEZVOLTARE WEB — error.css (404)
+﻿/* ═══════════════════════════════════════════════════════
+   SIGNA STUDIO PRINT — error.css (404)
    ═══════════════════════════════════════════════════════ */
 
-.error {
+/* ══ SECȚIUNE EROARE ═════════════════════════════════════ */
+.error-section {
   position: relative;
-  overflow: hidden;
-  min-height: calc(100vh - var(--header-h) - 100px);
-  padding: 120px var(--side-pad);
-  text-align: center;
+  min-height: 100svh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--sp-3);
+  overflow: hidden;
+  background: var(--white);
+  padding: calc(var(--navbar-h) + 40px) var(--side-pad) 80px;
 }
-.error > * { position: relative; z-index: 1; }
+
+/* Fundal geometric */
+.error-geo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.error-geo svg { width: 100%; height: 100%; }
+.eg-line {
+  stroke: rgba(91, 95, 239, 0.12);
+  stroke-width: 0.8; fill: none;
+}
+.eg-diag {
+  stroke: rgba(91, 95, 239, 0.07);
+  stroke-width: 0.8; fill: none;
+}
+
+/* ══ CONȚINUT ════════════════════════════════════════════ */
+.error-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  text-align: center;
+}
 
 .error-code {
-  font-size: clamp(80px, 18vw, 160px);
+  font-family: var(--font-script);
+  font-size: clamp(90px, 18vw, 180px);
   font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--blue);
+  line-height: 0.9;
+  color: var(--indigo);
+  margin-bottom: 16px;
 }
+
 .error-title {
-  font-size: clamp(26px, 4vw, 36px);
-  font-weight: 700;
-  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 400;
+  color: var(--black);
+  line-height: 1.2;
+  margin-bottom: 20px;
 }
+.error-title em {
+  font-family: var(--font-script);
+  font-style: normal;
+  font-weight: 600;
+  color: var(--indigo);
+  font-size: 1.1em;
+}
+
 .error-sub {
-  font-size: 17px;
-  line-height: 1.6;
-  color: var(--text);
-  max-width: 520px;
+  font-size: clamp(13px, 1.5vw, 15px);
+  color: var(--gray-mid);
+  line-height: 1.8;
+  margin-bottom: 36px;
 }
-.error .btn { margin-top: var(--sp-1); }
+
+.error-ctas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+}
+
+/* ── Linkuri rapide ── */
+.error-links {
+  border-top: 1px solid var(--gray-border);
+  padding-top: 28px;
+}
+.error-links-label {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gray-light);
+  margin-bottom: 16px;
+}
+.error-links-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+}
+.error-links-grid a {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-mid);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+.error-links-grid a:hover { color: var(--indigo); }
+.error-links-grid a:focus-visible {
+  outline: 2px solid var(--indigo);
+  outline-offset: 3px;
+}
+
+/* ══ RESPONSIVE ══════════════════════════════════════════ */
+@media (max-width: 600px) {
+  .error-ctas { flex-direction: column; gap: 16px; }
+  .error-links-grid { flex-direction: column; gap: 12px; }
+}
