@@ -55,28 +55,38 @@ Breakpoints țintă (în `responsive.css`): **1024 / 768 / 640 / 480px**
 
 ---
 
-## Structura ACTUALĂ (august 2026)
+## Structura ACTUALĂ (v2.1.0 — reconstrucție Figma în curs)
 
-**Pagini:** `index`, `site-uri`, `magazine-online`, `proiecte`, `contact`, `404`
-**Backend:** `php/contact.php`, `php/config.php`, `php/tmp/`
-(`de-ce-ai-nevoie` și `explorare-lista` au fost șterse — vezi Decizii luate)
+**Sistem de design nou** (structura cerută de instrucțiuni, deja pe loc):
+```
+css/reset.css  variables.css  base.css  components.css  responsive.css
+css/home.css   (secțiuni specifice paginii principale)
+components/navbar.html  footer.html      (injectate prin fetch)
+js/main.js  animations.js
+php/contact.php  config.php  tmp/
+```
 
-**CSS** — un fișier per pagină, nu structura de mai sus:
-`global.css` (149 variabile), `page.css`, `index.css`, `site-uri.css`,
-`magazine-online.css`, `proiecte.css`, `contact.css`, `error.css`
+**Pagini pe designul NOU (Figma):**
+- `index.html` — hero + servicii ✅ (restul secțiunilor de adăugat)
 
-**JS** — toate IIFE cu `'use strict'`:
+**Pagini încă pe designul VECHI v2.0.0** (Space Grotesk + teal, `css/global.css`):
+- `site-uri.html`, `magazine-online.html`, `proiecte.html`,
+  `contact.html`, `404.html`, `de-ce-ai-nevoie.html`
+- Fișiere vechi încă folosite: `css/global.css`, `css/error.css`,
+  `js/components.js`, `js/contact.js`
+- **Se șterg pe măsură ce fiecare pagină e reconstruită.**
 
-| fișier | rol |
-|---|---|
-| `components.js` | injectează navbar + footer (ca string-uri JS, nu prin fetch) |
-| `global.js` | navbar scroll, hamburger, meniu mobil, active link |
-| `contact.js` | validare formular + trimitere AJAX către `php/contact.php` |
-| `index.js` / `home-sites.js` | homepage + carusel proiecte din `projects.json` |
-| `site-uri.js` / `site-uri-hero.js` | carusel + animație editor tip VS Code |
-| `proiecte.js` | galerie cu filtre (prezentare / landing / magazine) |
+**Pagină nouă de creat:** `aplicatii-custom.html` (frame Figma 1:1668 / mobil 1:3531)
 
-**Date:** `projects.json` — sursa unică pentru proiecte; imagini în `poze/`
+**Versiune cache busting curentă: `?v=2.1.0`** — incrementeaz-o la orice
+modificare de CSS/JS, în toate paginile.
+
+**Unelte verificate pe acest calculator:**
+- PHP 8.2 la `/c/xampp/php/php.exe` — lint (`php -l`) și server local (`php -S`)
+- Chrome la `/c/Program Files/Google/Chrome/Application/chrome.exe` —
+  screenshot headless pentru verificare vizuală (folosește cale Windows la `--screenshot`)
+- `sharp` instalat în scratchpad pentru conversie WebP (nu în proiect)
+- **Previzualizarea locală necesită server** — `fetch()` nu merge pe `file://`
 
 ---
 
