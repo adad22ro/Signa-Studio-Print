@@ -130,6 +130,28 @@ ls -d /c/xampp /c/laragon /c/wamp64 2>/dev/null
 
 ---
 
+### 1.9 `/tmp` diferă între Git Bash și Python-ul de Windows
+```
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/imgresp.json'
+```
+**Cauză:** `curl` rulează în Git Bash și scrie în `/tmp` (mapat de Git Bash),
+dar Python este binarul de Windows și interpretează `/tmp` ca o cale absolută
+inexistentă pe disc. Fișierul chiar există — doar că fiecare unealtă vede
+alt loc.
+
+**Soluție:** Când combini unelte Git Bash cu unelte Windows (Python, Chrome,
+PHP din XAMPP), folosește o cale absolută explicită pentru fișierele
+intermediare — de exemplu directorul de scratchpad:
+```bash
+SP="c:/Users/.../scratchpad"
+curl -s ... -o "$SP/raspuns.json"
+python -c "json.load(open(r'c:/Users/.../scratchpad/raspuns.json'))"
+```
+**Prevenție:** Aceeași cauză ca eroarea 1.2 (Chrome). Regulă generală:
+**niciun fișier partajat între Git Bash și un binar Windows nu se pune în `/tmp`.**
+
+---
+
 ## 2. Git
 
 ### 2.1 Push respins — „fetch first"

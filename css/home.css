@@ -327,3 +327,226 @@
   font-size: 10px;
   line-height: 1.4;
 }
+
+
+/* === BRANDURI ========================================= */
+
+.trust__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-6);
+  margin-bottom: var(--sp-7);
+}
+
+.trust__title {
+  max-width: 361px;                   /* lățimea din Figma */
+  font-size: var(--fs-h3);            /* 36px → scalat */
+  font-weight: var(--fw-bold);
+  line-height: 1.22;                  /* 44/36 */
+  letter-spacing: var(--ls-tight);
+}
+
+.trust__intro {
+  max-width: 419px;
+  font-family: var(--font-display);   /* Cabinet Grotesk */
+  font-size: var(--fs-md);
+  line-height: 1.25;                  /* 20/16 */
+  letter-spacing: var(--ls-wide);
+  color: var(--c-text);
+}
+
+.trust__logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(var(--sp-6), 20vw, 300px);   /* gap:300 din Figma */
+  flex-wrap: wrap;
+}
+
+.trust__logos img {
+  height: 32px;
+  width: auto;
+  opacity: 0.85;
+  transition: opacity var(--t-base);
+}
+
+.trust__logos img:hover {
+  opacity: 1;
+}
+
+
+/* === CE AI NEVOIE ===================================== */
+
+.needs__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-10);
+  text-align: center;
+}
+
+.needs__title {
+  font-size: var(--fs-h1);            /* 64px */
+  font-weight: var(--fw-bold);
+  line-height: 0.94;                  /* 60/64 din Figma */
+  letter-spacing: var(--ls-tight);
+}
+
+.needs__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 42px;                          /* gap:42 din Figma */
+  margin-bottom: var(--sp-10);
+}
+
+.need {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.need__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 389 / 263;
+  object-fit: cover;
+  border-radius: var(--r-sm);         /* r:15 din Figma */
+}
+
+.need__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+/* Eticheta reia stilul de chip, dar fără bulină */
+.need__tag {
+  align-self: flex-start;
+}
+
+.need__tag::before {
+  display: none;
+}
+
+.need__title {
+  font-size: var(--fs-h5);            /* 24px */
+  font-weight: var(--fw-bold);
+  line-height: 1.33;
+  letter-spacing: var(--ls-snug);
+}
+
+.need__desc {
+  font-size: var(--fs-md);
+  line-height: var(--lh-relaxed);
+  color: var(--c-text);
+}
+
+.need__criteria-title {
+  margin-bottom: var(--sp-1);
+  font-family: var(--font-display);   /* Cabinet Grotesk 700 */
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: var(--c-text);
+}
+
+.need__list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.need__list li {
+  position: relative;
+  padding-left: 20px;
+  font-size: var(--fs-sm);            /* 14px */
+  line-height: 1.36;
+  color: var(--c-text-muted);
+}
+
+.need__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-pill);
+  background: var(--c-green);
+}
+
+.need__link {
+  margin-top: auto;
+  align-self: flex-start;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+
+/* ── Banda de CTA a secțiunii ──────────────────────────*/
+.needs__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: var(--sp-4);               /* pad:32 din Figma */
+  border-radius: var(--r-lg);         /* r:25 */
+  background: var(--c-dark);
+}
+
+.needs__cta-title {
+  font-size: var(--fs-h4);            /* 32px */
+  font-weight: var(--fw-bold);
+  line-height: 1.34;
+  color: var(--c-text-on-dark);
+}
+
+.needs__cta-text {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-lg);            /* 20px */
+  line-height: 1.35;
+  color: var(--c-text-on-dark);
+}
+
+.needs__cta-btn {
+  flex-shrink: 0;
+  padding: 14px 19px;                 /* pad din Figma */
+  border-radius: var(--r-2xl);        /* r:48 */
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+}
+
+
+/* ── Responsive pentru secțiunile noi ──────────────────*/
+@media (max-width: 1024px) {
+  .needs__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-4);
+  }
+
+  .trust__head {
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+
+  .trust__logos {
+    gap: var(--sp-8);
+  }
+}
+
+@media (max-width: 768px) {
+  .needs__cta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-4);
+  }
+}
+
+@media (max-width: 640px) {
+  .needs__grid {
+    grid-template-columns: 1fr;
+  }
+}
