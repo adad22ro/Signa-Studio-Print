@@ -3,6 +3,14 @@
 > Fișier de context pentru sesiuni Claude Code. Citește-l primul — e suficient
 > pentru a începe lucrul fără explorare suplimentară a codului.
 
+> ⚠️ **La orice eroare, verifică ÎNTÂI [ERORI.md](ERORI.md)** — conține erorile
+> deja întâlnite, cu cauza și soluția. Multe sunt specifice acestui calculator
+> (Windows + Git Bash + XAMPP) și s-ar repeta identic.
+
+> ⚠️ **La începutul fiecărei sesiuni: `git fetch origin`** și compară cu remote
+> înainte de a presupune ceva despre starea proiectului. Pe 18 aug 2026 această
+> verificare a lipsit și s-a refăcut o zi de muncă deja existentă pe GitHub.
+
 ## Identitate
 
 - **Client:** Signa Studio Print — Iași, România
