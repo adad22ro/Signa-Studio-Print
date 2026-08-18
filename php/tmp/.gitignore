@@ -1,0 +1,4 @@
+# Pastreaza folderul in git; continutul e generat la runtime
+*
+!.gitignore
+!.htaccess

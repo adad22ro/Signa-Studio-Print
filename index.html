@@ -3,221 +3,248 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Dezvoltare web: site-uri de prezentare, magazine online și aplicații web custom. Comunicare directă cu dezvoltatorul, fără intermediari. Iași, România.">
-  <title>Dezvoltare web — Site-uri, magazine online și aplicații custom</title>
+
+  <title>Signa Studio — Site-uri, magazine online și aplicații web</title>
+  <meta name="description" content="Construim site-uri de prezentare, magazine online și aplicații web custom pe Next.js, React și Supabase. Preț clar, termen respectat, comunicare directă.">
 
   <link rel="canonical" href="https://signastudioprint.ro/">
 
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Dezvoltare web — Site-uri, magazine online și aplicații custom">
-  <meta property="og:description" content="Site-uri de prezentare, magazine online și aplicații web custom. Comunicare directă cu dezvoltatorul, fără intermediari.">
-  <meta property="og:image" content="https://signastudioprint.ro/img/og-default.jpg">
-  <meta property="og:url" content="https://signastudioprint.ro/">
+  <meta property="og:site_name" content="Signa Studio">
   <meta property="og:locale" content="ro_RO">
-  <meta property="og:site_name" content="Signa Studio Print">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Dezvoltare web — Site-uri, magazine online și aplicații custom">
-  <meta name="twitter:description" content="Site-uri de prezentare, magazine online și aplicații web custom.">
-  <meta name="twitter:image" content="https://signastudioprint.ro/img/og-default.jpg">
+  <meta property="og:title" content="Signa Studio — Site-uri, magazine online și aplicații web">
+  <meta property="og:description" content="Site-uri de prezentare, magazine online și aplicații web custom. Preț clar, termen respectat, comunicare directă în fiecare etapă.">
+  <meta property="og:url" content="https://signastudioprint.ro/">
+  <meta property="og:image" content="https://signastudioprint.ro/img/og-default.jpg">
 
+  <!-- Fonturi — Fontshare (Satoshi + Cabinet Grotesk) -->
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,301,400,500,700,900&f[]=cabinet-grotesk@400,500,700&display=swap">
+
+  <!-- Imaginea hero, încărcată prioritar -->
+  <link rel="preload" as="image" href="img/hero/hero-gradient-1200.webp"
+        imagesrcset="img/hero/hero-gradient-480.webp 480w,
+                     img/hero/hero-gradient-800.webp 800w,
+                     img/hero/hero-gradient-1200.webp 1200w,
+                     img/hero/hero-gradient-1600.webp 1600w"
+        imagesizes="(max-width: 768px) 100vw, 1376px">
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
-  <meta name="theme-color" content="#F8F7F4">
+  <meta name="theme-color" content="#FFFFFF">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/reset.css?v=2.1.0">
+  <link rel="stylesheet" href="css/variables.css?v=2.1.0">
+  <link rel="stylesheet" href="css/base.css?v=2.1.0">
+  <link rel="stylesheet" href="css/components.css?v=2.1.0">
+  <link rel="stylesheet" href="css/home.css?v=2.1.0">
+  <link rel="stylesheet" href="css/responsive.css?v=2.1.0">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Signa Studio Print",
-    "description": "Dezvoltare web: site-uri de prezentare, magazine online și aplicații web custom.",
+    "name": "Signa Studio",
     "url": "https://signastudioprint.ro/",
-    "email": "contact@signastudioprint.ro",
-    "address": { "@type": "PostalAddress", "addressLocality": "Iași", "addressCountry": "RO" },
-    "areaServed": "RO"
+    "description": "Site-uri de prezentare, magazine online și aplicații web custom.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Iași",
+      "addressCountry": "RO"
+    },
+    "email": "contact@signastudioprint.ro"
   }
   </script>
-
-  <link rel="icon" href="img/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
-  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="css/global.css?v=2.0.0">
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Sari la conținut</a>
 
-  <div class="page">
+  <!-- Navbar injectat din components/navbar.html -->
+  <div id="navbar-placeholder"></div>
 
-    <div id="header-placeholder"></div>
+  <main id="main-content">
 
-    <main id="main-content">
+    <!-- === HERO === -->
+    <section class="hero">
+      <div class="container">
 
-      <!-- ══ HERO ══════════════════════════════════════════ -->
-      <section class="mx-hero">
-        <div class="mx-hero-text">
-          <span class="mx-hero-eyebrow">Dezvoltare web</span>
-          <h1>Site-ul tău, fără bătăi de cap. <em>Aplicația ta, construită corect.</em></h1>
-          <p class="mx-hero-sub">Site-uri de prezentare, magazine online și aplicații web custom. Comunicare directă cu persoana care construiește — fără intermediari.</p>
-          <div class="mx-hero-ctas">
-            <a href="contact.html" class="mx-btn">Discută despre proiect</a>
-            <a href="#servicii" class="mx-btn mx-btn--ghost">Vezi serviciile</a>
-          </div>
-        </div>
-        <div class="mx-hero-visual" aria-hidden="true">
-          <div class="mx-blob mx-blob--1"></div>
-          <div class="mx-blob mx-blob--2"></div>
-          <div class="mx-hero-panel">
-            <span class="mx-chip">Comunicare directă</span>
-            <span class="mx-chip mx-chip--teal">Stack modern</span>
-            <div class="mx-panel-title">Next.js · React · TypeScript · Supabase</div>
-            <p class="mx-panel-text">Cod curat, ușor de întreținut, construit corect de la început.</p>
-          </div>
-        </div>
-      </section>
+        <h1 class="hero__title">
+          <span class="hero__title-part">Signa</span>
+          <span class="hero__title-part">Studio</span>
+        </h1>
 
-      <!-- ══ SERVICII ══════════════════════════════════════ -->
-      <section class="mx-section" id="servicii">
-        <div class="mx-head reveal">
-          <span class="mx-highlight">Servicii</span>
-          <p>De la un site vitrină la o aplicație web complexă — aleg soluția potrivită pentru nevoia ta.</p>
-        </div>
-        <div class="mx-cards reveal">
-          <article class="mx-card mx-card--white">
-            <div class="mx-num">01</div>
-            <h3>Site-uri de prezentare</h3>
-            <p class="mx-card-desc">Site vitrină pentru afacerea ta — design personalizat, optimizare de bază SEO și o prezență online profesională.</p>
-            <a href="site-uri.html" class="mx-card-link"><span class="mx-arrow" aria-hidden="true">↗</span> Află mai multe</a>
-          </article>
-          <article class="mx-card mx-card--blue">
-            <div class="mx-num">02</div>
-            <h3>Magazine online</h3>
-            <p class="mx-card-desc">Magazine complet funcționale, cu coș, plăți online și livrare. Te învăț să le administrezi singur după predare.</p>
-            <a href="magazine-online.html" class="mx-card-link"><span class="mx-arrow" aria-hidden="true">↗</span> Află mai multe</a>
-          </article>
-          <article class="mx-card mx-card--dark">
-            <div class="mx-num">03</div>
-            <h3>Aplicații web custom</h3>
-            <p class="mx-card-desc">Pentru proiecte cu logică de business specifică — construite cu Next.js, React, TypeScript și Supabase.</p>
-            <a href="contact.html" class="mx-card-link"><span class="mx-arrow" aria-hidden="true">↗</span> Discută proiectul</a>
-          </article>
-          <article class="mx-card mx-card--teal">
-            <div class="mx-num">04</div>
-            <h3>Nu știi ce ai nevoie?</h3>
-            <p class="mx-card-desc">Te ajut să alegi varianta corectă pentru afacerea ta — fără jargon, fără presiune.</p>
-            <a href="contact.html" class="mx-card-link"><span class="mx-arrow" aria-hidden="true">↗</span> Hai să vorbim</a>
-          </article>
-        </div>
-      </section>
+        <div class="hero__panel on-dark">
+          <img class="hero__panel-bg"
+               src="img/hero/hero-gradient-1200.webp"
+               srcset="img/hero/hero-gradient-480.webp 480w,
+                       img/hero/hero-gradient-800.webp 800w,
+                       img/hero/hero-gradient-1200.webp 1200w,
+                       img/hero/hero-gradient-1600.webp 1600w"
+               sizes="(max-width: 768px) 100vw, 1376px"
+               alt="" aria-hidden="true"
+               width="1600" height="1000"
+               loading="eager" fetchpriority="high">
 
-      <!-- ══ BANDĂ CTA ═════════════════════════════════════ -->
-      <section class="mx-section">
-        <div class="mx-band reveal">
-          <h2>Hai să facem lucrurile să se întâmple</h2>
-          <p>Spune-mi ce ai nevoie și îți propun un plan clar, cu preț și termen — fără costuri ascunse.</p>
-          <a href="contact.html" class="mx-btn mx-btn--dark">Cere o ofertă</a>
-        </div>
-      </section>
+          <nav class="hero__panel-nav" aria-label="Servicii principale">
+            <a href="site-uri.html" class="hero__tab">Site-uri de prezentare</a>
+            <a href="magazine-online.html" class="hero__tab">Magazine Online</a>
+            <a href="aplicatii-custom.html" class="hero__tab">Aplicații web custom</a>
+          </nav>
 
-      <!-- ══ CUM LUCRĂM ════════════════════════════════════ -->
-      <section class="mx-section">
-        <div class="mx-head reveal">
-          <span class="mx-highlight">Cum lucrăm</span>
-          <p>Un proces simplu și transparent, de la prima discuție până la predare.</p>
-        </div>
-        <div class="mx-accordion reveal">
-          <div class="mx-acc open">
-            <button class="mx-acc-head" aria-expanded="true">
-              <span class="mx-acc-num">01</span>
-              <span class="mx-acc-title">Discuție inițială</span>
-              <span class="mx-acc-icon" aria-hidden="true">–</span>
-            </button>
-            <div class="mx-acc-body"><p>Îmi spui ce ai nevoie și înțeleg obiectivele afacerii tale, fără presupuneri de ambele părți.</p></div>
-          </div>
-          <div class="mx-acc">
-            <button class="mx-acc-head" aria-expanded="false">
-              <span class="mx-acc-num">02</span>
-              <span class="mx-acc-title">Ofertă clară</span>
-              <span class="mx-acc-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="mx-acc-body"><p>Primești preț și termen clar, fără costuri ascunse, ca să știi exact la ce să te aștepți.</p></div>
-          </div>
-          <div class="mx-acc">
-            <button class="mx-acc-head" aria-expanded="false">
-              <span class="mx-acc-num">03</span>
-              <span class="mx-acc-title">Dezvoltare</span>
-              <span class="mx-acc-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="mx-acc-body"><p>Construiesc proiectul lucrând direct cu tine, cu actualizări pe parcurs și feedback la fiecare etapă.</p></div>
-          </div>
-          <div class="mx-acc">
-            <button class="mx-acc-head" aria-expanded="false">
-              <span class="mx-acc-num">04</span>
-              <span class="mx-acc-title">Predare &amp; instruire</span>
-              <span class="mx-acc-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="mx-acc-body"><p>Îți predau proiectul și îți arăt exact cum să-l administrezi singur, fără cunoștințe tehnice.</p></div>
-          </div>
-        </div>
-      </section>
+          <div class="hero__panel-body">
+            <div class="hero__lead">
+              <ul class="chips chips--on-dark">
+                <li class="chip">Echipă dedicată</li>
+                <li class="chip">Comunicare directă</li>
+              </ul>
+              <p class="hero__tagline">
+                <strong>Site-ul tău,</strong> <em>fără bătăi de cap.</em><br>
+                <strong>Aplicația ta,</strong> <em>construită corect.</em>
+              </p>
+            </div>
 
-      <!-- ══ DESPRE ════════════════════════════════════════ -->
-      <section class="mx-section">
-        <div class="mx-about">
-          <div class="mx-about-visual reveal" aria-hidden="true">
-            <div class="mx-about-badge">
-              <span class="b1">Direct cu tine</span>
-              <span class="b2">fără intermediari</span>
+            <div class="hero__meta">
+              <p class="hero__promise">
+                Preț clar, termen respectat, comunicare directă în fiecare etapă
+                — fără presupuneri, fără costuri ascunse.
+              </p>
+              <div class="hero__actions">
+                <a href="proiecte.html" class="btn btn--pill btn--dark btn--hero">
+                  <span>Vezi proiecte</span>
+                  <svg class="btn__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+                <a href="contact.html" class="btn btn--pill btn--light btn--hero">
+                  <span>Scrie-ne</span>
+                  <svg class="btn__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M4.5 11.5l7-7M6 4.5h5.5V10" stroke="currentColor" stroke-width="1.6"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
-          <div class="mx-about-text reveal">
-            <span class="mx-hero-eyebrow">Despre</span>
-            <h2>Lucrezi direct cu mine</h2>
-            <p>Nu există o agenție impersonală între tine și proiect — vorbești direct cu persoana care îl construiește. Sunt la începutul acestui drum și îmi pun toată atenția în fiecare proiect, cu prețuri corecte pentru clienți care vor o colaborare pe termen lung.</p>
-            <ul class="mx-checklist">
-              <li>Atenție la detalii și implicare în fiecare proiect</li>
-              <li>Tehnologii moderne, cod curat și ușor de întreținut</li>
-              <li>Instruire după predare — administrezi singur site-ul</li>
-            </ul>
-          </div>
+
+          <p class="hero__stack">Next.js · React · TypeScript · Supabase</p>
         </div>
-      </section>
 
-      <!-- ══ CONTACT ═══════════════════════════════════════ -->
-      <section class="mx-section">
-        <div class="mx-head reveal">
-          <span class="mx-highlight">Contact</span>
-          <p>Ai un proiect în minte? Trimite-mi câteva detalii și revin cu un plan.</p>
-        </div>
-        <div class="mx-contact reveal">
-          <h3>Spune-mi despre proiectul tău</h3>
-          <div class="mx-field">
-            <label for="mxName">Nume</label>
-            <input type="text" id="mxName" name="name" placeholder="Numele tău">
-          </div>
-          <div class="mx-field">
-            <label for="mxEmail">Email</label>
-            <input type="email" id="mxEmail" name="email" placeholder="email@domeniu.ro">
-          </div>
-          <div class="mx-field">
-            <label for="mxMsg">Mesaj</label>
-            <textarea id="mxMsg" name="message" placeholder="Spune-mi pe scurt ce ai nevoie..."></textarea>
-          </div>
-          <a href="contact.html" class="mx-btn">Trimite mesajul</a>
-        </div>
-      </section>
+      </div>
+    </section>
 
-    </main>
+    <!-- === SERVICII === -->
+    <section class="section services" id="servicii">
+      <div class="container">
 
-  </div>
+        <header class="services__head reveal">
+          <p class="section-label section-label--dot">Soluții</p>
+          <h2 class="services__title">Serviciile noastre</h2>
+        </header>
 
+        <ul class="services__list reveal-group">
+
+          <li class="service reveal">
+            <h3 class="service__title">Site-uri de prezentare</h3>
+            <p class="service__desc">
+              Site vitrină personalizat pentru afacerea ta. Design curat,
+              optimizare SEO de bază și o prezență online profesională.
+            </p>
+            <div class="service__aside">
+              <ul class="chips">
+                <li class="chip">Design</li>
+                <li class="chip">SEO</li>
+                <li class="chip">Responsive</li>
+                <li class="chip">Branding</li>
+                <li class="chip">Viteză</li>
+                <li class="chip">Conținut</li>
+              </ul>
+              <a href="site-uri.html" class="btn btn--pill btn--dark service__cta">
+                <span>Află mai multe</span>
+              </a>
+            </div>
+          </li>
+
+          <li class="service reveal">
+            <h3 class="service__title">Magazine online</h3>
+            <p class="service__desc">
+              Un magazin construit să vândă, nu doar să existe. Plăți, livrare
+              și administrare simplă, fără dependență de noi.
+            </p>
+            <div class="service__aside">
+              <ul class="chips">
+                <li class="chip">Plăți</li>
+                <li class="chip">Coș</li>
+                <li class="chip">Livrare</li>
+                <li class="chip">Stocuri</li>
+                <li class="chip">Facturi</li>
+                <li class="chip">Administrare</li>
+              </ul>
+              <a href="magazine-online.html" class="btn btn--pill btn--dark service__cta">
+                <span>Află mai multe</span>
+              </a>
+            </div>
+          </li>
+
+          <li class="service reveal">
+            <h3 class="service__title">Aplicații custom</h3>
+            <p class="service__desc">
+              Când nevoile afacerii tale depășesc un site standard. Construim
+              exact logica de care ai nevoie, pe Next.js, React și Supabase.
+            </p>
+            <div class="service__aside">
+              <ul class="chips">
+                <li class="chip">Next.js</li>
+                <li class="chip">React</li>
+                <li class="chip">Supabase</li>
+                <li class="chip">API</li>
+                <li class="chip">Automatizări</li>
+                <li class="chip">Scalabilitate</li>
+              </ul>
+              <a href="aplicatii-custom.html" class="btn btn--pill btn--dark service__cta">
+                <span>Află mai multe</span>
+              </a>
+            </div>
+          </li>
+
+          <li class="service reveal">
+            <h3 class="service__title">Nu știi ce ai nevoie?</h3>
+            <p class="service__desc">
+              Te ajutăm să alegi varianta corectă pentru afacerea ta —
+              fără jargon, fără presiune.
+            </p>
+            <div class="service__aside">
+              <ul class="chips">
+                <li class="chip">Consultanță</li>
+                <li class="chip">Analiză</li>
+                <li class="chip">Claritate</li>
+                <li class="chip">Recomandare</li>
+                <li class="chip">Fără presiune</li>
+              </ul>
+              <a href="contact.html" class="btn btn--pill btn--dark service__cta">
+                <span>Hai să vorbim</span>
+              </a>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer injectat din components/footer.html -->
   <div id="footer-placeholder"></div>
 
-  <script src="js/components.js?v=2.0.0" defer></script>
-
+  <script src="js/main.js?v=2.1.0" defer></script>
+  <script src="js/animations.js?v=2.1.0" defer></script>
 </body>
 </html>

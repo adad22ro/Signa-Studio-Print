@@ -1,0 +1,157 @@
+/* ═══════════════════════════════════════════════════════
+   SIGNA STUDIO PRINT — css/variables.css
+   Tokenii de design, extrași din fișierul Figma
+   „Signa Studio Design" (x4XGqHY7qNJFLYbyxZG89d).
+
+   Sursa unică de adevăr pentru culori, tipografie, spațieri,
+   raze, umbre și z-index. Niciun alt fișier CSS nu conține
+   valori hardcodate.
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+
+  /* ══ CULORI ══════════════════════════════════════════ */
+
+  /* Suprafețe deschise */
+  --c-bg:            #FFFFFF;
+  --c-bg-alt:        #FAFAFA;
+  --c-bg-tint:       #EBEBEB;
+
+  /* Suprafețe închise (benzi și carduri) */
+  --c-dark:          #101010;
+  --c-dark-deep:     #0A0A0A;
+  --c-dark-soft:     #141414;
+  --c-black:         #000000;
+
+  /* Text pe fundal deschis */
+  --c-text:          #101010;
+  --c-text-muted:    #4E4E4E;
+
+  /* Text pe fundal închis */
+  --c-text-on-dark:        #FFFFFF;
+  --c-text-on-dark-muted:  #BDBEC2;
+
+  /* Accente */
+  --c-accent:        #278CFF;
+  --c-accent-soft:   #4FA3F2;
+  --c-accent-deep:   #3898EC;
+  --c-green:         #1EFB26;
+  --c-green-deep:    #2E964B;
+  --c-orange:        #E9591C;
+
+  /* Contururi */
+  --c-border:            #EBEBEB;
+  --c-border-on-dark:    rgba(255, 255, 255, 0.12);
+
+  /* Stări de eroare (formulare) */
+  --c-error:         #C0392B;
+  --c-error-bg:      rgba(192, 57, 43, 0.06);
+
+  /* Gradient-semnătură */
+  --grad-signature:  linear-gradient(90deg,
+                       #FF6161 0%, #FFD361 25%, #95FFA0 50%,
+                       #95B9FF 75%, #D795FF 100%);
+
+
+  /* ══ TIPOGRAFIE ══════════════════════════════════════ */
+
+  --font-main:    "Satoshi", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Cabinet Grotesk", "Satoshi", "Segoe UI", sans-serif;
+
+  --fw-regular:   400;
+  --fw-medium:    500;
+  --fw-bold:      700;
+  --fw-black:     900;
+
+  /* Scala de dimensiuni — clamp() pentru scalare fluidă.
+     Valorile max corespund exact designului desktop (1440px). */
+  --fs-hero:      clamp(3.5rem, 9.2vw, 8.25rem);   /* 132px */
+  --fs-display:   clamp(2.75rem, 7.2vw, 6.5rem);   /*  104px */
+  --fs-h1:        clamp(2.5rem, 4.4vw, 4rem);      /*  64px */
+  --fs-h2:        clamp(2rem, 3.4vw, 3rem);        /*  48px */
+  --fs-h3:        clamp(1.75rem, 2.8vw, 2.5rem);   /*  40px */
+  --fs-h4:        clamp(1.5rem, 2.2vw, 2rem);      /*  32px */
+  --fs-h5:                                1.5rem;  /*  24px */
+  --fs-lead:      clamp(1.125rem, 1.5vw, 1.3125rem); /* 21px */
+  --fs-lg:                              1.25rem;   /*  20px */
+  --fs-md:                                1rem;    /*  16px */
+  --fs-sm:                              0.875rem;  /*  14px */
+  --fs-xs:                               0.75rem;  /*  12px */
+
+  /* Înălțimi de rând */
+  --lh-tight:     1.05;   /* titluri mari */
+  --lh-snug:      1.25;
+  --lh-normal:    1.4;
+  --lh-relaxed:   1.6;
+  --lh-loose:     1.95;   /* paragrafe 21/41 din design */
+
+  /* Spațiere între litere */
+  --ls-hero:       0.04em;   /* +5.28px la 132px */
+  --ls-tight:     -0.02em;
+  --ls-snug:      -0.01em;
+  --ls-normal:         0;
+  --ls-wide:       0.02em;
+
+
+  /* ══ SPAȚIERE — scală de 8px ═════════════════════════ */
+
+  --sp-1:    8px;
+  --sp-2:   16px;
+  --sp-3:   24px;
+  --sp-4:   32px;
+  --sp-5:   40px;
+  --sp-6:   48px;
+  --sp-8:   64px;
+  --sp-10:  80px;
+  --sp-12:  96px;
+  --sp-16: 128px;
+  --sp-20: 160px;
+
+  /* Spațiere verticală între secțiuni — fluidă */
+  --sp-section:  clamp(4rem, 8vw, 8rem);
+
+  /* Lățimi de layout */
+  --w-container:   1376px;   /* lățimea conținutului din Figma */
+  --w-page:        1440px;   /* lățimea frame-ului Figma */
+  --w-text:          68ch;   /* lungime lizibilă pentru paragrafe */
+  --gutter:      clamp(1rem, 3vw, 2rem);
+
+
+  /* ══ RAZE ════════════════════════════════════════════ */
+
+  --r-sm:    15px;
+  --r-md:    24px;
+  --r-lg:    25px;
+  --r-xl:    40px;
+  --r-2xl:   48px;
+  --r-pill:  999px;
+
+
+  /* ══ UMBRE ═══════════════════════════════════════════
+     NU se reproduce `0 4px 4px rgba(0,0,0,.25)` din Figma —
+     e valoarea default a aplicației, apărută de 104 ori
+     neintenționat (blur = offset ⇒ margine dură). */
+
+  --shadow-sm:   0 1px 2px rgba(16, 16, 16, 0.06);
+  --shadow-md:   0 4px 12px rgba(16, 16, 16, 0.10);
+  --shadow-lg:   0 12px 32px rgba(16, 16, 16, 0.14);
+  --glow-accent: 0 4px 20px rgba(39, 140, 255, 0.25);
+
+
+  /* ══ TRANZIȚII ═══════════════════════════════════════ */
+
+  --t-fast:   140ms ease;
+  --t-base:   240ms cubic-bezier(0.4, 0, 0.2, 1);
+  --t-slow:   420ms cubic-bezier(0.4, 0, 0.2, 1);
+
+
+  /* ══ Z-INDEX ═════════════════════════════════════════ */
+
+  --z-base:        1;
+  --z-sticky:     10;
+  --z-header:     50;
+  --z-menu:       60;
+  --z-cookie:     80;
+  --z-modal:     100;
+  --z-skiplink:  200;
+}

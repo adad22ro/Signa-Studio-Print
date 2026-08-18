@@ -1,0 +1,219 @@
+/* ═══════════════════════════════════════════════════════
+   SIGNA STUDIO PRINT — css/base.css
+   Tipografie de bază, elemente globale, accesibilitate.
+   Toate valorile vin din css/variables.css.
+   ═══════════════════════════════════════════════════════ */
+
+/* === DOCUMENT ========================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font-main);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* === TITLURI ========================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-main);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--c-text);
+}
+
+h1 { font-size: var(--fs-h1); line-height: var(--lh-tight); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); }
+h5 { font-size: var(--fs-h5); }
+
+
+/* === TEXT ============================================= */
+
+p {
+  line-height: var(--lh-relaxed);
+  color: var(--c-text-muted);
+}
+
+strong { font-weight: var(--fw-bold); }
+
+/* Paragraf introductiv — Cabinet Grotesk, conform designului */
+.lead {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--c-text);
+}
+
+
+/* === LINKURI ========================================== */
+
+a {
+  color: inherit;
+  transition: color var(--t-fast), opacity var(--t-fast);
+}
+
+a:hover { opacity: 0.7; }
+
+
+/* === SKIP LINK ======================================== */
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -120%);
+  z-index: var(--z-skiplink);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: 0 0 var(--r-sm) var(--r-sm);
+  background: var(--c-dark);
+  color: var(--c-text-on-dark);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  transition: transform var(--t-base);
+}
+
+.skip-link:focus {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+
+/* === FOCUS VIZIBIL ==================================== */
+
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Pe fundal închis, conturul alb are contrast mai bun */
+.on-dark :focus-visible {
+  outline-color: var(--c-text-on-dark);
+}
+
+
+/* === LAYOUT DE BAZĂ =================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--w-container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--sp-section);
+}
+
+/* Secțiune pe fundal închis */
+.section--dark,
+.on-dark {
+  background: var(--c-dark-soft);
+  color: var(--c-text-on-dark);
+}
+
+.section--dark h1, .section--dark h2,
+.section--dark h3, .section--dark h4,
+.on-dark h1, .on-dark h2, .on-dark h3, .on-dark h4 {
+  color: var(--c-text-on-dark);
+}
+
+.section--dark p,
+.on-dark p {
+  color: var(--c-text-on-dark-muted);
+}
+
+/* Secțiune pe fundal alternativ deschis */
+.section--alt {
+  background: var(--c-bg-alt);
+}
+
+
+/* === ETICHETĂ DE SECȚIUNE ============================= */
+
+.section-label {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+}
+
+.on-dark .section-label {
+  color: var(--c-text-on-dark-muted);
+}
+
+
+/* === UTILITARE ======================================== */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.text-gradient {
+  background: var(--grad-signature);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+
+/* === ANIMAȚII LA SCROLL ==============================
+   Elementele pornesc invizibile; primesc .is-visible din
+   js/animations.js prin Intersection Observer. */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--t-slow), transform var(--t-slow);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+
+/* === MIȘCARE REDUSĂ =================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

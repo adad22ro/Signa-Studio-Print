@@ -1,0 +1,125 @@
+/* ═══════════════════════════════════════════════════════
+   SIGNA STUDIO PRINT — css/responsive.css
+   Breakpoints: 1024 / 768 / 640 / 480px
+   Se încarcă ULTIMUL, după toate celelalte fișiere CSS.
+   ═══════════════════════════════════════════════════════ */
+
+
+/* ══ 1024px — grid-uri pe 2 coloane, hero pe o coloană ══ */
+@media (max-width: 1024px) {
+
+  .hero__title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .hero__panel-nav {
+    gap: var(--sp-3);
+    justify-content: space-between;
+  }
+
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .split {
+    grid-template-columns: 1fr;
+    gap: var(--sp-6);
+  }
+}
+
+
+/* ══ 768px — hamburger activ, meniu fullscreen ══════════ */
+@media (max-width: 768px) {
+
+  .site-header .nav,
+  .site-header__cta {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .site-footer__top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-4);
+  }
+
+  .site-footer .nav__list {
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+  }
+
+  .socials {
+    justify-content: flex-start;
+    gap: var(--sp-5);
+  }
+
+  .site-footer__legal {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .hero__panel {
+    padding: var(--sp-4);
+  }
+
+  .hero__panel-nav {
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+  }
+}
+
+
+/* ══ 640px — toate grid-urile pe o coloană ══════════════ */
+@media (max-width: 640px) {
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding-block: var(--sp-8);
+  }
+
+  .hero__meta {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .hero__tagline {
+    text-align: left;
+  }
+}
+
+
+/* ══ 480px — padding redus ══════════════════════════════ */
+@media (max-width: 480px) {
+
+  :root {
+    --gutter: 1rem;
+  }
+
+  .section {
+    padding-block: var(--sp-6);
+  }
+
+  .mobile-menu__link {
+    font-size: var(--fs-h5);
+  }
+
+  .btn--lg {
+    width: 100%;
+  }
+
+  .hero__panel {
+    padding: var(--sp-3);
+    border-radius: var(--r-md);
+  }
+}
