@@ -1,22 +1,33 @@
-# Signa Studio Print — context proiect
+# Signa Studio — context proiect
 
-> Fișier de context pentru sesiuni Claude Code. Citește-l primul — e suficient
-> pentru a începe lucrul fără explorare suplimentară a codului.
+> **Citește acest fișier primul.** E suficient pentru a începe lucrul fără să
+> explorezi codul. Sincronizat cu `v2.2.3`.
 
-> ⚠️ **La orice eroare, verifică ÎNTÂI [ERORI.md](ERORI.md)** — conține erorile
-> deja întâlnite, cu cauza și soluția. Multe sunt specifice acestui calculator
-> (Windows + Git Bash + XAMPP) și s-ar repeta identic.
+---
 
-> ⚠️ **La începutul fiecărei sesiuni: `git fetch origin`** și compară cu remote
-> înainte de a presupune ceva despre starea proiectului. Pe 18 aug 2026 această
-> verificare a lipsit și s-a refăcut o zi de muncă deja existentă pe GitHub.
+## ⚠️ PRIMII DOI PAȘI, ÎNAINTE DE ORICE
+
+**1. Sincronizează-te cu remote-ul:**
+```bash
+git fetch origin
+git log --oneline HEAD..origin/main    # ce e pe remote și nu ai
+git log --oneline origin/main..HEAD    # ce ai și nu e pe remote
+```
+Pe 18 aug 2026 acest pas a lipsit și s-a refăcut o zi întreagă de muncă deja
+existentă pe GitHub. Nu te baza pe `pushedAt` din `gh repo view` — poate fi vechi.
+
+**2. La orice eroare, caută ÎNTÂI în [ERORI.md](ERORI.md)** — 29 de erori
+documentate, cu mesajul exact, cauza și soluția verificată. Multe sunt specifice
+acestui calculator (Windows + Git Bash + XAMPP) și s-ar repeta identic.
+
+---
 
 ## Identitate
 
-- **Client:** Signa Studio Print — Iași, România
-- **Domeniu:** site-uri de prezentare, magazine online și aplicații custom (cu AI)
-- **Web:** https://signastudioprint.ro
-- **Limba site:** română (diacritice corecte, obligatoriu)
+- **Client:** Signa Studio — Iași, România
+- **Servicii:** site-uri de prezentare, magazine online, aplicații web custom
+- **Web:** https://signastudioprint.ro (încă nepublicat)
+- **Limba:** română, cu diacritice corecte — obligatoriu
 - **Repo:** https://github.com/adad22ro/Signa-Studio-Print (**privat**, branch `main`)
 - **Stack:** HTML5 + CSS3 + JS vanilla (ES6, IIFE, fără build tools) + PHP pentru formular
 
@@ -24,240 +35,229 @@
 
 ## REGULI ABSOLUTE (din `instrucțiuni-site-v4.txt`)
 
-1. **Zero cod inline** — fără `style=""`, fără `onclick=""`, fără `<script>`/`<style>` în pagină.
-2. **Navbar / footer / cookie banner** se scriu **o singură dată** și se injectează în fiecare pagină.
-3. **Zero valori hardcodate în CSS** — totul prin variabile din `variables.css`.
-4. **HSTS în .htaccess doar după ce SSL e activ** — altfel site-ul devine inaccesibil.
-5. **Cache busting incrementat la fiecare modificare:** `style.css?v=1.0.0` → `?v=1.0.1`.
-6. **Convenție BEM:** `.block`, `.block__element`, `.block--modifier`. Niciodată `.div1`, `.albastru`.
-7. **Livrează codul COMPLET al fișierului**, nu fragmente. Specifică mereu calea exactă.
-8. **Animații doar prin Intersection Observer**, niciodată pe evenimente `scroll`.
-9. **Terminal:** explică pas cu pas — ce comandă, ce face, ce ar trebui să vadă utilizatorul după.
-10. **`changelog.md`** actualizat la fiecare modificare: `vX.Y.Z - DATA - descriere scurtă`.
+1. **Zero cod inline** — fără `style=""`, `onclick=""`, `<script>`/`<style>` în pagină
+2. **Navbar / footer / cookie banner** se scriu o singură dată și se injectează
+3. **Zero valori hardcodate în CSS** — totul prin variabile din `variables.css`
+4. **HSTS în `.htaccess` doar după ce SSL e activ** — altfel site-ul devine inaccesibil
+5. **Cache busting incrementat la fiecare modificare de CSS/JS, în TOATE paginile**
+6. **BEM:** `.block`, `.block__element`, `.block--modifier`
+7. **Livrează fișierul COMPLET**, nu fragmente; specifică mereu calea exactă
+8. **Animații doar prin Intersection Observer**, niciodată pe evenimente `scroll`
+9. **Terminal:** explică pas cu pas — ce comandă, ce face, ce ar trebui să vadă
+10. **`changelog.md`** actualizat la fiecare modificare: `vX.Y.Z - DATA - descriere`
 
 ### Accesibilitate & SEO (nenegociabile)
 - ARIA pe tot ce e interactiv; contrast min. 4.5:1; navigabil complet cu tastatura
 - Skip-link ca prim element din `<body>`
 - Title (max 60) + meta description (max 155) **unice** per pagină
-- Open Graph complet + canonical + JSON-LD pe fiecare pagină
-- Pagini fără valoare SEO (404, legale, mulțumire) → `noindex, nofollow`
+- Open Graph + canonical + JSON-LD pe fiecare pagină
+- Pagini fără valoare SEO (404, legale) → `noindex, nofollow`
 
 ---
 
-## Structura ȚINTĂ (conform instrucțiuni — încă neatinsă)
+## STAREA PROIECTULUI: reconstrucția pe Figma e TERMINATĂ
+
+Toate paginile sunt pe designul nou. Structura cerută de instrucțiuni e atinsă.
 
 ```
-index.html, [pagini].html
-components/   navbar.html, footer.html, cookie-banner.html   (injectate prin fetch)
-css/          reset.css, variables.css, base.css, layout.css,
-              components.css, responsive.css, animations.css
-js/           main.js, form.js, cookie.js, animations.js
-php/          contact.php + tmp/     (rate limiting; tmp blocat în robots + .htaccess)
-img/          icons/, og/
-              404.html, robots.txt, sitemap.xml, site.webmanifest,
-              .htaccess, changelog.md,
-              politica-confidentialitate.html, termeni-conditii.html
+index.html  site-uri.html  magazine-online.html  aplicatii-custom.html
+proiecte.html  contact.html  404.html
+politica-confidentialitate.html  termeni-conditii.html
+
+components/   navbar.html  footer.html  cookie-banner.html   (prin fetch)
+css/          reset.css  variables.css  base.css  components.css  responsive.css
+              home.css      → secțiunile paginii principale
+              servicii.css  → SP / MO / AC / proiecte / contact / 404
+              legal.css     → pagini legale
+js/           main.js  animations.js  form.js  cookie.js
+php/          contact.php  config.php  tmp/
+              .htaccess  robots.txt  sitemap.xml  site.webmanifest
+              changelog.md  CLAUDE.md  ERORI.md
 ```
 
-Breakpoints țintă (în `responsive.css`): **1024 / 768 / 640 / 480px**
+**Versiune cache busting curentă: `?v=2.2.3`** — incrementeaz-o la ORICE
+modificare de CSS/JS, în toate paginile. `.htaccess` servește cu
+`immutable, max-age=1an`, deci fără asta vizitatorii rămân blocați pe versiunea veche.
+
+**Dimensiune:** 1.4 MB total, 1 MB imagini. Pagina principală ≈ 448 KB resurse proprii.
+
+### Rolul fișierelor JS
+
+| fișier | rol |
+|---|---|
+| `main.js` | injectează componentele prin `fetch`, link activ, meniu derulant „Servicii", hamburger, header la scroll, scroll lin cu offset. Emite evenimentul `componente:gata` |
+| `animations.js` | reveal la scroll prin Intersection Observer |
+| `form.js` | validare, token CSRF, trimitere AJAX — partajat de toate paginile cu formular |
+| `cookie.js` | banner GDPR; **nu încarcă nimic înainte de accept explicit** |
 
 ---
 
-## Structura ACTUALĂ (v2.2.0 — reconstrucție Figma TERMINATĂ)
+## Cum rulezi și verifici (unelte confirmate pe acest calculator)
 
-```
-css/reset.css  variables.css  base.css  components.css  responsive.css
-css/home.css      (pagina principală)
-css/servicii.css  (SP / MO / AC / proiecte / contact / 404)
-css/legal.css     (pagini legale)
-components/navbar.html  footer.html  cookie-banner.html   (prin fetch)
-js/main.js  animations.js  form.js  cookie.js
-php/contact.php  config.php  tmp/
+**Previzualizarea NECESITĂ server** — `fetch()` nu merge pe `file://`:
+```bash
+/c/xampp/php/php.exe -S 127.0.0.1:8899 -t .
 ```
 
-**Toate paginile sunt pe designul Figma:**
-`index` · `site-uri` · `magazine-online` · `aplicatii-custom` · `proiecte` ·
-`contact` · `404` · `politica-confidentialitate` · `termeni-conditii`
+**PHP 8.2** la `/c/xampp/php/php.exe` — `php -l fisier.php` pentru sintaxă.
+`mail()` nu merge local (fără SMTP), deci calea de succes a formularului dă 500
+local. Restul fluxului (CSRF, honeypot, validare, rate limiting) e testabil.
 
-**Versiune cache busting: `?v=2.2.0`** — incrementeaz-o la orice modificare
-de CSS/JS, în TOATE paginile (`.htaccess` servește cu `immutable, max-age=1an`).
+**Chrome headless** la `/c/Program Files/Google/Chrome/Application/chrome.exe`:
+```bash
+CHROME="/c/Program Files/Google/Chrome/Application/chrome.exe"
+"$CHROME" --headless --disable-gpu --hide-scrollbars --window-size=1440,3000 \
+  --virtual-time-budget=10000 --screenshot='C:\cale\windows\out.png' \
+  http://127.0.0.1:8899/
+```
+Trei capcane, toate documentate în [ERORI.md](ERORI.md):
+- calea la `--screenshot` trebuie **Windows** (`C:\...`), nu POSIX — **1.2**
+- **nu poate randa sub 500px**; pentru mobil folosește metoda cu iframe — **1.10**
+- `--virtual-time-budget` **nu avansează tranzițiile CSS**, deci nu măsura
+  proprietăți tranziționate cu `getComputedStyle` — verifică prin screenshot — **1.11**
 
-**Fișierele designului vechi v2.0.0 au fost șterse** (`css/global.css`,
-`css/error.css`, `js/components.js`, `js/contact.js`).
-
-## Unelte verificate pe acest calculator
-
-- PHP 8.2 la `/c/xampp/php/php.exe` — `php -l` și `php -S 127.0.0.1:8899 -t .`
-- Chrome la `/c/Program Files/Google/Chrome/Application/chrome.exe`
-  — screenshot headless; **cale Windows la `--screenshot`**
-  — **nu poate randa sub 500px**: pentru mobil folosește metoda cu iframe
-    din [ERORI.md](ERORI.md) 1.10
-- `sharp` instalat în scratchpad pentru WebP (nu în proiect)
-- **Previzualizarea necesită server** — `fetch()` nu merge pe `file://`
-- Figma: REST API pentru date (`/v1/files`), dar `/v1/images` are rate limit —
-  reproduce în CSS ce se poate (gradienți, forme simple)
+**`sharp`** e instalat în scratchpad pentru conversie WebP — nu în proiect, ca
+să nu introducem build tools.
 
 ---
 
-## Stare conformitate
+## FIGMA — acces și tokeni
 
-### ✅ Rezolvate (v1.0.1 — 2026-08-18, testate funcțional)
-- `php/contact.php` + `php/config.php` — POST-only, honeypot, CSRF, sanitizare,
-  validare server-side, limite hard, rate limiting, email multipart cu Reply-To.
-  Testat cu PHP 8.2: CSRF greșit → 403, metodă greșită → 405, date invalide → 422,
-  honeypot → succes fals, depășire limită → 429.
-  **Rate limiting numără doar trimiterile reușite**, nu și erorile de validare
-  (altfel utilizatorul se autoblochează greșind emailul).
-- `.htaccess` — security headers, CSP (Fontshare + Google Fonts), GZIP, cache 1 an,
-  blocare listare directoare și fișiere sensibile, `ErrorDocument 404`.
-  HSTS și redirectările HTTPS/www sunt **comentate** — se activează după SSL.
-- `php/tmp/` — blocat din web prin `.htaccess` propriu; conținutul ignorat de git.
-- `js/contact.js` — trimitere reală prin `fetch()` (înainte simula cu `setTimeout`).
-- `sitemap.xml` — eliminate 3 pagini inexistente, adăugat `magazine-online.html`.
-- `robots.txt` — blocat explicit `/php/tmp/`.
-- **Cache busting `?v=1.0.1`** pe toate cele 32 de referințe CSS/JS.
-  Obligatoriu acum: `.htaccess` servește CSS/JS cu `immutable, max-age=1an`.
-  **La orice modificare de CSS/JS, incrementează versiunea în toate paginile.**
-- `changelog.md` — creat.
-- `css/global.css` — adăugate `--error`, `--error-bg`, `--error-border`.
-
-### ❌ Rămase de făcut
-- **Datele firmei în paginile legale** — marcajele `[DE COMPLETAT]`
-  (denumire legală, CUI, adresă). Documentele nu sunt valabile fără ele.
-- **Contrast insuficient în hero**: textul alb peste zona portocalie a
-  gradientului nu trece 4.5:1. Reprodus fidel din Figma — decizie de luat.
-- **Datele de contact** — telefonul lipsește (în Figma nu există; pe pagina
-  de contact sunt doar email, locație și timp de răspuns)
-- **Verificare pe mobil pe dispozitiv real** — testat doar prin metoda
-  cu iframe din [ERORI.md](ERORI.md) 1.10
-- Opțional: descrierile din secțiunea „Ce primești" (magazine) au fost scrise
-  de noi — în Figma toate șase erau text placeholder identic
-
----
-
-## FIGMA — acces și date deja extrase
-
-**Fișier:** `Signa Studio Design`
 **fileKey:** `x4XGqHY7qNJFLYbyxZG89d`
 **URL:** https://www.figma.com/design/x4XGqHY7qNJFLYbyxZG89d/Signa-Studio-Design
-
-### Cum accesezi — IMPORTANT, nu risipi apeluri MCP
-
-Cont Figma: plan **Starter + seat Full** → MCP-ul Figma are doar **20 apeluri pe LUNĂ**.
-**Folosește REST API pentru date** (limite generoase, gratuit pe Starter) și păstrează
-MCP-ul exclusiv pentru `get_screenshot` la verificarea vizuală finală.
-
-Token read-only salvat în `~/.figma-token` (în afara repo-ului):
+**Token read-only:** `~/.figma-token`, în afara repo-ului
 
 ```bash
 TOKEN=$(cat "$HOME/.figma-token")
 
-# structura unui frame
+# structura unui frame — fără limită strânsă, folosește-l liber
 curl -s -H "X-Figma-Token: $TOKEN" \
-  "https://api.figma.com/v1/files/x4XGqHY7qNJFLYbyxZG89d/nodes?ids=1:439" -o frame.json
+  "https://api.figma.com/v1/files/x4XGqHY7qNJFLYbyxZG89d/nodes?ids=1:439"
 
-# export imagine PNG @2x (sau format=svg pentru logo-uri/iconuri)
+# randare nod ca imagine — echivalentul unui screenshot
 curl -s -H "X-Figma-Token: $TOKEN" \
   "https://api.figma.com/v1/images/x4XGqHY7qNJFLYbyxZG89d?ids=1:439&format=png&scale=2"
 ```
 
-> Endpoint-ul `/variables/local` e **Enterprise-only** — nu funcționează pe Starter.
-> Valorile rezolvate se citesc din JSON-ul nodurilor (deja extrase mai jos).
+- `/v1/images` **are rate limit** (429). Grupează ID-urile într-un singur apel
+  și reproduce în CSS ce se poate — gradienți, forme simple — [ERORI.md](ERORI.md) **3.6**
+- `/v1/variables/local` e **Enterprise-only**, nu funcționează pe acest cont
+- MCP-ul Figma: plan Starter → **20 apeluri pe LUNĂ**. Nu-l folosi pentru date.
 
-### Frame-uri (12 — desktop 1440px + mobil ~393px)
+### Frame-uri
 
 | Pagină | Desktop | Mobil |
 |---|---|---|
 | Landing | `1:439` | `1:2138` |
-| Site-uri prezentare (SP) | `1:1398` | `1:2981` |
-| Magazine online (MO) | `1:1861` | `1:3254` |
-| Aplicații custom (AC) — **pagină nouă** | `1:1668` | `1:3531` ⚠️ |
+| Site-uri prezentare | `1:1398` | `1:2981` |
+| Magazine online | `1:1861` | `1:3254` |
+| Aplicații custom | `1:1668` | `1:3531` ⚠️ |
 | Proiecte | `1:1190` | `1:2857` |
 | Contact | `1:1320` | `1:3718` ⚠️ |
 
-⚠️ `1:3531` și `1:3718` sunt denumite greșit în Figma (ambele „Tip servicii mobile MO").
-După conținut sunt de fapt **AC**, respectiv **Contact**.
+⚠️ `1:3531` și `1:3718` sunt **denumite greșit** în Figma (ambele „Tip servicii
+mobile MO"). După conținut sunt **AC**, respectiv **Contact**.
 
-### Tokeni extrași din design
+### Tokeni — deja în `css/variables.css`, nu-i re-extrage
 
-**Temă: LIGHT.** Toate cele 12 frame-uri au fundal `#ffffff`. Albul domină ca
-suprafață (58.7M px² față de 10.9M negru). `#101010` este culoarea **textului**
-(460 noduri text), NU a fundalului — de verificat mereu `fills` pe noduri
-non-TEXT când se deduce paleta.
-
-Structura vizuală: pagină albă, cu **o bandă închisă full-width** (secțiunea
-despre agenție, 1440×2162) și **carduri închise** în restul secțiunilor.
+**Temă LIGHT.** Toate frame-urile au fundal `#ffffff`. `#101010` e culoarea
+**textului**, nu a fundalului. La analiza `fills`, separă nodurile `TEXT` de
+restul și cântărește fundalurile după **suprafață**, nu după frecvență —
+altfel deduci greșit tema ([ERORI.md](ERORI.md) **3.1**).
 
 ```
-Fundal pagină:   #ffffff
-Suprafețe închise: #0a0a0a   #101010   #141414   #000000
-Text pe alb:     #101010 (principal)   #4e4e4e (secundar)
-Text pe închis:  #ffffff   #bdbec2 (secundar)
-Accente:         #278cff (albastru)  #1efb26 (verde)  #e9591c (portocaliu)
-                 #2e964b  #3898ec  #4fa3f2
-
-Gradient-semnătură (x32):
-  #ff6161 → #ffd361 → #95ffa0 → #95b9ff → #d795ff
+Fundal: #FFFFFF   Suprafețe închise: #0A0A0A  #101010  #141414  #000000
+Text pe alb: #101010 / #4E4E4E      Text pe închis: #FFFFFF / #BDBEC2
+Accente: #278CFF  #1EFB26  #E9591C  #2E964B  #3898EC  #4FA3F2
+Gradient-semnătură: #FF6161 → #FFD361 → #95FFA0 → #95B9FF → #D795FF
 ```
 
-**Tipografie** — ambele fonturi sunt **gratuite comercial** via Fontshare CDN (testat, HTTP 200):
-
+**Fonturi — Fontshare, gratuite comercial:**
 ```html
-<link rel="preconnect" href="https://api.fontshare.com">
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,301,400,500,700,900&f[]=cabinet-grotesk@400,500,700&display=swap">
 ```
+- **Satoshi** — principal; **Cabinet Grotesk** — paragrafe intro și accente bold
+- La Fontshare **italicul e weight-ul +1** (`301` = 300 italic) — **3.4**
+- ⚠️ CSP-ul din `.htaccess` trebuie să permită `api.fontshare.com` și
+  `cdn.fontshare.com`. A fost odată doar pe Google Fonts și ar fi blocat toate
+  fonturile în producție — se vede doar pe Apache, nu local — **4.8**
 
-- **Satoshi** → font principal (titluri + UI + corp text), weights 400/500/700/900
-- **Cabinet Grotesk** → paragrafe intro / display, weight 400
+**Radius:** 15, 24, 25, 40, 48px (valorile fracționare sunt zgomot din vectori scalați)
 
-Scala reală (size/line-height/letter-spacing):
-```
-Hero:     132/178 ls+5.28 (700)   104/94 ls-2 (900)
-Display:  64/86 (900)   64/60 (700)   49/65 ls-0.97 (500)
-Titluri:  48/58   43/58   40/50   34/34   32/41..43
-Corp:     21/41   20/27 ls-0.40   18/36   16/22   14/19   12/16
-```
-
-**Border radius:** 15, 24, 25, 40, 48px
-(valorile fracționare gen `1.13px` sunt zgomot din vectori scalați — se ignoră)
-
-**Shadows:** `0px 4px 4px #00000040` apare de 104 ori = default Figma, neintenționat.
-Se folosește scala din secțiunea „Decizii luate".
+**Umbre:** `0 4px 4px rgba(0,0,0,.25)` apare de 104 ori în Figma — e **valoarea
+default a aplicației, neintenționată**. Nu se reproduce; folosim scala din
+`variables.css`.
 
 ---
 
-## Ordinea de lucru stabilită
+## Decizii luate — nu le re-discuta
 
-1. ~~**Backend**~~ — ✅ FĂCUT în v1.0.1 (vezi Stare conformitate)
-2. **Reconstrucția pe designul Figma** — se adoptă direct structura ȚINTĂ de mai sus
-   (`variables.css` generat din tokenii de mai sus, `components/*.html` prin fetch)
-3. **Finisaje pe designul nou** — WebP + srcset, cache busting, pagini legale, cookie banner
+1. **Se păstrează exact paginile din Figma.** `de-ce-ai-nevoie.html` și
+   `explorare-lista.html` au fost șterse. Excepții păstrate, fiindcă sunt
+   cerințe funcționale sau legale: `404.html`, paginile legale, cookie banner.
+2. **Umbrele nu se reproduc din Figma** (vezi mai sus).
+3. **Diacriticele se scriu corect**, deși în Figma lipsesc pe alocuri (regula 5).
+4. **„Servicii" e meniu derulant** în navbar. Figma are 4 intrări fără submeniu,
+   dar paginile de serviciu nu erau accesibile din paginile interioare. Navbarul
+   în repaus rămâne identic cu designul.
+5. **Pagina de contact are date directe** (email, locație, timp de răspuns),
+   deși Figma are doar formularul — o pagină de contact fără adresă e o lipsă reală.
+6. **Textele placeholder din Figma au fost rescrise** unde erau evident greșite:
+   secțiunea „Ce primești" (toate cele 6 descrieri erau identice) și planurile
+   de preț pentru magazine (descrierile erau copiate din pagina de site-uri).
+   **Prețurile sunt cele reale din Figma:** SP 500 / 1.200 lei,
+   MO 2.500 / 5.000 lei, ambele cu al treilea plan „La cerere".
 
-> Nu face fixuri de CSS sau markup înainte de pasul 2 — se rescriu oricum.
+---
 
-## Decizii luate
+## ✅ Ce e gata și testat
 
-1. **Se păstrează exact paginile din Figma.** `de-ce-ai-nevoie.html` (+ CSS/JS) și
-   `explorare-lista.html` au fost **șterse** (recuperabile: `git checkout HEAD~ -- <fișier>`).
-   **Excepții păstrate**, fiindcă sunt cerințe funcționale/legale, nu pagini de design:
-   `404.html` (servit prin `ErrorDocument`), paginile legale și cookie banner-ul (GDPR).
-   Acestea se construiesc în stilul designului nou.
-2. **Pagina AC (Aplicații Custom) se adaugă** — în navbar, footer și sitemap.
-3. **Umbrele NU se reproduc din Figma.** `0 4px 4px rgba(0,0,0,.25)` (x104) e valoarea
-   default din Figma, nu o decizie de design: blur = offset ⇒ margine dură, iar negrul
-   pur e invizibil pe `#101010`. Se folosește scala de mai jos, iar elevația se face
-   prin trepte de suprafață, nu prin umbre:
+- **Backend formular** (`php/contact.php` + `config.php`): POST-only, honeypot,
+  CSRF din sesiune, sanitizare, validare server-side, limite hard, email
+  multipart cu Reply-To. Testat cu PHP 8.2 — CSRF greșit → 403, metodă greșită →
+  405, date invalide → 422, honeypot → succes fals, depășire limită → 429.
+  **Rate limiting numără doar trimiterile reușite**, nu erorile de validare
+  (altfel utilizatorul se autoblochează greșind emailul).
+- **`.htaccess`**: security headers, CSP pe Fontshare, GZIP, cache 1 an cu
+  `immutable`, blocare listare directoare + fișiere sensibile + `config.php`,
+  `ErrorDocument 404`. HSTS și redirectările HTTPS/www sunt **comentate**.
+- **Cookie banner GDPR**: zero scripturi de urmărire înainte de accept explicit;
+  la refuz nu se încarcă nimic. Testat programatic.
+- **Toate cele 9 pagini**: răspund 200, linkuri interne valide, zero cod inline,
+  zero culori hardcodate în afara `variables.css`, title/description în limite,
+  layout mobil curat la 393px reali.
 
-   ```css
-   --shadow-sm:   0 1px 2px  rgba(0,0,0,.4);
-   --shadow-md:   0 4px 12px rgba(0,0,0,.5);
-   --shadow-lg:   0 12px 32px rgba(0,0,0,.6);
-   --glow-accent: 0 4px 20px rgba(39,140,255,.25);
-   /* elevație pe dark: #101010 → #171717 → #1f1f1f + border 1px rgba(255,255,255,.08) */
-   ```
+---
 
-## De făcut la finalul proiectului
+## ❌ Ce a rămas de făcut
 
-- [ ] Regenerează token-ul Figma (a fost expus în chat) — Settings → Security → revoke
+### Blocat de date pe care nu le avem
+- **Datele firmei în paginile legale** — marcajele `[DE COMPLETAT]` (denumire
+  legală, CUI, adresă). Documentele **nu sunt valabile juridic** fără ele.
+- **Telefonul de contact** — lipsește din Figma; cel vechi era placeholder
+  (`+40 700 000 000`) și nu a fost preluat.
+
+### Decizie de design în așteptare
+- **Contrast insuficient în hero**: textul alb peste zona portocalie a
+  gradientului nu trece 4.5:1 — cerință explicită în instrucțiuni. Reprodus
+  fidel la cererea clientului. Se rezolvă cu un overlay subtil sau mutând
+  blocul de text peste zona închisă a gradientului.
+
+### Verificări nefăcute
+- Test pe dispozitiv mobil real (până acum doar prin metoda cu iframe)
+- Test al trimiterii reale de email (necesită host cu PHP și SMTP)
+
+---
+
+## 🚀 Înainte de publicare — listă de control
+
+- [ ] `MAIL_TO` și `MAIL_FROM` reale în `php/config.php`
+- [ ] Confirmă `DEV_MODE = false` în `php/config.php` (e deja false)
+- [ ] Datele firmei în cele două pagini legale
+- [ ] Verifică `mail()` pe host — trimite un mesaj de test
 - [ ] Activează HSTS în `.htaccess` **doar după** ce SSL e confirmat funcțional
-- [ ] Înlocuiește datele de contact placeholder (`+40 700 000 000`)
+- [ ] Decomentează redirectările HTTPS și www/non-www în `.htaccess`
+- [ ] Dacă activezi Analytics: `ANALYTICS_ID` în `js/cookie.js` **și** domeniile
+      Google în CSP (vezi nota din `.htaccess`) — altfel CSP-ul îl blochează
+- [ ] Regenerează token-ul Figma (a fost expus în chat) — Settings → Security
+- [ ] Trimite `sitemap.xml` în Google Search Console
