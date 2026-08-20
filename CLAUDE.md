@@ -130,15 +130,17 @@ de CSS/JS, în TOATE paginile (`.htaccess` servește cu `immutable, max-age=1an`
 - `changelog.md` — creat.
 - `css/global.css` — adăugate `--error`, `--error-bg`, `--error-border`.
 
-### ❌ Rămase (se rezolvă la reconstrucția pe Figma)
-- Lipsesc paginile legale (confidențialitate, termeni) — risc GDPR
-- Lipsește cookie banner + `cookie.js`
-- Componentele sunt string-uri în JS, nu `components/*.html` prin fetch
-- `style=` inline în `magazine-online.html`
-- Imagini: fără WebP, fără `srcset`, majoritatea fără `width`/`height`
-- Breakpoints 1100/960/860/768/600 în loc de 1024/768/640/480
-- `css/site-uri.css`: 40 hex hardcodate + 21 `rgba()`
+### ❌ Rămase de făcut
+- **Cookie banner + `cookie.js`** — nu există încă (regula absolută 2 + GDPR)
+- **Datele firmei în paginile legale** — marcajele `[DE COMPLETAT]`
+  (denumire legală, CUI, adresă); documentele nu sunt valabile fără ele
+- **Reconstrucția paginilor rămase** pe designul Figma (vezi Structura ACTUALĂ)
+- `style=` inline în `magazine-online.html` (dispare la reconstrucție)
+- `css/site-uri.css`: 40 hex hardcodate (dispare la reconstrucție)
 - Date contact placeholder (`+40 700 000 000`) în `contact.html`
+- **Contrast insuficient în hero**: textul alb peste zona portocalie a
+  gradientului nu trece 4.5:1. Reprodus fidel din Figma, la cererea clientului
+  — decizie de luat (overlay subtil sau mutarea textului pe zona închisă)
 
 ---
 
