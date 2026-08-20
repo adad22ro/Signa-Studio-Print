@@ -152,6 +152,44 @@ python -c "json.load(open(r'c:/Users/.../scratchpad/raspuns.json'))"
 
 ---
 
+### 1.10 Chrome headless nu poate randa sub 500px pe Windows — screenshot înșelător
+**Simptom:** La `--window-size=393,2400`, screenshotul (393px lățime) arăta text
+tăiat la marginea dreaptă în toată pagina. Părea o depășire gravă pe orizontală.
+
+**Cauză:** Windows impune o lățime minimă de fereastră. Verificat direct:
+```
+--window-size=393  →  innerWidth=500   (!)
+--window-size=1440 →  innerWidth=1424  (16px = bara de derulare)
+```
+Layout-ul se calculează la **500px**, iar imaginea e doar **decupată** la 393.
+Textul „tăiat" era artefact al capturii, nu o problemă reală de CSS.
+
+**Soluție — previzualizare mobilă corectă, prin iframe:**
+```html
+<!-- _mobil.html, temporar în rădăcina proiectului -->
+<style>html,body{margin:0}iframe{width:393px;height:2600px;border:0;display:block}</style>
+<iframe src="index.html" scrolling="no"></iframe>
+```
+```bash
+chrome --headless --hide-scrollbars --window-size=600,2600   --screenshot="C:\...\mobil.png" http://127.0.0.1:8899/_mobil.html
+# decupezi apoi primii 393px pe orizontală — sunt 393px REALI
+```
+
+**Măsurare programatică** (mai sigură decât ochiul), tot prin iframe:
+```js
+d.documentElement.scrollWidth          // depășire la nivel de document
+el.scrollWidth > el.clientWidth        // text tăiat în interiorul unui container
+```
+Atenție: iframe-ul fără `scrolling="no"` își rezervă ~15px pentru bara de
+derulare, deci raportează 378 în loc de 393.
+
+**Prevenție:** Nu diagnostica probleme de responsive din screenshot-uri făcute cu
+`--window-size` sub 500px. Măsoară întâi, apoi corectează.
+**Notă:** din cauza acestei capcane am adăugat corecții de responsive care nu
+rezolvau un bug real (rămân în cod — sunt îmbunătățiri valide, dar nu erau necesare).
+
+---
+
 ## 2. Git
 
 ### 2.1 Push respins — „fetch first"

@@ -123,3 +123,96 @@
     border-radius: var(--r-md);
   }
 }
+
+
+/* ═══════════════════════════════════════════════════════
+   CORECȚII DE DEPĂȘIRE PE ORIZONTALĂ (adăugate v2.1.1)
+   Testat la 393px — lățimea frame-urilor mobile din Figma.
+   ═══════════════════════════════════════════════════════ */
+
+/* Plasă de siguranță: nicio secțiune nu poate lărgi pagina.
+   `clip` în loc de `hidden` — nu strică `position: sticky` pe header. */
+body {
+  overflow-x: clip;
+}
+
+@media (max-width: 768px) {
+
+  /* Tab-urile din hero nu încap una lângă alta */
+  .hero__panel-nav {
+    flex-direction: column;
+    gap: var(--sp-1);
+    padding-inline: 0;
+  }
+
+  .hero__tab {
+    align-self: flex-start;
+  }
+
+  /* Blocurile cu lățime fixă din desktop */
+  .hero__meta,
+  .hero__lead,
+  .hero__tagline,
+  .closing__title,
+  .trust__title,
+  .trust__intro,
+  .process__title,
+  .statement,
+  .svc-hero__title,
+  .price-card {
+    max-width: 100%;
+  }
+
+  /* Logourile partenerilor: gap fix, nu procentual */
+  .trust__logos {
+    gap: var(--sp-4);
+    justify-content: flex-start;
+  }
+
+  .trust__logos img {
+    height: 26px;
+  }
+
+  /* Butoanele din hero pe toată lățimea, ca să nu iasă din panou */
+  .hero__actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .btn--hero {
+    font-size: var(--fs-md);
+  }
+}
+
+@media (max-width: 640px) {
+
+  /* Titlurile mari trebuie să încapă pe ecrane înguste */
+  .services__title,
+  .needs__title,
+  .showcase__title,
+  .svc-hero__title,
+  .svc-fit__title,
+  .svc-build__title,
+  .svc-price__title,
+  .legal__title {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
+
+  .statement {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .hero__title {
+    font-size: clamp(3rem, 16vw, 4.5rem);
+  }
+
+  /* Chip-urile lungi se pot rupe pe două rânduri */
+  .chip {
+    white-space: normal;
+  }
+
+  /* Cardul de chat: bulele ocupă mai mult din lățime */
+  .chat__msg {
+    max-width: 88%;
+  }
+}
