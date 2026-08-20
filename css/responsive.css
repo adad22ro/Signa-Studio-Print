@@ -138,15 +138,38 @@ body {
 
 @media (max-width: 768px) {
 
-  /* Tab-urile din hero nu încap una lângă alta */
-  .hero__panel-nav {
-    flex-direction: column;
-    gap: var(--sp-1);
+  /* Structura panoului hero, ca în frame-ul mobil Figma (1:2145 / 1:2173):
+     nav-ul ocupă toată lățimea panoului cu padding mic propriu, iar corpul
+     are padding mai mare. Tab-urile stau pe UN rând, la 12px. */
+  .hero__panel {
     padding-inline: 0;
   }
 
+  .hero__panel-nav {
+    flex-wrap: nowrap;
+    gap: var(--sp-1);
+    padding-inline: 10px;
+    justify-content: space-between;
+    /* Siguranță: dacă textul nu încape (traduceri, fonturi de rezervă),
+       rândul derulează în loc să taie conținutul. */
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .hero__panel-nav::-webkit-scrollbar {
+    display: none;
+  }
+
   .hero__tab {
-    align-self: flex-start;
+    /* Figma dă 12px la 393px; scalăm ușor sub, ca cele trei etichete
+       să încapă pe un rând și cu redarea reală a fontului. */
+    font-size: clamp(0.625rem, 2.8vw, 0.75rem);
+    white-space: nowrap;
+  }
+
+  .hero__panel-body,
+  .hero__stack {
+    padding-inline: var(--sp-3);
   }
 
   /* Blocurile cu lățime fixă din desktop */

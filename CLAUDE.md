@@ -65,36 +65,46 @@ Breakpoints țintă (în `responsive.css`): **1024 / 768 / 640 / 480px**
 
 ## Structura ACTUALĂ (v2.1.0 — reconstrucție Figma în curs)
 
-**Sistem de design nou** (structura cerută de instrucțiuni, deja pe loc):
+**Sistem de design nou** (structura cerută de instrucțiuni, pe loc):
 ```
 css/reset.css  variables.css  base.css  components.css  responsive.css
-css/home.css   (secțiuni specifice paginii principale)
+css/home.css      (secțiuni pagina principală)
+css/servicii.css  (pagini de serviciu: SP / MO / AC)
+css/legal.css     (pagini legale)
 components/navbar.html  footer.html      (injectate prin fetch)
-js/main.js  animations.js
+js/main.js  animations.js  form.js
 php/contact.php  config.php  tmp/
 ```
 
 **Pagini pe designul NOU (Figma):**
-- `index.html` — hero + servicii ✅ (restul secțiunilor de adăugat)
+- `index.html` — ✅ COMPLETĂ, toate cele 11 secțiuni
+- `aplicatii-custom.html` — ✅ pagină nouă (frame 1:1668)
+- `politica-confidentialitate.html`, `termeni-conditii.html` — ✅
+  ⚠️ conțin marcaje `[DE COMPLETAT]` (denumire legală, CUI, adresă)
 
 **Pagini încă pe designul VECHI v2.0.0** (Space Grotesk + teal, `css/global.css`):
-- `site-uri.html`, `magazine-online.html`, `proiecte.html`,
-  `contact.html`, `404.html`, `de-ce-ai-nevoie.html`
+- `site-uri.html` (Figma 1:1398 / 1:2981)
+- `magazine-online.html` (Figma 1:1861 / 1:3254)
+- `proiecte.html` (Figma 1:1190 / 1:2857)
+- `contact.html` (Figma 1:1320 / 1:3718)
+- `404.html` (fără frame — se face în stilul nou)
 - Fișiere vechi încă folosite: `css/global.css`, `css/error.css`,
-  `js/components.js`, `js/contact.js`
-- **Se șterg pe măsură ce fiecare pagină e reconstruită.**
+  `js/components.js`, `js/contact.js` — se șterg pe măsura reconstrucției
 
-**Pagină nouă de creat:** `aplicatii-custom.html` (frame Figma 1:1668 / mobil 1:3531)
+**Versiune cache busting: `?v=2.1.0`** — incrementeaz-o la orice modificare
+de CSS/JS, în TOATE paginile (`.htaccess` servește cu `immutable, max-age=1an`).
 
-**Versiune cache busting curentă: `?v=2.1.0`** — incrementeaz-o la orice
-modificare de CSS/JS, în toate paginile.
+## Unelte verificate pe acest calculator
 
-**Unelte verificate pe acest calculator:**
-- PHP 8.2 la `/c/xampp/php/php.exe` — lint (`php -l`) și server local (`php -S`)
-- Chrome la `/c/Program Files/Google/Chrome/Application/chrome.exe` —
-  screenshot headless pentru verificare vizuală (folosește cale Windows la `--screenshot`)
-- `sharp` instalat în scratchpad pentru conversie WebP (nu în proiect)
-- **Previzualizarea locală necesită server** — `fetch()` nu merge pe `file://`
+- PHP 8.2 la `/c/xampp/php/php.exe` — `php -l` și `php -S 127.0.0.1:8899 -t .`
+- Chrome la `/c/Program Files/Google/Chrome/Application/chrome.exe`
+  — screenshot headless; **cale Windows la `--screenshot`**
+  — **nu poate randa sub 500px**: pentru mobil folosește metoda cu iframe
+    din [ERORI.md](ERORI.md) 1.10
+- `sharp` instalat în scratchpad pentru WebP (nu în proiect)
+- **Previzualizarea necesită server** — `fetch()` nu merge pe `file://`
+- Figma: REST API pentru date (`/v1/files`), dar `/v1/images` are rate limit —
+  reproduce în CSS ce se poate (gradienți, forme simple)
 
 ---
 
