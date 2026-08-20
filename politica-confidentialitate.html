@@ -18,12 +18,12 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#FFFFFF">
 
-  <link rel="stylesheet" href="css/reset.css?v=2.1.0">
-  <link rel="stylesheet" href="css/variables.css?v=2.1.0">
-  <link rel="stylesheet" href="css/base.css?v=2.1.0">
-  <link rel="stylesheet" href="css/components.css?v=2.1.0">
-  <link rel="stylesheet" href="css/legal.css?v=2.1.0">
-  <link rel="stylesheet" href="css/responsive.css?v=2.1.0">
+  <link rel="stylesheet" href="css/reset.css?v=2.2.0">
+  <link rel="stylesheet" href="css/variables.css?v=2.2.0">
+  <link rel="stylesheet" href="css/base.css?v=2.2.0">
+  <link rel="stylesheet" href="css/components.css?v=2.2.0">
+  <link rel="stylesheet" href="css/legal.css?v=2.2.0">
+  <link rel="stylesheet" href="css/responsive.css?v=2.2.0">
 </head>
 <body>
 
@@ -122,9 +122,14 @@
           urmărește comportamentul tău.
         </p>
         <p>
-          Nu folosim cookie-uri de analiză sau de publicitate. Dacă acest lucru
-          se va schimba, îți vom cere consimțământul în prealabil, printr-un
-          banner dedicat.
+          La prima vizită îți afișăm un banner prin care poți accepta sau refuza
+          cookie-urile de analiză. <strong>Nimic nu se încarcă înainte de acceptul
+          tău explicit</strong>, iar la refuz nu se încarcă deloc. Alegerea ta e
+          reținută local, în browserul tău.
+        </p>
+        <p>
+          În acest moment nu avem niciun serviciu de analiză activ — chiar și
+          după Accept nu se încarcă nimic până când nu configurăm unul.
         </p>
 
         <h2>7. Drepturile tale</h2>
@@ -167,6 +172,10 @@
 
   <div id="footer-placeholder"></div>
 
-  <script src="js/main.js?v=2.1.0" defer></script>
+  <!-- Cookie banner injectat din components/cookie-banner.html -->
+  <div id="cookie-placeholder"></div>
+
+  <script src="js/main.js?v=2.2.0" defer></script>
+  <script src="js/cookie.js?v=2.2.0" defer></script>
 </body>
 </html>

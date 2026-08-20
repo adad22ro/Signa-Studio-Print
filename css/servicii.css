@@ -252,3 +252,661 @@
     padding: var(--sp-4);
   }
 }
+
+
+/* === ACȚIUNI ÎN HERO ================================== */
+
+.svc-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+
+/* === COMPARAȚIE (două coloane) ======================== */
+
+.svc-compare__title {
+  margin-bottom: var(--sp-8);
+  font-size: var(--fs-h2);            /* 48px */
+  font-weight: var(--fw-medium);
+  line-height: 1.15;
+  letter-spacing: var(--ls-tight);
+  text-align: center;
+}
+
+.compare {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-6);
+}
+
+.compare__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-4);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  background: var(--c-bg-alt);
+}
+
+.compare__heading {
+  font-size: var(--fs-h4);            /* 32px */
+  font-weight: var(--fw-bold);
+  line-height: 1.28;
+  letter-spacing: var(--ls-tight);
+}
+
+.compare__desc {
+  font-size: var(--fs-md);
+  line-height: var(--lh-relaxed);
+  color: var(--c-text);
+}
+
+.svc-compare__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--sp-8);
+}
+
+
+/* === LISTE CU BIFĂ / EXCLUDERE ======================== */
+
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  margin-top: var(--sp-1);
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 26px;
+  font-size: var(--fs-sm);            /* 14px */
+  line-height: 1.5;
+  color: var(--c-text);
+}
+
+.check-list li::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-pill);
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  line-height: 1;
+}
+
+.check-list--yes li::before {
+  content: '✓';
+  background: var(--c-green-deep);
+  color: var(--c-text-on-dark);
+}
+
+.check-list--no li::before {
+  content: '✕';
+  background: var(--c-orange);
+  color: var(--c-text-on-dark);
+}
+
+
+/* === PREȚURI ==========================================
+   Figma 1:1446 — 3 carduri 386x730, fundal alb,
+   contur #4FA3F2, rază 25px. */
+
+.pricing__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-10);
+  text-align: center;
+}
+
+.pricing__title {
+  max-width: 22ch;
+  font-size: var(--fs-h2);            /* 48px */
+  font-weight: var(--fw-medium);
+  line-height: 1.15;
+  letter-spacing: var(--ls-tight);
+}
+
+.pricing__intro {
+  max-width: 52ch;
+  font-size: var(--fs-lead);          /* 18-21px */
+  line-height: var(--lh-relaxed);
+  color: var(--c-text-muted);
+}
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-4);
+  align-items: stretch;
+}
+
+.plan {
+  display: flex;
+  flex-direction: column;
+  padding: var(--sp-4);
+  border: 1px solid var(--c-accent-soft);   /* #4FA3F2 din Figma */
+  border-radius: var(--r-lg);               /* r:25 */
+  background: var(--c-bg);
+  transition: box-shadow var(--t-base), transform var(--t-base);
+}
+
+.plan:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--glow-accent);
+}
+
+.plan__name {
+  font-size: var(--fs-h4);            /* ~34px în Figma */
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  letter-spacing: var(--ls-tight);
+}
+
+.plan__desc {
+  margin-top: var(--sp-2);
+  min-height: 4.5em;
+  font-size: var(--fs-sm);            /* 14px */
+  line-height: 1.6;
+  color: var(--c-text-muted);
+}
+
+.plan__from {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+}
+
+.plan__price {
+  font-size: clamp(2rem, 3.4vw, 3.0625rem);   /* 49px în Figma */
+  font-weight: var(--fw-medium);
+  line-height: 1.1;
+  letter-spacing: var(--ls-tight);
+  color: var(--c-text);
+}
+
+.plan__note {
+  margin-top: 4px;
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+}
+
+.plan__features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin-block: var(--sp-4);
+}
+
+.plan__features li {
+  position: relative;
+  padding-left: 26px;
+  font-size: var(--fs-md);
+  line-height: 1.4;
+  color: var(--c-text);
+}
+
+.plan__features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-pill);
+  background: var(--c-green);
+}
+
+.plan__btn {
+  margin-top: auto;
+  align-self: stretch;
+  padding: 14px var(--sp-2);
+  border-radius: var(--r-2xl);
+  font-size: var(--fs-md);
+}
+
+
+/* === RESPONSIVE — secțiuni de serviciu ================ */
+
+@media (max-width: 1024px) {
+  .plans {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-inline: auto;
+  }
+
+  .plan__desc {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .compare {
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+  }
+
+  .svc-hero__actions .btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
+
+
+/* === CUM ALEGI (magazine online) ======================
+   Figma 1:2063 — carduri 479x332, contur #278CFF, rază 25. */
+
+.svc-choose__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-8);
+  text-align: center;
+}
+
+.svc-choose__title {
+  font-size: var(--fs-h2);            /* 48px */
+  font-weight: var(--fw-medium);
+  line-height: 1.15;
+  letter-spacing: var(--ls-tight);
+}
+
+.svc-choose__intro {
+  font-size: var(--fs-md);
+  color: var(--c-text-muted);
+}
+
+.choose-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-5);
+}
+
+.choose-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-4);
+  border: 1px solid var(--c-accent);  /* #278CFF din Figma */
+  border-radius: var(--r-lg);         /* r:25 */
+  background: var(--c-bg);
+}
+
+.choose-card__title {
+  font-size: var(--fs-h4);            /* 32px */
+  font-weight: var(--fw-bold);
+  line-height: 1.28;
+  letter-spacing: var(--ls-tight);
+}
+
+.choose-card__desc {
+  font-size: var(--fs-md);
+  line-height: var(--lh-relaxed);
+  color: var(--c-text);
+}
+
+.choose-card__label {
+  margin-top: var(--sp-1);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  color: var(--c-text);
+}
+
+
+/* === CE PRIMEȘTI (bandă închisă) ======================
+   Figma 1:2105 — 1440x689, fundal negru cu pete difuze
+   (#8349FF, #0013FF, #00FFFF), reproduse în CSS. */
+
+.svc-includes {
+  position: relative;
+  padding-block: var(--sp-12);
+  background:
+    radial-gradient(48% 42% at 18% 24%, rgba(131, 73, 255, 0.28), transparent 70%),
+    radial-gradient(42% 38% at 76% 30%, rgba(0, 19, 255, 0.22), transparent 68%),
+    radial-gradient(38% 34% at 52% 88%, rgba(0, 255, 255, 0.14), transparent 66%),
+    var(--c-black);
+  overflow: hidden;
+}
+
+.svc-includes__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-10);
+  text-align: center;
+}
+
+.svc-includes__title {
+  font-size: var(--fs-h2);            /* 48px */
+  font-weight: var(--fw-medium);
+  line-height: 1.15;
+  letter-spacing: var(--ls-tight);
+  color: var(--c-text-on-dark);
+}
+
+.svc-includes__intro {
+  font-size: var(--fs-lg);            /* 20px */
+  color: var(--c-text-on-dark-muted);
+}
+
+.includes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-6) var(--sp-5);
+}
+
+.include__title {
+  font-size: var(--fs-h5);            /* 24px */
+  font-weight: var(--fw-bold);
+  line-height: 1.35;
+  color: var(--c-text-on-dark);
+}
+
+.include__desc {
+  margin-top: var(--sp-1);
+  font-size: var(--fs-md);
+  line-height: var(--lh-relaxed);
+  color: var(--c-text-on-dark-muted);
+}
+
+
+/* === NOTĂ SUB PREȚURI ================================= */
+
+.pricing__note {
+  margin-top: var(--sp-5);
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+  text-align: center;
+}
+
+
+/* === RESPONSIVE — magazine online ===================== */
+
+@media (max-width: 1024px) {
+  .includes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .choose-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+  }
+
+  .includes-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-4);
+  }
+}
+
+
+/* === PAGINA PROIECTE ================================== */
+
+.work-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  text-align: center;
+}
+
+.work-hero__title {
+  max-width: 16ch;
+  font-size: var(--fs-h1);            /* 64px */
+  font-weight: var(--fw-bold);
+  line-height: 1.06;
+  letter-spacing: var(--ls-tight);
+}
+
+.work-hero__intro {
+  max-width: 56ch;
+  margin-top: var(--sp-2);
+  font-family: var(--font-display);   /* Cabinet Grotesk */
+  font-size: var(--fs-md);
+  line-height: 1.6;
+  letter-spacing: var(--ls-wide);
+  color: var(--c-text);
+}
+
+.work-list {
+  padding-top: 0;
+}
+
+/* Cardurile de proiect pe fundal deschis (pe landing sunt pe închis) */
+.projects--light .project__title {
+  color: var(--c-text);
+}
+
+.projects--light .project__desc {
+  color: var(--c-text-muted);
+}
+
+.projects--light .project__link {
+  color: var(--c-text);
+}
+
+.work-cta {
+  padding-block: var(--sp-8);
+  text-align: center;
+}
+
+.work-cta__title {
+  max-width: 20ch;
+  margin-inline: auto;
+  font-size: var(--fs-h2);            /* 48px */
+  font-weight: var(--fw-bold);
+  line-height: 1.2;
+  letter-spacing: var(--ls-tight);
+}
+
+.work-cta__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--sp-5);
+}
+
+
+/* === PAGINA CONTACT =================================== */
+
+.contact-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  text-align: center;
+}
+
+.contact-hero__title {
+  max-width: 16ch;
+  font-size: var(--fs-h1);            /* 64px */
+  font-weight: var(--fw-bold);
+  line-height: 1.06;
+  letter-spacing: var(--ls-tight);
+}
+
+.contact-hero__intro {
+  max-width: 56ch;
+  font-family: var(--font-display);   /* Cabinet Grotesk */
+  font-size: var(--fs-md);
+  line-height: 1.6;
+  letter-spacing: var(--ls-wide);
+  color: var(--c-text);
+}
+
+.contact-form-section {
+  padding-top: 0;
+}
+
+/* Card de formular centrat (pagini contact și proiecte) */
+.form-card--center {
+  max-width: 472px;                   /* lățimea din Figma */
+  margin-inline: auto;
+}
+
+.closing--center {
+  text-align: center;
+}
+
+.closing__title--center {
+  max-width: none;
+  margin-bottom: var(--sp-6);
+  text-align: center;
+}
+
+.field__optional {
+  font-weight: var(--fw-regular);
+  color: var(--c-text-muted);
+}
+
+/* Selectul preia stilul câmpurilor, plus săgeata proprie */
+select.field__input {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--c-text) 50%),
+    linear-gradient(135deg, var(--c-text) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) calc(50% + 1px),
+    calc(100% - 13px) calc(50% + 1px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: var(--sp-5);
+  cursor: pointer;
+}
+
+/* Date de contact directe */
+.contact-direct {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-4);
+  max-width: 860px;
+  margin: var(--sp-10) auto 0;
+  padding-top: var(--sp-6);
+  border-top: 1px solid var(--c-border);
+  text-align: center;
+}
+
+.contact-direct li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: var(--fs-md);
+  color: var(--c-text);
+}
+
+.contact-direct__label {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+}
+
+.contact-direct a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+
+@media (max-width: 768px) {
+  .contact-direct {
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+    text-align: left;
+  }
+}
+
+
+/* === PAGINA 404 =======================================
+   Servită prin ErrorDocument de la orice adâncime, deci
+   folosește căi absolute și nu injectează componente. */
+
+.error-page {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-block: var(--sp-10);
+}
+
+.error-page__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 640px;
+  text-align: center;
+}
+
+.error-page__code {
+  font-size: clamp(4rem, 14vw, 8rem);
+  font-weight: var(--fw-black);
+  line-height: 1;
+  letter-spacing: var(--ls-tight);
+  background: var(--grad-signature);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.error-page__title {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  line-height: 1.15;
+  letter-spacing: var(--ls-tight);
+}
+
+.error-page__text {
+  max-width: 46ch;
+  margin-top: var(--sp-3);
+  font-size: var(--fs-md);
+  line-height: var(--lh-relaxed);
+  color: var(--c-text-muted);
+}
+
+.error-page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-2);
+  margin-top: var(--sp-6);
+}
+
+.error-page__links {
+  margin-top: var(--sp-8);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--c-border);
+  width: 100%;
+}
+
+.error-page__links ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-2) var(--sp-4);
+}
+
+.error-page__links a {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--c-text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 480px) {
+  .error-page__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

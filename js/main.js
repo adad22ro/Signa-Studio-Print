@@ -18,8 +18,9 @@
   }
 
   var COMPONENTS = [
-    { url: 'components/navbar.html', target: 'navbar-placeholder' },
-    { url: 'components/footer.html', target: 'footer-placeholder' }
+    { url: 'components/navbar.html',        target: 'navbar-placeholder' },
+    { url: 'components/footer.html',        target: 'footer-placeholder' },
+    { url: 'components/cookie-banner.html', target: 'cookie-placeholder' }
   ];
 
   /* ── INJECTARE COMPONENTE ──────────────────────────────*/
@@ -50,6 +51,9 @@
     initHeaderScroll();
     initHamburger();
     initSmoothScroll();
+
+    /* Anunță celelalte scripturi (ex. cookie.js) că DOM-ul e complet */
+    document.dispatchEvent(new CustomEvent('componente:gata'));
   }
 
   /* ── LINK ACTIV ────────────────────────────────────────

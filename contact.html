@@ -3,31 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contact — dezvoltare web în Iași, România. Solicită o ofertă pentru site-ul sau aplicația ta.">
-  <title>Contact — Signa Studio Print</title>
+
+  <title>Contact — Signa Studio</title>
+  <meta name="description" content="Hai să dăm viață ideii tale. Scrie-ne despre proiectul tău — răspundem în cel mult 24 de ore, cu o estimare clară.">
 
   <link rel="canonical" href="https://signastudioprint.ro/contact.html">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Contact — Signa Studio Print">
-  <meta property="og:description" content="Solicită o ofertă pentru site-ul sau aplicația ta. Iași, România.">
-  <meta property="og:image" content="https://signastudioprint.ro/img/og-default.jpg">
-  <meta property="og:url" content="https://signastudioprint.ro/contact.html">
+  <meta property="og:site_name" content="Signa Studio">
   <meta property="og:locale" content="ro_RO">
-  <meta property="og:site_name" content="Signa Studio Print">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Contact — Signa Studio Print">
-  <meta name="twitter:description" content="Solicită o ofertă pentru site-ul sau aplicația ta.">
-  <meta name="twitter:image" content="https://signastudioprint.ro/img/og-default.jpg">
+  <meta property="og:title" content="Contact — Signa Studio">
+  <meta property="og:description" content="Indiferent dacă ai deja brief-ul pregătit sau doar o idee, scrie-ne și îți răspundem rapid.">
+  <meta property="og:url" content="https://signastudioprint.ro/contact.html">
+  <meta property="og:image" content="https://signastudioprint.ro/img/og-default.jpg">
+
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,301,400,500,700,900&f[]=cabinet-grotesk@400,500,700&display=swap">
+
+  <link rel="icon" href="img/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#FFFFFF">
+
+  <link rel="stylesheet" href="css/reset.css?v=2.2.0">
+  <link rel="stylesheet" href="css/variables.css?v=2.2.0">
+  <link rel="stylesheet" href="css/base.css?v=2.2.0">
+  <link rel="stylesheet" href="css/components.css?v=2.2.0">
+  <link rel="stylesheet" href="css/home.css?v=2.2.0">
+  <link rel="stylesheet" href="css/servicii.css?v=2.2.0">
+  <link rel="stylesheet" href="css/responsive.css?v=2.2.0">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    "name": "Contact — Signa Studio Print",
-    "url": "https://signastudioprint.ro/contact.html"
+    "name": "Contact — Signa Studio",
+    "url": "https://signastudioprint.ro/contact.html",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Signa Studio",
+      "email": "contact@signastudioprint.ro",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Iași",
+        "addressCountry": "RO"
+      }
+    }
   }
   </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -38,110 +65,134 @@
     ]
   }
   </script>
-
-  <link rel="icon" href="img/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
-  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-  <meta name="theme-color" content="#F8F7F4">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="css/global.css?v=2.0.0">
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Sari la conținut</a>
 
-  <div class="page">
+  <div id="navbar-placeholder"></div>
 
-    <div id="header-placeholder"></div>
+  <main id="main-content">
 
-    <main id="main-content">
+    <!-- === HERO === -->
+    <section class="section contact-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Firimituri">
+          <ol>
+            <li><a href="index.html">Acasă</a></li>
+            <li aria-current="page">Contact</li>
+          </ol>
+        </nav>
 
-      <!-- ══ HERO ══════════════════════════════════════════ -->
-      <section class="mx-page-hero mx-page-hero--center">
-        <div>
-          <span class="mx-hero-eyebrow">Hai să vorbim</span>
-          <h1>Ai un proiect <em>în minte?</em></h1>
-          <p class="mx-page-hero-sub">Scrie-mi sau sună-mă. Răspund rapid și ofer consultanță gratuită pentru orice proiect web — site de prezentare, magazin online sau aplicație custom.</p>
+        <div class="contact-hero__inner">
+          <h1 class="contact-hero__title">Hai să dăm viață ideii tale</h1>
+          <p class="contact-hero__intro">
+            Indiferent dacă ai deja brief-ul pregătit sau doar o idee schițată
+            pe o foaie, scrie-ne și pornim de acolo.
+          </p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- ══ CONTACT ═══════════════════════════════════════ -->
-      <section class="mx-section">
-        <div class="mx-about">
+    <!-- === FORMULAR === -->
+    <section class="section contact-form-section" id="contact-form">
+      <div class="container">
 
-          <!-- Date de contact -->
-          <div class="mx-about-text reveal">
-            <span class="mx-hero-eyebrow">Date de contact</span>
-            <h2>Suntem la un mesaj distanță</h2>
-            <ul class="mx-checklist">
-              <li><strong>Email:</strong>&nbsp;<a href="mailto:contact@signastudioprint.ro">contact@signastudioprint.ro</a></li>
-              <li><strong>Telefon:</strong>&nbsp;<a href="tel:+40700000000">+40 700 000 000</a></li>
-              <li><strong>Locație:</strong>&nbsp;Iași, România — lucrăm cu clienți din toată țara</li>
-              <li><strong>Răspuns:</strong>&nbsp;în maxim 24 de ore în zilele lucrătoare</li>
-            </ul>
-          </div>
+        <div class="form-card form-card--center reveal">
+          <h2 class="form-card__title">Spune-ne despre business-ul tău</h2>
 
-          <!-- Formular -->
-          <div class="mx-contact reveal">
-            <h3>Trimite un mesaj</h3>
-            <form id="contactForm" class="mx-form" novalidate>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="fname">Nume</label>
-                  <input class="form-input" type="text" id="fname" name="name" placeholder="Numele tău" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="femail">Email</label>
-                  <input class="form-input" type="email" id="femail" name="email" placeholder="email@domeniu.ro" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="fphone">Telefon (opțional)</label>
-                <input class="form-input" type="tel" id="fphone" name="phone" placeholder="+40 7xx xxx xxx">
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="fservice">Tip proiect</label>
-                <select class="form-select" id="fservice" name="service">
-                  <option value="">— Alege tipul de proiect —</option>
-                  <option>Site de prezentare</option>
-                  <option>Magazin online</option>
-                  <option>Aplicație web custom</option>
-                  <option>Nu sunt sigur / altceva</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="fmsg">Descriere proiect</label>
-                <textarea class="form-textarea" id="fmsg" name="message" placeholder="Spune-mi pe scurt ce ai nevoie: obiectiv, termen dorit, detalii specifice..." required></textarea>
-              </div>
-              <div class="form-hp" aria-hidden="true">
-                <label for="fwebsite">Nu completa acest câmp</label>
-                <input type="text" id="fwebsite" name="website" tabindex="-1" autocomplete="off">
-              </div>
-              <input type="hidden" id="fcsrf" name="csrf" value="">
-              <button type="submit" class="mx-btn form-submit">Trimite un mesaj</button>
-            </form>
-            <div class="form-success" id="formSuccess" role="status">
-              <h3>Mesaj trimis!</h3>
-              <p>Mulțumim. Revin cu un răspuns și un plan în cel mai scurt timp.</p>
+          <form id="contactForm" class="form" novalidate>
+            <input type="hidden" name="csrf_token" value="">
+
+            <div class="field">
+              <label class="field__label" for="fname">Nume</label>
+              <input class="field__input" type="text" id="fname" name="name"
+                     placeholder="Numele tău" maxlength="100" autocomplete="name" required>
+              <p class="field__msg" data-for="fname"></p>
             </div>
+
+            <div class="field">
+              <label class="field__label" for="femail">Email</label>
+              <input class="field__input" type="email" id="femail" name="email"
+                     placeholder="email@domeniu.com" maxlength="150" autocomplete="email" required>
+              <p class="field__msg" data-for="femail"></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="fphone">Telefon <span class="field__optional">(opțional)</span></label>
+              <input class="field__input" type="tel" id="fphone" name="phone"
+                     placeholder="+40 7xx xxx xxx" maxlength="30" autocomplete="tel">
+              <p class="field__msg" data-for="fphone"></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="fservice">Tip proiect</label>
+              <select class="field__input" id="fservice" name="service">
+                <option value="">— Alege tipul de proiect —</option>
+                <option>Site de prezentare</option>
+                <option>Magazin online</option>
+                <option>Aplicație custom</option>
+                <option>Nu știu încă / Altceva</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="fmsg">Mesaj</label>
+              <textarea class="field__input field__input--area" id="fmsg" name="message"
+                        placeholder="Spune-ne pe scurt ce ai nevoie..."
+                        maxlength="2000" minlength="10" rows="5" required></textarea>
+              <p class="field__msg" data-for="fmsg"></p>
+            </div>
+
+            <div class="form-hp" aria-hidden="true">
+              <label for="fwebsite">Nu completa acest câmp</label>
+              <input type="text" id="fwebsite" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <p class="form__error" id="formError" role="alert" aria-live="polite"></p>
+
+            <button type="submit" class="btn btn--pill btn--dark form__submit">
+              <span>Trimite</span>
+            </button>
+          </form>
+
+          <div class="form__success" id="formSuccess" role="status">
+            <h3 tabindex="-1">Mesaj trimis!</h3>
+            <p>Îți răspundem în cel mult 24 de ore.</p>
           </div>
-
         </div>
-      </section>
 
-    </main>
+        <!-- Date de contact directe — adăugate peste designul Figma,
+             care are doar formularul. O pagină de contact fără nicio
+             adresă directă e o lipsă reală de utilizabilitate. -->
+        <ul class="contact-direct reveal">
+          <li>
+            <span class="contact-direct__label">Email</span>
+            <a href="mailto:contact@signastudioprint.ro">contact@signastudioprint.ro</a>
+          </li>
+          <li>
+            <span class="contact-direct__label">Locație</span>
+            <span>Iași, România — lucrăm cu clienți din toată țara</span>
+          </li>
+          <li>
+            <span class="contact-direct__label">Timp de răspuns</span>
+            <span>24–48 de ore în zilele lucrătoare</span>
+          </li>
+        </ul>
 
-  </div>
+      </div>
+    </section>
+
+  </main>
 
   <div id="footer-placeholder"></div>
 
-  <script src="js/components.js?v=2.0.0" defer></script>
-  <script src="js/contact.js?v=2.0.0" defer></script>
+  <!-- Cookie banner injectat din components/cookie-banner.html -->
+  <div id="cookie-placeholder"></div>
 
+  <script src="js/main.js?v=2.2.0" defer></script>
+  <script src="js/cookie.js?v=2.2.0" defer></script>
+  <script src="js/animations.js?v=2.2.0" defer></script>
+  <script src="js/form.js?v=2.2.0" defer></script>
 </body>
 </html>

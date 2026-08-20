@@ -3,44 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pagina nu a fost găsită — Signa Studio</title>
+  <meta name="description" content="Pagina căutată nu există sau a fost mutată.">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="Pagina căutată nu a fost găsită.">
-  <title>404 — Pagina nu a fost găsită</title>
 
-  <link rel="icon" href="img/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
-  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-  <meta name="theme-color" content="#F8F7F4">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,301,400,500,700,900&f[]=cabinet-grotesk@400,500,700&display=swap">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="/img/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#FFFFFF">
 
-  <link rel="stylesheet" href="css/global.css?v=2.0.0">
-  <link rel="stylesheet" href="css/error.css?v=2.0.0">
+  <!-- Căi absolute: pagina e servită prin ErrorDocument de la orice adâncime -->
+  <link rel="stylesheet" href="/css/reset.css?v=2.2.0">
+  <link rel="stylesheet" href="/css/variables.css?v=2.2.0">
+  <link rel="stylesheet" href="/css/base.css?v=2.2.0">
+  <link rel="stylesheet" href="/css/components.css?v=2.2.0">
+  <link rel="stylesheet" href="/css/servicii.css?v=2.2.0">
+  <link rel="stylesheet" href="/css/responsive.css?v=2.2.0">
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Sari la conținut</a>
 
-  <div class="page">
+  <main id="main-content" class="section error-page">
+    <div class="container error-page__inner">
 
-    <div id="header-placeholder"></div>
+      <p class="error-page__code" aria-hidden="true">404</p>
 
-    <main id="main-content">
-      <section class="mx-error">
-        <div class="mx-error-code">404</div>
-        <h1 class="mx-error-title">Pagina aceasta nu există.</h1>
-        <p class="mx-error-sub">Linkul e greșit sau pagina a fost mutată. Hai să te ducem înapoi.</p>
-        <a href="index.html" class="mx-btn">Înapoi acasă</a>
-      </section>
-    </main>
+      <h1 class="error-page__title">Pagina nu a fost găsită</h1>
 
-  </div>
+      <p class="error-page__text">
+        Adresa pe care ai accesat-o nu există sau a fost mutată.
+        Verifică linkul sau pornește de la una dintre paginile de mai jos.
+      </p>
 
-  <div id="footer-placeholder"></div>
+      <div class="error-page__actions">
+        <a href="/" class="btn btn--pill btn--dark btn--hero">
+          <span>Înapoi la pagina principală</span>
+          <svg class="btn__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="/contact.html" class="btn btn--pill btn--outline btn--hero">
+          <span>Scrie-ne</span>
+        </a>
+      </div>
 
-  <script src="js/components.js?v=2.0.0" defer></script>
+      <nav class="error-page__links" aria-label="Pagini principale">
+        <ul>
+          <li><a href="/site-uri.html">Site-uri de prezentare</a></li>
+          <li><a href="/magazine-online.html">Magazine online</a></li>
+          <li><a href="/aplicatii-custom.html">Aplicații custom</a></li>
+          <li><a href="/proiecte.html">Proiecte</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </main>
 
 </body>
 </html>

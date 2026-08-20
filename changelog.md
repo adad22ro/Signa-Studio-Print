@@ -2,6 +2,48 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.2.0 — 2026-08-20 — Reconstrucție completă pe designul Figma
+
+### Pagini reconstruite (toate pe designul nou)
+- `site-uri.html` — hero, cifre, comparație „de ce cod curat și nu WordPress",
+  tabel de prețuri (3 planuri), formular
+- `magazine-online.html` — hero, „Cum alegi?" (2 platforme), „Ce primești"
+  (bandă închisă cu 6 beneficii), prețuri, formular
+- `proiecte.html` — portofoliu cu 2 proiecte reale, CTA, formular
+- `contact.html` — hero, formular complet, date de contact directe
+- `404.html` — reconstruită în stilul nou, cu gradientul-semnătură
+
+### Adăugat
+- **Cookie banner GDPR**: `components/cookie-banner.html` + `js/cookie.js`.
+  Nu se încarcă niciun script de urmărire înainte de acceptul explicit;
+  la refuz nu se încarcă nimic. Alegerea se reține în `localStorage`.
+- `css/servicii.css` — stiluri comune paginilor de serviciu
+- Politica de confidențialitate — secțiunea despre cookie-uri aliniată la
+  implementarea reală
+
+### Corectat
+- **`.htaccess`: CSP-ul permitea doar Google Fonts, nu și Fontshare** — ar fi
+  blocat toate fonturile în producție. Corectat la `api.fontshare.com` +
+  `cdn.fontshare.com`; Google Fonts eliminat (nicio pagină nu îl mai folosește).
+- `.htaccess`: adăugate `Cache-Control: immutable` pe resurse versionate și
+  blocarea accesului direct la `php/config.php`
+- **Prețurile magazinelor**: aliniate la valorile reale din Figma
+  (2.500 / 5.000 lei). Descrierile și listele de opțiuni din Figma erau copiate
+  din pagina de site-uri și nespecifice magazinelor — rescrise.
+- Titluri și meta descrieri aduse în limitele SEO (60 / 155 caractere)
+- Cache busting normalizat la `?v=2.2.0` pe toate paginile
+
+### Eliminat
+- `css/global.css`, `css/error.css`, `js/components.js`, `js/contact.js`
+  — ultimele fișiere ale designului v2.0.0, nemaifolosite de nicio pagină
+
+### ⚠️ De completat înainte de publicare
+- Datele firmei în paginile legale (marcaje `[DE COMPLETAT]`)
+- `MAIL_TO` / `MAIL_FROM` în `php/config.php`, `DEV_MODE = false`
+- HSTS și redirectările HTTPS/www în `.htaccess` — **doar după SSL**
+- Dacă activezi Analytics: `ANALYTICS_ID` în `js/cookie.js` **și** domeniile
+  Google în CSP (vezi nota din `.htaccess`)
+
 ## v2.1.0 — 2026-08-18 — Reconstrucție pe designul Figma (în lucru)
 
 ### Sistem de design nou, extras din Figma

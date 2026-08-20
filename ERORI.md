@@ -455,6 +455,48 @@ mereu cu `:where()`, ca să rămână suprascriibile din fișierele de component
 
 ---
 
+### 4.8 CSP care blochează fonturile în producție
+**Simptom potențial:** Toate fonturile ar fi căzut pe fallback în producție,
+deși local arătau perfect (serverul PHP de dezvoltare nu aplică `.htaccess`).
+
+**Cauză:** După `git reset --hard origin/main`, `.htaccess` a revenit la
+versiunea veche, al cărei CSP permitea doar Google Fonts:
+```
+style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;
+```
+Între timp site-ul trecuse pe Fontshare. CSP-ul le-ar fi blocat pe toate.
+
+**Soluție:**
+```
+style-src 'self' https://api.fontshare.com;
+font-src  'self' https://cdn.fontshare.com;
+```
+**Prevenție — REGULĂ:** După orice `git reset` care aduce fișiere de configurare
+de pe remote, verifică dacă mai corespund stării actuale a codului. `.htaccess`,
+`robots.txt` și `sitemap.xml` nu sunt „doar config" — pot rupe site-ul în tăcere.
+
+**Cum verifici** că CSP-ul acoperă tot ce încarci:
+```bash
+grep -oh 'https://[a-z.]*' *.html | sort -u        # domenii externe folosite
+grep -o 'Content-Security-Policy "[^"]*"' .htaccess # ce permite CSP
+```
+Serverul de dezvoltare `php -S` **nu aplică `.htaccess`**, deci problema nu
+apare local. Se vede abia pe Apache.
+
+---
+
+### 4.9 Fals pozitiv la căutarea de handlere inline
+**Simptom:** `grep -oh 'on[a-z]*="' *.html` raporta 72 de „handlere onclick".
+
+**Cauză:** Tiparul prinde coada lui `content="` → `ontent="`. Zero handlere reale.
+
+**Soluție:** Ancorează la începutul atributului:
+```bash
+grep -ohE '\son(click|change|submit|load|error|input|mouse[a-z]+)="' *.html
+```
+
+---
+
 ## 5. Probleme cunoscute, nerezolvate încă
 
 ### 5.1 Contrast insuficient în hero (provine din design)

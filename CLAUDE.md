@@ -63,36 +63,27 @@ Breakpoints țintă (în `responsive.css`): **1024 / 768 / 640 / 480px**
 
 ---
 
-## Structura ACTUALĂ (v2.1.0 — reconstrucție Figma în curs)
+## Structura ACTUALĂ (v2.2.0 — reconstrucție Figma TERMINATĂ)
 
-**Sistem de design nou** (structura cerută de instrucțiuni, pe loc):
 ```
 css/reset.css  variables.css  base.css  components.css  responsive.css
-css/home.css      (secțiuni pagina principală)
-css/servicii.css  (pagini de serviciu: SP / MO / AC)
+css/home.css      (pagina principală)
+css/servicii.css  (SP / MO / AC / proiecte / contact / 404)
 css/legal.css     (pagini legale)
-components/navbar.html  footer.html      (injectate prin fetch)
-js/main.js  animations.js  form.js
+components/navbar.html  footer.html  cookie-banner.html   (prin fetch)
+js/main.js  animations.js  form.js  cookie.js
 php/contact.php  config.php  tmp/
 ```
 
-**Pagini pe designul NOU (Figma):**
-- `index.html` — ✅ COMPLETĂ, toate cele 11 secțiuni
-- `aplicatii-custom.html` — ✅ pagină nouă (frame 1:1668)
-- `politica-confidentialitate.html`, `termeni-conditii.html` — ✅
-  ⚠️ conțin marcaje `[DE COMPLETAT]` (denumire legală, CUI, adresă)
+**Toate paginile sunt pe designul Figma:**
+`index` · `site-uri` · `magazine-online` · `aplicatii-custom` · `proiecte` ·
+`contact` · `404` · `politica-confidentialitate` · `termeni-conditii`
 
-**Pagini încă pe designul VECHI v2.0.0** (Space Grotesk + teal, `css/global.css`):
-- `site-uri.html` (Figma 1:1398 / 1:2981)
-- `magazine-online.html` (Figma 1:1861 / 1:3254)
-- `proiecte.html` (Figma 1:1190 / 1:2857)
-- `contact.html` (Figma 1:1320 / 1:3718)
-- `404.html` (fără frame — se face în stilul nou)
-- Fișiere vechi încă folosite: `css/global.css`, `css/error.css`,
-  `js/components.js`, `js/contact.js` — se șterg pe măsura reconstrucției
-
-**Versiune cache busting: `?v=2.1.0`** — incrementeaz-o la orice modificare
+**Versiune cache busting: `?v=2.2.0`** — incrementeaz-o la orice modificare
 de CSS/JS, în TOATE paginile (`.htaccess` servește cu `immutable, max-age=1an`).
+
+**Fișierele designului vechi v2.0.0 au fost șterse** (`css/global.css`,
+`css/error.css`, `js/components.js`, `js/contact.js`).
 
 ## Unelte verificate pe acest calculator
 
@@ -131,16 +122,16 @@ de CSS/JS, în TOATE paginile (`.htaccess` servește cu `immutable, max-age=1an`
 - `css/global.css` — adăugate `--error`, `--error-bg`, `--error-border`.
 
 ### ❌ Rămase de făcut
-- **Cookie banner + `cookie.js`** — nu există încă (regula absolută 2 + GDPR)
 - **Datele firmei în paginile legale** — marcajele `[DE COMPLETAT]`
-  (denumire legală, CUI, adresă); documentele nu sunt valabile fără ele
-- **Reconstrucția paginilor rămase** pe designul Figma (vezi Structura ACTUALĂ)
-- `style=` inline în `magazine-online.html` (dispare la reconstrucție)
-- `css/site-uri.css`: 40 hex hardcodate (dispare la reconstrucție)
-- Date contact placeholder (`+40 700 000 000`) în `contact.html`
+  (denumire legală, CUI, adresă). Documentele nu sunt valabile fără ele.
 - **Contrast insuficient în hero**: textul alb peste zona portocalie a
-  gradientului nu trece 4.5:1. Reprodus fidel din Figma, la cererea clientului
-  — decizie de luat (overlay subtil sau mutarea textului pe zona închisă)
+  gradientului nu trece 4.5:1. Reprodus fidel din Figma — decizie de luat.
+- **Datele de contact** — telefonul lipsește (în Figma nu există; pe pagina
+  de contact sunt doar email, locație și timp de răspuns)
+- **Verificare pe mobil pe dispozitiv real** — testat doar prin metoda
+  cu iframe din [ERORI.md](ERORI.md) 1.10
+- Opțional: descrierile din secțiunea „Ce primești" (magazine) au fost scrise
+  de noi — în Figma toate șase erau text placeholder identic
 
 ---
 
