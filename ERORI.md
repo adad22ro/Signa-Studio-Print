@@ -268,6 +268,28 @@ Valorile rezolvate se citesc oricum din JSON-ul nodurilor.
 
 ---
 
+### 3.6 Figma REST — rate limit pe randarea de imagini
+```
+{"status":429,"err":"Rate limit exceeded"}
+```
+**Cauză:** Endpoint-ul `/v1/images` randează noduri pe serverele Figma și este
+limitat separat de `/v1/files`. Câteva zeci de exporturi consecutive îl declanșează.
+
+**Soluție:** Nu exporta ce poți reproduce în CSS. Elipsele difuze, gradienții
+liniari/radiali și formele simple se fac cu `radial-gradient` / `linear-gradient`
+— zero bytes, scalare perfectă, nicio dependență de API:
+```css
+background:
+  radial-gradient(60% 50% at 20% 30%, rgba(39,140,255,.18), transparent 70%),
+  var(--c-dark);
+```
+Exportă doar compozițiile complexe (mockup-uri, ilustrații cu multe straturi).
+
+**Prevenție:** Grupează exporturile într-un singur apel (`ids=1:1,1:2,1:3`) și
+lasă pauze între ele. Citirea structurii (`/v1/files`) nu e afectată.
+
+---
+
 ## 4. Erori de cod (găsite și corectate)
 
 ### 4.1 `.htaccess` ar fi blocat `projects.json`
@@ -364,6 +386,34 @@ modificare. Verificare că nu a scăpat niciuna:
 grep -oh '\(href="css/[^"?]*\.css"\|src="js/[^"?]*\.js"\)' *.html
 # rezultat gol = toate versionate
 ```
+
+---
+
+### 4.7 Text alb care apare gri pe fundal închis (specificitate CSS)
+**Simptom:** Declarația mare „Suntem mai mult decât o agenție…" apărea gri,
+deși `.statement` seta explicit `color: var(--c-text-on-dark)` (alb).
+
+**Cauză:** În `base.css` exista regula implicită:
+```css
+.on-dark p { color: var(--c-text-on-dark-muted); }   /* specificitate (0,1,1) */
+```
+`.statement` are specificitate (0,1,0) — deci pierde, indiferent de ordinea
+fișierelor. Afecta orice paragraf de pe fundal închis care voia altă culoare.
+
+**Soluție:** Coboară specificitatea regulilor implicite cu `:where()`, care
+nu adaugă specificitate:
+```css
+.on-dark :where(p) { color: var(--c-text-on-dark-muted); }   /* (0,1,0) */
+```
+Acum orice clasă proprie o poate suprascrie, fără `!important`.
+
+**Verificare:** măsoară pixelii, nu te baza pe ochi:
+```bash
+node -e "sharp(\"pagina.png\").extract({...}).greyscale().raw().toBuffer()"
+# luminozitate max 255 = alb pur
+```
+**Prevenție:** Regulile implicite dintr-un fișier de bază (`base.css`) se scriu
+mereu cu `:where()`, ca să rămână suprascriibile din fișierele de componentă.
 
 ---
 

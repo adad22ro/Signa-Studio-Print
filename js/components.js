@@ -10,9 +10,9 @@
 
   var LINKS = [
     { href: 'index.html',           label: 'Acasă' },
-    { href: 'de-ce-ai-nevoie.html', label: 'De ce ai nevoie?' },
     { href: 'site-uri.html',        label: 'Site-uri' },
     { href: 'magazine-online.html', label: 'Magazine' },
+    { href: 'aplicatii-custom.html', label: 'Aplicații custom' },
     { href: 'proiecte.html',        label: 'Proiecte' }
   ];
 

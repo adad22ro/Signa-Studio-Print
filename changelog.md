@@ -33,9 +33,27 @@ Toate modificările notabile ale site-ului sunt documentate aici.
 - `php/config.php` separat, cu `if (!defined('APP')) die();`
 - Whitelist pe tipul de serviciu; rate limiting numără doar trimiterile reușite
 
+### Pagini noi
+- `aplicatii-custom.html` — pagină nouă, construită după frame-ul Figma 1:1668:
+  hero, argumente scurte, „Îți este potrivit?" (bandă închisă), „Ce construim",
+  secțiune de preț și formular de contact
+- `politica-confidentialitate.html` și `termeni-conditii.html` — cerință GDPR;
+  **conțin marcaje `[DE COMPLETAT]`** pentru datele de identificare ale firmei
+  (denumire legală, CUI, adresă), care trebuie completate înainte de publicare
+- `css/servicii.css` — stiluri comune paginilor de serviciu
+- `css/legal.css` — stiluri pentru paginile legale
+
+### Eliminat
+- `de-ce-ai-nevoie.html` — nu există în designul Figma (decizie confirmată);
+  eliminate și referințele din `js/components.js` și `sitemap.xml`
+
+### Modificat
+- `sitemap.xml` — adăugat `aplicatii-custom.html`
+- `js/components.js` (navbar vechi) — adăugat link către pagina nouă, ca să fie
+  accesibilă din paginile încă nereconstruite
+
 ### În lucru — pagini încă pe designul v2.0.0
 `site-uri.html`, `magazine-online.html`, `proiecte.html`, `contact.html`, `404.html`
-Pagina nouă `aplicatii-custom.html` nu există încă (frame Figma 1:1668).
 
 ## v2.0.0 — 2026-07-09 — Redesign vizual complet (temă nouă)
 - Temă nouă aplicată pe TOT site-ul (multi-page păstrat): paletă caldă albastru+teal (oklch), carduri cu contur + umbră solidă, highlight-uri, acordeon, fonturi Space Grotesk + Inter

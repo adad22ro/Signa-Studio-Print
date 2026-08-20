@@ -1,0 +1,254 @@
+/* ═══════════════════════════════════════════════════════
+   SIGNA STUDIO PRINT — css/servicii.css
+   Stiluri comune paginilor de serviciu:
+   site-uri.html, magazine-online.html, aplicatii-custom.html
+   Referință Figma: 1:1398 (SP), 1:1861 (MO), 1:1668 (AC)
+   ═══════════════════════════════════════════════════════ */
+
+
+/* === FIRIMITURI ======================================= */
+
+.breadcrumb {
+  margin-bottom: var(--sp-4);
+}
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-1);
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+}
+
+.breadcrumb li + li::before {
+  content: '/';
+  margin-right: var(--sp-1);
+  color: var(--c-text-muted);
+}
+
+.breadcrumb a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+
+/* === HERO PAGINĂ DE SERVICIU ========================== */
+
+.svc-hero {
+  padding-block: var(--sp-6) var(--sp-10);
+}
+
+.svc-hero__title {
+  max-width: 18ch;
+  margin-top: var(--sp-2);
+  font-size: var(--fs-h1);            /* 64px */
+  font-weight: var(--fw-bold);
+  line-height: 1.06;
+  letter-spacing: var(--ls-tight);
+}
+
+.svc-hero__intro {
+  max-width: 58ch;
+  margin-block: var(--sp-4) var(--sp-5);
+  font-family: var(--font-display);   /* Cabinet Grotesk */
+  font-size: var(--fs-md);
+  line-height: 1.6;
+  letter-spacing: var(--ls-wide);
+  color: var(--c-text);
+}
+
+
+/* === ARGUMENTE SCURTE ================================= */
+
+.svc-stats {
+  padding-block: var(--sp-6);
+  border-block: 1px solid var(--c-border);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-6);
+}
+
+.stat__title {
+  font-size: var(--fs-h3);            /* 40px */
+  font-weight: var(--fw-medium);      /* 500 din Figma */
+  line-height: 1.15;
+  letter-spacing: var(--ls-tight);
+  color: var(--c-text);
+}
+
+.stat__desc {
+  margin-top: var(--sp-1);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--c-text-muted);
+}
+
+
+/* === ÎȚI ESTE POTRIVIT? (bandă închisă) ===============
+   Elipsele difuze din Figma („Dark Gradient 08") sunt
+   reproduse cu radial-gradient — zero bytes, scalare
+   perfectă, fără dependență de exportul din Figma. */
+
+.svc-fit {
+  position: relative;
+  padding-block: var(--sp-12);
+  background:
+    radial-gradient(58% 46% at 22% 28%, rgba(39, 140, 255, 0.20), transparent 68%),
+    radial-gradient(46% 38% at 82% 72%, rgba(233, 89, 28, 0.16), transparent 66%),
+    var(--c-dark-soft);
+  overflow: hidden;
+}
+
+.svc-fit__title {
+  margin-bottom: var(--sp-8);
+  font-size: var(--fs-h2);            /* 48px */
+  font-weight: var(--fw-medium);      /* 500 din Figma */
+  line-height: 1.15;
+  letter-spacing: var(--ls-tight);
+  color: var(--c-text-on-dark);
+}
+
+.fit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-3);
+}
+
+.fit-card {
+  padding: var(--sp-4);
+  min-height: 216px;                  /* înălțimea din Figma */
+  display: flex;
+  align-items: flex-end;
+  border: 1px solid var(--c-border-on-dark);
+  border-radius: var(--r-lg);         /* r:25 */
+  background: rgba(10, 10, 10, 0.72);
+  backdrop-filter: blur(8px);
+  font-size: var(--fs-h5);            /* 24px */
+  font-weight: var(--fw-bold);
+  line-height: 1.35;
+  letter-spacing: var(--ls-snug);
+  color: var(--c-text-on-dark);
+}
+
+
+/* === CE CONSTRUIM ===================================== */
+
+.svc-build__title,
+.svc-price__title {
+  margin-bottom: var(--sp-8);
+  font-size: var(--fs-h2);            /* 48px */
+  font-weight: var(--fw-medium);
+  line-height: 1.15;
+  letter-spacing: var(--ls-tight);
+}
+
+.build-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-3);
+}
+
+.build-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  min-height: 144px;                  /* înălțimea din Figma */
+  border-radius: var(--r-lg);         /* r:25 */
+  background: var(--c-dark);
+}
+
+.build-card__title {
+  font-size: var(--fs-h5);            /* 24px */
+  font-weight: var(--fw-bold);
+  line-height: 1.35;
+  color: var(--c-text-on-dark);
+}
+
+/* Chip-urile din cardurile închise */
+.build-card .chip {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--c-text-on-dark);
+  white-space: normal;
+}
+
+.build-card .chip::before {
+  background: var(--c-green);
+}
+
+
+/* === PREȚ ============================================= */
+
+.price-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  max-width: 720px;
+  padding: var(--sp-6);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  background: var(--c-bg-alt);
+}
+
+.price-card__title {
+  font-size: var(--fs-h4);            /* 32px */
+  font-weight: var(--fw-bold);
+  line-height: 1.28;
+  letter-spacing: var(--ls-tight);
+}
+
+.price-card__desc {
+  font-size: var(--fs-lg);            /* 20px */
+  line-height: 1.5;
+  color: var(--c-text);
+}
+
+.price-card__note {
+  font-size: var(--fs-xs);            /* 12px */
+  color: var(--c-text-muted);
+}
+
+.closing__text {
+  max-width: 44ch;
+  font-size: var(--fs-lg);
+  line-height: 1.5;
+  color: var(--c-text-muted);
+}
+
+
+/* === RESPONSIVE ======================================= */
+
+@media (max-width: 1024px) {
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-4);
+  }
+}
+
+@media (max-width: 768px) {
+  .stats {
+    grid-template-columns: 1fr;
+    gap: var(--sp-4);
+  }
+
+  .fit-grid,
+  .build-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fit-card {
+    min-height: 0;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .price-card {
+    padding: var(--sp-4);
+  }
+}

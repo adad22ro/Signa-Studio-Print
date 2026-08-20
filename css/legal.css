@@ -1,0 +1,119 @@
+/* ═══════════════════════════════════════════════════════
+   SIGNA STUDIO PRINT — css/legal.css
+   Pagini legale: confidențialitate, termeni și condiții.
+   Text lung, lățime optimizată pentru citit.
+   ═══════════════════════════════════════════════════════ */
+
+.legal__inner {
+  max-width: 760px;
+}
+
+.legal__title {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  line-height: 1.15;
+  letter-spacing: var(--ls-tight);
+}
+
+.legal__updated {
+  margin-top: var(--sp-1);
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+}
+
+/* Avertisment vizibil cât timp documentul are date de completat */
+.legal__notice {
+  margin-top: var(--sp-4);
+  padding: var(--sp-2) var(--sp-3);
+  border-left: 3px solid var(--c-orange);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  background: var(--c-bg-alt);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--c-text);
+}
+
+.legal__notice code {
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--c-bg-tint);
+  font-size: 0.9em;
+}
+
+.legal h2 {
+  margin-top: var(--sp-6);
+  margin-bottom: var(--sp-2);
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-snug);
+}
+
+.legal p {
+  margin-bottom: var(--sp-2);
+  font-size: var(--fs-md);
+  line-height: var(--lh-relaxed);
+  color: var(--c-text);
+}
+
+.legal ul {
+  margin-bottom: var(--sp-3);
+  padding-left: 0;
+}
+
+.legal li {
+  position: relative;
+  margin-bottom: var(--sp-1);
+  padding-left: 22px;
+  font-size: var(--fs-md);
+  line-height: var(--lh-relaxed);
+  color: var(--c-text);
+}
+
+.legal li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-pill);
+  background: var(--c-green);
+}
+
+.legal a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Firimiturile sunt definite în servicii.css; le repetăm minimal aici
+   ca paginile legale să nu depindă de acel fișier. */
+.legal .breadcrumb {
+  margin-bottom: var(--sp-4);
+}
+
+.legal .breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+}
+
+.legal .breadcrumb li {
+  margin: 0;
+  padding-left: 0;
+}
+
+.legal .breadcrumb li::before {
+  content: none;
+}
+
+.legal .breadcrumb li + li::before {
+  content: '/';
+  position: static;
+  width: auto;
+  height: auto;
+  margin-right: var(--sp-1);
+  background: none;
+  border-radius: 0;
+}
