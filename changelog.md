@@ -2,6 +2,29 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.2.3 — 2026-08-20 — Paginile de serviciu accesibile din navbar
+
+### Adăugat
+- **Meniu derulant sub „Servicii"** în navbar, cu cele trei pagini de serviciu
+  (site-uri de prezentare, magazine online, aplicații custom) plus link către
+  secțiunea completă. Navbarul în repaus rămâne identic cu designul Figma —
+  meniul apare doar la interacțiune.
+- Accesibilitate: `aria-expanded`, `aria-haspopup`, `aria-controls`, deschidere
+  cu săgeata jos, închidere cu Escape (cu revenirea focusului pe buton),
+  la click în afară și la ieșirea focusului prin Tab.
+- Pagina curentă e marcată atât în submeniu, cât și pe butonul „Servicii".
+- **Meniul mobil** listează direct paginile de serviciu, sub un titlu „Servicii".
+
+### Corectat
+- **Bannerul de cookie-uri acoperea meniul mobil deschis** (z-index 80 vs 60),
+  ascunzând ultimele intrări de navigație. Acum se ascunde instant cât timp
+  meniul e deschis.
+
+### Notă
+Designul Figma are 4 intrări în navbar și niciun submeniu, dar paginile de
+serviciu nu erau accesibile din nicio pagină interioară. Meniul derulant e
+soluția care rezolvă navigația fără să schimbe aspectul din design.
+
 ## v2.2.0 — 2026-08-20 — Reconstrucție completă pe designul Figma
 
 ### Pagini reconstruite (toate pe designul nou)

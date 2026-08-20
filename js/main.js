@@ -50,6 +50,7 @@
     setFooterYear();
     initHeaderScroll();
     initHamburger();
+    initDropdown();
     initSmoothScroll();
 
     /* Anunță celelalte scripturi (ex. cookie.js) că DOM-ul e complet */
@@ -61,7 +62,9 @@
   function setActiveLink() {
     var current = location.pathname.split('/').pop() || 'index.html';
 
-    document.querySelectorAll('.nav__link, .mobile-menu__link').forEach(function (link) {
+    document.querySelectorAll(
+      '.nav__link, .mobile-menu__link, .nav__menu-link, .mobile-menu__sublink'
+    ).forEach(function (link) {
       var href = link.getAttribute('href') || '';
       var page = href.split('#')[0].split('/').pop();
       var hash = href.split('#')[1];
@@ -73,6 +76,83 @@
 
       link.classList.add('is-active');
       link.setAttribute('aria-current', 'page');
+
+      /* Dacă pagina activă e într-un submeniu, marchează și părintele */
+      var parent = link.closest('.nav__item--has-menu');
+      if (parent) {
+        var toggle = parent.querySelector('.nav__toggle');
+        if (toggle) toggle.classList.add('is-active');
+      }
+    });
+  }
+
+  /* ── MENIU DERULANT „SERVICII" ─────────────────────────
+     Deschidere la click și la hover (desktop), închidere cu
+     Escape, la click în afară sau la pierderea focusului. */
+  function initDropdown() {
+    var item = document.querySelector('.nav__item--has-menu');
+    if (!item) return;
+
+    var toggle = item.querySelector('.nav__toggle');
+    var menu   = item.querySelector('.nav__menu');
+    if (!toggle || !menu) return;
+
+    var hoverCapable = window.matchMedia('(hover: hover)').matches;
+    var closeTimer   = null;
+
+    function open() {
+      window.clearTimeout(closeTimer);
+      item.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+
+    function close() {
+      item.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    function isOpen() {
+      return toggle.getAttribute('aria-expanded') === 'true';
+    }
+
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      isOpen() ? close() : open();
+    });
+
+    if (hoverCapable) {
+      item.addEventListener('mouseenter', open);
+      item.addEventListener('mouseleave', function () {
+        closeTimer = window.setTimeout(close, 160);
+      });
+    }
+
+    /* Escape închide și readuce focusul pe buton */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && isOpen()) {
+        close();
+        toggle.focus();
+      }
+    });
+
+    /* Click în afara meniului */
+    document.addEventListener('click', function (e) {
+      if (isOpen() && !item.contains(e.target)) close();
+    });
+
+    /* Navigarea cu Tab în afara meniului îl închide */
+    item.addEventListener('focusout', function (e) {
+      if (!item.contains(e.relatedTarget)) close();
+    });
+
+    /* Săgeata în jos pe buton intră în meniu */
+    toggle.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        open();
+        var first = menu.querySelector('a');
+        if (first) first.focus();
+      }
     });
   }
 

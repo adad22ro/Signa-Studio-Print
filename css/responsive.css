@@ -39,6 +39,12 @@
     display: none;
   }
 
+  /* Meniul derulant nu are ce căuta pe mobil — meniul mobil
+     listează paginile de serviciu direct. */
+  .nav__menu {
+    display: none;
+  }
+
   .hamburger {
     display: flex;
   }

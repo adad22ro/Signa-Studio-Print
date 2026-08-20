@@ -190,6 +190,37 @@ rezolvau un bug real (rămân în cod — sunt îmbunătățiri valide, dar nu e
 
 ---
 
+### 1.11 `--virtual-time-budget` îngheață tranzițiile CSS — măsurători false
+**Simptom:** `getComputedStyle()` raporta `visibility: hidden` și `opacity: 0`
+pentru un meniu care în screenshot apărea perfect vizibil. Invers, o regulă
+`opacity: 0` corectă raporta `opacity: 1` chiar și după 1200 ms de așteptare.
+
+**Cauză:** `--virtual-time-budget` derulează rapid `setTimeout`-urile, dar
+**nu avansează tranzițiile CSS** (rulate de compozitor). Proprietatea rămâne
+înghețată la valoarea de dinaintea tranziției, oricât aștepți în timp virtual.
+
+**Cum recunoști:** regula se potrivește (`el.matches(selector) === true`),
+apare în `cssRules`, nu există conflicte — dar `getComputedStyle` arată altceva.
+Am verificat exhaustiv, inclusiv scanând toate foile de stil pentru reguli
+concurente: era una singură, corectă.
+
+**Soluții:**
+1. **Verifică vizual prin screenshot** — singura sursă de adevăr pentru orice
+   proprietate animată sau tranziționată.
+2. Pentru verificări programatice, testează proprietăți **fără tranziție**
+   (`pointer-events`, `display`) — acelea se aplică instant și dovedesc că
+   blocul de reguli e activ.
+3. Dacă proprietatea chiar trebuie măsurată, elimină tranziția pentru ea:
+```css
+body.has-menu-open .cookie { visibility: hidden; opacity: 0; transition: none; }
+```
+
+**Prevenție:** Nu concluziona că o regulă CSS „nu se aplică" pe baza
+`getComputedStyle` în headless. Confirmă cu un screenshot înainte de a
+rescrie CSS care era corect de la început.
+
+---
+
 ## 2. Git
 
 ### 2.1 Push respins — „fetch first"

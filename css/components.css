@@ -413,3 +413,148 @@ body.has-menu-open {
     justify-content: center;
   }
 }
+
+
+/* === MENIU DERULANT „SERVICII" ========================
+   Designul Figma are 4 intrări în navbar, fără submeniu.
+   Paginile de serviciu trebuie însă accesibile din orice
+   pagină, așa că „Servicii" devine un meniu care apare
+   doar la interacțiune — navbarul în repaus rămâne identic
+   cu designul. */
+
+.nav__item--has-menu {
+  position: relative;
+}
+
+.nav__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: inherit;
+}
+
+.nav__caret {
+  width: 12px;
+  height: 12px;
+  transition: transform var(--t-fast);
+}
+
+.nav__toggle[aria-expanded="true"] .nav__caret {
+  transform: rotate(180deg);
+}
+
+/* Linia de sub „Servicii" nu trebuie să treacă peste săgeată */
+.nav__toggle::after {
+  width: calc(100% - 16px);
+}
+
+.nav__menu {
+  position: absolute;
+  top: calc(100% + var(--sp-1));
+  left: 50%;
+  z-index: var(--z-menu);
+  min-width: 280px;
+  padding: var(--sp-1);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  background: var(--c-bg);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -6px);
+  transition: opacity var(--t-fast), transform var(--t-fast), visibility var(--t-fast);
+}
+
+.nav__item--has-menu.is-open .nav__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.nav__menu-link {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px var(--sp-2);
+  border-radius: var(--r-sm);
+  transition: background var(--t-fast);
+}
+
+.nav__menu-link:hover,
+.nav__menu-link:focus-visible {
+  opacity: 1;
+  background: var(--c-bg-tint);
+}
+
+.nav__menu-title {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  color: var(--c-text);
+}
+
+.nav__menu-desc {
+  font-size: var(--fs-xs);
+  color: var(--c-text-muted);
+}
+
+/* Pagina curentă marcată în submeniu */
+.nav__menu-link.is-active {
+  background: var(--c-bg-tint);
+}
+
+.nav__menu-link.is-active .nav__menu-title {
+  font-weight: var(--fw-bold);
+}
+
+.nav__menu-sep {
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid var(--c-border);
+}
+
+.nav__menu-link--all {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--c-text-muted);
+}
+
+
+/* === SUBMENIU ÎN MENIUL MOBIL ========================= */
+
+.mobile-menu__label {
+  margin-bottom: var(--sp-2);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+}
+
+.mobile-menu__list--sub {
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-5);
+  padding-bottom: var(--sp-4);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.mobile-menu__sublink {
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-snug);
+  color: var(--c-text);
+}
+
+.mobile-menu__sublink.is-active {
+  font-weight: var(--fw-bold);
+}
+
+
+/* Cât timp meniul mobil e deschis, bannerul de cookie-uri nu trebuie
+   să acopere intrările de navigație (z-index 80 vs 60). */
+body.has-menu-open .cookie {
+  /* Fără tranziție: bannerul trebuie să elibereze instant navigația. */
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: none;
+}
