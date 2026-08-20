@@ -126,14 +126,16 @@ a:hover { opacity: 0.7; }
   color: var(--c-text-on-dark);
 }
 
-.section--dark h1, .section--dark h2,
-.section--dark h3, .section--dark h4,
-.on-dark h1, .on-dark h2, .on-dark h3, .on-dark h4 {
+/* `:where()` nu adaugă specificitate, deci o clasă proprie
+   (ex. .statement, .hero__promise) poate suprascrie aceste valori
+   implicite fără să fie nevoie de !important. */
+.section--dark :where(h1, h2, h3, h4),
+.on-dark :where(h1, h2, h3, h4) {
   color: var(--c-text-on-dark);
 }
 
-.section--dark p,
-.on-dark p {
+.section--dark :where(p),
+.on-dark :where(p) {
   color: var(--c-text-on-dark-muted);
 }
 

@@ -16,6 +16,7 @@
   --c-bg:            #FFFFFF;
   --c-bg-alt:        #FAFAFA;
   --c-bg-tint:       #EBEBEB;
+  --c-sand:          #E0DCD6;   /* card colaborare, din Figma */
 
   /* Suprafețe închise (benzi și carduri) */
   --c-dark:          #101010;
@@ -26,6 +27,7 @@
   /* Text pe fundal deschis */
   --c-text:          #101010;
   --c-text-muted:    #4E4E4E;
+  --c-text-soft:     #686868;
 
   /* Text pe fundal închis */
   --c-text-on-dark:        #FFFFFF;
