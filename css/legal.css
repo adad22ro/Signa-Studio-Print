@@ -88,7 +88,17 @@
 /* Firimiturile sunt definite în servicii.css; le repetăm minimal aici
    ca paginile legale să nu depindă de acel fișier. */
 .legal .breadcrumb {
-  margin-bottom: var(--sp-4);
+  /* Ascunse vizual la cererea clientului, dar păstrate în DOM pentru
+     accesibilitate și SEO (v2.2.5). */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 .legal .breadcrumb ol {

@@ -70,7 +70,7 @@
       var hash = href.split('#')[1];
 
       /* Un link cu ancoră marchează pagina activă doar dacă nu are ancoră —
-         altfel „Servicii" și „Despre" ar apărea ambele active pe index. */
+         altfel linkurile cu ancoră spre index ar apărea active pe index. */
       if (hash) return;
       if (page !== current) return;
 

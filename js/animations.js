@@ -51,10 +51,33 @@
     items.forEach(function (el) { observer.observe(el); });
   }
 
+  /* ── CASCADA DIN HERO ──────────────────────────
+     Animația rulează la infinit, deci o punem pe pauză cât timp
+     panoul nu e pe ecran — altfel compozitorul lucrează degeaba
+     cât timp vizitatorul citește restul paginii. */
+  function initHeroFlow() {
+    var flow = document.querySelector('.hero__flow');
+    if (!flow) return;
+
+    if (reduced || !('IntersectionObserver' in window)) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        flow.classList.toggle('is-paused', !entry.isIntersecting);
+      });
+    }, { threshold: 0 });
+
+    observer.observe(flow.parentNode);
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', function () {
+      init();
+      initHeroFlow();
+    });
   } else {
     init();
+    initHeroFlow();
   }
 
 })();

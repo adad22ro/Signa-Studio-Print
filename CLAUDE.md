@@ -1,7 +1,7 @@
 # Signa Studio — context proiect
 
 > **Citește acest fișier primul.** E suficient pentru a începe lucrul fără să
-> explorezi codul. Sincronizat cu `v2.2.3`.
+> explorezi codul. Sincronizat cu `v2.2.6`.
 
 ---
 
@@ -75,7 +75,7 @@ php/          contact.php  config.php  tmp/
               changelog.md  CLAUDE.md  ERORI.md
 ```
 
-**Versiune cache busting curentă: `?v=2.2.3`** — incrementeaz-o la ORICE
+**Versiune cache busting curentă: `?v=2.2.6`** — incrementeaz-o la ORICE
 modificare de CSS/JS, în toate paginile. `.htaccess` servește cu
 `immutable, max-age=1an`, deci fără asta vizitatorii rămân blocați pe versiunea veche.
 
@@ -86,7 +86,7 @@ modificare de CSS/JS, în toate paginile. `.htaccess` servește cu
 | fișier | rol |
 |---|---|
 | `main.js` | injectează componentele prin `fetch`, link activ, meniu derulant „Servicii", hamburger, header la scroll, scroll lin cu offset. Emite evenimentul `componente:gata` |
-| `animations.js` | reveal la scroll prin Intersection Observer |
+| `animations.js` | reveal la scroll prin Intersection Observer; pune pe pauză cascada din hero când panoul iese de pe ecran |
 | `form.js` | validare, token CSRF, trimitere AJAX — partajat de toate paginile cu formular |
 | `cookie.js` | banner GDPR; **nu încarcă nimic înainte de accept explicit** |
 
@@ -207,6 +207,16 @@ default a aplicației, neintenționată**. Nu se reproduce; folosim scala din
    de preț pentru magazine (descrierile erau copiate din pagina de site-uri).
    **Prețurile sunt cele reale din Figma:** SP 500 / 1.200 lei,
    MO 2.500 / 5.000 lei, ambele cu al treilea plan „La cerere".
+7. **Fundalul hero e gradient CSS, nu imagine** (v2.2.6). S-a trecut de la
+   `hero-gradient-*.webp` la `.hero__bg` din `home.css` fiindcă doar așa se pot
+   anima culorile individual — o imagine se poate doar muta sau filtra global.
+   Peste el, `.hero__flow` face o cascadă de 6s cu culorile-semnătură. Culorile
+   sunt în `variables.css`, declarate și în `:root` și cu `@property`; nu șterge
+   prima declarație, e fallback-ul pentru browserele fără `@property`.
+8. **Linkul „Despre" a fost scos** din navbar și footer (v2.2.4). Ducea spre
+   `index.html#despre`, deci din paginile interioare te trimitea înapoi pe
+   pagina principală, cu derulare, către conținut fără valoare informativă.
+   Secțiunea rămâne în `index.html`, doar navigația către ea a dispărut.
 
 ---
 

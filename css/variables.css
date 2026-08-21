@@ -54,6 +54,27 @@
                        #FF6161 0%, #FFD361 25%, #95FFA0 50%,
                        #95B9FF 75%, #D795FF 100%);
 
+  /* Culorile gradientului-semnătură, disponibile și separat —
+     stratul de cascadă din hero le folosește translucide. */
+  --grad-1:  rgba(255,  97,  97, .60);
+  --grad-2:  rgba(255, 211,  97, .60);
+  --grad-3:  rgba(149, 255, 160, .50);
+  --grad-4:  rgba(149, 185, 255, .55);
+  --grad-5:  rgba(215, 149, 255, .55);
+
+  /* Fundalul panoului din hero — reproduce gradientul din Figma.
+     Sunt declarate și aici, ca variabile obișnuite, pentru browserele
+     care nu cunosc @property: acolo fundalul rămâne corect, doar că
+     nu se poate interpola. */
+  --hero-angle:    108deg;
+  --hero-c1:       #050505;
+  --hero-c2:       #2A0433;
+  --hero-c3:       #6D00C4;
+  --hero-c4:       #E5197A;
+  --hero-c5:       #FF5A2B;
+  --hero-c6:       #FFB300;
+  --c-hero-glow:   #F3E6FF;
+
 
   /* ══ TIPOGRAFIE ══════════════════════════════════════ */
 
@@ -158,3 +179,19 @@
   --z-modal:     100;
   --z-skiplink:  200;
 }
+
+
+/* ══ CULORI INTERPOLABILE ══════════════════════════
+   O variabilă CSS obișnuită n-are tip, deci browserul nu poate
+   anima trecerea între două valori — sare direct la a doua. Înregistrate
+   cu @property, capătă tip și pot fi interpolate. Browserele fără
+   suport ignoră blocul și folosesc valorile din :root de mai sus.
+   ═════════════════════════════════════════════ */
+
+@property --hero-angle { syntax: '<angle>'; inherits: true; initial-value: 108deg; }
+@property --hero-c1 { syntax: '<color>'; inherits: true; initial-value: #050505; }
+@property --hero-c2 { syntax: '<color>'; inherits: true; initial-value: #2A0433; }
+@property --hero-c3 { syntax: '<color>'; inherits: true; initial-value: #6D00C4; }
+@property --hero-c4 { syntax: '<color>'; inherits: true; initial-value: #E5197A; }
+@property --hero-c5 { syntax: '<color>'; inherits: true; initial-value: #FF5A2B; }
+@property --hero-c6 { syntax: '<color>'; inherits: true; initial-value: #FFB300; }

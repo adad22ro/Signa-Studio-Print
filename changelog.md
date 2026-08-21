@@ -2,6 +2,58 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.2.6 — 2026-08-21 — Hero animat, fundal construit în CSS
+
+### Adăugat
+- **Cascadă de culoare în hero**: un gradient repetitiv cu culorile-semnătură
+  traversează panoul de la stânga la dreapta, în buclă de 6 secunde. Motivul se
+  repetă, deci bucla nu are salt vizibil. Se animă exclusiv `transform`, deci
+  rularea e pe compozitor, fără repaint.
+- Animația stă **pe pauză cât timp hero-ul nu e pe ecran**, prin Intersection
+  Observer în `js/animations.js` (`.hero__flow.is-paused`).
+- `prefers-reduced-motion: reduce` oprește animația și lasă stratul static.
+
+### Modificat
+- **Fundalul hero nu mai e imagine, ci gradient CSS.** `img/hero/hero-gradient-*.webp`
+  și preload-ul aferent au dispărut din `index.html`; în locul lor, `.hero__bg`.
+  Motivul e funcțional, nu de dimensiune: culorile dintr-un gradient CSS pot fi
+  animate individual, pixelii dintr-o imagine nu. Efect secundar: o cerere de
+  rețea mai puțin înainte de LCP, care devine textul.
+- Culorile fundalului și ale gradientului-semnătură sunt acum variabile în
+  `variables.css` (`--hero-c1`…`--hero-c6`, `--grad-1`…`--grad-5`), declarate
+  **de două ori**: o dată în `:root` și o dată cu `@property`. Prima declarație
+  ține fundalul corect în browserele fără `@property`; a doua le dă tip, ca
+  browserul să le poată interpola.
+- Cache busting `?v=2.2.5` → `?v=2.2.6` în toate paginile.
+
+### Rămas de făcut
+- `img/hero/hero-gradient-*.webp` (29 KB) nu mai sunt referite nicăieri. Sunt
+  păstrate deocamdată, ca revenirea la fundalul-imagine să fie posibilă.
+
+## v2.2.5 — 2026-08-20 — Firimiturile ascunse vizual
+
+### Modificat
+- **Firimiturile („Acasă / …")** nu se mai afișează pe nicio pagină. Sunt
+  ascunse vizual prin tehnica `visually-hidden` (poziționare + `clip-path`),
+  **nu** cu `display: none` — rămân în DOM, citibile de cititoarele de ecran și
+  de motoarele de căutare, alături de `BreadcrumbList` din JSON-LD.
+  Afectate: `css/servicii.css` (SP / MO / AC / proiecte / contact) și
+  `css/legal.css` (cele două pagini legale).
+- Cache busting `?v=2.2.4` → `?v=2.2.5` în toate paginile.
+
+## v2.2.4 — 2026-08-20 — Eliminat linkul „Despre"
+
+### Eliminat
+- Linkul **„Despre"** din navbar (desktop + meniu mobil) și din footer. Trimitea
+  spre `index.html#despre`, deci din paginile interioare arunca vizitatorul
+  înapoi pe pagina principală, cu derulare, către conținut fără informații
+  relevante. Abatere conștientă de la Figma, la cererea clientului.
+- Secțiunea `#despre` din `index.html` rămâne pe loc — doar navigația către ea a
+  fost scoasă.
+
+### Modificat
+- Cache busting `?v=2.2.3` → `?v=2.2.4` în toate paginile.
+
 ## v2.2.3 — 2026-08-20 — Paginile de serviciu accesibile din navbar
 
 ### Adăugat
