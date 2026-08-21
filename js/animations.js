@@ -89,9 +89,126 @@
         countUp(entry.target);
         observer.unobserve(entry.target);
       });
-    }, { threshold: 0.6 });
+      /* Pe ecran mic, un element înalt nu ajunge ușor la 60% vizibil —
+         așa că pragul coboară, altfel se ratează începutul numărătorii. */
+    }, { threshold: window.innerWidth <= 768 ? 0.25 : 0.6 });
 
     nums.forEach(function (el) { observer.observe(el); });
+  }
+
+  /* ── BARA DE PROGRES A FORMULARULUI ──────────────
+     Formularul e lung, mai ales pe telefon. Bara arată câte dintre
+     câmpurile obligatorii sunt completate. Marcajul e construit din
+     JS: e pur decorativ, deci n-are ce căuta în HTML-ul fiecărei pagini. */
+  function initFormProgress() {
+    var forms = document.querySelectorAll('.form');
+
+    Array.prototype.forEach.call(forms, function (form) {
+      var required = form.querySelectorAll('[required]');
+      if (required.length < 2) return;
+
+      var wrap = document.createElement('div');
+      wrap.className = 'form-progress';
+      wrap.innerHTML =
+        '<span class="form-progress__track">' +
+          '<span class="form-progress__bar"></span>' +
+        '</span>' +
+        '<span class="form-progress__label"></span>';
+
+      var bar   = wrap.querySelector('.form-progress__bar');
+      var label = wrap.querySelector('.form-progress__label');
+
+      function update() {
+        var done = 0;
+        Array.prototype.forEach.call(required, function (field) {
+          if (field.value.trim() !== '') done++;
+        });
+        var pct = Math.round(done / required.length * 100);
+        bar.style.width = pct + '%';
+        label.textContent = done + '/' + required.length;
+      }
+
+      form.addEventListener('input', update);
+      form.addEventListener('change', update);
+      form.insertBefore(wrap, form.firstChild);
+      update();
+    });
+  }
+
+  /* ── BUTOANE FLOTANTE ─────────────────────────
+     „Sus" și „Cere ofertă", ambele apărând doar după ce vizitatorul a
+     derulat. Vizibilitatea e decisă de un observer pe hero și unul pe
+     formular — fără ascultare de scroll. */
+  function initFloating() {
+    if (!('IntersectionObserver' in window)) return;
+
+    var main = document.getElementById('main-content');
+    if (!main) return;
+
+    var hero = document.querySelector('.hero, .svc-hero, .contact-hero, .work-hero');
+    var form = document.querySelector('.form');
+
+    var box = document.createElement('div');
+    box.className = 'floating';
+    box.innerHTML =
+      '<button type="button" class="floating__btn floating__btn--top" ' +
+              'aria-label="Înapoi sus">' +
+        '<svg class="floating__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">' +
+          '<path d="M8 13V3M4 7l4-4 4 4" stroke="currentColor" stroke-width="1.6" ' +
+                'stroke-linecap="round" stroke-linejoin="round"/>' +
+        '</svg>' +
+      '</button>' +
+      '<a class="floating__btn floating__btn--cta" href="contact.html">' +
+        '<span>Cere ofertă</span>' +
+      '</a>';
+
+    document.body.appendChild(box);
+
+    var top = box.querySelector('.floating__btn--top');
+    var cta = box.querySelector('.floating__btn--cta');
+
+    /* Pe pagina de contact, CTA-ul flotant n-are unde să ducă. */
+    if (document.querySelector('.contact-hero')) {
+      cta.remove();
+      cta = null;
+    }
+
+    var pastHero = false;
+    var atForm = false;
+
+    function apply() {
+      top.classList.toggle('is-visible', pastHero);
+      if (cta) cta.classList.toggle('is-visible', pastHero && !atForm);
+    }
+
+    if (hero) {
+      new IntersectionObserver(function (entries) {
+        pastHero = !entries[0].isIntersecting;
+        apply();
+      }, { threshold: 0 }).observe(hero);
+    } else {
+      pastHero = true;
+    }
+
+    if (form) {
+      new IntersectionObserver(function (entries) {
+        atForm = entries[0].isIntersecting;
+        apply();
+      }, { threshold: 0 }).observe(form);
+    }
+
+    top.addEventListener('click', function () {
+      window.scrollTo({
+        top: 0,
+        behavior: reduced ? 'auto' : 'smooth'
+      });
+      /* Focusul se întoarce la începutul conținutului, altfel navigarea
+         cu tastatura ar continua de unde a rămas, jos în pagină. */
+      main.setAttribute('tabindex', '-1');
+      main.focus({ preventScroll: true });
+    });
+
+    apply();
   }
 
   /* ── CASCADA DIN HERO ──────────────────────────
@@ -118,11 +235,15 @@
       init();
       initHeroFlow();
       initCounters();
+      initFormProgress();
+      initFloating();
     });
   } else {
     init();
     initHeroFlow();
     initCounters();
+    initFormProgress();
+    initFloating();
   }
 
 })();

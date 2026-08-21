@@ -23,6 +23,9 @@
   line-height: 1.35;                  /* 178/132 */
   letter-spacing: var(--ls-hero);     /* +5.28px la 132px */
   color: var(--c-text);
+  /* Jumătățile pornesc din afara cadrului la încărcare: tăierea le ține
+     înăuntru, ca să nu apară bară de derulare orizontală. */
+  overflow: clip;
 }
 
 .hero__title-part {
@@ -33,21 +36,21 @@
    încărcare. Se animă DOAR transform: titlul e elementul LCP, iar o
    animație de opacitate de la 0 ar amâna măsurătoarea. */
 .hero__title--enter .hero__title-part:first-child {
-  animation: heroTitleLeft 900ms cubic-bezier(.22, .61, .36, 1) both;
+  animation: heroTitleLeft 1500ms cubic-bezier(.16, .84, .34, 1) both;
 }
 
 .hero__title--enter .hero__title-part:last-child {
-  animation: heroTitleRight 900ms cubic-bezier(.22, .61, .36, 1) both;
-  animation-delay: 90ms;
+  animation: heroTitleRight 1500ms cubic-bezier(.16, .84, .34, 1) both;
+  animation-delay: 180ms;
 }
 
 @keyframes heroTitleLeft {
-  from { transform: translate3d(-7%, 0, 0); }
+  from { transform: translate3d(-22%, 0, 0); }
   to   { transform: translate3d(0, 0, 0); }
 }
 
 @keyframes heroTitleRight {
-  from { transform: translate3d(7%, 0, 0); }
+  from { transform: translate3d(22%, 0, 0); }
   to   { transform: translate3d(0, 0, 0); }
 }
 

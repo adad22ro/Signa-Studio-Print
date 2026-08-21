@@ -541,6 +541,33 @@
   }
 }
 
+/* Sub 768px planurile devin carusel: unul sub altul înseamnă multă
+   derulare pe telefon. scroll-snap le fixează pe rând, fără JS. */
+@media (max-width: 768px) {
+
+  .plans {
+    display: flex;
+    max-width: none;
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    gap: var(--sp-2);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .plans::-webkit-scrollbar {
+    display: none;
+  }
+
+  .plan {
+    flex: 0 0 82%;               /* se vede marginea cardului următor */
+    scroll-snap-align: start;
+  }
+}
+
 @media (max-width: 768px) {
   .compare {
     grid-template-columns: 1fr;

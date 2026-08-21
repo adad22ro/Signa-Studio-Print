@@ -2,6 +2,41 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.2.9 — 2026-08-21 — Mobil interactiv, header cu adevărat fix
+
+### Reparat
+- **Header-ul nu rămânea sus la derulare.** Era `position: sticky`, dar stătea
+  în `#navbar-placeholder`, un `div` înalt exact cât header-ul — iar un element
+  sticky se lipește doar cât timp părintele lui e pe ecran. Placeholderul a
+  primit `display: contents`, deci cutia părinte dispare și header-ul se
+  raportează la `<body>`. Afecta toate paginile, pe desktop și pe mobil.
+
+### Adăugat
+- **Feedback la atingere** (`@media (hover: none)`): butoanele și cardurile se
+  afundă la apăsare, cu revenire elastică. Zonele de atingere au minimum 44px.
+- **Meniul mobil**: intrările cad decalat la 50ms una de alta.
+- **Planurile de preț devin carusel sub 768px**, cu `scroll-snap`. Cardul
+  următor se vede parțial, ca să fie clar că se poate glisa. Zero JS.
+- **Bara de progres a formularului** (desktop și mobil): arată câte câmpuri
+  obligatorii sunt completate. Marcajul e generat din JS — e decorativ, deci
+  n-are ce căuta în HTML-ul fiecărei pagini.
+- **Butoane flotante**: „Înapoi sus" și „Cere ofertă", ambele apărând după
+  ieșirea din hero. CTA-ul dispare când formularul e pe ecran și lipsește de
+  tot pe pagina de contact. Vizibilitatea vine din Intersection Observer,
+  fără ascultare de scroll. Butonul „sus" mută și focusul la începutul
+  conținutului, altfel navigarea cu tastatura ar continua de jos.
+- Header-ul se compactează la derulare (64px → 54px) și devine translucid.
+
+### Modificat
+- Contorizarea cifrelor pornește la 25% vizibilitate pe mobil, față de 60% pe
+  desktop — pe ecran îngust un element înalt nu ajunge ușor la 60%.
+- Titlul din hero: animația de intrare 900ms → 1500ms, deplasare 7% → 22%,
+  decalaj între jumătăți 90ms → 180ms. Era prea rapidă ca să se observe.
+  Titlul a primit `overflow: clip`, altfel jumătățile ar lărgi pagina.
+- Cât timp banner-ul de cookie-uri e vizibil, butoanele flotante stau ascunse —
+  ocupă același colț.
+- Cache busting `?v=2.2.7` → `?v=2.2.9` în toate paginile.
+
 ## v2.2.7 — 2026-08-21 — Interacțiune pe tot site-ul
 
 ### Adăugat

@@ -21,6 +21,15 @@
 
 /* === HEADER =========================================== */
 
+/* Containerul în care main.js injectează navbarul nu trebuie să formeze
+   o cutie proprie: un element `sticky` se lipește doar cât timp părintele
+   lui e pe ecran, iar placeholderul are exact înălțimea header-ului — deci
+   header-ul pleca imediat la derulare. Cu `display: contents`, cutia
+   părinte dispare și header-ul se raportează la <body>. */
+#navbar-placeholder {
+  display: contents;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -29,8 +38,21 @@
   transition: box-shadow var(--t-base), background var(--t-base);
 }
 
+/* La derulare header-ul se compactează și devine ușor transparent, ca să
+   se vadă că e o bară fixă, nu parte din pagină. Rămâne mereu vizibil. */
 .site-header.is-scrolled {
   box-shadow: var(--shadow-sm);
+  background: rgba(255, 255, 255, .82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.site-header.is-scrolled .site-header__inner {
+  min-height: 54px;
+}
+
+.site-header__inner {
+  transition: min-height var(--t-base);
 }
 
 .site-header__inner {
@@ -248,6 +270,29 @@
 .mobile-menu.is-open {
   transform: translateX(0);
 }
+
+/* Intrările cad decalat după ce panoul a intrat. Întârzierea stă pe
+   elemente, nu pe container, ca fiecare să aibă ritmul ei. */
+.mobile-menu__label,
+.mobile-menu__list li,
+.mobile-menu__cta {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--t-base), transform var(--t-base);
+}
+
+.mobile-menu.is-open .mobile-menu__label,
+.mobile-menu.is-open .mobile-menu__list li,
+.mobile-menu.is-open .mobile-menu__cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu.is-open .mobile-menu__label            { transition-delay: 120ms; }
+.mobile-menu.is-open .mobile-menu__list li:nth-child(1) { transition-delay: 170ms; }
+.mobile-menu.is-open .mobile-menu__list li:nth-child(2) { transition-delay: 220ms; }
+.mobile-menu.is-open .mobile-menu__list li:nth-child(3) { transition-delay: 270ms; }
+.mobile-menu.is-open .mobile-menu__cta              { transition-delay: 330ms; }
 
 .mobile-menu__list {
   display: flex;
@@ -599,4 +644,161 @@ body.has-menu-open .cookie {
   opacity: 0;
   pointer-events: none;
   transition: none;
+}
+
+
+/* === FEEDBACK LA ATINGERE (mobil) =======================
+   Pe ecrane fără hover, nimic din ce depinde de :hover nu se
+   declanșează — un element care nu răspunde la deget pare stricat.
+   Aici răspunsul vine din :active. */
+
+@media (hover: none) {
+
+  .btn:active,
+  .plan:active,
+  .project:active,
+  .choose-card:active,
+  .nav__menu-link:active,
+  .mobile-menu__link:active,
+  .mobile-menu__sublink:active {
+    transform: scale(.97);
+    transition: transform 90ms ease-out;
+  }
+
+  /* Revenirea e mai lentă decât apăsarea — așa se simte elastic. */
+  .btn,
+  .plan,
+  .project,
+  .choose-card {
+    transition: transform 260ms cubic-bezier(.22, 1.2, .4, 1);
+  }
+
+  /* Suprafața de atingere: sub 44px degetul ratează. */
+  .btn,
+  .nav__menu-link,
+  .mobile-menu__link {
+    min-height: 44px;
+  }
+}
+
+
+/* === BUTOANE FLOTANTE ===================================
+   Două butoane care apar după ce vizitatorul a derulat: unul care
+   duce înapoi sus, altul care duce la ofertă. Ambele sunt ascunse
+   cât timp ești în hero și când ai ajuns la formular. */
+
+.floating {
+  position: fixed;
+  right: var(--gutter);
+  bottom: var(--sp-3);
+  z-index: var(--z-header);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--sp-1);
+  pointer-events: none;
+}
+
+.floating__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-1);
+  min-height: 44px;
+  padding: 10px var(--sp-2);
+  border-radius: var(--r-pill);
+  background: var(--c-text);
+  color: var(--c-text-on-dark);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(.94);
+  transition: opacity var(--t-base), transform var(--t-base), visibility var(--t-base);
+}
+
+.floating__btn.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.floating__btn:hover,
+.floating__btn:focus-visible {
+  opacity: 1;
+  transform: translateY(-2px) scale(1);
+}
+
+/* Butonul „sus" e doar o săgeată, pătrat */
+.floating__btn--top {
+  width: 44px;
+  padding: 0;
+  background: var(--c-bg);
+  color: var(--c-text);
+  border: 1px solid var(--c-border);
+}
+
+.floating__icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Cât timp banner-ul de cookie-uri e pe ecran, butoanele flotante nu se
+   arată: ocupă același colț și s-ar suprapune. Banner-ul apare o
+   singură dată, deci nu e o pierdere. */
+body:has(.cookie.is-visible) .floating__btn {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+
+/* === BARA DE PROGRES A FORMULARULUI =====================
+   Arată cât din câmpurile obligatorii sunt completate. */
+
+.form-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+
+.form-progress__track {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--c-border);
+  overflow: hidden;
+}
+
+.form-progress__bar {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 2px;
+  background: var(--grad-signature);
+  transition: width var(--t-base);
+}
+
+.form-progress__label {
+  flex-shrink: 0;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--c-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .floating__btn,
+  .form-progress__bar,
+  .mobile-menu__label,
+  .mobile-menu__list li,
+  .mobile-menu__cta {
+    transition: none;
+  }
 }
