@@ -2,6 +2,34 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.3.1 — 2026-08-21 — Bandă de logouri, formulare unificate, zona de jos animată
+
+### Adăugat
+- **Banda de logouri se derulează continuu**, de la stânga la dreapta, cu pauză
+  la hover și când nu e pe ecran. Setul se dublează **din JS**, nu în HTML: la
+  fiecare proiect nou se adaugă un singur `<li>` și bucla se recalculează
+  singură. Deplasarea e exact un set plus un spațiu, deci reluarea e invizibilă.
+  Copiile sunt `aria-hidden`, ca logourile să nu fie citite de două ori.
+- **Animații de la secțiunea „Suntem mai mult decât o agenție" în jos**, pe
+  desktop și pe mobil: variante direcționale de reveal (`--left`, `--right`,
+  `--scale`, `--rise`), mesajele din chat intră pe rând, punctele din lista
+  echipei decalat. La hover: cardurile „Ce ai nevoie?" și cele din proces se
+  ridică, imaginile se apropie, imaginea echipei respiră ușor.
+
+### Modificat
+- **Formularele sunt identice pe toate paginile.** Cel scurt (nume, email,
+  mesaj) a fost înlocuit peste tot cu varianta completă de pe pagina de contact:
+  nume, email, telefon (opțional), tip proiect, mesaj. Documentația de
+  specialitate recomandă 3–5 câmpuri, coloană unică, cu un câmp de calificare —
+  exact structura asta. Backend-ul accepta deja `phone` și `service`.
+- **Imaginea proiectului duce la site-ul live**, nu doar linkul de sub ea.
+  Pe `index.html`, „Vezi pagina live" ducea la `proiecte.html`, deși eticheta
+  promitea altceva — acum duce la site-ul real, ca pe pagina de proiecte.
+- **Footer: LinkedIn → TikTok.**
+- Logourile din bandă nu mai sunt `loading="lazy"`: lățimea lor reală trebuie
+  cunoscută ca să se poată calcula bucla.
+- Cache busting `?v=2.3.0` → `?v=2.3.2` în toate paginile.
+
 ## v2.3.0 — 2026-08-21 — Tab-urile din hero: lizibile și reactive
 
 ### Adăugat

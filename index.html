@@ -32,12 +32,12 @@
   <meta name="theme-color" content="#FFFFFF">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="css/reset.css?v=2.3.0">
-  <link rel="stylesheet" href="css/variables.css?v=2.3.0">
-  <link rel="stylesheet" href="css/base.css?v=2.3.0">
-  <link rel="stylesheet" href="css/components.css?v=2.3.0">
-  <link rel="stylesheet" href="css/home.css?v=2.3.0">
-  <link rel="stylesheet" href="css/responsive.css?v=2.3.0">
+  <link rel="stylesheet" href="css/reset.css?v=2.3.2">
+  <link rel="stylesheet" href="css/variables.css?v=2.3.2">
+  <link rel="stylesheet" href="css/base.css?v=2.3.2">
+  <link rel="stylesheet" href="css/components.css?v=2.3.2">
+  <link rel="stylesheet" href="css/home.css?v=2.3.2">
+  <link rel="stylesheet" href="css/responsive.css?v=2.3.2">
 
   <script type="application/ld+json">
   {
@@ -139,16 +139,21 @@
           </p>
         </div>
 
-        <ul class="trust__logos reveal">
-          <li>
-            <img src="img/two4delivery-logo.svg" alt="Two4Delivery"
-                 width="131" height="32" loading="lazy">
-          </li>
-          <li>
-            <img src="img/LOGO_AUTOART.svg" alt="AutoArt Motorsport"
-                 width="178" height="32" loading="lazy">
-          </li>
-        </ul>
+        <!-- Bandă care se derulează continuu. Lista se dublează din JS,
+             ca să nu ținem logourile scrise de două ori în HTML: la fiecare
+             proiect nou se adaugă un singur <li> aici. -->
+        <div class="marquee reveal" data-marquee>
+          <ul class="marquee__track trust__logos">
+            <li>
+              <img src="img/two4delivery-logo.svg" alt="Two4Delivery"
+                   width="131" height="32">
+            </li>
+            <li>
+              <img src="img/LOGO_AUTOART.svg" alt="AutoArt Motorsport"
+                   width="178" height="32">
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -264,7 +269,8 @@
         <ul class="projects reveal-group">
 
           <li class="project reveal">
-            <div class="project__media">
+            <a class="project__media" href="https://two4delivery.ro/" target="_blank" rel="noopener"
+               aria-label="Two4Delivery — deschide pagina live">
               <img class="project__img"
                  src="img/proiecte/two4delivery-573.webp"
                  srcset="img/proiecte/two4delivery-573.webp 573w,
@@ -272,7 +278,7 @@
                  sizes="(max-width: 1024px) 100vw, 573px"
                  alt="Pagina de prezentare Two4Delivery"
                  width="573" height="364" loading="lazy">
-            </div>
+            </a>
             <div class="project__body">
               <p class="chip chip--on-dark">Pagină de prezentare</p>
               <h3 class="project__title">Two4Delivery</h3>
@@ -280,12 +286,14 @@
                 Cea mai mare flotă de curieri din Moldova.
                 Partener Bolt Food și Glovo în 6 orașe.
               </p>
-              <a href="proiecte.html" class="project__link">Vezi pagina live</a>
+              <a href="https://two4delivery.ro/" class="project__link"
+                 target="_blank" rel="noopener">Vezi pagina live</a>
             </div>
           </li>
 
           <li class="project reveal">
-            <div class="project__media">
+            <a class="project__media" href="https://autoartmotorsport.ro/" target="_blank" rel="noopener"
+               aria-label="AutoArt Motorsport — deschide pagina live">
               <img class="project__img"
                  src="img/proiecte/autoart-573.webp"
                  srcset="img/proiecte/autoart-573.webp 573w,
@@ -293,20 +301,21 @@
                  sizes="(max-width: 1024px) 100vw, 573px"
                  alt="Pagina de prezentare AutoArt Motorsport"
                  width="573" height="364" loading="lazy">
-            </div>
+            </a>
             <div class="project__body">
               <p class="chip chip--on-dark">Pagină de prezentare</p>
               <h3 class="project__title">AutoArt</h3>
               <p class="project__desc">
                 Club sportiv de automobilism din Iași.
               </p>
-              <a href="proiecte.html" class="project__link">Vezi pagina live</a>
+              <a href="https://autoartmotorsport.ro/" class="project__link"
+                 target="_blank" rel="noopener">Vezi pagina live</a>
             </div>
           </li>
 
         </ul>
 
-        <div class="showcase__cta reveal">
+        <div class="showcase__cta reveal reveal--scale">
           <a href="proiecte.html" class="btn btn--pill btn--light btn--hero">
             <span>Vezi toate proiectele</span>
             <svg class="btn__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -318,7 +327,7 @@
       </div>
 
       <div class="container showcase__statement">
-        <p class="statement reveal">
+        <p class="statement reveal reveal--rise">
           Suntem mai mult decât o agenție digitală obișnuită.
         </p>
         <div class="showcase__cta reveal">
@@ -338,7 +347,7 @@
     <section class="section needs" id="nevoi">
       <div class="container">
 
-        <header class="needs__head reveal">
+        <header class="needs__head reveal reveal--rise">
           <p class="section-label section-label--dot">Business-ul tău</p>
           <h2 class="needs__title">Ce ai nevoie?</h2>
         </header>
@@ -420,7 +429,7 @@
           </li>
         </ul>
 
-        <aside class="needs__cta on-dark reveal">
+        <aside class="needs__cta on-dark reveal reveal--scale">
           <div>
             <h3 class="needs__cta-title">Nu știi de ce ai nevoie?</h3>
             <p class="needs__cta-text">
@@ -444,7 +453,7 @@
     <section class="section process">
       <div class="container">
 
-        <header class="process__head reveal">
+        <header class="process__head reveal reveal--rise">
           <p class="section-label section-label--dot">De ce să lucrezi cu noi</p>
           <h2 class="process__title">
             Avem un proces transparent și sigur de la prima idee până la lansare.
@@ -454,7 +463,7 @@
         <div class="process__grid reveal-group">
 
           <div class="process__col">
-            <article class="pcard pcard--dark on-dark reveal">
+            <article class="pcard pcard--dark on-dark reveal reveal--left">
               <div class="pcard__content">
                 <h3 class="pcard__title">Prețuri transparente și clare</h3>
                 <a href="site-uri.html#preturi" class="btn btn--pill btn--light pcard__btn">
@@ -469,21 +478,21 @@
                    alt="" aria-hidden="true" width="500" height="498" loading="lazy">
             </article>
 
-            <article class="pcard pcard--chat reveal">
+            <article class="pcard pcard--chat reveal reveal--left">
               <p class="pcard__badge">Colaborare în timp real</p>
-              <div class="chat">
-                <div class="chat__msg">
+              <div class="chat reveal-group">
+                <div class="chat__msg reveal reveal--left">
                   <p>Salut! Avem un vârf de trafic mare azi de la campanie.
                      Sistemul ține fără probleme?</p>
                 </div>
-                <div class="chat__msg chat__msg--reply">
+                <div class="chat__msg chat__msg--reply reveal reveal--right">
                   <p>Salut, Cristian! Totul rulează lin.</p>
                 </div>
               </div>
             </article>
           </div>
 
-          <article class="pcard pcard--panel reveal">
+          <article class="pcard pcard--panel reveal reveal--right">
             <img class="pcard__panel-img"
                  src="img/sectiuni/proces-panou-675.webp"
                  srcset="img/sectiuni/proces-panou-675.webp 675w,
@@ -501,24 +510,24 @@
     <section class="section team">
       <div class="container team__grid">
 
-        <img class="team__img reveal"
+        <img class="team__img reveal reveal--left"
              src="img/sectiuni/echipa-574.webp"
              srcset="img/sectiuni/echipa-574.webp 574w,
                      img/sectiuni/echipa-1148.webp 1148w"
              sizes="(max-width: 1024px) 100vw, 574px"
              alt="" aria-hidden="true" width="574" height="403" loading="lazy">
 
-        <div class="team__body reveal">
+        <div class="team__body reveal reveal--right">
           <h2 class="team__title">Lucrezi direct cu echipa</h2>
           <p class="team__desc">
             Nu există o agenție impersonală între tine și proiect — vorbești
             direct cu oamenii care îl construiesc.
           </p>
 
-          <ul class="team__list">
-            <li>Atenție la detalii și implicare în fiecare proiect</li>
-            <li>Tehnologii moderne, cod curat și ușor de întreținut</li>
-            <li>Instruire după predare — administrezi singur site-ul sau aplicația</li>
+          <ul class="team__list reveal-group">
+            <li class="reveal reveal--left">Atenție la detalii și implicare în fiecare proiect</li>
+            <li class="reveal reveal--left">Tehnologii moderne, cod curat și ușor de întreținut</li>
+            <li class="reveal reveal--left">Instruire după predare — administrezi singur site-ul sau aplicația</li>
           </ul>
 
           <a href="contact.html" class="btn btn--pill btn--dark btn--lg">
@@ -538,7 +547,7 @@
     <section class="section closing" id="contact-form">
       <div class="container closing__grid">
 
-        <div class="closing__intro reveal">
+        <div class="closing__intro reveal reveal--left">
           <h2 class="closing__title">
             Transformă-ți ideile astăzi cu echipa Signa
           </h2>
@@ -554,27 +563,46 @@
         <div class="form-card reveal">
           <h3 class="form-card__title">Spune-ne despre business-ul tău</h3>
 
-          <form id="contactForm" class="form" novalidate>
+          <form id="contactForm" class="form reveal-group" novalidate>
             <input type="hidden" name="csrf_token" value="">
 
-            <div class="field">
+            <div class="field reveal">
               <label class="field__label" for="fname">Nume</label>
               <input class="field__input" type="text" id="fname" name="name"
-                     maxlength="100" autocomplete="name" required>
+                     placeholder="Numele tău" maxlength="100" autocomplete="name" required>
               <p class="field__msg" data-for="fname"></p>
             </div>
 
-            <div class="field">
+            <div class="field reveal">
               <label class="field__label" for="femail">Email</label>
               <input class="field__input" type="email" id="femail" name="email"
-                     maxlength="150" autocomplete="email" required>
+                     placeholder="email@domeniu.com" maxlength="150" autocomplete="email" required>
               <p class="field__msg" data-for="femail"></p>
             </div>
 
-            <div class="field">
+            <div class="field reveal">
+              <label class="field__label" for="fphone">Telefon <span class="field__optional">(opțional)</span></label>
+              <input class="field__input" type="tel" id="fphone" name="phone"
+                     placeholder="+40 7xx xxx xxx" maxlength="30" autocomplete="tel">
+              <p class="field__msg" data-for="fphone"></p>
+            </div>
+
+            <div class="field reveal">
+              <label class="field__label" for="fservice">Tip proiect</label>
+              <select class="field__input" id="fservice" name="service">
+                <option value="">— Alege tipul de proiect —</option>
+                <option>Site de prezentare</option>
+                <option>Magazin online</option>
+                <option>Aplicație custom</option>
+                <option>Nu știu încă / Altceva</option>
+              </select>
+            </div>
+
+            <div class="field reveal">
               <label class="field__label" for="fmsg">Mesaj</label>
               <textarea class="field__input field__input--area" id="fmsg" name="message"
-                        maxlength="2000" minlength="10" rows="4" required></textarea>
+                        placeholder="Spune-ne pe scurt ce ai nevoie..."
+                        maxlength="2000" minlength="10" rows="5" required></textarea>
               <p class="field__msg" data-for="fmsg"></p>
             </div>
 
@@ -607,9 +635,9 @@
   <!-- Cookie banner injectat din components/cookie-banner.html -->
   <div id="cookie-placeholder"></div>
 
-  <script src="js/main.js?v=2.3.0" defer></script>
-  <script src="js/cookie.js?v=2.3.0" defer></script>
-  <script src="js/animations.js?v=2.3.0" defer></script>
-  <script src="js/form.js?v=2.3.0" defer></script>
+  <script src="js/main.js?v=2.3.2" defer></script>
+  <script src="js/cookie.js?v=2.3.2" defer></script>
+  <script src="js/animations.js?v=2.3.2" defer></script>
+  <script src="js/form.js?v=2.3.2" defer></script>
 </body>
 </html>

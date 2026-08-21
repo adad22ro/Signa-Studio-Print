@@ -487,12 +487,65 @@
   color: var(--c-text);
 }
 
-.trust__logos {
+/* === BANDĂ CU DERULARE CONTINUĂ ==========================
+   Lista se dublează din JS, iar banda se deplasează exact cu
+   lățimea setului original — așa reluarea e invizibilă, indiferent
+   câte logouri sunt. Se animă doar transform. */
+
+.marquee {
+  position: relative;
+  overflow: hidden;
+  /* Capătul benzii se stinge în fundal, ca să nu pară tăiat brusc */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee__track {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: clamp(var(--sp-6), 20vw, 300px);   /* gap:300 din Figma */
-  flex-wrap: wrap;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
+  will-change: transform;
+}
+
+/* La hover banda se oprește, ca logoul să poată fi privit. */
+.marquee:hover .marquee__track,
+.marquee:focus-within .marquee__track {
+  animation-play-state: paused;
+}
+
+.marquee__track.is-paused {
+  animation-play-state: paused;
+}
+
+/* Deplasarea e spre dreapta: banda pornește decalat cu un set spre
+   stânga și ajunge la zero, apoi bucla o reia — invizibil, fiindcă
+   la capăt imaginea e identică cu cea de la început. */
+@keyframes marquee {
+  from { transform: translate3d(calc(var(--marquee-shift, 50%) * -1), 0, 0); }
+  to   { transform: translate3d(0, 0, 0); }
+}
+
+/* Fără padding pe capete: spațierea trebuie să fie identică între toate
+   logourile, inclusiv între ultimul și primul la reluarea buclei. */
+.trust__logos {
+  gap: clamp(var(--sp-6), 10vw, 140px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.trust__logos li {
+  flex: 0 0 auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
 }
 
 .trust__logos img {
@@ -538,12 +591,36 @@
   gap: var(--sp-2);
 }
 
+/* Imaginea stă într-un cadru care taie, ca să se poată apropia la hover. */
 .need__img {
   width: 100%;
   height: auto;
   aspect-ratio: 389 / 263;
   object-fit: cover;
   border-radius: var(--r-sm);         /* r:15 din Figma */
+  transition: transform 700ms cubic-bezier(.22, .61, .36, 1);
+}
+
+.need {
+  transition: transform var(--t-base);
+}
+
+.need:hover,
+.need:focus-within {
+  transform: translateY(-6px);
+}
+
+.need:hover .need__img,
+.need:focus-within .need__img {
+  transform: scale(1.04);
+}
+
+.need__link {
+  transition: transform var(--t-base);
+}
+
+.need:hover .need__link {
+  transform: translateX(4px);
 }
 
 .need__body {
@@ -901,6 +978,24 @@
   padding: var(--sp-4);
   border-radius: var(--r-lg);         /* r:25 */
   overflow: hidden;
+  transition: transform var(--t-base), box-shadow var(--t-base);
+}
+
+.pcard:hover,
+.pcard:focus-within {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Imaginile din carduri se apropie ușor odată cu cardul. */
+.pcard__img,
+.pcard__panel-img {
+  transition: transform 800ms cubic-bezier(.22, .61, .36, 1);
+}
+
+.pcard:hover .pcard__img,
+.pcard:hover .pcard__panel-img {
+  transform: scale(1.05);
 }
 
 .pcard--dark {
@@ -1020,6 +1115,21 @@
   aspect-ratio: 574 / 403;
   object-fit: cover;
   border-radius: 26px;                /* r:26 din Figma */
+  transition: transform 900ms cubic-bezier(.22, .61, .36, 1);
+}
+
+.team__grid:hover .team__img {
+  transform: scale(1.02);
+}
+
+/* Punctele din listă prind un accent colorat la hover. */
+.team__list li {
+  transition: transform var(--t-base), color var(--t-base);
+}
+
+.team__list li:hover {
+  transform: translateX(4px);
+  color: var(--c-text);
 }
 
 .team__body {
@@ -1284,4 +1394,18 @@
 
 [data-count-to] {
   font-variant-numeric: tabular-nums;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .need,
+  .need__img,
+  .need__link,
+  .pcard,
+  .pcard__img,
+  .pcard__panel-img,
+  .team__img,
+  .team__list li {
+    transition: none;
+  }
 }

@@ -232,6 +232,82 @@
     });
   }
 
+  /* ── BANDĂ CU LOGOURI ──────────────────────────
+     Dublarea listei se face din JS, nu în HTML: la fiecare proiect nou
+     se adaugă un singur <li>, iar banda se recalculează singură. Copia
+     e ascunsă pentru cititoarele de ecran, ca logourile să nu fie
+     anunțate de două ori. Viteza e constantă — cât timp îi ia să
+     parcurgă o lățime de ecran e același, indiferent câte logouri sunt. */
+  function initMarquee() {
+    var boxes = document.querySelectorAll('[data-marquee]');
+    if (!boxes.length || reduced) return;
+
+    Array.prototype.forEach.call(boxes, function (box) {
+      var track = box.querySelector('.marquee__track');
+      if (!track || track.children.length === 0) return;
+
+      /* Setul original, memorat înainte de orice clonare. */
+      var original = Array.prototype.slice.call(track.children);
+
+      function build() {
+        /* Ștergem clonele de la rularea anterioară (ex. după redimensionare) */
+        while (track.children.length > original.length) {
+          track.removeChild(track.lastChild);
+        }
+
+        var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+
+        /* Deplasarea trebuie să fie exact un set PLUS spațiul dintre
+           elemente — altfel, la reluare, ultimul logo s-ar lipi de primul. */
+        var shift = track.scrollWidth + gap;
+        if (shift <= gap) return;              /* nimic de măsurat încă */
+
+        /* Copiem setul până când banda depășește lățimea vizibilă plus o
+           deplasare — altfel ar apărea un gol în timpul derulării. Cu două
+           logouri sunt necesare mai multe copii decât cu zece. */
+        var guard = 0;
+        while (track.scrollWidth < box.offsetWidth + shift && guard < 20) {
+          original.forEach(function (li) {
+            var clone = li.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            track.appendChild(clone);
+          });
+          guard++;
+        }
+
+        var speed = 55;                        /* pixeli pe secundă */
+        track.style.setProperty('--marquee-shift', shift + 'px');
+        track.style.setProperty('--marquee-duration', (shift / speed) + 's');
+      }
+
+      /* Măsurarea depinde de lățimea reală a logourilor, care nu e cunoscută
+         până când fiecare imagine nu e descărcată. De aceea recalculăm și la
+         `load`-ul fiecărei imagini, nu doar o dată. */
+      Array.prototype.forEach.call(track.querySelectorAll('img'), function (img) {
+        if (!img.complete) img.addEventListener('load', build);
+      });
+
+      if (document.readyState === 'complete') {
+        build();
+      } else {
+        window.addEventListener('load', build);
+      }
+
+      var t = null;
+      window.addEventListener('resize', function () {
+        clearTimeout(t);
+        t = setTimeout(build, 200);
+      });
+
+      /* Oprită cât timp banda nu e pe ecran. */
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          track.classList.toggle('is-paused', !entries[0].isIntersecting);
+        }, { threshold: 0 }).observe(box);
+      }
+    });
+  }
+
   /* ── CASCADA DIN HERO ──────────────────────────
      Animația rulează la infinit, deci o punem pe pauză cât timp
      panoul nu e pe ecran — altfel compozitorul lucrează degeaba
@@ -259,6 +335,7 @@
       initFormProgress();
       initFloating();
       initHeroTabs();
+      initMarquee();
     });
   } else {
     init();
@@ -267,6 +344,7 @@
     initFormProgress();
     initFloating();
     initHeroTabs();
+    initMarquee();
   }
 
 })();

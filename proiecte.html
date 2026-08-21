@@ -28,13 +28,13 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#FFFFFF">
 
-  <link rel="stylesheet" href="css/reset.css?v=2.3.0">
-  <link rel="stylesheet" href="css/variables.css?v=2.3.0">
-  <link rel="stylesheet" href="css/base.css?v=2.3.0">
-  <link rel="stylesheet" href="css/components.css?v=2.3.0">
-  <link rel="stylesheet" href="css/home.css?v=2.3.0">
-  <link rel="stylesheet" href="css/servicii.css?v=2.3.0">
-  <link rel="stylesheet" href="css/responsive.css?v=2.3.0">
+  <link rel="stylesheet" href="css/reset.css?v=2.3.2">
+  <link rel="stylesheet" href="css/variables.css?v=2.3.2">
+  <link rel="stylesheet" href="css/base.css?v=2.3.2">
+  <link rel="stylesheet" href="css/components.css?v=2.3.2">
+  <link rel="stylesheet" href="css/home.css?v=2.3.2">
+  <link rel="stylesheet" href="css/servicii.css?v=2.3.2">
+  <link rel="stylesheet" href="css/responsive.css?v=2.3.2">
 
   <script type="application/ld+json">
   {
@@ -92,7 +92,8 @@
         <ul class="projects projects--light reveal-group">
 
           <li class="project reveal">
-            <div class="project__media">
+            <a class="project__media" href="https://two4delivery.ro/" target="_blank" rel="noopener"
+               aria-label="Two4Delivery — deschide pagina live">
               <img class="project__img"
                  src="img/proiecte/two4delivery-573.webp"
                  srcset="img/proiecte/two4delivery-573.webp 573w,
@@ -100,7 +101,7 @@
                  sizes="(max-width: 1024px) 100vw, 573px"
                  alt="Pagina de prezentare Two4Delivery"
                  width="573" height="364" loading="lazy">
-            </div>
+            </a>
             <div class="project__body">
               <p class="chip">Pagină de prezentare</p>
               <h2 class="project__title">Two4Delivery</h2>
@@ -114,7 +115,8 @@
           </li>
 
           <li class="project reveal">
-            <div class="project__media">
+            <a class="project__media" href="https://autoartmotorsport.ro/" target="_blank" rel="noopener"
+               aria-label="AutoArt Motorsport — deschide pagina live">
               <img class="project__img"
                  src="img/proiecte/autoart-573.webp"
                  srcset="img/proiecte/autoart-573.webp 573w,
@@ -122,7 +124,7 @@
                  sizes="(max-width: 1024px) 100vw, 573px"
                  alt="Pagina de prezentare AutoArt Motorsport"
                  width="573" height="364" loading="lazy">
-            </div>
+            </a>
             <div class="project__body">
               <p class="chip">Pagină de prezentare</p>
               <h2 class="project__title">AutoArt</h2>
@@ -165,28 +167,46 @@
         <div class="form-card form-card--center reveal">
           <h3 class="form-card__title">Spune-ne despre business-ul tău</h3>
 
-          <form id="contactForm" class="form" novalidate>
+          <form id="contactForm" class="form reveal-group" novalidate>
             <input type="hidden" name="csrf_token" value="">
 
-            <div class="field">
+            <div class="field reveal">
               <label class="field__label" for="fname">Nume</label>
               <input class="field__input" type="text" id="fname" name="name"
                      placeholder="Numele tău" maxlength="100" autocomplete="name" required>
               <p class="field__msg" data-for="fname"></p>
             </div>
 
-            <div class="field">
+            <div class="field reveal">
               <label class="field__label" for="femail">Email</label>
               <input class="field__input" type="email" id="femail" name="email"
                      placeholder="email@domeniu.com" maxlength="150" autocomplete="email" required>
               <p class="field__msg" data-for="femail"></p>
             </div>
 
-            <div class="field">
+            <div class="field reveal">
+              <label class="field__label" for="fphone">Telefon <span class="field__optional">(opțional)</span></label>
+              <input class="field__input" type="tel" id="fphone" name="phone"
+                     placeholder="+40 7xx xxx xxx" maxlength="30" autocomplete="tel">
+              <p class="field__msg" data-for="fphone"></p>
+            </div>
+
+            <div class="field reveal">
+              <label class="field__label" for="fservice">Tip proiect</label>
+              <select class="field__input" id="fservice" name="service">
+                <option value="">— Alege tipul de proiect —</option>
+                <option>Site de prezentare</option>
+                <option>Magazin online</option>
+                <option>Aplicație custom</option>
+                <option>Nu știu încă / Altceva</option>
+              </select>
+            </div>
+
+            <div class="field reveal">
               <label class="field__label" for="fmsg">Mesaj</label>
               <textarea class="field__input field__input--area" id="fmsg" name="message"
                         placeholder="Spune-ne pe scurt ce ai nevoie..."
-                        maxlength="2000" minlength="10" rows="4" required></textarea>
+                        maxlength="2000" minlength="10" rows="5" required></textarea>
               <p class="field__msg" data-for="fmsg"></p>
             </div>
 
@@ -217,9 +237,9 @@
   <!-- Cookie banner injectat din components/cookie-banner.html -->
   <div id="cookie-placeholder"></div>
 
-  <script src="js/main.js?v=2.3.0" defer></script>
-  <script src="js/cookie.js?v=2.3.0" defer></script>
-  <script src="js/animations.js?v=2.3.0" defer></script>
-  <script src="js/form.js?v=2.3.0" defer></script>
+  <script src="js/main.js?v=2.3.2" defer></script>
+  <script src="js/cookie.js?v=2.3.2" defer></script>
+  <script src="js/animations.js?v=2.3.2" defer></script>
+  <script src="js/form.js?v=2.3.2" defer></script>
 </body>
 </html>

@@ -197,6 +197,14 @@ a:hover { opacity: 0.7; }
   transform: none;
 }
 
+/* Variante de direcție — conținutul intră dinspre partea unde stă în
+   pagină, nu totul de jos. Toate se anulează la .is-visible, deci
+   folosesc același observer. */
+.reveal--left  { transform: translate3d(-32px, 0, 0); }
+.reveal--right { transform: translate3d(32px, 0, 0); }
+.reveal--scale { transform: scale(.94); }
+.reveal--rise  { transform: translate3d(0, 44px, 0); }
+
 
 /* === MIȘCARE REDUSĂ =================================== */
 
