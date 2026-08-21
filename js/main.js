@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   SIGNA STUDIO PRINT — js/main.js
+   SIGNA STUDIO DEV — js/main.js
    Injectează componentele partajate (navbar, footer) prin
    fetch, marchează linkul activ, gestionează hamburgerul,
    starea de scroll a header-ului și scroll-ul lin cu offset.

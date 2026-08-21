@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   SIGNA STUDIO PRINT — js/form.js
+   SIGNA STUDIO DEV — js/form.js
    Handler partajat pentru formularul de contact, folosit
    atât pe pagina principală cât și pe contact.html.
 
@@ -150,7 +150,7 @@
       })
       .catch(function () {
         setLoading(false);
-        showError('Conexiune eșuată. Scrie-ne direct la contact@signastudioprint.ro.');
+        showError('Conexiune eșuată. Scrie-ne direct la contact@signastudiodev.ro.');
       });
   });
 

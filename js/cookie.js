@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   SIGNA STUDIO PRINT — js/cookie.js
+   SIGNA STUDIO DEV — js/cookie.js
    Banner de cookie-uri conform GDPR.
 
    Comportament:
@@ -55,28 +55,19 @@
     gtag('config', ANALYTICS_ID, { anonymize_ip: true });
   }
 
-  /* ── BANNER ───────────────────────────────────────────*/
+  /* ── BANNER ──────────────────────────────────*/
   function init() {
     var banner = document.getElementById('cookieBanner');
     if (!banner) return;
 
-    var consent = readConsent();
-
-    if (consent === 'accepted') {
-      loadAnalytics();
-      return;
-    }
-    if (consent === 'rejected') {
-      return;
-    }
-
-    /* Prima vizită — afișăm bannerul */
-    banner.hidden = false;
-    void banner.offsetWidth;          /* reflow, ca tranziția să pornească */
-    banner.classList.add('is-visible');
-
     var accept = document.getElementById('cookieAccept');
     var reject = document.getElementById('cookieReject');
+
+    function show() {
+      banner.hidden = false;
+      void banner.offsetWidth;        /* reflow, ca tranziția să pornească */
+      banner.classList.add('is-visible');
+    }
 
     function close() {
       banner.classList.remove('is-visible');
@@ -97,6 +88,30 @@
         close();
       });
     }
+
+    /* Retragerea consimțământului trebuie să fie la fel de simplă ca
+       acordarea lui (GDPR art. 7 alin. 3). Orice element cu
+       data-cookie-preferences redeschide bannerul — în footer e un link. */
+    document.addEventListener('click', function (e) {
+      var trigger = e.target.closest('[data-cookie-preferences]');
+      if (!trigger) return;
+      e.preventDefault();
+      show();
+      if (reject) reject.focus();
+    });
+
+    var consent = readConsent();
+
+    if (consent === 'accepted') {
+      loadAnalytics();
+      return;
+    }
+    if (consent === 'rejected') {
+      return;
+    }
+
+    /* Prima vizită — afișăm bannerul */
+    show();
   }
 
   /* Bannerul e injectat de main.js, deci așteptăm evenimentul lui.

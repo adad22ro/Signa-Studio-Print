@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   SIGNA STUDIO PRINT — js/animations.js
+   SIGNA STUDIO DEV — js/animations.js
    Animații la scroll exclusiv prin Intersection Observer.
    Nu se folosesc niciodată evenimente de tip scroll.
 

@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   SIGNA STUDIO PRINT — css/legal.css
+   SIGNA STUDIO DEV — css/legal.css
    Pagini legale: confidențialitate, termeni și condiții.
    Text lung, lățime optimizată pentru citit.
    ═══════════════════════════════════════════════════════ */
@@ -126,4 +126,47 @@
   margin-right: var(--sp-1);
   background: none;
   border-radius: 0;
+}
+
+
+/* === TABELE În PAGINILE LEGALE =========================
+   Folosite pentru scopuri/temeiuri legale și pentru lista de
+   cookie-uri. Pe ecran îngust tabelul derulează în propriul
+   container — pagina nu se lățește niciodată. */
+
+.legal__table-wrap {
+  margin-block: var(--sp-3);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.legal__table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+  text-align: left;
+}
+
+.legal__table th,
+.legal__table td {
+  padding: 10px 12px;
+  border: 1px solid var(--c-border);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.legal__table th {
+  background: var(--c-bg-tint);
+  font-weight: var(--fw-bold);
+  color: var(--c-text);
+}
+
+.legal__table td {
+  color: var(--c-text-muted);
+}
+
+.legal__table code {
+  font-size: 0.9em;
+  word-break: break-all;
 }

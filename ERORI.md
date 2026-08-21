@@ -1,4 +1,4 @@
-# Jurnal de erori — Signa Studio Print
+# Jurnal de erori — Signa Studio Dev
 
 > **Citește acest fișier ÎNAINTE de a depana orice eroare.** Multe probleme
 > întâlnite aici sunt specifice acestui calculator (Windows + Git Bash + XAMPP)

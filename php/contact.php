@@ -1,6 +1,6 @@
 <?php
 /* ═══════════════════════════════════════════════════════
-   SIGNA STUDIO PRINT — php/contact.php
+   SIGNA STUDIO DEV — php/contact.php
    Procesare formular de contact.
 
    GET   → emite un token CSRF  { success:true, token:"..." }
@@ -211,7 +211,7 @@ foreach ($rows as $k => $v) {
 }
 $htmlBody = '<!DOCTYPE html><html lang="ro"><head><meta charset="UTF-8"></head>'
           . '<body style="font-family:Arial,Helvetica,sans-serif;color:#101010">'
-          . '<h2 style="margin:0 0 16px">Mesaj nou de pe signastudioprint.ro</h2>'
+          . '<h2 style="margin:0 0 16px">Mesaj nou de pe signastudiodev.ro</h2>'
           . '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:14px">'
           . $htmlRows . '</table>'
           . '<h3 style="margin:20px 0 8px">Mesaj</h3>'

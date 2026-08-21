@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://signastudioprint.ro/</loc>
+    <loc>https://signastudiodev.ro/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://signastudioprint.ro/site-uri.html</loc>
+    <loc>https://signastudiodev.ro/site-uri.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://signastudioprint.ro/magazine-online.html</loc>
+    <loc>https://signastudiodev.ro/magazine-online.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://signastudioprint.ro/aplicatii-custom.html</loc>
+    <loc>https://signastudiodev.ro/aplicatii-custom.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://signastudioprint.ro/proiecte.html</loc>
+    <loc>https://signastudiodev.ro/proiecte.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://signastudioprint.ro/contact.html</loc>
+    <loc>https://signastudiodev.ro/contact.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>

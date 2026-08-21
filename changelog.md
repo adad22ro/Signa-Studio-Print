@@ -2,6 +2,43 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.4.0 — 2026-08-21 — Signa Studio Dev + politică GDPR completă
+
+### Modificat
+- **Redenumire: Signa Studio Print → Signa Studio Dev**, iar domeniul
+  `signastudioprint.ro` → `signastudiodev.ro`. Actualizate: cele 9 pagini
+  (title, meta description, Open Graph, canonical, JSON-LD), `sitemap.xml`,
+  `site.webmanifest`, `php/config.php`, `php/contact.php`, `js/form.js`,
+  antetele din toate fișierele CSS și JS, `CLAUDE.md`, `ERORI.md`.
+  Redirectările din `.htaccess` erau deja generice, nu conțineau domeniul.
+- Cache busting `?v=2.3.4` → `?v=2.4.0` în toate paginile.
+
+### Adăugat — politica de confidențialitate, rescrisă de la 9 la 12 secțiuni
+Documentată pe baza ANSPDCP, a ghidurilor EDPB privind cookie-urile și a
+modificărilor aduse Legii 506/2004:
+- **Identitatea operatorului** completată cu denumirea legală nouă; rămân de
+  completat CUI, numărul din Registrul Comerțului, adresa și furnizorul de găzduire.
+- **Mențiune explicită despre DPO** — de ce nu am desemnat unul (art. 37).
+- **Tabel scop / date / temei legal**, cu articolele exacte din GDPR.
+- **Justificarea interesului legitim** — cerință a art. 13 alin. 1 lit. d.
+- **Secțiune nouă: „Este obligatoriu să ne dai aceste date?"** — art. 13 alin. 2 lit. e.
+- **Jurnalele serverului**, declarate ca prelucrare separată.
+- **Transferuri în afara SEE**, cu temeiul (art. 45–46).
+- **Toate cele 8 drepturi**, fiecare cu articolul lui, plus termenul de răspuns
+  de o lună și posibilitatea prelungirii cu două.
+- **Datele complete de contact ale ANSPDCP** — adresă, telefoane, email, site.
+- **Tabel cu cookie-urile** — nume, scop, durată, categorie — și explicația
+  modului în care funcționează consimțământul: refuzul la fel de ușor ca
+  acceptul, nimic bifat dinainte, navigarea continuă nu înseamnă acord.
+- **Notificarea încălcărilor de securitate în 72 de ore** (art. 33–34).
+- **Secțiune despre minori.**
+
+### Adăugat — retragerea consimțământului
+- Link **„Preferințe cookie-uri"** în subsolul fiecărei pagini și în politică.
+  Redeschide bannerul, ca retragerea consimțământului să fie la fel de simplă ca
+  acordarea lui — cerință a art. 7 alin. 3 GDPR, care lipsea.
+- Stiluri pentru tabelele din paginile legale, cu derulare proprie pe ecran îngust.
+
 ## v2.3.4 — 2026-08-21 — Hero-ul mobil revine la forma dinainte
 
 ### Eliminat

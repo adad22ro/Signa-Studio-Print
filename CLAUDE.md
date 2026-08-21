@@ -1,7 +1,7 @@
 # Signa Studio — context proiect
 
 > **Citește acest fișier primul.** E suficient pentru a începe lucrul fără să
-> explorezi codul. Sincronizat cu `v2.3.4`.
+> explorezi codul. Sincronizat cu `v2.4.0`.
 
 ---
 
@@ -24,9 +24,9 @@ acestui calculator (Windows + Git Bash + XAMPP) și s-ar repeta identic.
 
 ## Identitate
 
-- **Client:** Signa Studio — Iași, România
+- **Client:** Signa Studio Dev — Iași, România
 - **Servicii:** site-uri de prezentare, magazine online, aplicații web custom
-- **Web:** https://signastudioprint.ro (încă nepublicat)
+- **Web:** https://signastudiodev.ro (încă nepublicat)
 - **Limba:** română, cu diacritice corecte — obligatoriu
 - **Repo:** https://github.com/adad22ro/Signa-Studio-Print (**privat**, branch `main`)
 - **Stack:** HTML5 + CSS3 + JS vanilla (ES6, IIFE, fără build tools) + PHP pentru formular
@@ -75,7 +75,7 @@ php/          contact.php  config.php  tmp/
               changelog.md  CLAUDE.md  ERORI.md
 ```
 
-**Versiune cache busting curentă: `?v=2.3.4`** — incrementeaz-o la ORICE
+**Versiune cache busting curentă: `?v=2.4.0`** — incrementeaz-o la ORICE
 modificare de CSS/JS, în toate paginile. `.htaccess` servește cu
 `immutable, max-age=1an`, deci fără asta vizitatorii rămân blocați pe versiunea veche.
 

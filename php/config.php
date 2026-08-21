@@ -1,6 +1,6 @@
 <?php
 /* ═══════════════════════════════════════════════════════
-   SIGNA STUDIO PRINT — php/config.php
+   SIGNA STUDIO DEV — php/config.php
    Configurare centralizată pentru formularul de contact.
    Nu se accesează direct — doar inclus din contact.php.
    ═══════════════════════════════════════════════════════ */
@@ -9,13 +9,13 @@ if (!defined('APP')) { die(); }
 
 /* ── DESTINATAR ────────────────────────────────────────
    Adresa unde ajung mesajele din formular. */
-define('MAIL_TO',      'contact@signastudioprint.ro');
-define('MAIL_SUBJECT', 'Mesaj nou de pe signastudioprint.ro');
+define('MAIL_TO',      'contact@signastudiodev.ro');
+define('MAIL_SUBJECT', 'Mesaj nou de pe signastudiodev.ro');
 
 /* Expeditorul tehnic. Trebuie să fie pe domeniul propriu,
    altfel mesajele ajung în spam (SPF/DKIM). */
-define('MAIL_FROM',      'noreply@signastudioprint.ro');
-define('MAIL_FROM_NAME', 'Signa Studio Print');
+define('MAIL_FROM',      'noreply@signastudiodev.ro');
+define('MAIL_FROM_NAME', 'Signa Studio Dev');
 
 /* ── MEDIU ─────────────────────────────────────────────
    true  = dezvoltare (erorile se afișează pe ecran)
