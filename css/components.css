@@ -954,3 +954,29 @@ body:has(.cookie.is-visible) .floating__btn {
     box-shadow: var(--shadow-lg);
   }
 }
+
+
+/* === ASCUNDEREA BARELOR DE DERULARE ORIZONTALĂ ==========
+   Caruselele se glisează cu degetul și au propriul indiciu vizual, deci
+   bara e doar zgomot. `display: none` pe ::-webkit-scrollbar nu e respectat
+   peste tot; lățimea și înălțimea zero sunt sigure. Se adaugă și varianta
+   veche pentru Edge/IE, și cea standard, `scrollbar-width`. */
+
+.plans,
+.projects,
+.marquee,
+.hero__panel-nav,
+.legal__table-wrap {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.plans::-webkit-scrollbar,
+.projects::-webkit-scrollbar,
+.marquee::-webkit-scrollbar,
+.hero__panel-nav::-webkit-scrollbar,
+.legal__table-wrap::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}

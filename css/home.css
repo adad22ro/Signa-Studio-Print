@@ -511,12 +511,8 @@
   display: none;
 }
 
-@media (max-width: 768px) {
-  .marquee {
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-}
+/* Banda nu e derulabilă nici pe mobil: pauza la atingere e suficientă, iar
+   un container derulabil în plus înseamnă încă o sursă de bare nedorite. */
 
 .marquee__track {
   display: flex;

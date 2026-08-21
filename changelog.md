@@ -2,6 +2,25 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.4.4 — 2026-08-21 — Bara orizontală de pe mobil
+
+### Reparat
+- **Bara de derulare orizontală vizibilă pe telefon.** Nu era a paginii, ci a
+  caruselului de proiecte — de aceea dispărea exact când ajungeai la secțiunea
+  „Lucrezi direct cu echipa", imediat după el. Ascunderea barei se făcea doar
+  prin `::-webkit-scrollbar { display: none }` și `scrollbar-width`, care nu sunt
+  respectate de toate motoarele și de toate setările de sistem. Acum se aplică
+  trei tehnici deodată — `scrollbar-width`, `-ms-overflow-style` și
+  `::-webkit-scrollbar` cu înălțime zero — pe toate zonele derulabile:
+  planuri, proiecte, bandă de logouri, tab-urile din hero, tabelele din paginile legale.
+- **Banda de logouri nu mai e derulabilă nici pe mobil.** Pauza la atingere e
+  suficientă, iar un container derulabil în plus înseamnă încă o sursă de bare
+  nedorite. Singurul container derulabil rămas pe pagina principală e caruselul
+  de proiecte, care trebuie să fie.
+
+### Modificat
+- Cache busting `?v=2.4.3` → `?v=2.4.4` în toate paginile.
+
 ## v2.4.3 — 2026-08-21 — `overflow: clip` în loc de `hidden`
 
 ### Modificat
