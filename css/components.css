@@ -391,6 +391,16 @@ body.has-menu-open {
   text-underline-offset: 3px;
 }
 
+/* Datele de identificare a firmei — discrete, dar mereu vizibile */
+.site-footer__company {
+  margin-top: var(--sp-1);
+  text-align: center;
+  font-size: var(--fs-xs);
+  line-height: 1.6;
+  color: var(--c-text-on-dark-muted, var(--c-text-muted));
+  opacity: .75;
+}
+
 
 /* === COOKIE BANNER ==================================== */
 

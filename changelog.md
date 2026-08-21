@@ -2,6 +2,26 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.4.1 — 2026-08-21 — Datele firmei completate
+
+### Adăugat
+- **Datele reale de identificare**, în politica de confidențialitate și în
+  termeni și condiții: SIGNA STUDIO DEV S.R.L., CUI 55415684,
+  J2026049532007, Str. Petru Poni nr. 13, bl. 573A, et. 2, ap. 10, Iași,
+  jud. Iași, 700523. Ambele documente sunt acum valabile juridic.
+- **Datele de identificare și în subsolul fiecărei pagini** — Legea 365/2002
+  privind comerțul electronic (art. 5) cere ca acestea să fie „ușor, direct și
+  permanent accesibile", nu doar îngropate într-o pagină legală.
+- **Adresa completă în JSON-LD** (`streetAddress`, `postalCode`, `addressRegion`)
+  pe `index.html` și `contact.html`; `name` devine „Signa Studio Dev".
+
+### Rămas de completat
+- Numele furnizorului de găzduire, în secțiunea 6 din politică — după achiziție.
+- Numărul de telefon — după ce firma va avea unul.
+
+### Modificat
+- Cache busting `?v=2.4.0` → `?v=2.4.1` în toate paginile.
+
 ## v2.4.0 — 2026-08-21 — Signa Studio Dev + politică GDPR completă
 
 ### Modificat
