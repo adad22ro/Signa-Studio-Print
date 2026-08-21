@@ -1,7 +1,7 @@
 # Signa Studio — context proiect
 
 > **Citește acest fișier primul.** E suficient pentru a începe lucrul fără să
-> explorezi codul. Sincronizat cu `v2.3.2`.
+> explorezi codul. Sincronizat cu `v2.3.3`.
 
 ---
 
@@ -75,7 +75,7 @@ php/          contact.php  config.php  tmp/
               changelog.md  CLAUDE.md  ERORI.md
 ```
 
-**Versiune cache busting curentă: `?v=2.3.2`** — incrementeaz-o la ORICE
+**Versiune cache busting curentă: `?v=2.3.3`** — incrementeaz-o la ORICE
 modificare de CSS/JS, în toate paginile. `.htaccess` servește cu
 `immutable, max-age=1an`, deci fără asta vizitatorii rămân blocați pe versiunea veche.
 

@@ -114,7 +114,12 @@
     });
     if (!allValid) {
       var first = form.querySelector('.is-invalid');
-      if (first) first.focus();
+      if (first) {
+        /* Pe mobil, formularul e lung și câmpul greșit poate fi mult
+           deasupra: aducem întâi câmpul pe ecran, apoi îi dăm focus. */
+        first.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        first.focus({ preventScroll: true });
+      }
       showError('Verifică câmpurile marcate și încearcă din nou.');
       return;
     }

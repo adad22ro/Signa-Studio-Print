@@ -802,3 +802,136 @@ body:has(.cookie.is-visible) .floating__btn {
     transition: none;
   }
 }
+
+
+/* === INDICIU DE GLISARE =================================
+   Marcaj generat din JS pe orice zonă care derulează orizontal.
+   Dispare definitiv după prima glisare — dacă a înțeles o dată,
+   nu are rost să-i mai spunem. */
+
+.swipe {
+  position: relative;
+}
+
+/* Estompare la marginea din dreapta: sugerează că urmează conținut */
+.swipe::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: calc(var(--gutter) * -1);
+  width: 56px;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, var(--c-bg));
+  opacity: 1;
+  transition: opacity var(--t-base);
+}
+
+.swipe.is-scrolled::after {
+  opacity: 0;
+}
+
+/* Pe fundal închis, estomparea trebuie să meargă spre închis */
+.on-dark .swipe::after,
+.swipe--on-dark::after {
+  background: linear-gradient(90deg, transparent, var(--c-dark-deep));
+}
+
+.swipe__hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: max-content;
+  margin: var(--sp-2) auto 0;
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  background: var(--c-bg-tint);
+  color: var(--c-text-muted);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  transition: opacity var(--t-base), transform var(--t-base);
+}
+
+.swipe__hint svg {
+  width: 14px;
+  height: 14px;
+  /* Săgeata alunecă înainte și înapoi — sugerează gestul cerut */
+  animation: swipeNudge 1.6s ease-in-out infinite;
+}
+
+@keyframes swipeNudge {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(5px); }
+}
+
+.swipe.is-scrolled + .swipe__hint,
+.swipe__hint.is-done {
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+}
+
+/* Indiciul are sens doar unde chiar se poate glisa */
+@media (min-width: 769px) {
+  .swipe__hint {
+    display: none;
+  }
+
+  .swipe::after {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swipe__hint svg {
+    animation: none;
+  }
+}
+
+
+/* === STAREA „În CENTRU" (echivalentul hover pe mobil) ====
+   Pe ecrane fără hover, cardul care ajunge în mijlocul ecranului
+   primește aceeași stare pe care desktopul o dă la hover. */
+
+@media (hover: none) {
+  .need.is-near,
+  .pcard.is-near {
+    transform: translateY(-6px);
+  }
+
+  .project.is-near .project__img,
+  .need.is-near .need__img {
+    transform: scale(1.04);
+  }
+
+  .pcard.is-near {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .project.is-near .project__link::after {
+    opacity: 1;
+    transform: scaleX(1.06);
+  }
+}
+
+@media (hover: none) and (prefers-reduced-motion: reduce) {
+  .need.is-near,
+  .pcard.is-near,
+  .project.is-near .project__img,
+  .need.is-near .need__img {
+    transform: none;
+  }
+}
+
+
+/* === FORMULAR PE MOBIL ==================================
+   Butonul de trimitere rămâne la vedere cât timp completezi. */
+
+@media (max-width: 768px) {
+  .form__submit {
+    position: sticky;
+    bottom: var(--sp-2);
+    z-index: var(--z-sticky);
+    box-shadow: var(--shadow-lg);
+  }
+}

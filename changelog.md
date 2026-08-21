@@ -2,6 +2,32 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.3.3 — 2026-08-21 — Ce era doar pe desktop, adus și pe mobil
+
+### Adăugat
+- **Starea „în centru", echivalentul hover-ului pe mobil**: pe ecrane fără
+  hover, cardul aflat în banda centrală a ecranului primește `.is-near` și
+  aceeași stare pe care desktopul o dă la hover — se ridică, imaginea se
+  apropie. Acoperă „Ce ai nevoie?", cardurile din proces și proiectele.
+- **Tab-urile din hero devin carusel pe mobil**, cu fixare pe centru; culoarea
+  gradientului urmează tabul din centru, iar acesta se evidențiază. Pe desktop
+  rămâne hover-ul, neschimbat.
+- **Indiciu de glisare** pe orice zonă care derulează orizontal: estompare la
+  marginea din dreapta plus eticheta „Glisează pentru mai multe", cu săgeată
+  care se leagănă. Ambele dispar definitiv după prima glisare. Se adaugă
+  automat, și numai dacă zona chiar are conținut ascuns.
+- **Proiectele devin carusel sub 768px**, ca planurile de preț.
+- **Banda de logouri răspunde la deget**: se oprește cât timp o atingi, poate fi
+  trasă lateral, și repornește la 1,2s după ce ridici degetul.
+- **Butonul de trimitere rămâne lipit jos** în formular, pe mobil.
+- La trimitere eșuată, primul câmp greșit e adus în centrul ecranului înainte
+  de a primi focus — pe mobil putea fi mult deasupra zonei vizibile.
+
+### Modificat
+- `.marquee` folosește `overflow-x: auto` în loc de `hidden`, ca banda să poată
+  fi trasă cu degetul. Bara de derulare e ascunsă.
+- Cache busting `?v=2.3.2` → `?v=2.3.3` în toate paginile.
+
 ## v2.3.1 — 2026-08-21 — Bandă de logouri, formulare unificate, zona de jos animată
 
 ### Adăugat

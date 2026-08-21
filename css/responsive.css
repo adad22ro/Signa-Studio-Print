@@ -166,11 +166,28 @@ body {
     display: none;
   }
 
+  /* Tab-urile devin carusel: fiecare se fixează în centru, iar culoarea
+     gradientului urmează tabul din centru (vezi js/animations.js). */
+  .hero__panel-nav {
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 40%;
+    justify-content: flex-start;
+    gap: var(--sp-2);
+  }
+
   .hero__tab {
     /* Figma dă 12px la 393px; scalăm ușor sub, ca cele trei etichete
        să încapă pe un rând și cu redarea reală a fontului. */
     font-size: clamp(0.625rem, 2.8vw, 0.75rem);
     white-space: nowrap;
+    scroll-snap-align: center;
+    flex: 0 0 auto;
+  }
+
+  /* Tabul din centru se evidențiază, ca să fie clar care culoare e activă */
+  .hero__tab.is-centered {
+    background: rgba(10, 10, 10, .82);
+    border-color: rgba(255, 255, 255, .5);
   }
 
   .hero__panel-body,

@@ -232,6 +232,118 @@
     });
   }
 
+  /* ── STAREA „În CENTRU" (echivalentul hover pe mobil) ────
+     Pe ecrane fără hover nu există nimic care să declanșeze starea de
+     hover, deci conținutul rămâne inert. Aici rolul îl ia poziția pe
+     ecran: cardul aflat în banda centrală primește .is-near. */
+  function initNearCenter() {
+    if (reduced || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(hover: hover)').matches) return;
+
+    var items = document.querySelectorAll('.need, .pcard, .project');
+    if (!items.length) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        entry.target.classList.toggle('is-near', entry.isIntersecting);
+      });
+    }, {
+      /* Banda centrală: 30% din înălțimea ecranului, la mijloc */
+      rootMargin: '-35% 0px -35% 0px',
+      threshold: 0
+    });
+
+    Array.prototype.forEach.call(items, function (el) { observer.observe(el); });
+  }
+
+  /* ── TAB-URILE DIN HERO PE MOBIL ────────────────────
+     Rândul de tab-uri e carusel cu fixare; culoarea gradientului urmează
+     tabul aflat în centru. Pe desktop rămâne hover-ul, deci ieșim devreme. */
+  function initHeroTabsMobile() {
+    if (window.matchMedia('(hover: hover)').matches) return;
+
+    var panel = document.querySelector('.hero__panel');
+    if (!panel) return;
+
+    var nav  = panel.querySelector('.hero__panel-nav');
+    var tabs = panel.querySelectorAll('.hero__tab');
+    if (!nav || !tabs.length) return;
+
+    var ticking = false;
+
+    function update() {
+      var mid = nav.getBoundingClientRect().left + nav.offsetWidth / 2;
+      var best = 0;
+      var bestDist = Infinity;
+
+      Array.prototype.forEach.call(tabs, function (tab, i) {
+        var r = tab.getBoundingClientRect();
+        var d = Math.abs((r.left + r.width / 2) - mid);
+        if (d < bestDist) { bestDist = d; best = i; }
+      });
+
+      Array.prototype.forEach.call(tabs, function (tab, i) {
+        tab.classList.toggle('is-centered', i === best);
+      });
+
+      panel.setAttribute('data-svc', String(best + 1));
+      ticking = false;
+    }
+
+    nav.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }, { passive: true });
+
+    update();
+  }
+
+  /* ── INDICIU DE GLISARE ─────────────────────────
+     Orice zonă care derulează orizontal primește o estompare pe margine
+     și o etichetă cu săgeată. Ambele dispar după prima glisare. */
+  function initSwipeHints() {
+    var zones = document.querySelectorAll('.plans, .projects, .hero__panel-nav');
+
+    Array.prototype.forEach.call(zones, function (zone) {
+      /* Nimic de sugerat dacă tot conținutul încape */
+      if (zone.scrollWidth <= zone.clientWidth + 4) return;
+
+      zone.classList.add('swipe');
+
+      var onDark = !!zone.closest('.on-dark');
+      if (onDark) zone.classList.add('swipe--on-dark');
+
+      var hint = null;
+
+      /* Eticheta apare doar la caruselele de conținut, nu și la
+         rândul de tab-uri din hero — acolo ar acoperi designul. */
+      if (!zone.classList.contains('hero__panel-nav')) {
+        hint = document.createElement('p');
+        hint.className = 'swipe__hint';
+        hint.innerHTML =
+          '<span>Glisează pentru mai multe</span>' +
+          '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true">' +
+            '<path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" ' +
+                  'stroke-linecap="round" stroke-linejoin="round"/>' +
+          '</svg>';
+        zone.parentNode.insertBefore(hint, zone.nextSibling);
+      }
+
+      function done() {
+        zone.classList.add('is-scrolled');
+        if (hint) hint.classList.add('is-done');
+        zone.removeEventListener('scroll', onScroll);
+      }
+
+      function onScroll() {
+        if (zone.scrollLeft > 12) done();
+      }
+
+      zone.addEventListener('scroll', onScroll, { passive: true });
+    });
+  }
+
   /* ── BANDĂ CU LOGOURI ──────────────────────────
      Dublarea listei se face din JS, nu în HTML: la fiecare proiect nou
      se adaugă un singur <li>, iar banda se recalculează singură. Copia
@@ -305,6 +417,27 @@
           track.classList.toggle('is-paused', !entries[0].isIntersecting);
         }, { threshold: 0 }).observe(box);
       }
+
+      /* Pe telefon nu există hover, deci pauza vine de la deget: cât timp
+         atingi banda stă pe loc și poate fi trasă lateral, iar la ridicare
+         repornește după o scurtă așteptare. */
+      var resume = null;
+
+      box.addEventListener('pointerdown', function () {
+        clearTimeout(resume);
+        track.classList.add('is-paused');
+      });
+
+      function release() {
+        clearTimeout(resume);
+        resume = setTimeout(function () {
+          track.classList.remove('is-paused');
+        }, 1200);
+      }
+
+      box.addEventListener('pointerup', release);
+      box.addEventListener('pointercancel', release);
+      box.addEventListener('pointerleave', release);
     });
   }
 
@@ -336,6 +469,9 @@
       initFloating();
       initHeroTabs();
       initMarquee();
+      initNearCenter();
+      initHeroTabsMobile();
+      initSwipeHints();
     });
   } else {
     init();
@@ -345,6 +481,9 @@
     initFloating();
     initHeroTabs();
     initMarquee();
+    initNearCenter();
+    initHeroTabsMobile();
+    initSwipeHints();
   }
 
 })();
