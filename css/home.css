@@ -494,10 +494,9 @@
 
 .marquee {
   position: relative;
-  /* `auto` în loc de `hidden`: pe telefon banda poate fi trasă cu degetul.
-     Bara de derulare e ascunsă — gestul rămâne, indicatorul nu e nevoie. */
-  overflow-x: auto;
-  overflow-y: hidden;
+  /* Pe desktop banda doar se animă și se oprește la hover — nu are de ce să
+     fie derulabilă. Tragerea cu degetul se activează doar pe mobil, mai jos. */
+  overflow: hidden;
   scrollbar-width: none;
   /* Capătul benzii se stinge în fundal, ca să nu pară tăiat brusc */
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
@@ -506,6 +505,13 @@
 
 .marquee::-webkit-scrollbar {
   display: none;
+}
+
+@media (max-width: 768px) {
+  .marquee {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
 }
 
 .marquee__track {

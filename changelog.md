@@ -2,6 +2,31 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.4.2 — 2026-08-21 — Trei defecte reparate
+
+### Reparat
+- **Meniul mobil era randat permanent**, doar împins în afara ecranului.
+  `.mobile-menu { display: flex }` învingea regula `[hidden] { display: none }`
+  din reset — aceeași specificitate, dar venea după ea. Consecințe: linkurile
+  lui puteau primi focus cu Tab deși meniul era „închis", și genera o bară de
+  derulare orizontală pe pagină. Adăugată regula `.mobile-menu[hidden]`.
+  Defect vechi, nu introdus recent — doar că nu sărea în ochi până acum.
+- **Tab-urile din hero derulau pe mobil.** Pastilele introduse în v2.3.0 pentru
+  contrast au adăugat padding și chenar, iar cele trei etichete nu mai încăpeau:
+  la 393px rândul avea 434px pentru 346px disponibili. Pe mobil pastilele sunt
+  acum compacte (padding și spațiere reduse, fără chenar), cu o treaptă în plus
+  sub 360px. Verificat: încap pe un rând la 320, 393 și 412px.
+- **Banda de logouri era derulabilă și pe desktop**, unde n-are rost — acolo se
+  oprește la hover. `overflow-x: auto` rămâne doar sub 768px, pentru tragerea
+  cu degetul; pe desktop revine la `hidden`.
+
+### Verificat
+- Nicio pagină nu mai derulează pe orizontală, la 320, 393, 412, 768, 1152,
+  1366, 1440, 1512 și 1680px.
+
+### Modificat
+- Cache busting `?v=2.4.1` → `?v=2.4.2` în toate paginile.
+
 ## v2.4.1 — 2026-08-21 — Datele firmei completate
 
 ### Adăugat

@@ -267,6 +267,15 @@
   overflow-y: auto;
 }
 
+/* `display: flex` de mai sus învinge regula `[hidden] { display: none }` din
+   reset — având aceeași specificitate, dar venind după ea. Fără această
+   regulă, meniul rămâne randat permanent, doar împins în afara ecranului:
+   ocupă spațiu, linkurile lui pot primi focus cu Tab și poate genera o bară
+   de derulare orizontală. */
+.mobile-menu[hidden] {
+  display: none;
+}
+
 .mobile-menu.is-open {
   transform: translateX(0);
 }
