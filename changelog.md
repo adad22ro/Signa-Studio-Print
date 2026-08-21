@@ -2,6 +2,15 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.4.3 — 2026-08-21 — `overflow: clip` în loc de `hidden`
+
+### Modificat
+- `.hero__panel` și `.marquee` (pe desktop) folosesc `overflow: clip` în loc de
+  `hidden`. Un element cu `hidden` rămâne derulabil programatic: browserul îl
+  poate derula când un element dinăuntru primește focus, iar unele configurații
+  îi arată bara de derulare. `clip` interzice complet derularea.
+- Cache busting `?v=2.4.2` → `?v=2.4.3` în toate paginile.
+
 ## v2.4.2 — 2026-08-21 — Trei defecte reparate
 
 ### Reparat

@@ -83,7 +83,10 @@
   min-height: 550px;                  /* înălțimea din Figma */
   padding: var(--sp-3) var(--sp-6) var(--sp-5);
   border-radius: var(--r-lg);         /* r:25 */
-  overflow: hidden;
+  /* `clip`, nu `hidden`: un element cu `hidden` rămâne derulabil programatic
+     și poate fi derulat de browser când un element dinăuntru primește focus,
+     ceea ce deplasează tot conținutul panoului. `clip` interzice derularea. */
+  overflow: clip;
   isolation: isolate;
 }
 
@@ -495,8 +498,9 @@
 .marquee {
   position: relative;
   /* Pe desktop banda doar se animă și se oprește la hover — nu are de ce să
-     fie derulabilă. Tragerea cu degetul se activează doar pe mobil, mai jos. */
-  overflow: hidden;
+     fie derulabilă, iar `clip` exclude orice bară de derulare. Tragerea cu
+     degetul se activează doar pe mobil, mai jos. */
+  overflow: clip;
   scrollbar-width: none;
   /* Capătul benzii se stinge în fundal, ca să nu pară tăiat brusc */
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
