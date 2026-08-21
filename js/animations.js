@@ -256,54 +256,11 @@
     Array.prototype.forEach.call(items, function (el) { observer.observe(el); });
   }
 
-  /* ── TAB-URILE DIN HERO PE MOBIL ────────────────────
-     Rândul de tab-uri e carusel cu fixare; culoarea gradientului urmează
-     tabul aflat în centru. Pe desktop rămâne hover-ul, deci ieșim devreme. */
-  function initHeroTabsMobile() {
-    if (window.matchMedia('(hover: hover)').matches) return;
-
-    var panel = document.querySelector('.hero__panel');
-    if (!panel) return;
-
-    var nav  = panel.querySelector('.hero__panel-nav');
-    var tabs = panel.querySelectorAll('.hero__tab');
-    if (!nav || !tabs.length) return;
-
-    var ticking = false;
-
-    function update() {
-      var mid = nav.getBoundingClientRect().left + nav.offsetWidth / 2;
-      var best = 0;
-      var bestDist = Infinity;
-
-      Array.prototype.forEach.call(tabs, function (tab, i) {
-        var r = tab.getBoundingClientRect();
-        var d = Math.abs((r.left + r.width / 2) - mid);
-        if (d < bestDist) { bestDist = d; best = i; }
-      });
-
-      Array.prototype.forEach.call(tabs, function (tab, i) {
-        tab.classList.toggle('is-centered', i === best);
-      });
-
-      panel.setAttribute('data-svc', String(best + 1));
-      ticking = false;
-    }
-
-    nav.addEventListener('scroll', function () {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(update);
-    }, { passive: true });
-
-    update();
-  }
-
   /* ── INDICIU DE GLISARE ─────────────────────────
      Orice zonă care derulează orizontal primește o estompare pe margine
      și o etichetă cu săgeată. Ambele dispar după prima glisare. */
   function initSwipeHints() {
-    var zones = document.querySelectorAll('.plans, .projects, .hero__panel-nav');
+    var zones = document.querySelectorAll('.plans, .projects');
 
     Array.prototype.forEach.call(zones, function (zone) {
       /* Nimic de sugerat dacă tot conținutul încape */
@@ -314,21 +271,15 @@
       var onDark = !!zone.closest('.on-dark');
       if (onDark) zone.classList.add('swipe--on-dark');
 
-      var hint = null;
-
-      /* Eticheta apare doar la caruselele de conținut, nu și la
-         rândul de tab-uri din hero — acolo ar acoperi designul. */
-      if (!zone.classList.contains('hero__panel-nav')) {
-        hint = document.createElement('p');
-        hint.className = 'swipe__hint';
-        hint.innerHTML =
-          '<span>Glisează pentru mai multe</span>' +
-          '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true">' +
-            '<path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" ' +
-                  'stroke-linecap="round" stroke-linejoin="round"/>' +
-          '</svg>';
-        zone.parentNode.insertBefore(hint, zone.nextSibling);
-      }
+      var hint = document.createElement('p');
+      hint.className = 'swipe__hint';
+      hint.innerHTML =
+        '<span>Glisează pentru mai multe</span>' +
+        '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true">' +
+          '<path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" ' +
+                'stroke-linecap="round" stroke-linejoin="round"/>' +
+        '</svg>';
+      zone.parentNode.insertBefore(hint, zone.nextSibling);
 
       function done() {
         zone.classList.add('is-scrolled');
@@ -470,7 +421,6 @@
       initHeroTabs();
       initMarquee();
       initNearCenter();
-      initHeroTabsMobile();
       initSwipeHints();
     });
   } else {
@@ -482,7 +432,6 @@
     initHeroTabs();
     initMarquee();
     initNearCenter();
-    initHeroTabsMobile();
     initSwipeHints();
   }
 

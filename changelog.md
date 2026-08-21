@@ -2,6 +2,24 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.3.4 — 2026-08-21 — Hero-ul mobil revine la forma dinainte
+
+### Eliminat
+- **Caruselul de tab-uri din hero, pe mobil** (introdus în v2.3.3): fixarea pe
+  centru, culoarea care urma tabul centrat și evidențierea acestuia. Rândul de
+  tab-uri revine exact la comportamentul anterior — trei etichete distribuite pe
+  un rând, care derulează doar dacă textul nu încape. Decizie de design a
+  clientului.
+- Indiciul de glisare nu se mai aplică pe rândul de tab-uri; rămâne pe
+  caruselele de prețuri și de proiecte.
+
+Restul din v2.3.3 rămâne neschimbat: starea „în centru", caruselul de proiecte,
+banda de logouri care răspunde la deget, butonul de trimitere lipit jos.
+Pe desktop, hover-ul pe tab-uri care virează gradientul rămâne neatins.
+
+### Modificat
+- Cache busting `?v=2.3.3` → `?v=2.3.4` în toate paginile.
+
 ## v2.3.3 — 2026-08-21 — Ce era doar pe desktop, adus și pe mobil
 
 ### Adăugat
