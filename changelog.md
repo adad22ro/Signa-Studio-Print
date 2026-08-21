@@ -2,6 +2,31 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.2.7 — 2026-08-21 — Interacțiune pe tot site-ul
+
+### Adăugat
+- **Cifre care contorizează** (`js/animations.js`): valorile din secțiunea de
+  statistici urcă de la 0 când intră în ecran, o singură dată. Textul din HTML
+  e deja valoarea finală, deci fără JS sau cu `prefers-reduced-motion` se vede
+  corect. `tabular-nums` ține lățimea fixă, ca numărul să nu tremure.
+- **Pagina de contact** avea doar două elemente animate; acum hero-ul și fiecare
+  câmp de formular intră decalat, iar eticheta câmpului activ se colorează
+  (prin `:has()`, cu degradare curată unde nu e suportat).
+- **Cardurile de preț**: ridicare la hover, muchie de sus cu gradientul-semnătură,
+  prețul crește ușor. Reacționează și la `:focus-within`, deci și din tastatură.
+- **Butonul închis** primește un strat de gradient care se aprinde la hover
+  (opacitatea unui pseudo-element — gradienții nu se pot tranziționa direct).
+- **Cardurile de proiect**: imaginea se apropie lent într-un container care taie,
+  titlul urcă, linia de sub link se îngroașă.
+- **Titlul „Signa / Studio"** intră din margini opuse la încărcare. Doar
+  `transform` — e elementul LCP, iar o animație de opacitate ar amâna măsurătoarea.
+- **Meniul „Servicii"**: intrările apar decalat la 40ms una de alta.
+
+### Modificat
+- `.project__link` nu mai are `text-decoration`; linia vine dintr-un
+  pseudo-element, vizibil și în repaus la opacitate redusă.
+- Cache busting `?v=2.2.6` → `?v=2.2.7` în toate paginile.
+
 ## v2.2.6 — 2026-08-21 — Hero animat, fundal construit în CSS
 
 ### Adăugat

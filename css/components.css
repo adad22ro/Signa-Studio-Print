@@ -123,6 +123,30 @@
   transform: translateX(3px);
 }
 
+/* Butonul închis primește un strat de gradient care se aprinde la hover.
+   Se animă opacitatea unui pseudo-element, nu `background` — gradienții
+   nu se pot tranziționa direct. */
+.btn--dark {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn--dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--grad-signature);
+  opacity: 0;
+  transition: opacity var(--t-base);
+}
+
+.btn--dark:hover::before,
+.btn--dark:focus-visible::before {
+  opacity: .22;
+}
+
 /* Variantă pill */
 .btn--pill {
   border-radius: var(--r-pill);
@@ -465,11 +489,29 @@ body.has-menu-open {
   transition: opacity var(--t-fast), transform var(--t-fast), visibility var(--t-fast);
 }
 
+/* Intrările apar decalat, nu blocul dintr-o dată. Întârzierea e pe
+   fiecare <li>, ca să nu depindă de numărul de intrări din meniu. */
+.nav__menu li {
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity var(--t-fast), transform var(--t-fast);
+}
+
 .nav__item--has-menu.is-open .nav__menu {
   opacity: 1;
   visibility: visible;
   transform: translate(-50%, 0);
 }
+
+.nav__item--has-menu.is-open .nav__menu li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav__item--has-menu.is-open .nav__menu li:nth-child(1) { transition-delay: 40ms; }
+.nav__item--has-menu.is-open .nav__menu li:nth-child(2) { transition-delay: 80ms; }
+.nav__item--has-menu.is-open .nav__menu li:nth-child(3) { transition-delay: 120ms; }
+.nav__item--has-menu.is-open .nav__menu li:nth-child(4) { transition-delay: 160ms; }
 
 .nav__menu-link {
   display: flex;

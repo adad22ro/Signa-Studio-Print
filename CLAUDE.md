@@ -1,7 +1,7 @@
 # Signa Studio — context proiect
 
 > **Citește acest fișier primul.** E suficient pentru a începe lucrul fără să
-> explorezi codul. Sincronizat cu `v2.2.6`.
+> explorezi codul. Sincronizat cu `v2.2.7`.
 
 ---
 
@@ -75,7 +75,7 @@ php/          contact.php  config.php  tmp/
               changelog.md  CLAUDE.md  ERORI.md
 ```
 
-**Versiune cache busting curentă: `?v=2.2.6`** — incrementeaz-o la ORICE
+**Versiune cache busting curentă: `?v=2.2.7`** — incrementeaz-o la ORICE
 modificare de CSS/JS, în toate paginile. `.htaccess` servește cu
 `immutable, max-age=1an`, deci fără asta vizitatorii rămân blocați pe versiunea veche.
 
@@ -86,7 +86,7 @@ modificare de CSS/JS, în toate paginile. `.htaccess` servește cu
 | fișier | rol |
 |---|---|
 | `main.js` | injectează componentele prin `fetch`, link activ, meniu derulant „Servicii", hamburger, header la scroll, scroll lin cu offset. Emite evenimentul `componente:gata` |
-| `animations.js` | reveal la scroll prin Intersection Observer; pune pe pauză cascada din hero când panoul iese de pe ecran |
+| `animations.js` | reveal la scroll prin Intersection Observer; pune pe pauză cascada din hero când panoul iese de pe ecran; contorizează cifrele marcate cu `data-count-to` |
 | `form.js` | validare, token CSRF, trimitere AJAX — partajat de toate paginile cu formular |
 | `cookie.js` | banner GDPR; **nu încarcă nimic înainte de accept explicit** |
 

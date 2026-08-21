@@ -29,6 +29,34 @@
   display: block;
 }
 
+/* Cele două jumătăți intră din margini opuse, o singură dată, la
+   încărcare. Se animă DOAR transform: titlul e elementul LCP, iar o
+   animație de opacitate de la 0 ar amâna măsurătoarea. */
+.hero__title--enter .hero__title-part:first-child {
+  animation: heroTitleLeft 900ms cubic-bezier(.22, .61, .36, 1) both;
+}
+
+.hero__title--enter .hero__title-part:last-child {
+  animation: heroTitleRight 900ms cubic-bezier(.22, .61, .36, 1) both;
+  animation-delay: 90ms;
+}
+
+@keyframes heroTitleLeft {
+  from { transform: translate3d(-7%, 0, 0); }
+  to   { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes heroTitleRight {
+  from { transform: translate3d(7%, 0, 0); }
+  to   { transform: translate3d(0, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__title--enter .hero__title-part {
+    animation: none;
+  }
+}
+
 
 /* ── Panoul cu gradient ────────────────────────────────*/
 .hero__panel {
@@ -643,13 +671,65 @@
   gap: var(--sp-3);
 }
 
+/* Imaginea stă într-un container care taie: la hover se apropie lent,
+   fără să depășească colțurile rotunjite. */
+.project__media {
+  overflow: hidden;
+  border-radius: var(--r-lg);         /* r:25 */
+}
+
 .project__img {
+  display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 573 / 364;
   object-fit: cover;
   object-position: top;
   border-radius: var(--r-lg);         /* r:25 */
+  transition: transform 700ms cubic-bezier(.22, .61, .36, 1);
+}
+
+.project:hover .project__img,
+.project:focus-within .project__img {
+  transform: scale(1.05);
+}
+
+.project__title,
+.project__link {
+  transition: transform var(--t-base), color var(--t-base);
+}
+
+.project:hover .project__title,
+.project:focus-within .project__title {
+  transform: translateY(-2px);
+}
+
+/* Linia de sub link crește dinspre stânga, în loc să fie mereu acolo. */
+.project__link {
+  position: relative;
+  text-decoration: none;
+}
+
+.project__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  /* Vizibilă și în repaus — un link fără niciun semn vizual nu se
+     distinge de text. La hover se îngroașă și devine opacă. */
+  opacity: .45;
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: opacity var(--t-base), transform var(--t-base);
+}
+
+.project:hover .project__link::after,
+.project__link:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1.06);
 }
 
 .project__body {
@@ -672,12 +752,12 @@
   color: var(--c-text-on-dark-muted);
 }
 
+/* Linia vine din .project__link::after (mai sus), care crește la hover —
+   de aceea aici nu mai punem text-decoration, altfel s-ar vedea două. */
 .project__link {
   font-size: var(--fs-md);
   font-weight: var(--fw-medium);
   color: var(--c-text-on-dark);
-  text-decoration: underline;
-  text-underline-offset: 4px;
 }
 
 /* Chip pe fundal închis */
@@ -988,6 +1068,16 @@
   font-size: var(--fs-md);
   font-weight: var(--fw-medium);
   color: var(--c-text);
+  transform-origin: left center;
+  transition: color var(--t-fast), transform var(--t-fast);
+}
+
+/* Câmpul activ își evidențiază eticheta. `:has()` primește părintele
+   în funcție de starea copilului; unde nu e suportat, nu se întâmplă
+   nimic — restul formularului funcționează identic. */
+.field:has(.field__input:focus) .field__label {
+  color: var(--c-accent);
+  transform: translateX(2px);
 }
 
 .field__input {
@@ -1125,4 +1215,14 @@
   .form__submit {
     align-self: stretch;
   }
+}
+
+
+/* === CIFRE CARE CONTORIZEAZĂ ============================
+   Cifrele urcă de la 0 la valoare când intră în ecran. `tabular-nums`
+   ține toate cifrele la aceeași lățime, altfel numărul tremură
+   orizontal în timp ce se schimbă. */
+
+[data-count-to] {
+  font-variant-numeric: tabular-nums;
 }

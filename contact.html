@@ -28,13 +28,13 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#FFFFFF">
 
-  <link rel="stylesheet" href="css/reset.css?v=2.2.6">
-  <link rel="stylesheet" href="css/variables.css?v=2.2.6">
-  <link rel="stylesheet" href="css/base.css?v=2.2.6">
-  <link rel="stylesheet" href="css/components.css?v=2.2.6">
-  <link rel="stylesheet" href="css/home.css?v=2.2.6">
-  <link rel="stylesheet" href="css/servicii.css?v=2.2.6">
-  <link rel="stylesheet" href="css/responsive.css?v=2.2.6">
+  <link rel="stylesheet" href="css/reset.css?v=2.2.7">
+  <link rel="stylesheet" href="css/variables.css?v=2.2.7">
+  <link rel="stylesheet" href="css/base.css?v=2.2.7">
+  <link rel="stylesheet" href="css/components.css?v=2.2.7">
+  <link rel="stylesheet" href="css/home.css?v=2.2.7">
+  <link rel="stylesheet" href="css/servicii.css?v=2.2.7">
+  <link rel="stylesheet" href="css/responsive.css?v=2.2.7">
 
   <script type="application/ld+json">
   {
@@ -84,9 +84,9 @@
           </ol>
         </nav>
 
-        <div class="contact-hero__inner">
-          <h1 class="contact-hero__title">Hai să dăm viață ideii tale</h1>
-          <p class="contact-hero__intro">
+        <div class="contact-hero__inner reveal-group">
+          <h1 class="contact-hero__title reveal">Hai să dăm viață ideii tale</h1>
+          <p class="contact-hero__intro reveal">
             Indiferent dacă ai deja brief-ul pregătit sau doar o idee schițată
             pe o foaie, scrie-ne și pornim de acolo.
           </p>
@@ -101,31 +101,31 @@
         <div class="form-card form-card--center reveal">
           <h2 class="form-card__title">Spune-ne despre business-ul tău</h2>
 
-          <form id="contactForm" class="form" novalidate>
+          <form id="contactForm" class="form reveal-group" novalidate>
             <input type="hidden" name="csrf_token" value="">
 
-            <div class="field">
+            <div class="field reveal">
               <label class="field__label" for="fname">Nume</label>
               <input class="field__input" type="text" id="fname" name="name"
                      placeholder="Numele tău" maxlength="100" autocomplete="name" required>
               <p class="field__msg" data-for="fname"></p>
             </div>
 
-            <div class="field">
+            <div class="field reveal">
               <label class="field__label" for="femail">Email</label>
               <input class="field__input" type="email" id="femail" name="email"
                      placeholder="email@domeniu.com" maxlength="150" autocomplete="email" required>
               <p class="field__msg" data-for="femail"></p>
             </div>
 
-            <div class="field">
+            <div class="field reveal">
               <label class="field__label" for="fphone">Telefon <span class="field__optional">(opțional)</span></label>
               <input class="field__input" type="tel" id="fphone" name="phone"
                      placeholder="+40 7xx xxx xxx" maxlength="30" autocomplete="tel">
               <p class="field__msg" data-for="fphone"></p>
             </div>
 
-            <div class="field">
+            <div class="field reveal">
               <label class="field__label" for="fservice">Tip proiect</label>
               <select class="field__input" id="fservice" name="service">
                 <option value="">— Alege tipul de proiect —</option>
@@ -136,7 +136,7 @@
               </select>
             </div>
 
-            <div class="field">
+            <div class="field reveal">
               <label class="field__label" for="fmsg">Mesaj</label>
               <textarea class="field__input field__input--area" id="fmsg" name="message"
                         placeholder="Spune-ne pe scurt ce ai nevoie..."
@@ -165,16 +165,16 @@
         <!-- Date de contact directe — adăugate peste designul Figma,
              care are doar formularul. O pagină de contact fără nicio
              adresă directă e o lipsă reală de utilizabilitate. -->
-        <ul class="contact-direct reveal">
-          <li>
+        <ul class="contact-direct reveal reveal-group">
+          <li class="reveal">
             <span class="contact-direct__label">Email</span>
             <a href="mailto:contact@signastudioprint.ro">contact@signastudioprint.ro</a>
           </li>
-          <li>
+          <li class="reveal">
             <span class="contact-direct__label">Locație</span>
             <span>Iași, România — lucrăm cu clienți din toată țara</span>
           </li>
-          <li>
+          <li class="reveal">
             <span class="contact-direct__label">Timp de răspuns</span>
             <span>24–48 de ore în zilele lucrătoare</span>
           </li>
@@ -190,9 +190,9 @@
   <!-- Cookie banner injectat din components/cookie-banner.html -->
   <div id="cookie-placeholder"></div>
 
-  <script src="js/main.js?v=2.2.6" defer></script>
-  <script src="js/cookie.js?v=2.2.6" defer></script>
-  <script src="js/animations.js?v=2.2.6" defer></script>
-  <script src="js/form.js?v=2.2.6" defer></script>
+  <script src="js/main.js?v=2.2.7" defer></script>
+  <script src="js/cookie.js?v=2.2.7" defer></script>
+  <script src="js/animations.js?v=2.2.7" defer></script>
+  <script src="js/form.js?v=2.2.7" defer></script>
 </body>
 </html>
