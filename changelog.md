@@ -2,6 +2,28 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.3.0 — 2026-08-21 — Tab-urile din hero: lizibile și reactive
+
+### Adăugat
+- **Hover pe tab virează gradientul** spre culoarea serviciului — albastru
+  pentru site-uri, verde pentru magazine, ambră pentru aplicații — printr-o
+  tranziție reală între culori, pe 900ms. Funcționează fiindcă variabilele
+  gradientului sunt înregistrate cu `@property`. Merge și din tastatură (focus).
+  Cascada de 6s rămâne, cele două animații se suprapun fără să se încurce.
+
+### Reparat
+- **Tab-ul din dreapta era ilizibil.** Text alb simplu peste un gradient care
+  ajunge la lavandă deschisă înseamnă sub 2:1 contrast. Fiecare tab are acum
+  fundal propriu închis translucid cu blur: **6,35:1 în repaus, 12,74:1 la
+  hover**, indiferent de zona pe care cade. Cerința din instrucțiuni e 4,5:1.
+
+### Modificat
+- Animația titlului din hero, **doar pe desktop**: 1500ms → 2300ms, decalajul
+  dintre jumătăți 180ms → 280ms. Titlul e mult mai mare pe desktop, deci
+  parcurge mai multă distanță — la aceeași durată părea grăbit. Pe mobil
+  rămâne 1500ms.
+- Cache busting `?v=2.2.9` → `?v=2.3.0` în toate paginile.
+
 ## v2.2.9 — 2026-08-21 — Mobil interactiv, header cu adevărat fix
 
 ### Reparat

@@ -54,6 +54,19 @@
   to   { transform: translate3d(0, 0, 0); }
 }
 
+/* Pe desktop titlul e mult mai mare, deci parcurge mai multă distanță:
+   la aceeași durată părea grăbit. */
+@media (min-width: 769px) {
+  .hero__title--enter .hero__title-part:first-child,
+  .hero__title--enter .hero__title-part:last-child {
+    animation-duration: 2300ms;
+  }
+
+  .hero__title--enter .hero__title-part:last-child {
+    animation-delay: 280ms;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero__title--enter .hero__title-part {
     animation: none;
@@ -110,6 +123,38 @@
   animation: heroFlow 6s linear infinite;
 }
 
+/* Hover pe un tab virează întreg fundalul spre culoarea serviciului.
+   Tranziția funcționează fiindcă variabilele sunt înregistrate cu
+   @property în variables.css — altfel culorile ar sări brusc. */
+.hero__bg {
+  transition: --hero-c2 .9s ease, --hero-c3 .9s ease, --hero-c4 .9s ease,
+              --hero-c5 .9s ease, --hero-c6 .9s ease;
+}
+
+/* Site-uri de prezentare → albastru */
+.hero__panel[data-svc="1"] .hero__bg {
+  --hero-c3: #1B3FC4;
+  --hero-c4: #278CFF;
+  --hero-c5: #3898EC;
+  --hero-c6: #9ED8FF;
+}
+
+/* Magazine online → verde */
+.hero__panel[data-svc="2"] .hero__bg {
+  --hero-c3: #0A5A3C;
+  --hero-c4: #1EFB26;
+  --hero-c5: #2E964B;
+  --hero-c6: #C8FFB0;
+}
+
+/* Aplicații custom → ambră */
+.hero__panel[data-svc="3"] .hero__bg {
+  --hero-c3: #7A1A00;
+  --hero-c4: #E9591C;
+  --hero-c5: #FF8A00;
+  --hero-c6: #FFD361;
+}
+
 /* Oprită cât timp hero-ul nu e pe ecran (vezi js/animations.js). */
 .hero__flow.is-paused {
   animation-play-state: paused;
@@ -136,21 +181,32 @@
   padding-inline: var(--sp-8);
 }
 
+/* Tab-urile stau peste un gradient care trece de la aproape negru la
+   lavandă deschisă: textul alb simplu devenea ilizibil în dreapta.
+   Fiecare tab primește propriul fundal închis translucid, deci
+   contrastul nu mai depinde de zona pe care cade. */
 .hero__tab {
   font-size: var(--fs-md);
   font-weight: var(--fw-bold);
   line-height: 1.375;
   letter-spacing: var(--ls-snug);
   color: var(--c-text-on-dark);
-  padding-block: var(--sp-1);
-  border-bottom: 1.5px solid transparent;
-  transition: border-color var(--t-base);
+  padding: 8px var(--sp-2);
+  border-radius: var(--r-pill);
+  background: rgba(10, 10, 10, .62);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, .16);
+  transition: background var(--t-base), border-color var(--t-base),
+              transform var(--t-base);
 }
 
 .hero__tab:hover,
 .hero__tab:focus-visible {
   opacity: 1;
-  border-bottom-color: var(--c-text-on-dark);
+  background: rgba(10, 10, 10, .82);
+  border-color: rgba(255, 255, 255, .42);
+  transform: translateY(-2px);
 }
 
 

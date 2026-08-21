@@ -211,6 +211,27 @@
     apply();
   }
 
+  /* ── TAB-URILE DIN HERO ────────────────────────
+     La hover sau focus pe un tab, panoul primește data-svc și CSS-ul
+     virează gradientul spre culoarea serviciului. Merge și din tastatură. */
+  function initHeroTabs() {
+    var panel = document.querySelector('.hero__panel');
+    if (!panel) return;
+
+    var tabs = panel.querySelectorAll('.hero__tab');
+    if (!tabs.length) return;
+
+    Array.prototype.forEach.call(tabs, function (tab, i) {
+      function set()   { panel.setAttribute('data-svc', String(i + 1)); }
+      function clear() { panel.removeAttribute('data-svc'); }
+
+      tab.addEventListener('pointerenter', set);
+      tab.addEventListener('focus', set);
+      tab.addEventListener('pointerleave', clear);
+      tab.addEventListener('blur', clear);
+    });
+  }
+
   /* ── CASCADA DIN HERO ──────────────────────────
      Animația rulează la infinit, deci o punem pe pauză cât timp
      panoul nu e pe ecran — altfel compozitorul lucrează degeaba
@@ -237,6 +258,7 @@
       initCounters();
       initFormProgress();
       initFloating();
+      initHeroTabs();
     });
   } else {
     init();
@@ -244,6 +266,7 @@
     initCounters();
     initFormProgress();
     initFloating();
+    initHeroTabs();
   }
 
 })();
