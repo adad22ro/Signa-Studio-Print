@@ -232,6 +232,63 @@
     });
   }
 
+  /* ── CHENARUL DE PE CARDUL DE PREȚ (mobil) ──────────
+     Pe desktop chenarul-gradient apare la hover. Pe mobil, unde hover nu
+     există și cardurile stau într-un carusel, îl primește cardul din centru.
+     Până la prima glisare stă pe planul din mijloc — cel recomandat —, ca să
+     nu pară că recomandăm primul din listă, adică cel mai ieftin. */
+  function initPlanRing() {
+    /* Pragul e cel din CSS (768px), nu capacitatea de hover: regula care
+       arată chenarul stă într-un `@media (max-width: 768px)`, deci cele două
+       trebuie să se potrivească. */
+    if (!window.matchMedia('(max-width: 768px)').matches) return;
+
+    var track = document.querySelector('.plans');
+    if (!track) return;
+
+    var plans = Array.prototype.slice.call(track.querySelectorAll('.plan'));
+    if (plans.length < 2) return;
+
+    function mark(el) {
+      plans.forEach(function (p) { p.classList.toggle('is-featured', p === el); });
+    }
+
+    /* Până la prima glisare, chenarul stă pe planul din mijloc — cel
+       recomandat — ca să nu pară că recomandăm primul din listă, adică cel
+       mai ieftin. */
+    mark(plans[Math.floor(plans.length / 2)]);
+
+    /* Cardul centrat se calculează direct: cel mai apropiat de mijlocul
+       caruselului. Un Intersection Observer cu rădăcina pe containerul
+       derulabil ar fi fost varianta elegantă, dar nu livrează evenimente
+       constant în toate motoarele. */
+    var pending = false;
+
+    function update() {
+      pending = false;
+      var mijloc = track.scrollLeft + track.clientWidth / 2;
+      var best = null, bestDist = Infinity;
+
+      plans.forEach(function (p) {
+        var centru = p.offsetLeft + p.offsetWidth / 2;
+        var dist = Math.abs(centru - mijloc);
+        if (dist < bestDist) { bestDist = dist; best = p; }
+      });
+
+      if (best) mark(best);
+    }
+
+    track.addEventListener('scroll', function () {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(update);
+    }, { passive: true });
+
+    /* `scrollend` se declanșează după ce fixarea (scroll-snap) s-a așezat —
+       acolo unde e suportat, e momentul cel mai potrivit pentru starea finală. */
+    track.addEventListener('scrollend', update);
+  }
+
   /* ── STAREA „În CENTRU" (echivalentul hover pe mobil) ────
      Pe ecrane fără hover nu există nimic care să declanșeze starea de
      hover, deci conținutul rămâne inert. Aici rolul îl ia poziția pe
@@ -420,6 +477,7 @@
       initFloating();
       initHeroTabs();
       initMarquee();
+      initPlanRing();
       initNearCenter();
       initSwipeHints();
     });
@@ -431,6 +489,7 @@
     initFloating();
     initHeroTabs();
     initMarquee();
+    initPlanRing();
     initNearCenter();
     initSwipeHints();
   }

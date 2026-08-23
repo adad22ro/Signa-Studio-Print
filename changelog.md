@@ -2,6 +2,26 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.4.9 — 2026-08-21 — Chenarul de preț, pe mobil
+
+### Adăugat
+- Pe mobil, chenarul-gradient îl primește **cardul aflat în centrul caruselului**,
+  și se mută pe altul pe măsură ce glisezi. **Până la prima glisare stă pe planul
+  din mijloc** — cel recomandat — ca să nu pară că recomandăm primul din listă,
+  adică cel mai ieftin.
+- Culorile nu se rotesc pe mobil: un gradient care se învârte permanent consumă
+  baterie fără să aducă nimic. Chenarul e static.
+
+### Note tehnice
+- Cardul centrat se calculează direct din poziții, nu cu Intersection Observer:
+  un observer cu rădăcina pe containerul derulabil ar fi fost varianta elegantă,
+  dar nu livrează evenimente constant. Actualizarea e limitată la un cadru prin
+  `requestAnimationFrame` și se completează cu `scrollend`, acolo unde există.
+- Pragul din JS e 768px, același cu media din CSS — nu capacitatea de hover.
+
+### Modificat
+- Cache busting `?v=2.4.8` → `?v=2.4.9` în toate paginile.
+
 ## v2.4.8 — 2026-08-21 — Chenar-gradient pe cardurile de preț
 
 ### Modificat

@@ -609,6 +609,20 @@
     scroll-snap-align: start;
   }
 
+  /* Pe mobil nu există hover, deci chenarul-gradient îl primește cardul aflat
+     în centrul caruselului — iar până la prima glisare, planul recomandat
+     (cel din mijloc). Culorile nu se mai rotesc: pe telefon un gradient care
+     se învârte permanent consumă baterie degeaba. */
+  .plan.is-featured::before {
+    opacity: 1;
+    transform: scale(1);
+    animation: none;
+  }
+
+  .plan.is-featured {
+    border-color: transparent;
+  }
+
   /* În carusel, cardurile nu se mai translatează la intrare: cei câțiva pixeli
      pe verticală ar fi tăiați de container. Rămâne estomparea, care nu ocupă
      spațiu. */
