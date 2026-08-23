@@ -2,6 +2,21 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.4.7 — 2026-08-21 — Spațiu în hero pe mobil
+
+### Reparat
+- **Conținutul panoului hero atingea marginea pe mobil.** `.hero__panel` avea
+  `padding-inline: 0`, iar spațierea era pusă pe copii doar sub 360px — deci la
+  393px textul, chip-urile și butoanele porneau de la 2px de marginea panoului.
+  Spațiul stă acum pe panou, deci e identic pentru tab-uri, text și butoane:
+  **16px** de la 361px în sus, **12px** sub.
+- Tab-urile au fost restrânse proporțional (font și spațiere), ca să încapă pe un
+  rând în lățimea rămasă după adăugarea spațiului. Verificat la 320, 360, 393 și
+  412px: rândul încape exact, fără derulare.
+
+### Modificat
+- Cache busting `?v=2.4.6` → `?v=2.4.7` în toate paginile.
+
 ## v2.4.6 — 2026-08-21 — Caruselele nu mai prind derularea paginii
 
 ### Reparat

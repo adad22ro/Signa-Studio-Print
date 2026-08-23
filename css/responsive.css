@@ -147,14 +147,16 @@ body {
   /* Structura panoului hero, ca în frame-ul mobil Figma (1:2145 / 1:2173):
      nav-ul ocupă toată lățimea panoului cu padding mic propriu, iar corpul
      are padding mai mare. Tab-urile stau pe UN rând, la 12px. */
+  /* Conținutul panoului nu trebuie să atingă marginea: spațiul stă pe panou,
+     ca să fie identic pentru tab-uri, text și butoane. */
   .hero__panel {
-    padding-inline: 0;
+    padding-inline: var(--sp-2);
   }
 
   .hero__panel-nav {
     flex-wrap: nowrap;
-    gap: 6px;
-    padding-inline: 6px;
+    gap: 5px;
+    padding-inline: 0;
     justify-content: space-between;
     /* Siguranță: dacă textul nu încape (traduceri, fonturi de rezervă),
        rândul derulează în loc să taie conținutul. */
@@ -171,7 +173,7 @@ body {
        să încapă pe un rând și cu redarea reală a fontului.
        Pastilele introduse pentru contrast adaugă padding și chenar, deci
        aici le strângem: altfel rândul nu mai încape și începe să deruleze. */
-    font-size: clamp(0.5rem, 2.4vw, 0.6875rem);
+    font-size: clamp(0.5rem, 2.15vw, 0.6875rem);
     letter-spacing: 0;
     padding: 5px 6px;
     border-width: 0;
@@ -182,18 +184,19 @@ body {
 /* Ecrane foarte înguste (iPhone SE și similare): mai puțin padding, ca cele
    trei etichete să încapă tot pe un rând. */
 @media (max-width: 360px) {
+  .hero__panel {
+    padding-inline: 12px;
+  }
+
   .hero__panel-nav {
-    gap: 4px;
-    padding-inline: 4px;
+    gap: 3px;
   }
 
+  /* Sub 360px etichetele se micșorează în continuare, ca să încapă pe un rând
+     fără să sacrificăm spațiul de la marginile panoului. */
   .hero__tab {
-    padding: 4px 5px;
-  }
-
-  .hero__panel-body,
-  .hero__stack {
-    padding-inline: var(--sp-3);
+    font-size: clamp(0.4375rem, 1.95vw, 0.625rem);
+    padding: 4px 4px;
   }
 
   /* Blocurile cu lățime fixă din desktop */
