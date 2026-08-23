@@ -2,6 +2,26 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.5.8 — 2026-08-23 — Toate câmpurile formularului sunt obligatorii
+
+### Schimbat
+- **Telefonul și tipul de proiect au devenit obligatorii**, în toate cele șase
+  formulare (contact, index, site-uri, magazine, aplicații custom, proiecte).
+  Eticheta „Telefon (opțional)" a rămas simplu „Telefon"; regula CSS
+  `.field__optional`, rămasă fără utilizare, a fost ștearsă.
+- **Validarea de pe server** (`php/contact.php`) cere acum ambele câmpuri:
+  telefon gol → „Numărul de telefon este obligatoriu.", tip de proiect gol →
+  „Alege tipul de proiect." Ambele răspund 422, ca restul erorilor de validare.
+  Formatul telefonului se verifica deja când era completat.
+- **Validarea din browser** (`js/form.js`): selectul primește un mesaj propriu
+  („Alege tipul de proiect."), fiindcă „Câmpul este obligatoriu" sună greșit
+  pentru o alegere; telefonul are aceeași verificare de format ca serverul;
+  câmpurile se revalidează și la `change`, nu doar la `blur` — selectul nu
+  emite `input` în toate browserele.
+- Bara de progres a formularului numără singură câmpurile `[required]`, deci a
+  trecut de la 0/3 la 0/5 fără modificări.
+- Cache busting `?v=2.5.8` în toate paginile.
+
 ## v2.5.7 — 2026-08-23 — Fără reflector la mouse; „Cât mă costă?" nu mai e alb
 
 ### Schimbat

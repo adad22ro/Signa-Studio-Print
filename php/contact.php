@@ -165,13 +165,17 @@ if (mb_strlen($name, 'UTF-8') < 2) {
 if ($email === '' || !filter_var(html_entity_decode($email, ENT_QUOTES, 'UTF-8'), FILTER_VALIDATE_EMAIL)) {
     $errors[] = 'Adresa de email nu este validă.';
 }
-if ($phone !== '' && !preg_match('/^[0-9+\s().\-]{6,30}$/', html_entity_decode($phone, ENT_QUOTES, 'UTF-8'))) {
+if ($phone === '') {
+    $errors[] = 'Numărul de telefon este obligatoriu.';
+} elseif (!preg_match('/^[0-9+\s().\-]{6,30}$/', html_entity_decode($phone, ENT_QUOTES, 'UTF-8'))) {
     $errors[] = 'Numărul de telefon nu este valid.';
 }
 if (mb_strlen($message, 'UTF-8') < 10) {
     $errors[] = 'Mesajul trebuie să aibă cel puțin 10 caractere.';
 }
-if ($service !== '' && !in_array(html_entity_decode($service, ENT_QUOTES, 'UTF-8'), $ALLOWED_SERVICES, true)) {
+if ($service === '') {
+    $errors[] = 'Alege tipul de proiect.';
+} elseif (!in_array(html_entity_decode($service, ENT_QUOTES, 'UTF-8'), $ALLOWED_SERVICES, true)) {
     $service = 'Nespecificat';
 }
 

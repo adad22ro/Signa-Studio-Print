@@ -76,10 +76,16 @@
     var msg = '';
 
     if (field.hasAttribute('required') && val === '') {
-      msg = 'Câmpul este obligatoriu.';
+      /* Selectul cere o alegere, nu o completare — altfel mesajul sună greșit. */
+      msg = field.tagName === 'SELECT'
+        ? 'Alege tipul de proiect.'
+        : 'Câmpul este obligatoriu.';
     } else if (field.type === 'email' && val !== '' &&
                !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
       msg = 'Adresa de email nu pare validă.';
+    } else if (field.name === 'phone' && val !== '' &&
+               !/^[0-9+\s().-]{6,30}$/.test(val)) {
+      msg = 'Numărul de telefon nu pare valid.';
     } else if (field.name === 'message' && val !== '' && val.length < 10) {
       msg = 'Scrie cel puțin 10 caractere.';
     }
@@ -93,6 +99,7 @@
 
   form.querySelectorAll('.field__input, .form-input, .form-textarea').forEach(function (field) {
     field.addEventListener('blur', function () { validateField(field); });
+    field.addEventListener('change', function () { validateField(field); });
     field.addEventListener('input', function () {
       if (field.value.trim() !== '') formDirty = true;
       if (field.classList.contains('is-invalid')) validateField(field);
