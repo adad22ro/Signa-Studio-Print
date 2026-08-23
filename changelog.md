@@ -2,6 +2,13 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.6.1 — 2026-08-23 — Pictograme clasice pe cardurile de contact
+
+### Schimbat
+- **Pătratul cu gradientul-semnătură a fost scos** de sub pictogramele din
+  cardurile de contact — decizie a clientului. Desenele stau simplu, la 28px,
+  în culoarea textului; la interacțiune trec pe albastrul temei și urcă 2px.
+
 ## v2.6.0 — 2026-08-23 — Datele de contact devin carduri
 
 ### Schimbat

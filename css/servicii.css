@@ -1161,24 +1161,19 @@ select.field__input {
     box-shadow var(--t-base);
 }
 
-/* Pătrat rotunjit cu pictograma. În repaus poartă gradientul-semnătură
-   diluat; la interacțiune gradientul devine plin, iar desenul trece pe alb. */
+/* Pictograma stă simplu, fără fundal — desen subțire, în culoarea textului. */
 .contact-card__icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
   margin-bottom: var(--sp-1);
-  border-radius: var(--r-sm);         /* r:15 */
-  background: var(--grad-signature);
   color: var(--c-text);
-  transition: color var(--t-base), box-shadow var(--t-base);
+  transition: color var(--t-base), transform var(--t-base);
 }
 
 .contact-card__icon svg {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
 }
 
 .contact-card__label {
@@ -1227,7 +1222,8 @@ a.contact-card__value::after {
 .contact-card:hover .contact-card__icon,
 .contact-card:focus-within .contact-card__icon,
 .contact-card.is-near .contact-card__icon {
-  box-shadow: 0 4px 14px rgba(16, 16, 16, 0.18);
+  color: var(--c-accent);
+  transform: translateY(-2px);
 }
 
 .contact-card:hover a.contact-card__value::after,
@@ -1245,7 +1241,10 @@ a.contact-card__value::after {
 @media (prefers-reduced-motion: reduce) {
   .contact-card:hover,
   .contact-card:focus-within,
-  .contact-card.is-near {
+  .contact-card.is-near,
+  .contact-card:hover .contact-card__icon,
+  .contact-card:focus-within .contact-card__icon,
+  .contact-card.is-near .contact-card__icon {
     transform: none;
   }
 }
