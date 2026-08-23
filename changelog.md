@@ -2,6 +2,28 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.4.6 — 2026-08-21 — Caruselele nu mai prind derularea paginii
+
+### Reparat
+- **Caruselele de pe mobil aveau derulare verticală proprie**, deci o bară
+  laterală și, mai grav, degetul rămânea prins în ele: nu se putea derula pagina
+  mai departe. Cauza: `overflow-x: auto` fără o valoare explicită pe verticală —
+  cealaltă axă devine și ea `auto`, iar animațiile de intrare ale cardurilor,
+  translatate pe verticală, depășeau containerul. Adăugat `overflow-y: hidden`,
+  `touch-action: pan-x pan-y` (degetul poate derula pagina chiar dacă pornește de
+  pe carusel) și `overscroll-behavior-x: contain`.
+- În carusel, cardurile nu se mai translatează la intrare, doar se estompează —
+  altfel cei câțiva pixeli pe verticală ar fi tăiați de container.
+- Spațiu de 6px sub caruselul de proiecte, pentru linia de sub „Vezi pagina live",
+  care stă la -4px și ar fi fost tăiată.
+
+### Verificat
+- Pe `index`, `proiecte` și `site-uri`, la 393px: niciun carusel nu mai e
+  derulabil pe verticală (înălțimea conținutului e egală cu cea a containerului).
+
+### Modificat
+- Cache busting `?v=2.4.5` → `?v=2.4.6` în toate paginile.
+
 ## v2.4.5 — 2026-08-21 — Bara orizontală: cauza reală
 
 ### Reparat

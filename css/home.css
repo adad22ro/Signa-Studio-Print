@@ -1435,7 +1435,19 @@
     gap: var(--sp-2);
     margin-inline: calc(var(--gutter) * -1);
     padding-inline: var(--gutter);
+    /* Loc pentru linia de sub „Vezi pagina live", care stă la -4px:
+       fără el ar fi tăiată de container. */
+    padding-block-end: 6px;
     overflow-x: auto;
+    /* Numai pe orizontală. Fără asta, `overflow-y` devine tot `auto`, iar
+       animațiile de intrare ale cardurilor (translatate pe verticală) creează
+       o derulare verticală înăuntru: apare o bară laterală și, mai rău,
+       gestul de derulare a paginii rămâne prins în carusel. */
+    overflow-y: hidden;
+    /* Degetul poate derula pagina pe verticală chiar dacă pornește de pe carusel */
+    touch-action: pan-x pan-y;
+    /* Ajuns la capăt, caruselul nu mai transmite gestul mai departe pe orizontală */
+    overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
     scroll-padding-inline: var(--gutter);
     -webkit-overflow-scrolling: touch;
@@ -1450,4 +1462,12 @@
     flex: 0 0 84%;               /* se vede marginea cardului următor */
     scroll-snap-align: start;
   }
+
+  /* În carusel, cardurile nu se mai translatează la intrare: cei câțiva pixeli
+     pe verticală ar fi tăiați de container. Rămâne estomparea, care nu ocupă
+     spațiu. */
+  .projects .reveal {
+    transform: none;
+  }
+
 }
