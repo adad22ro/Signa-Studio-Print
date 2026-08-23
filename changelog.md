@@ -2,6 +2,18 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.5.2 — 2026-08-21 — Prima cifră se animă și la încărcare
+
+### Reparat
+- După v2.5.1, cifra vizibilă de la încărcare (`3–7 zile livrare`) apărea direct
+  la valoarea finală: banda de pornire o excludea, iar numărătoarea ar fi pornit
+  abia dacă derulai și reveneai. Acum cifrele **aflate deja pe ecran la
+  încărcare** pornesc imediat ce sunt dezvăluite, iar restul așteaptă să fie
+  derulate în câmpul vizual — exact comportamentul cerut.
+
+### Modificat
+- Cache busting `?v=2.5.1` → `?v=2.5.2` în toate paginile.
+
 ## v2.5.1 — 2026-08-21 — Cifrele contorizează când sunt privite
 
 ### Reparat

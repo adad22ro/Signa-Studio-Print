@@ -124,7 +124,20 @@
       threshold: window.innerWidth <= 768 ? 0.4 : 0.6
     });
 
-    nums.forEach(function (el) { observer.observe(el); });
+    nums.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      var inEcranLaIncarcare = r.top < window.innerHeight && r.bottom > 0;
+
+      /* Ce e deja pe ecran la încărcare pornește imediat (după dezvăluire) —
+         altfel vizitatorul ar vedea cifra finală fără nicio animație, iar
+         numărătoarea ar porni abia după ce derulează și revine. Restul așteaptă
+         să fie derulate în câmpul vizual. */
+      if (inEcranLaIncarcare) {
+        countWhenVisible(el);
+      } else {
+        observer.observe(el);
+      }
+    });
   }
 
   /* ── BARA DE PROGRES A FORMULARULUI ──────────────
