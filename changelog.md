@@ -2,6 +2,28 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.5.1 — 2026-08-21 — Cifrele contorizează când sunt privite
+
+### Reparat
+- **Pe mobil, cifrele terminau de numărat înainte să ajungi la ele.** Două cauze
+  suprapuse:
+  1. Elementele cu `.reveal` stau la opacitate 0 până sunt dezvăluite, dar pentru
+     Intersection Observer sunt „în ecran" oricum — deci numărătoarea pornea cât
+     erau încă invizibile. Acum se așteaptă dezvăluirea, printr-un
+     `MutationObserver` pe clasa elementului părinte.
+  2. Pe ecran îngust, cifrele sunt una sub alta și intrau toate în ecran de la
+     încărcare. Banda în care numărătoarea are voie să pornească exclude acum
+     marginile ecranului (`-12%` sus, `-28%` jos), deci o cifră aflată la limita
+     de jos așteaptă să fie derulată în câmpul vizual.
+
+### Verificat
+- La 393×800, la încărcare: prima cifră pornită, a doua neatinsă la valoarea din
+  HTML. Pornirea la derulare nu se poate exercita în headless — evenimentele de
+  scroll nu se dispecerizează.
+
+### Modificat
+- Cache busting `?v=2.5.0` → `?v=2.5.1` în toate paginile.
+
 ## v2.5.0 — 2026-08-21 — Conturul albastru de la atingere
 
 ### Reparat

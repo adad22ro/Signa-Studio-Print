@@ -83,15 +83,46 @@
     /* Fără observer sau cu mișcare redusă, valorile rămân cele din HTML. */
     if (reduced || !('IntersectionObserver' in window)) return;
 
+    /* Numărătoarea pornește doar când cifra e și în ecran, și chiar vizibilă.
+       Cele două nu coincid: elementele cu .reveal stau la opacitate 0 până când
+       le dezvăluie observatorul lor. Pe ecran îngust, unde cifrele sunt una sub
+       alta, toate intrau în ecran de la încărcare și terminau de numărat cât
+       erau încă invizibile — când ajungeai la ele, erau deja la valoarea finală. */
+    function countWhenVisible(el) {
+      var reveal = el.closest('.reveal');
+
+      if (!reveal || reveal.classList.contains('is-visible')) {
+        countUp(el);
+        return;
+      }
+
+      /* Așteptăm dezvăluirea, fără să interogăm în buclă. */
+      var mo = new MutationObserver(function () {
+        if (!reveal.classList.contains('is-visible')) return;
+        mo.disconnect();
+        countUp(el);
+      });
+
+      mo.observe(reveal, { attributes: true, attributeFilter: ['class'] });
+    }
+
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        countUp(entry.target);
+        countWhenVisible(entry.target);
         observer.unobserve(entry.target);
       });
-      /* Pe ecran mic, un element înalt nu ajunge ușor la 60% vizibil —
-         așa că pragul coboară, altfel se ratează începutul numărătorii. */
-    }, { threshold: window.innerWidth <= 768 ? 0.25 : 0.6 });
+      /* Marginea negativă e aceeași cu a dezvăluirii: cifra trebuie să fi
+         intrat bine în ecran, nu doar să-i apară marginea. */
+      /* Banda în care numărătoarea are voie să pornească exclude marginile
+         ecranului. Altfel, pe telefon, o cifră aflată la limita de jos începe
+         să numere înainte să o vezi — iar când ajungi la ea, e deja gata. */
+    }, {
+      rootMargin: window.innerWidth <= 768
+        ? '-12% 0px -28% 0px'
+        : '0px 0px -10% 0px',
+      threshold: window.innerWidth <= 768 ? 0.4 : 0.6
+    });
 
     nums.forEach(function (el) { observer.observe(el); });
   }
