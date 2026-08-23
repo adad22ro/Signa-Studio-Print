@@ -28,13 +28,13 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#FFFFFF">
 
-  <link rel="stylesheet" href="css/reset.css?v=2.5.9">
-  <link rel="stylesheet" href="css/variables.css?v=2.5.9">
-  <link rel="stylesheet" href="css/base.css?v=2.5.9">
-  <link rel="stylesheet" href="css/components.css?v=2.5.9">
-  <link rel="stylesheet" href="css/home.css?v=2.5.9">
-  <link rel="stylesheet" href="css/servicii.css?v=2.5.9">
-  <link rel="stylesheet" href="css/responsive.css?v=2.5.9">
+  <link rel="stylesheet" href="css/reset.css?v=2.6.0">
+  <link rel="stylesheet" href="css/variables.css?v=2.6.0">
+  <link rel="stylesheet" href="css/base.css?v=2.6.0">
+  <link rel="stylesheet" href="css/components.css?v=2.6.0">
+  <link rel="stylesheet" href="css/home.css?v=2.6.0">
+  <link rel="stylesheet" href="css/servicii.css?v=2.6.0">
+  <link rel="stylesheet" href="css/responsive.css?v=2.6.0">
 
   <script type="application/ld+json">
   {
@@ -168,19 +168,47 @@
         <!-- Date de contact directe — adăugate peste designul Figma,
              care are doar formularul. O pagină de contact fără nicio
              adresă directă e o lipsă reală de utilizabilitate. -->
-        <ul class="contact-direct reveal reveal-group">
-          <li class="reveal">
-            <span class="contact-direct__label">Email</span>
-            <a href="mailto:contact@signastudiodev.ro">contact@signastudiodev.ro</a>
+        <ul class="contact-direct reveal-group">
+
+          <li class="contact-card reveal reveal--rise">
+            <span class="contact-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="5" width="18" height="14" rx="3" stroke="currentColor"
+                      stroke-width="1.6"/>
+                <path d="m4 8 7.1 4.7a1.6 1.6 0 0 0 1.8 0L20 8" stroke="currentColor"
+                      stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="contact-card__label">Email</span>
+            <a class="contact-card__value" href="mailto:contact@signastudiodev.ro">contact@signastudiodev.ro</a>
           </li>
-          <li class="reveal">
-            <span class="contact-direct__label">Locație</span>
-            <span>Iași, România — lucrăm cu clienți din toată țara</span>
+
+          <li class="contact-card reveal reveal--rise">
+            <span class="contact-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"
+                      stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                <circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.6"/>
+              </svg>
+            </span>
+            <span class="contact-card__label">Locație</span>
+            <span class="contact-card__value">Iași, România</span>
+            <span class="contact-card__note">Lucrăm cu clienți din toată țara</span>
           </li>
-          <li class="reveal">
-            <span class="contact-direct__label">Timp de răspuns</span>
-            <span>24–48 de ore în zilele lucrătoare</span>
+
+          <li class="contact-card reveal reveal--rise">
+            <span class="contact-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M12 7v5.2l3.2 2" stroke="currentColor" stroke-width="1.6"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="contact-card__label">Timp de răspuns</span>
+            <span class="contact-card__value">24–48 de ore</span>
+            <span class="contact-card__note">În zilele lucrătoare</span>
           </li>
+
         </ul>
 
       </div>
@@ -193,9 +221,9 @@
   <!-- Cookie banner injectat din components/cookie-banner.html -->
   <div id="cookie-placeholder"></div>
 
-  <script src="js/main.js?v=2.5.9" defer></script>
-  <script src="js/cookie.js?v=2.5.9" defer></script>
-  <script src="js/animations.js?v=2.5.9" defer></script>
-  <script src="js/form.js?v=2.5.9" defer></script>
+  <script src="js/main.js?v=2.6.0" defer></script>
+  <script src="js/cookie.js?v=2.6.0" defer></script>
+  <script src="js/animations.js?v=2.6.0" defer></script>
+  <script src="js/form.js?v=2.6.0" defer></script>
 </body>
 </html>

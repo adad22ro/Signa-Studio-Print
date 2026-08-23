@@ -2,6 +2,25 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.6.0 — 2026-08-23 — Datele de contact devin carduri
+
+### Schimbat
+- **Datele de contact directe sunt acum trei carduri cu pictogramă**, nu trei
+  coloane de text simplu care se pierdeau sub cardul de formular: suprafață
+  `--c-bg-alt`, chenar, colț de 24px.
+- Fiecare card are un **pătrat rotunjit cu gradientul-semnătură** și o
+  pictogramă desenată în SVG (plic, reper, ceas) — fără fișiere noi, fără
+  dependențe.
+- **Textul a fost împărțit pe două niveluri**: valoarea („Iași, România",
+  „24–48 de ore") și nota mai mică sub ea („Lucrăm cu clienți din toată țara",
+  „În zilele lucrătoare"). Înainte totul era un singur rând lung.
+- **Stare activă**: cardul se ridică 4px, chenarul se închide, pătratul cu
+  pictograma primește umbră, iar săgeata de lângă adresa de email alunecă.
+  `.contact-card` intră în lista `.is-near`, deci pe telefon starea o primește
+  cardul din centrul ecranului.
+- Cardurile intră în cascadă la derulare (`reveal--rise`).
+- Cache busting `?v=2.6.0` în toate paginile.
+
 ## v2.5.9 — 2026-08-23 — Formularul confirmă vizual ce e completat corect
 
 ### Adăugat

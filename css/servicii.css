@@ -1134,27 +1134,54 @@ select.field__input {
   cursor: pointer;
 }
 
-/* Date de contact directe */
+/* Date de contact directe — trei carduri cu pictogramă, sub formular.
+   Erau trei coloane de text simplu, care se pierdeau sub cardul de formular. */
 .contact-direct {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--sp-4);
+  gap: var(--sp-3);
   max-width: 860px;
   margin: var(--sp-10) auto 0;
-  padding-top: var(--sp-6);
-  border-top: 1px solid var(--c-border);
-  text-align: center;
 }
 
-.contact-direct li {
+.contact-card {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  align-items: flex-start;
+  gap: 6px;
+  padding: var(--sp-3);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);         /* r:24 */
+  background: var(--c-bg-alt);
   font-size: var(--fs-md);
   color: var(--c-text);
+  transition:
+    transform var(--t-base),
+    border-color var(--t-base),
+    box-shadow var(--t-base);
 }
 
-.contact-direct__label {
+/* Pătrat rotunjit cu pictograma. În repaus poartă gradientul-semnătură
+   diluat; la interacțiune gradientul devine plin, iar desenul trece pe alb. */
+.contact-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: var(--sp-1);
+  border-radius: var(--r-sm);         /* r:15 */
+  background: var(--grad-signature);
+  color: var(--c-text);
+  transition: color var(--t-base), box-shadow var(--t-base);
+}
+
+.contact-card__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.contact-card__label {
   font-size: var(--fs-xs);
   font-weight: var(--fw-bold);
   letter-spacing: var(--ls-wide);
@@ -1162,17 +1189,64 @@ select.field__input {
   color: var(--c-text-muted);
 }
 
-.contact-direct a {
+.contact-card__value {
+  font-weight: var(--fw-medium);
+  line-height: 1.35;
+  overflow-wrap: anywhere;            /* adresa de email nu lățește cardul */
+}
+
+.contact-card__note {
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+  color: var(--c-text-muted);
+}
+
+/* Emailul e singurul card cu link; săgeata alunecă la hover. */
+a.contact-card__value {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
+a.contact-card__value::after {
+  content: '→';
+  text-decoration: none;
+  transition: transform var(--t-base);
+}
+
+.contact-card:hover,
+.contact-card:focus-within,
+.contact-card.is-near {
+  transform: translateY(-4px);
+  border-color: var(--c-text);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-card:hover .contact-card__icon,
+.contact-card:focus-within .contact-card__icon,
+.contact-card.is-near .contact-card__icon {
+  box-shadow: 0 4px 14px rgba(16, 16, 16, 0.18);
+}
+
+.contact-card:hover a.contact-card__value::after,
+.contact-card:focus-within a.contact-card__value::after,
+.contact-card.is-near a.contact-card__value::after {
+  transform: translateX(3px);
+}
 
 @media (max-width: 768px) {
   .contact-direct {
     grid-template-columns: 1fr;
-    gap: var(--sp-3);
-    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-card:hover,
+  .contact-card:focus-within,
+  .contact-card.is-near {
+    transform: none;
   }
 }
 
