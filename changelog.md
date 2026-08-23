@@ -2,6 +2,29 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.4.5 — 2026-08-21 — Bara orizontală: cauza reală
+
+### Reparat
+- **Bara de derulare orizontală era provocată de animațiile de intrare**, nu de
+  carusele. Elementele cu `reveal--right` stau translatate cu 32px spre dreapta
+  până când sunt dezvăluite la derulare, iar acei pixeli lățesc pagina. Ultimul
+  element de acest fel din pagina principală e `.team__body` — de aceea „totul
+  își revenea" exact când apărea textul „Lucrezi direct cu echipa": atunci se
+  așeza la loc și ultimul element translatat.
+- `.section` a primit `overflow-x: clip`, deci nicio animație de intrare nu mai
+  poate lăți pagina. `clip` nu creează container derulabil și nu afectează
+  `position: sticky` al header-ului, care stă în afara secțiunilor.
+
+### Verificat
+- La 393, 768 și 1440px, pe `index`, `site-uri`, `proiecte` și `contact`:
+  lățimea documentului e egală cu cea a ferestrei, derularea laterală e
+  imposibilă, iar header-ul rămâne lipit sus.
+- Caruselele își păstrează ieșirea până la marginea ecranului — tăierea se face
+  la marginea secțiunii, care e cât fereastra.
+
+### Modificat
+- Cache busting `?v=2.4.4` → `?v=2.4.5` în toate paginile.
+
 ## v2.4.4 — 2026-08-21 — Bara orizontală de pe mobil
 
 ### Reparat

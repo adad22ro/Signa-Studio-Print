@@ -117,6 +117,12 @@ a:hover { opacity: 0.7; }
 
 .section {
   padding-block: var(--sp-section);
+  /* Animațiile de intrare țin elementele translatate lateral (`reveal--right`)
+     până când sunt dezvăluite. Fără tăiere, acele căteva zeci de pixeli
+     lățesc pagina și apare o bară de derulare orizontală, care dispare abia
+     când ultimul element se așază la loc. `clip` nu creează container derulabil
+     și nu afectează `position: sticky` din afara secțiunilor. */
+  overflow-x: clip;
 }
 
 /* Secțiune pe fundal închis */
