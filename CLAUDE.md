@@ -1,4 +1,4 @@
-# Signa Studio — context proiect
+# Signa Studio Dev — context proiect
 
 > **Citește acest fișier primul.** E suficient pentru a începe lucrul fără să
 > explorezi codul. Sincronizat cu `v2.5.2`.
@@ -16,7 +16,7 @@ git log --oneline origin/main..HEAD    # ce ai și nu e pe remote
 Pe 18 aug 2026 acest pas a lipsit și s-a refăcut o zi întreagă de muncă deja
 existentă pe GitHub. Nu te baza pe `pushedAt` din `gh repo view` — poate fi vechi.
 
-**2. La orice eroare, caută ÎNTÂI în [ERORI.md](ERORI.md)** — 29 de erori
+**2. La orice eroare, caută ÎNTÂI în [ERORI.md](ERORI.md)** — 33 de erori
 documentate, cu mesajul exact, cauza și soluția verificată. Multe sunt specifice
 acestui calculator (Windows + Git Bash + XAMPP) și s-ar repeta identic.
 
@@ -28,7 +28,10 @@ acestui calculator (Windows + Git Bash + XAMPP) și s-ar repeta identic.
 - **Servicii:** site-uri de prezentare, magazine online, aplicații web custom
 - **Web:** https://signastudiodev.ro (încă nepublicat)
 - **Limba:** română, cu diacritice corecte — obligatoriu
-- **Repo:** https://github.com/adad22ro/Signa-Studio-Print (**privat**, branch `main`)
+- **Repo:** https://github.com/adad22ro/Signa-Studio-Print (**public**, branch `main`)
+  — numele repo-ului a rămas cel vechi; firma și domeniul s-au redenumit în v2.4.0
+- **Previzualizare:** https://adad22ro.github.io/Signa-Studio-Print/ (GitHub Pages;
+  formularul NU funcționează acolo — Pages nu rulează PHP — și `.htaccess` e ignorat)
 - **Stack:** HTML5 + CSS3 + JS vanilla (ES6, IIFE, fără build tools) + PHP pentru formular
 
 ---
@@ -85,8 +88,8 @@ modificare de CSS/JS, în toate paginile. `.htaccess` servește cu
 
 | fișier | rol |
 |---|---|
-| `main.js` | injectează componentele prin `fetch`, link activ, meniu derulant „Servicii", hamburger, header la scroll, scroll lin cu offset. Emite evenimentul `componente:gata` |
-| `animations.js` | reveal la scroll prin Intersection Observer; pune pe pauză cascada din hero când panoul iese de pe ecran; contorizează cifrele marcate cu `data-count-to` |
+| `main.js` | injectează componentele prin `fetch`, link activ, meniu derulant „Servicii", hamburger, header la scroll, scroll lin cu offset; marchează pe `<body>` clasa `is-touch`, ca să nu rămână conturul de focus după atingere. Emite evenimentul `componente:gata` |
+| `animations.js` | reveal la scroll (Intersection Observer, variante direcționale `reveal--left/right/scale/rise`); pauza cascadei din hero; contorizarea cifrelor `data-count-to`; hover pe tab-urile din hero → paleta gradientului; banda de logouri; bara de progres a formularului; butoanele flotante; starea `.is-near` (echivalentul hover pe mobil); chenarul cardului de preț centrat; indiciile de glisare |
 | `form.js` | validare, token CSRF, trimitere AJAX — partajat de toate paginile cu formular |
 | `cookie.js` | banner GDPR; **nu încarcă nimic înainte de accept explicit** |
 
@@ -217,6 +220,34 @@ default a aplicației, neintenționată**. Nu se reproduce; folosim scala din
    `index.html#despre`, deci din paginile interioare te trimitea înapoi pe
    pagina principală, cu derulare, către conținut fără valoare informativă.
    Secțiunea rămâne în `index.html`, doar navigația către ea a dispărut.
+9. **Firimiturile sunt ascunse vizual** (v2.2.5), dar rămân în DOM prin tehnica
+   `visually-hidden` — nu `display: none` — ca să fie citite de cititoarele de
+   ecran și de crawlere. `BreadcrumbList` din JSON-LD e neatins.
+10. **Tab-urile din hero au fundal propriu închis** (v2.3.0). Text alb simplu
+    peste zona lavandă a gradientului dădea sub 2:1 contrast; acum 6,35:1 în
+    repaus, 12,74:1 la hover. Pe mobil pastilele sunt compacte, calibrate să
+    încapă pe un rând la 320, 360, 393 și 412px — **dacă le mărești fontul sau
+    padding-ul, rândul începe să deruleze**.
+11. **Textul „Preț clar, termen respectat…" rămâne peste zona portocalie**, deși
+    nu trece 4,5:1. Decizie explicită a clientului (21 aug 2026). Nu o redeschide.
+12. **Caruselele apar doar sub 768px** — planuri de preț și proiecte. Au nevoie
+    de `overflow-y: hidden`, altfel cealaltă axă devine `auto`, apare o bară
+    laterală și degetul rămâne prins în ele în loc să deruleze pagina.
+13. **`.section` are `overflow-x: clip`** (v2.4.5). Fără el, elementele cu
+    `reveal--right` — translatate 32px până sunt dezvăluite — lățesc pagina și
+    apare o bară de derulare orizontală care dispare abia la ultimul element.
+14. **Conturul de focus nu se afișează după atingere** (v2.5.0). Pe Android
+    `:focus-visible` se potrivește și la tap, deci butoanele rămâneau încadrate
+    în albastru. `main.js` marchează modul de interacțiune; la prima tastă Tab
+    conturul reapare. **Nu scoate conturul cu totul** — e cerință de accesibilitate.
+15. **Cifrele care contorizează** pornesc doar când sunt și în ecran, și
+    dezvăluite (v2.5.1–2.5.2). Cele vizibile de la încărcare pornesc imediat;
+    restul așteaptă derularea. Elementele `.reveal` sunt „în ecran" pentru
+    Intersection Observer chiar și la opacitate 0 — de aici venea numărătoarea
+    terminată înainte de a fi văzută.
+16. **Chenarul-gradient al cardului de preț**: pe desktop la hover, cu culorile
+    rotindu-se; pe mobil îl primește cardul centrat în carusel, static, iar până
+    la prima glisare stă pe planul din mijloc — cel recomandat.
 
 ---
 
@@ -236,34 +267,53 @@ default a aplicației, neintenționată**. Nu se reproduce; folosim scala din
 - **Toate cele 9 pagini**: răspund 200, linkuri interne valide, zero cod inline,
   zero culori hardcodate în afara `variables.css`, title/description în limite,
   layout mobil curat la 393px reali.
+- **Datele firmei sunt completate** în ambele pagini legale, în subsolul fiecărei
+  pagini (Legea 365/2002 art. 5) și în JSON-LD: SIGNA STUDIO DEV S.R.L.,
+  CUI 55415684, J2026049532007, Str. Petru Poni nr. 13, bl. 573A, et. 2, ap. 10,
+  Iași, jud. Iași, 700523.
+- **Politica de confidențialitate**, 12 secțiuni, redactată după ANSPDCP, ghidurile
+  EDPB și Legea 506/2004: tabel scop/date/temei legal, justificarea interesului
+  legitim, caracterul opțional al furnizării, jurnalele serverului, transferuri în
+  afara SEE, toate cele 8 drepturi cu articolele lor, datele complete ale ANSPDCP,
+  tabel cu cookie-urile, notificarea încălcărilor în 72h, secțiune despre minori.
+- **Retragerea consimțământului**: link „Preferințe cookie-uri" în subsol și în
+  politică, care redeschide bannerul (art. 7 alin. 3).
+- **Formularele sunt identice pe toate paginile** — nume, email, telefon
+  (opțional), tip proiect, mesaj — cu bară de progres generată din JS.
+- **Nicio pagină nu derulează pe orizontală**, verificat la 320, 360, 393, 412,
+  768, 1152, 1366, 1440, 1512 și 1680px.
 
 ---
 
 ## ❌ Ce a rămas de făcut
 
 ### Blocat de date pe care nu le avem
-- **Datele firmei în paginile legale** — marcajele `[DE COMPLETAT]` (denumire
-  legală, CUI, adresă). Documentele **nu sunt valabile juridic** fără ele.
-- **Telefonul de contact** — lipsește din Figma; cel vechi era placeholder
-  (`+40 700 000 000`) și nu a fost preluat.
-
-### Decizie de design în așteptare
-- **Contrast insuficient în hero**: textul alb peste zona portocalie a
-  gradientului nu trece 4.5:1 — cerință explicită în instrucțiuni. Reprodus
-  fidel la cererea clientului. Se rezolvă cu un overlay subtil sau mutând
-  blocul de text peste zona închisă a gradientului.
+- **Telefonul de contact** — clientul face un număr pe firmă și îl completează
+  atunci. Se adaugă în 3 locuri: `contact.html`, JSON-LD, politica de
+  confidențialitate.
+- **Furnizorul de găzduire** — singurul `[DE COMPLETAT]` rămas, în secțiunea 6
+  din politica de confidențialitate (lista persoanelor împuternicite).
+- **Logo nou** — clientul îl aduce. Ideal SVG; din el se generează și faviconurile.
+  De decis atunci dacă numele afișat în navbar/footer devine „Signa Studio Dev"
+  (acum e „Signa Studio").
 
 ### Verificări nefăcute
-- Test pe dispozitiv mobil real (până acum doar prin metoda cu iframe)
 - Test al trimiterii reale de email (necesită host cu PHP și SMTP)
+- Fonturile Fontshare față de CSP — se vede **doar pe Apache**, nu local și nici
+  pe GitHub Pages, unde `.htaccess` e ignorat
+
+### Curățenie opțională
+- `img/hero/hero-gradient-*.webp` (29 KB) nu mai sunt referite de când fundalul
+  hero e CSS. Păstrate pentru o eventuală revenire.
 
 ---
 
 ## 🚀 Înainte de publicare — listă de control
 
-- [ ] `MAIL_TO` și `MAIL_FROM` reale în `php/config.php`
+- [ ] `MAIL_TO` și `MAIL_FROM` reale în `php/config.php` (acum: `contact@signastudiodev.ro`)
+- [ ] Creează cutia poștală `contact@signastudiodev.ro` la host
+- [ ] Completează furnizorul de găzduire în politica de confidențialitate
 - [ ] Confirmă `DEV_MODE = false` în `php/config.php` (e deja false)
-- [ ] Datele firmei în cele două pagini legale
 - [ ] Verifică `mail()` pe host — trimite un mesaj de test
 - [ ] Activează HSTS în `.htaccess` **doar după** ce SSL e confirmat funcțional
 - [ ] Decomentează redirectările HTTPS și www/non-www în `.htaccess`

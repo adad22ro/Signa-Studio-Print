@@ -221,6 +221,67 @@ rescrie CSS care era corect de la început.
 
 ---
 
+### 1.12 Headless nu dispecerizează evenimente `scroll` la derulare programatică
+
+**Simptom:** cod care depinde de `addEventListener('scroll', …)` pare rupt în
+teste — nu se execută niciodată, deși poziția chiar se schimbă.
+
+**Reprodus:** într-un iframe servit de serverul local, `element.scrollLeft = X`
+mută conținutul (`scrollLeft` citit înapoi confirmă), dar handlerul de `scroll`
+nu se apelează nici după 900ms de timp virtual. Contorul de evenimente rămâne 0.
+
+**Consecință:** caruselele, butoanele flotante și orice logică legată de derulare
+**nu se pot verifica în headless**. Verifică altfel: măsoară direct pozițiile și
+confirmă că formula alege elementul corect, apoi testează pe dispozitiv real.
+
+**Înrudit:** `IntersectionObserver` cu `root` pe un container derulabil nu
+livrează niciun eveniment în headless — nici măcar callback-ul inițial. Dacă ai
+nevoie de „ce element e în centrul unui carusel", calculează din
+`offsetLeft`/`scrollLeft` în loc să te bazezi pe observer.
+
+---
+
+### 1.13 `overflow: hidden` rămâne derulabil; `clip` nu
+
+**Simptom:** o secțiune cu `overflow: hidden` tot generează bară de derulare sau
+se deplasează singură când un element dinăuntru primește focus.
+
+**Cauză:** `hidden` ascunde barele, dar containerul rămâne **derulabil
+programatic** — browserul îl derulează ca să aducă în vedere elementul focusat.
+
+**Soluție:** `overflow: clip` acolo unde nu vrei derulare deloc. Nu creează
+container derulabil și nu strică `position: sticky` din afara elementului.
+
+---
+
+### 1.14 `[hidden]` învins de `display: flex` din CSS
+
+**Simptom:** meniul mobil era randat permanent, doar împins în afara ecranului cu
+`translateX(100%)` — linkurile lui primeau focus cu Tab și pe desktop, iar pagina
+avea bară de derulare orizontală.
+
+**Cauză:** `.mobile-menu { display: flex }` are aceeași specificitate cu
+`[hidden] { display: none }` din reset, dar vine după ea în cascadă, deci câștigă.
+
+**Soluție:** regulă explicită `.mobile-menu[hidden] { display: none }`. Verifică
+asta la **orice** componentă care combină atributul `hidden` cu un `display` din CSS.
+
+---
+
+### 1.15 Elementele translatate lateral lățesc pagina
+
+**Simptom:** bară de derulare orizontală care dispare pe măsură ce derulezi și
+revine la reîncărcare.
+
+**Cauză:** animațiile de intrare țin elementele translatate (`reveal--right`,
+32px spre dreapta) până sunt dezvăluite. Cât așteaptă acolo, depășesc lățimea
+ferestrei. Dispare abia când ultimul element se așază la loc.
+
+**Soluție:** `overflow-x: clip` pe containerul de secțiune (`.section`), nu pe
+`body` — pe `body` nu ajută dacă elementul e poziționat față de alt ancestor.
+
+---
+
 ## 2. Git
 
 ### 2.1 Push respins — „fetch first"
@@ -535,9 +596,11 @@ Textul alb „Preț clar, termen respectat…" stă peste zona portocalie a
 gradientului. Raportul de contrast este sub 4.5:1, deci nu trece WCAG AA —
 cerință explicită în instrucțiuni.
 
-**Stare:** Reprodus fidel, la cererea clientului („exact ca în Figma").
-**Opțiuni de rezolvare:** overlay întunecat subtil sub text, sau mutarea
-blocului peste zona închisă a gradientului. **Așteaptă decizia clientului.**
+**Stare:** ÎNCHIS — clientul a decis pe 21 aug 2026 că textul rămâne așa
+(„se vede bine, rămâne așa"). Nu redeschide subiectul.
+
+Tab-urile din hero aveau aceeași problemă, mai gravă (sub 2:1), și **au fost
+rezolvate** în v2.3.0 cu fundal propriu închis: 6,35:1 în repaus, 12,74:1 la hover.
 
 ### 5.2 Fără server de mail local
 `mail()` eșuează pe XAMPP fără SMTP configurat, deci calea de succes a
