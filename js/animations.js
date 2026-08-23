@@ -341,7 +341,7 @@
     if (reduced || !('IntersectionObserver' in window)) return;
     if (window.matchMedia('(hover: hover)').matches) return;
 
-    var items = document.querySelectorAll('.need, .pcard, .project, .include');
+    var items = document.querySelectorAll('.need, .pcard, .project, .include, .fit-card');
     if (!items.length) return;
 
     var observer = new IntersectionObserver(function (entries) {

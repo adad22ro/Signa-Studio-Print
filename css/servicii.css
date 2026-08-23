@@ -107,8 +107,10 @@
   position: relative;
   padding-block: var(--sp-12);
   background:
-    radial-gradient(58% 46% at 22% 28%, rgba(39, 140, 255, 0.20), transparent 68%),
-    radial-gradient(46% 38% at 82% 72%, rgba(233, 89, 28, 0.16), transparent 66%),
+    radial-gradient(56% 48% at 18% 24%, rgba(39, 140, 255, 0.46), transparent 70%),
+    radial-gradient(48% 42% at 84% 30%, rgba(131, 73, 255, 0.34), transparent 68%),
+    radial-gradient(48% 40% at 82% 84%, rgba(233, 89, 28, 0.34), transparent 68%),
+    radial-gradient(44% 38% at 26% 90%, rgba(0, 255, 255, 0.20), transparent 66%),
     var(--c-dark-soft);
   overflow: hidden;
 }
@@ -128,20 +130,74 @@
   gap: var(--sp-3);
 }
 
+/* Card de sticlă, ca în „Ce primești": suprafața e translucidă, deci petele
+   de culoare ale benzii se văd prin ea. Linia-semnătură de sub text se
+   desface când ești pe card. */
 .fit-card {
   padding: var(--sp-4);
   min-height: 216px;                  /* înălțimea din Figma */
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
   border: 1px solid var(--c-border-on-dark);
   border-radius: var(--r-lg);         /* r:25 */
-  background: rgba(10, 10, 10, 0.72);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(8px);
   font-size: var(--fs-h5);            /* 24px */
   font-weight: var(--fw-bold);
   line-height: 1.35;
   letter-spacing: var(--ls-snug);
   color: var(--c-text-on-dark);
+  transition:
+    transform var(--t-base),
+    background-color var(--t-base),
+    border-color var(--t-base);
+}
+
+.fit-card::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  margin-top: var(--sp-2);
+  border-radius: var(--r-pill);
+  background: var(--grad-signature);
+  transition: width var(--t-slow);
+}
+
+/* Starea activă: pe desktop la hover, pe mobil pentru cardul din centrul
+   ecranului (.is-near, pus din js/animations.js). */
+.fit-card:hover,
+.fit-card.is-near {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.fit-card:hover::after,
+.fit-card.is-near::after {
+  width: 64px;
+}
+
+/* Petele de culoare ale benzii se plimbă lent, ca fundalul să nu stea inert. */
+@media (prefers-reduced-motion: no-preference) {
+  .svc-fit {
+    background-size: 140% 140%, 140% 140%, 140% 140%, 140% 140%, auto;
+    animation: fitDrift 26s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes fitDrift {
+  from { background-position: 0% 0%,   100% 0%,   100% 100%,  20% 100%, 0 0; }
+  to   { background-position: 16% 12%,  84% 16%,   82% 84%,   14% 86%,  0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fit-card:hover,
+  .fit-card.is-near {
+    transform: none;
+  }
 }
 
 

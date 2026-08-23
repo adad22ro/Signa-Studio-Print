@@ -2,6 +2,22 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.5.5 — 2026-08-23 — „Îți este potrivit?" primește același tratament
+
+### Schimbat
+- Secțiunea **„Îți este potrivit?"** din `aplicatii-custom.html` urmează acum
+  „Ce primești" de la magazine: cardurile devin **sticlă translucidă**
+  (`rgba(255,255,255,.05)` în loc de negrul opac de 72%), deci petele de
+  culoare ale benzii se văd prin ele.
+- **Fundalul e mult mai colorat**: albastrul urcă de la 20% la 46%, portocaliul
+  de la 16% la 34%, plus o pată mov sus-dreapta și una cyan jos-stânga. Cele
+  patru pete se plimbă lent (26s), fără mișcare dacă e cerută mișcare redusă.
+- **Linie-semnătură sub text**, care se desface de la 0 la 64px la interacțiune,
+  și ridicare de 6px — pe desktop la hover, pe mobil pentru cardul din centru.
+- `.fit-card` intră în lista `.is-near` din `js/animations.js`; cardurile
+  primesc `reveal--rise`, deci urcă decalat la derulare.
+- Cache busting `?v=2.5.5` în toate paginile.
+
 ## v2.5.4 — 2026-08-23 — „Ce primești": fără numere, fundal mai colorat
 
 ### Schimbat
