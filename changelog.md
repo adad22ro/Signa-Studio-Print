@@ -2,6 +2,27 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.5.3 — 2026-08-23 — Secțiunea „Ce primești" prinde viață
+
+### Adăugat
+- **Carduri de sticlă** pentru cele 6 puncte din „Ce primești"
+  (`magazine-online.html`): suprafață translucidă peste banda închisă, chenar
+  fin, colț rotunjit de 24px.
+- **Numerotare 01–06** generată din contor CSS — fără markup în plus — cu
+  gradientul-semnătură decupat în text. În repaus stă la 55% opacitate; la
+  interacțiune se aprinde și gradientul alunecă.
+- **Linie-semnătură sub titlu**, care se desface de la 0 la 48px.
+- **Intrare în cascadă**: fiecare card primește `reveal--rise`, deci urcă
+  decalat, nu apar toate deodată.
+- **Fundalul benzii respiră** — petele de culoare se plimbă lent (24s), doar
+  dacă utilizatorul nu a cerut mișcare redusă.
+
+### Schimbat
+- `js/animations.js` — `.include` intră în lista elementelor care primesc
+  `.is-near`, ca pe mobil cardul din centrul ecranului să aibă aceeași stare
+  ca hover-ul de pe desktop.
+- Cache busting `?v=2.5.3` în toate paginile.
+
 ## v2.5.2 — 2026-08-21 — Prima cifră se animă și la încărcare
 
 ### Reparat
