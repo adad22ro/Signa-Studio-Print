@@ -70,8 +70,11 @@
     submitBtn.textContent = on ? 'Se trimite...' : btnLabel;
   }
 
-  /* ── VALIDARE ──────────────────────────────────────────*/
-  function validateField(field) {
+  /* ── VALIDARE ──────────────────────────────────────────
+     `quiet` = validare în timp ce se scrie: câmpul corect se înverzește,
+     dar cel încă incomplet nu primește mesaj de eroare — altfel „a@" ar fi
+     semnalat greșit după a doua tastă. Mesajele apar la ieșirea din câmp. */
+  function validateField(field, quiet) {
     var val = field.value.trim();
     var msg = '';
 
@@ -91,10 +94,34 @@
     }
 
     var valid = msg === '';
-    field.classList.toggle('is-invalid', !valid);
-    field.setAttribute('aria-invalid', valid ? 'false' : 'true');
-    setFieldMsg(field, msg);
+
+    /* Verde doar pentru câmpurile completate: un câmp gol e neutru, nu corect. */
+    field.classList.toggle('is-valid', valid && val !== '');
+
+    if (valid || !quiet) {
+      field.classList.toggle('is-invalid', !valid);
+      field.setAttribute('aria-invalid', valid ? 'false' : 'true');
+      setFieldMsg(field, msg);
+    }
+
+    updateFormState();
     return valid;
+  }
+
+  /* ── FORMULAR COMPLET ──────────────────────────────────
+     Când toate câmpurile obligatorii sunt corecte, cardul primește
+     .is-complete și marginile i se colorează cu gradientul-semnătură. */
+  var card = form.closest('.form-card') || form;
+
+  function updateFormState() {
+    var all = form.querySelectorAll('[required]');
+    var done = 0;
+
+    Array.prototype.forEach.call(all, function (field) {
+      if (field.classList.contains('is-valid')) done++;
+    });
+
+    card.classList.toggle('is-complete', all.length > 0 && done === all.length);
   }
 
   form.querySelectorAll('.field__input, .form-input, .form-textarea').forEach(function (field) {
@@ -102,7 +129,9 @@
     field.addEventListener('change', function () { validateField(field); });
     field.addEventListener('input', function () {
       if (field.value.trim() !== '') formDirty = true;
-      if (field.classList.contains('is-invalid')) validateField(field);
+      /* În timp ce se scrie, validăm „în surdină": verdele apare imediat,
+         eroarea abia la ieșirea din câmp. */
+      validateField(field, true);
     });
   });
 

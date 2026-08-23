@@ -2,6 +2,31 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.5.9 — 2026-08-23 — Formularul confirmă vizual ce e completat corect
+
+### Adăugat
+- **Câmpurile corecte se înverzesc** pe măsură ce sunt completate: chenar
+  `--c-green-deep`, fundal verde foarte diluat și o bifă lângă etichetă.
+  Verdele închis (#2E964B) trece 4,5:1 pe alb; cel deschis (#1EFB26) ar fi fost
+  doar decorativ. Un câmp gol rămâne neutru — gol nu înseamnă corect.
+- **Formularul complet primește un inel-gradient** pe margini: când toate cele
+  cinci câmpuri obligatorii sunt corecte, `js/form.js` pune `.is-complete` pe
+  card, iar chenarul devine gradientul-semnătură care se rotește lent (6s),
+  cu umbra mărită. Aceeași tehnică de mască compusă ca la cardul de preț.
+- Validare „în surdină" în timp ce se scrie: verdele apare imediat ce câmpul
+  devine corect, dar mesajul de eroare abia la ieșirea din câmp — altfel „a@"
+  ar fi semnalat greșit după a doua tastă.
+
+### Reparat
+- Ascultătorii de `blur`/`change`/`input` de pe câmpuri fuseseră șterși din
+  greșeală la editarea din v2.5.8; validarea din browser nu mai pornea deloc.
+  Verificat acum programatic: câmpurile primesc `is-valid`, cardul `is-complete`.
+
+### Schimbat
+- Selectul primește doar chenar verde, fără fundal colorat — are deja o săgeată
+  desenată în `background-image`, iar cele două s-ar fi bătut cap în cap.
+- Cache busting `?v=2.5.9` în toate paginile.
+
 ## v2.5.8 — 2026-08-23 — Toate câmpurile formularului sunt obligatorii
 
 ### Schimbat

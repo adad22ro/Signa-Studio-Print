@@ -1221,11 +1221,60 @@
 
 /* ── Cardul de formular ────────────────────────────────*/
 .form-card {
+  position: relative;
   padding: var(--sp-7);               /* pad:60 din Figma ≈ 56 */
   border: 1px solid var(--c-border);
   border-radius: var(--r-lg);         /* r:25 */
   background: var(--c-bg);
   box-shadow: var(--shadow-md);
+  transition: box-shadow var(--t-base), border-color var(--t-base);
+}
+
+/* Formular complet: marginile cardului se colorează cu gradientul-semnătură.
+   Aceeași tehnică de inel ca la cardul de preț — un pseudo-element din care
+   se decupează interiorul prin două măști compuse. `.is-complete` vine din
+   js/form.js, când toate câmpurile obligatorii sunt corecte. */
+.form-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 2px;                       /* grosimea inelului */
+  border-radius: inherit;
+  background: conic-gradient(from var(--form-ring-angle),
+    #FF6161, #FFD361, #95FFA0, #95B9FF, #D795FF, #FF6161);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--t-slow);
+  pointer-events: none;
+}
+
+.form-card.is-complete {
+  border-color: transparent;
+  box-shadow: var(--shadow-lg);
+}
+
+.form-card.is-complete::before {
+  opacity: 1;
+  animation: formRing 6s linear infinite;
+}
+
+@keyframes formRing {
+  from { --form-ring-angle: 0deg; }
+  to   { --form-ring-angle: 360deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-card.is-complete::before {
+    animation: none;
+  }
 }
 
 .form-card__title {
@@ -1287,6 +1336,36 @@
 
 .field__input.is-invalid {
   border-color: var(--c-error);
+}
+
+/* Câmp completat corect. Verdele închis al temei (#2E964B) trece 4,5:1 pe
+   alb; cel deschis (#1EFB26) ar fi doar decorativ, deci rămâne pentru bifă. */
+.field__input.is-valid {
+  border-color: var(--c-green-deep);
+  background-color: rgba(46, 150, 75, 0.04);
+}
+
+.field__input.is-valid:focus {
+  border-color: var(--c-green-deep);
+  box-shadow: 0 0 0 3px rgba(46, 150, 75, 0.18);
+}
+
+/* Bifa din dreapta câmpului. `:has()` o pune pe etichetă, ca să nu atingem
+   fundalul inputului — unde nu e suportat, câmpul rămâne doar cu chenar verde. */
+.field:has(.field__input.is-valid) .field__label {
+  color: var(--c-green-deep);
+}
+
+.field:has(.field__input.is-valid) .field__label::after {
+  content: '✓';
+  margin-left: 6px;
+  font-weight: var(--fw-bold);
+}
+
+/* Selectul are deja o săgeată în background-image; nu-i punem și fundal
+   colorat peste ea, doar chenarul. */
+select.field__input.is-valid {
+  background-color: var(--c-bg);
 }
 
 .field__msg {
