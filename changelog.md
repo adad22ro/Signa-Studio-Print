@@ -2,6 +2,18 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.5.4 — 2026-08-23 — „Ce primești": fără numere, fundal mai colorat
+
+### Schimbat
+- **Numerotarea 01–06 a fost scoasă** din cardurile secțiunii — decizie a
+  clientului. Contorul CSS și pseudo-elementul au dispărut cu totul; rămân
+  cardul, linia-semnătură de sub titlu și cascada la derulare.
+- **Fundalul benzii e vizibil mai colorat**: petele mov și albastru urcă de la
+  28%/22% la 48%/40%, cyanul de la 14% la 24%, iar o a patra pată roz-magenta
+  umple colțul din dreapta-jos. Textul rămâne alb pe fond închis, deci
+  contrastul nu se schimbă.
+- Cache busting `?v=2.5.4` în toate paginile.
+
 ## v2.5.3 — 2026-08-23 — Secțiunea „Ce primești" prinde viață
 
 ### Adăugat

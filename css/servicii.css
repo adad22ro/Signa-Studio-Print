@@ -714,9 +714,10 @@
   position: relative;
   padding-block: var(--sp-12);
   background:
-    radial-gradient(48% 42% at 18% 24%, rgba(131, 73, 255, 0.28), transparent 70%),
-    radial-gradient(42% 38% at 76% 30%, rgba(0, 19, 255, 0.22), transparent 68%),
-    radial-gradient(38% 34% at 52% 88%, rgba(0, 255, 255, 0.14), transparent 66%),
+    radial-gradient(52% 46% at 16% 22%, rgba(131, 73, 255, 0.48), transparent 70%),
+    radial-gradient(46% 42% at 78% 26%, rgba(0, 19, 255, 0.40), transparent 68%),
+    radial-gradient(44% 40% at 88% 82%, rgba(233, 89, 200, 0.26), transparent 68%),
+    radial-gradient(44% 38% at 34% 92%, rgba(0, 255, 255, 0.24), transparent 66%),
     var(--c-black);
   overflow: hidden;
 }
@@ -747,16 +748,13 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--sp-6) var(--sp-5);
-  counter-reset: include;
 }
 
-/* Fiecare punct e un card de sticlă peste banda închisă. Numărul vine din
-   contor (fără markup în plus), iar linia-semnătură de sub titlu se desface
-   de la stânga la dreapta când ești pe card. */
+/* Fiecare punct e un card de sticlă peste banda închisă; linia-semnătură de
+   sub titlu se desface de la stânga la dreapta când ești pe card. */
 .include {
-  counter-increment: include;
   position: relative;
-  padding: var(--sp-4) var(--sp-3) var(--sp-3);
+  padding: var(--sp-3);
   border: 1px solid var(--c-border-on-dark);
   border-radius: var(--r-md);
   background: rgba(255, 255, 255, 0.035);
@@ -765,31 +763,6 @@
     background-color var(--t-base),
     border-color var(--t-base);
 }
-
-/* Numărul: 01, 02, … cu gradientul-semnătură decupat în text. */
-.include::before {
-  content: counter(include, decimal-leading-zero);
-  display: block;
-  margin-bottom: var(--sp-2);
-  font-family: var(--font-display);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-bold);
-  letter-spacing: var(--ls-wide);
-  background: var(--grad-signature);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-          background-clip: text;
-  color: transparent;
-  opacity: 0.55;
-  transition: opacity var(--t-base), background-position var(--t-slow);
-}
-
-/* Fiecare număr ia altă zonă din gradient, ca să nu fie toate șase roșii. */
-.include:nth-child(2)::before { background-position: 20% 0; }
-.include:nth-child(3)::before { background-position: 40% 0; }
-.include:nth-child(4)::before { background-position: 60% 0; }
-.include:nth-child(5)::before { background-position: 80% 0; }
-.include:nth-child(6)::before { background-position: 100% 0; }
 
 /* Linia de sub titlu — lățime 0 în repaus. */
 .include__title {
@@ -827,11 +800,6 @@
   border-color: rgba(255, 255, 255, 0.22);
 }
 
-.include:hover::before,
-.include.is-near::before {
-  opacity: 1;
-}
-
 .include:hover .include__title::after,
 .include.is-near .include__title::after {
   width: 48px;
@@ -846,14 +814,14 @@
    Animăm poziția fundalului, nu dimensiunile cardurilor. */
 @media (prefers-reduced-motion: no-preference) {
   .svc-includes {
-    background-size: 140% 140%, 140% 140%, 140% 140%, auto;
+    background-size: 140% 140%, 140% 140%, 140% 140%, 140% 140%, auto;
     animation: includesDrift 24s ease-in-out infinite alternate;
   }
 }
 
 @keyframes includesDrift {
-  from { background-position: 0% 0%,   100% 0%,   50% 100%, 0 0; }
-  to   { background-position: 12% 10%,  88% 12%,  38% 88%,  0 0; }
+  from { background-position: 0% 0%,   100% 0%,   100% 100%,  30% 100%, 0 0; }
+  to   { background-position: 14% 12%,  86% 14%,   84% 86%,   16% 84%,  0 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
