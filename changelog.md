@@ -2,6 +2,23 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.5.7 — 2026-08-23 — Fără reflector la mouse; „Cât mă costă?" nu mai e alb
+
+### Schimbat
+- **Reflectorul care urmărea cursorul a fost scos** de pe cardurile din
+  „Ce construim" — decizie a clientului. Rămân ridicarea cardului, strălucirea
+  albastră și chip-urile care se aprind pe rând. `initSpotlight()` și
+  `--mx`/`--my` au dispărut cu totul din `js/animations.js` și din CSS.
+- **Panoul „Cât mă costă?" e acum închis la culoare și pe toată lățimea.**
+  Cardul deschis de 720px lăsa jumătate de secțiune goală, iar pagina avea trei
+  blocuri albe la rând. Panoul are colț de 40px, fundal `--c-dark` cu trei pete
+  de culoare (albastru, mov, portocaliu) care se plimbă lent (28s), textul în
+  stânga și îndemnul în dreapta, centrat pe verticală.
+- Butonul din panou a trecut de la `btn--dark` la `btn--light`, ca să se vadă
+  pe fundalul închis.
+- Sub 768px panoul revine la o singură coloană, cu butonul sub text.
+- Cache busting `?v=2.5.7` în toate paginile.
+
 ## v2.5.6 — 2026-08-23 — „Ce construim": reflector care urmărește cursorul
 
 ### Adăugat

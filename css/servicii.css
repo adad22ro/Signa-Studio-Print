@@ -219,8 +219,6 @@
 }
 
 .build-card {
-  --mx: 50%;
-  --my: 50%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -229,33 +227,13 @@
   min-height: 144px;                  /* înălțimea din Figma */
   border-radius: var(--r-lg);         /* r:25 */
   background: var(--c-dark);
-  overflow: hidden;
   transition: transform var(--t-base), box-shadow var(--t-base);
-}
-
-/* Reflectorul: o pată de lumină la poziția cursorului, pusă în --mx/--my din
-   js/animations.js. Stă sub conținut, deci nu-i atinge lizibilitatea. */
-.build-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: radial-gradient(220px circle at var(--mx) var(--my),
-    rgba(39, 140, 255, 0.30), rgba(131, 73, 255, 0.14) 45%, transparent 70%);
-  opacity: 0;
-  transition: opacity var(--t-base);
-  pointer-events: none;
 }
 
 .build-card:hover,
 .build-card.is-near {
   transform: translateY(-4px);
   box-shadow: var(--glow-accent);
-}
-
-.build-card:hover::before,
-.build-card.is-near::before {
-  opacity: 1;
 }
 
 .build-card__title {
@@ -312,34 +290,67 @@
 
 /* === PREȚ ============================================= */
 
+/* Panoul se întinde pe toată lățimea și e închis la culoare: cardul deschis
+   de 720px lăsa jumătate de secțiune goală, iar pagina avea deja trei blocuri
+   albe la rând. Textul stă în stânga, îndemnul în dreapta. */
 .price-card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--sp-3);
-  max-width: 720px;
-  padding: var(--sp-6);
-  border: 1px solid var(--c-border);
-  border-radius: var(--r-lg);
-  background: var(--c-bg-alt);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--sp-4) var(--sp-6);
+  padding: var(--sp-8) var(--sp-6);
+  border-radius: var(--r-xl);         /* r:40 */
+  background:
+    radial-gradient(58% 120% at 12% 20%, rgba(39, 140, 255, 0.38), transparent 70%),
+    radial-gradient(52% 110% at 88% 80%, rgba(131, 73, 255, 0.30), transparent 70%),
+    radial-gradient(46% 100% at 62% 10%, rgba(233, 89, 28, 0.20), transparent 70%),
+    var(--c-dark);
+  color: var(--c-text-on-dark);
 }
 
 .price-card__title {
+  grid-column: 1;
+  max-width: 20ch;
   font-size: var(--fs-h4);            /* 32px */
   font-weight: var(--fw-bold);
   line-height: 1.28;
   letter-spacing: var(--ls-tight);
+  color: var(--c-text-on-dark);
 }
 
 .price-card__desc {
+  grid-column: 1;
+  max-width: 46ch;
   font-size: var(--fs-lg);            /* 20px */
   line-height: 1.5;
-  color: var(--c-text);
+  color: var(--c-text-on-dark-muted);
+}
+
+/* Îndemnul și nota ocupă coloana din dreapta, pe toată înălțimea panoului. */
+.price-card .btn {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  justify-self: end;
+  align-self: center;
 }
 
 .price-card__note {
+  grid-column: 1 / -1;
   font-size: var(--fs-xs);            /* 12px */
-  color: var(--c-text-muted);
+  color: var(--c-text-on-dark-muted);
+}
+
+/* Petele de culoare se plimbă lent, ca la celelalte benzi închise. */
+@media (prefers-reduced-motion: no-preference) {
+  .price-card {
+    background-size: 150% 150%, 150% 150%, 150% 150%, auto;
+    animation: priceDrift 28s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes priceDrift {
+  from { background-position: 0% 0%,   100% 100%,  60% 0%,  0 0; }
+  to   { background-position: 18% 14%,  82% 86%,   40% 16%, 0 0; }
 }
 
 .closing__text {
@@ -376,9 +387,22 @@
   }
 }
 
+@media (max-width: 768px) {
+  .price-card {
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+  }
+
+  .price-card .btn {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: start;
+  }
+}
+
 @media (max-width: 480px) {
   .price-card {
-    padding: var(--sp-4);
+    padding: var(--sp-5) var(--sp-4);
   }
 }
 
