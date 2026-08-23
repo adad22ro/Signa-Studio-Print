@@ -42,6 +42,34 @@
       });
   }
 
+  /* ── MODUL DE INTERACȚIUNE ───────────────────────
+     Conturul de focus trebuie să se vadă pentru cine navighează cu
+     tastatura, dar nu și după o atingere pe telefon — acolo lăsa butoanele
+     încadrate în albastru, ca și cum ar fi rămas selectate. Marcăm pe <body>
+     ce fel de gest a fost ultimul; CSS-ul decide restul. */
+  function initInputMode() {
+    var body = document.body;
+
+    function touch() { body.classList.add('is-touch'); }
+    function keyboard(e) {
+      /* Doar tastele de navigare readuc conturul, nu orice tastă scrisă
+         într-un câmp de formular. */
+      if (e.key === 'Tab' || e.key === 'ArrowUp' || e.key === 'ArrowDown' ||
+          e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        body.classList.remove('is-touch');
+      }
+    }
+
+    window.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'touch' || e.pointerType === 'pen') touch();
+    }, { passive: true });
+
+    window.addEventListener('touchstart', touch, { passive: true });
+    window.addEventListener('keydown', keyboard);
+  }
+
+  initInputMode();
+
   Promise.all(COMPONENTS.map(inject)).then(init);
 
   /* ── INIȚIALIZARE DUPĂ INJECTARE ───────────────────────*/

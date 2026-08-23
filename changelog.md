@@ -2,6 +2,27 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.5.0 — 2026-08-21 — Conturul albastru de la atingere
+
+### Reparat
+- **Pe mobil, butoanele și linkurile rămâneau încadrate în albastru după
+  apăsare**, ca și cum ar fi fost selectate. Cauza: conturul de focus
+  (`:focus-visible`, 2px albastru) e gândit pentru navigarea cu tastatura, dar
+  pe Android se potrivește și după o simplă atingere.
+- `js/main.js` marchează acum pe `<body>` ce fel de gest a fost ultimul: cât timp
+  a fost o atingere, conturul nu se afișează; la prima tastă Tab (sau săgeată)
+  reapare. Accesibilitatea la tastatură rămâne neatinsă — doar zgomotul vizual
+  de pe telefon dispare.
+- Adăugat și `-webkit-tap-highlight-color: transparent`, care scoate pătratul
+  translucid desenat de browserele mobile la atingere.
+
+### Verificat
+- După `touchstart`: conturul butonului = `none`. După `Tab`: contur solid,
+  `rgb(39, 140, 255)` — exact culoarea de accent.
+
+### Modificat
+- Cache busting `?v=2.4.9` → `?v=2.5.0` în toate paginile.
+
 ## v2.4.9 — 2026-08-21 — Chenarul de preț, pe mobil
 
 ### Adăugat

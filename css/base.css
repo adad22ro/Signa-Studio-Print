@@ -94,6 +94,12 @@ a:hover { opacity: 0.7; }
 
 /* === FOCUS VIZIBIL ==================================== */
 
+/* Pătratul translucid pe care îl desenează browserele mobile la atingere.
+   Nu ține loc de indicator de focus — acela e conturul de mai jos. */
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
 :focus-visible {
   outline: 2px solid var(--c-accent);
   outline-offset: 3px;
@@ -103,6 +109,16 @@ a:hover { opacity: 0.7; }
 /* Pe fundal închis, conturul alb are contrast mai bun */
 .on-dark :focus-visible {
   outline-color: var(--c-text-on-dark);
+}
+
+/* Conturul e pentru cine navighează cu tastatura. Pe Android, `:focus-visible`
+   se potrivește și după o simplă atingere, deci butonul rămâne încadrat în
+   albastru după apăsare, ca și cum ar fi selectat. `js/main.js` marchează
+   modul de interacțiune: cât timp ultimul gest a fost o atingere, conturul
+   nu se afișează; la prima tastă Tab reapare. */
+body.is-touch :focus-visible,
+body.is-touch .on-dark :focus-visible {
+  outline: none;
 }
 
 
