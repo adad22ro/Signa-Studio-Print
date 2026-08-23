@@ -341,7 +341,7 @@
     if (reduced || !('IntersectionObserver' in window)) return;
     if (window.matchMedia('(hover: hover)').matches) return;
 
-    var items = document.querySelectorAll('.need, .pcard, .project, .include, .fit-card');
+    var items = document.querySelectorAll('.need, .pcard, .project, .include, .fit-card, .build-card');
     if (!items.length) return;
 
     var observer = new IntersectionObserver(function (entries) {
@@ -512,6 +512,34 @@
     observer.observe(flow.parentNode);
   }
 
+  /* ── REFLECTOR PE CARDURILE „CE CONSTRUIM" ──────
+     Cardurile sunt negre pe fundal alb; singurul lucru care le poate face
+     vii fără să le schimbe culoarea e lumina. Poziția cursorului ajunge în
+     CSS prin două variabile, iar acolo devine o pată radială care urmărește
+     degetul/mouse-ul. Doar pe dispozitive cu cursor fin: pe telefon rolul îl
+     ia .is-near, care pune lumina în centrul cardului. */
+  function initSpotlight() {
+    if (reduced) return;
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    var cards = document.querySelectorAll('.build-card');
+    if (!cards.length) return;
+
+    Array.prototype.forEach.call(cards, function (card) {
+      card.addEventListener('pointermove', function (e) {
+        var box = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - box.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - box.top) + 'px');
+      });
+
+      /* La ieșire lumina se întoarce în centru, ca stingerea să nu „sară". */
+      card.addEventListener('pointerleave', function () {
+        card.style.setProperty('--mx', '50%');
+        card.style.setProperty('--my', '50%');
+      });
+    });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       init();
@@ -523,6 +551,7 @@
       initMarquee();
       initPlanRing();
       initNearCenter();
+      initSpotlight();
       initSwipeHints();
     });
   } else {
@@ -535,6 +564,7 @@
     initMarquee();
     initPlanRing();
     initNearCenter();
+    initSpotlight();
     initSwipeHints();
   }
 

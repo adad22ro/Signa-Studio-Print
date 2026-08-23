@@ -219,6 +219,9 @@
 }
 
 .build-card {
+  --mx: 50%;
+  --my: 50%;
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--sp-3);
@@ -226,9 +229,38 @@
   min-height: 144px;                  /* înălțimea din Figma */
   border-radius: var(--r-lg);         /* r:25 */
   background: var(--c-dark);
+  overflow: hidden;
+  transition: transform var(--t-base), box-shadow var(--t-base);
+}
+
+/* Reflectorul: o pată de lumină la poziția cursorului, pusă în --mx/--my din
+   js/animations.js. Stă sub conținut, deci nu-i atinge lizibilitatea. */
+.build-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(220px circle at var(--mx) var(--my),
+    rgba(39, 140, 255, 0.30), rgba(131, 73, 255, 0.14) 45%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--t-base);
+  pointer-events: none;
+}
+
+.build-card:hover,
+.build-card.is-near {
+  transform: translateY(-4px);
+  box-shadow: var(--glow-accent);
+}
+
+.build-card:hover::before,
+.build-card.is-near::before {
+  opacity: 1;
 }
 
 .build-card__title {
+  position: relative;
+  z-index: 1;
   font-size: var(--fs-h5);            /* 24px */
   font-weight: var(--fw-bold);
   line-height: 1.35;
@@ -236,14 +268,45 @@
 }
 
 /* Chip-urile din cardurile închise */
+.build-card .chips {
+  position: relative;
+  z-index: 1;
+}
+
 .build-card .chip {
   background: rgba(255, 255, 255, 0.1);
   color: var(--c-text-on-dark);
   white-space: normal;
+  transition: background-color var(--t-base), transform var(--t-base);
 }
 
 .build-card .chip::before {
   background: var(--c-green);
+  transition: box-shadow var(--t-base);
+}
+
+/* Chip-urile se aprind pe rând, de la stânga la dreapta. */
+.build-card:hover .chip,
+.build-card.is-near .chip {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+.build-card .chip:nth-child(2) { transition-delay: 60ms; }
+.build-card .chip:nth-child(3) { transition-delay: 120ms; }
+
+.build-card:hover .chip::before,
+.build-card.is-near .chip::before {
+  box-shadow: 0 0 8px var(--c-green);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .build-card:hover,
+  .build-card.is-near,
+  .build-card:hover .chip,
+  .build-card.is-near .chip {
+    transform: none;
+  }
 }
 
 

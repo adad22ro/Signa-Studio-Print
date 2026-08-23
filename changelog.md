@@ -2,6 +2,26 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.5.6 — 2026-08-23 — „Ce construim": reflector care urmărește cursorul
+
+### Adăugat
+- **Reflector pe cardurile din „Ce construim"** (`aplicatii-custom.html`): o pată
+  de lumină albastru-mov urmărește cursorul peste cardul negru. Poziția ajunge
+  în CSS prin `--mx`/`--my`, puse din `js/animations.js` la `pointermove`; la
+  ieșire lumina se întoarce în centru, ca stingerea să nu sară. Lumina stă sub
+  conținut (`z-index`), deci nu atinge lizibilitatea textului.
+- **Chip-urile se aprind pe rând**, de la stânga la dreapta (decalaj 60ms):
+  fundalul se luminează, se ridică 2px, iar bulina verde capătă un halou.
+- Cardul se ridică 4px, cu strălucirea albastră a temei.
+- Cardurile primesc `reveal--rise`, deci urcă decalat la derulare.
+
+### Schimbat
+- `.build-card` intră în lista `.is-near`: pe telefon, unde nu există cursor,
+  cardul din centrul ecranului primește lumina fixată în mijloc și aceleași
+  chip-uri aprinse. Reflectorul care urmărește cursorul pornește doar pe
+  `(hover: hover) and (pointer: fine)`.
+- Cache busting `?v=2.5.6` în toate paginile.
+
 ## v2.5.5 — 2026-08-23 — „Îți este potrivit?" primește același tratament
 
 ### Schimbat
