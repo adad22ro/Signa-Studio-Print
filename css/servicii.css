@@ -420,24 +420,52 @@
 }
 
 /* Muchia de sus se colorează cu gradientul-semnătură la hover. */
+/* Chenar-gradient pe tot perimetrul, nu doar o bandă sus.
+   Tehnica: un pseudo-element cât cardul, umplut cu un gradient conic, din
+   care se decupează interiorul cu două straturi de maskă compuse prin
+   `exclude` — rămâne doar inelul de la margine. Unghiul gradientului e
+   înregistrat cu @property (în variables.css), deci poate fi animat: culorile
+   se plimbă în jurul cardului cât timp ești pe el. */
 .plan::before {
   content: '';
   position: absolute;
-  top: -1px;
-  left: var(--sp-4);
-  right: var(--sp-4);
-  height: 3px;
-  border-radius: 0 0 3px 3px;
-  background: var(--grad-signature);
+  inset: 0;
+  z-index: 1;
+  padding: 2px;                       /* grosimea chenarului */
+  border-radius: inherit;
+  background: conic-gradient(from var(--plan-ring-angle),
+    #FF6161, #FFD361, #95FFA0, #95B9FF, #D795FF, #FF6161);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+          mask-composite: exclude;
   opacity: 0;
-  transform: scaleX(.4);
+  transform: scale(.985);
   transition: opacity var(--t-base), transform var(--t-base);
+  pointer-events: none;
 }
 
 .plan:hover::before,
 .plan:focus-within::before {
   opacity: 1;
-  transform: scaleX(1);
+  transform: scale(1);
+  animation: planRing 4s linear infinite;
+}
+
+@keyframes planRing {
+  from { --plan-ring-angle: 0deg; }
+  to   { --plan-ring-angle: 360deg; }
+}
+
+/* Chenarul propriu îl scoatem doar vizual cât timp inelul e vizibil, ca să nu
+   se vadă două linii suprapuse. */
+.plan:hover,
+.plan:focus-within {
+  border-color: transparent;
 }
 
 .plan__price {
@@ -454,6 +482,11 @@
   .plan::before,
   .plan__price {
     transition: none;
+  }
+
+  .plan:hover::before,
+  .plan:focus-within::before {
+    animation: none;
   }
 }
 

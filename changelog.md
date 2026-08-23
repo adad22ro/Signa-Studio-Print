@@ -2,6 +2,20 @@
 
 Toate modificările notabile ale site-ului sunt documentate aici.
 
+## v2.4.8 — 2026-08-21 — Chenar-gradient pe cardurile de preț
+
+### Modificat
+- La hover, cardul de preț nu mai primește o bandă colorată doar sus, ci un
+  **chenar-gradient pe tot perimetrul**, cu culorile care se plimbă în jurul lui.
+  Tehnica: un pseudo-element cât cardul, umplut cu un gradient conic, din care se
+  decupează interiorul prin două straturi de maskă compuse cu `exclude` — rămâne
+  doar inelul de la margine. Unghiul e înregistrat cu `@property`
+  (`--plan-ring-angle`), deci poate fi animat; fără asta ar sări brusc.
+  Cât timp inelul e vizibil, chenarul obișnuit devine transparent, ca să nu se
+  vadă două linii suprapuse. `prefers-reduced-motion` oprește rotirea, dar lasă
+  chenarul vizibil.
+- Cache busting `?v=2.4.7` → `?v=2.4.8` în toate paginile.
+
 ## v2.4.7 — 2026-08-21 — Spațiu în hero pe mobil
 
 ### Reparat

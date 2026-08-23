@@ -195,3 +195,5 @@
 @property --hero-c4 { syntax: '<color>'; inherits: true; initial-value: #E5197A; }
 @property --hero-c5 { syntax: '<color>'; inherits: true; initial-value: #FF5A2B; }
 @property --hero-c6 { syntax: '<color>'; inherits: true; initial-value: #FFB300; }
+
+@property --plan-ring-angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
